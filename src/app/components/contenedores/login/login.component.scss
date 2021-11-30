@@ -1,0 +1,60 @@
+
+// scl -> "section container login"
+.scl{
+    background-color: gray;
+    height: 100vh;
+
+    .div-form{
+        min-width: 50%;
+        max-width: 50%;
+        height: 38rem;
+        
+
+        .s2{
+            min-height: 20rem;
+        }
+
+
+        .title{
+            max-width: 20rem;
+            margin-bottom: 1.3rem;
+        }
+
+
+        form{
+            // height: 15rem;
+
+            input{
+                // height: 2rem;
+                max-width: 100%;
+                border-radius: 0.4rem;
+                margin-bottom: 1.3rem;
+                background-color: #EDEDED;
+                padding-left: 0.5rem;
+                font-size: 15px;
+                
+            }
+
+            .pt{
+                padding-top: 4rem;
+                justify-content: space-evenly;
+                button{
+                    background-color: #BBF19A;
+                }
+                a{
+                    background-color: #C4C4C4;
+                    text-align: center;
+                }
+            }
+        }
+        
+    }
+    // c-img -> contenedor imagen 
+    .c-img{
+        min-width: 50%;
+        max-width: 50%;
+        height: 38rem;
+    }
+
+}
+
