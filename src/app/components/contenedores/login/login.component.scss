@@ -1,12 +1,12 @@
 
 // scl -> "section container login"
 .scl{
-    background-color: gray;
-    height: 100vh;
+    // background-color: gray;
+    min-height: 100vh;
 
     .div-form{
         min-width: 50%;
-        max-width: 50%;
+        // width: 50%;
         height: 38rem;
         
 
@@ -23,7 +23,7 @@
 
         form{
             // height: 15rem;
-
+            min-width: 100%;
             input{
                 // height: 2rem;
                 max-width: 100%;
@@ -35,15 +35,31 @@
                 
             }
 
+            .recordatorios{
+
+                a{
+                    color: #E29623;
+                }
+                
+            }
+
             .pt{
-                padding-top: 4rem;
-                justify-content: space-evenly;
+                padding-top: 3rem;
+                justify-content: space-between;
                 button{
                     background-color: #BBF19A;
+                    width: 47%;
+                    border-radius: 0.3rem;
+                    // height: 2rem;
                 }
                 a{
                     background-color: #C4C4C4;
                     text-align: center;
+                    width: 47%;
+                    border-radius: 0.3rem;
+                    // height: 2rem;
+                    
+                    // margin-left: 0.5rem;
                 }
             }
         }
@@ -52,9 +68,53 @@
     // c-img -> contenedor imagen 
     .c-img{
         min-width: 50%;
-        max-width: 50%;
+        // max-width: 50%;
         height: 38rem;
+
+        padding: 3rem;
+        // Segundo div
+        div{
+            background-color: #BBF19A;
+            width: 100%;
+            height: 100%;
+            border-radius: 1.5rem;
+
+
+            // tercer div
+            .div3-img{
+                background-color: white;
+                border-radius: 100rem;
+                width: 12rem;
+                height: 12rem;
+
+                img{
+                    width: 12rem;
+                    height: 12rem;
+                    object-fit: cover;
+                    border-radius: 10rem;
+                }
+            }
+        }
     }
 
 }
 
+// Media query para 400 px
+@media (max-width: 400px) { 
+
+    // PRIMER CONTENEDOR
+    .scl{
+        align-items: center;
+        padding: 0%;
+
+    }
+
+    .div-form{
+        padding: 0%;
+        width: 100%;
+    }
+
+    .c-img{
+        display: none;
+    }
+}

@@ -1,13 +1,17 @@
-<section class="container mx-auto scl flex flex-row items-center flex-wrap ">
-    <!-- Primer contenedor "form" -->
-    <div class="border div-form flex flex-col items-center justify-center px-14 py-8">
-        
-        <section class="border w-full s2 flex flex-col items-start px-8">
+<!-- <app-nav></app-nav> -->
 
-            <div class="title border h-full">
+<section class="container mx-auto scl flex flex-row items-center flex-wrap justify-center px-14">
+    <!-- Primer contenedor "form" -->
+    <div class=" div-form flex flex-col items-center justify-center px-14 py-8">
+        
+        <section class=" w-full s2 flex flex-col items-start px-8">
+
+            <div class="title h-full">
                 <h2 class="text-2xl">Inicio sesion</h2>
             </div>
-            <form class="border flex flex-col justify-around" action="">
+
+            <form class=" flex flex-col justify-around" action="">
+
                 <label for="">Correo electronico</label>
                 <input type="email">
                 
@@ -15,14 +19,20 @@
                 <input type="password">
                 
                 <!-- input de radio -->
-                <div>
-                    <input type="radio">
-                    <label for="">Recuérdame</label>
+                <div class="recordatorios flex justify-between">
+                    <!-- Div para Recuerdame -->
+                    <div>
+                        <input type="checkbox" class="appearance-none checked:bg-blue-600 checked:border-transparent" >
+                        <label class="text-sm" for="">Recuérdame</label>
+                    </div>
+                    <a class="underline text-sm" routerLink="">Recuperar contraseña</a>
                 </div>
-                <div class="pt flex ">
-                    <button class="min-w-full">Iniciar sesion</button>
-                    <a class="min-w-full" routerLink="">Regitrarme</a>
+
+                <div class="pt flex flex-row flex-wrap ">
+                    <button class="">Iniciar sesion</button>
+                    <a class="" routerLink="#">Regitrarme</a>
                 </div>
+
             </form>
 
         </section>
@@ -30,7 +40,17 @@
     </div>
 
     <!-- Segundo contenedor "Img" -->
-    <div class="border c-img">
-        <p>hola</p>
+    <div class="c-img">
+        <!-- segundo div -->
+        <div class="border flex flex-col items-center py-8">
+            <!-- tercer div -->
+            <div class="div3-img">
+                <img class="" src="https://www.pngkey.com/png/full/202-2022332_formacin-usuario-remota-profile-icon-vector.png" alt="">
+            </div>
+            
+            <section>
+
+            </section>
+        </div>
     </div>
 </section>
