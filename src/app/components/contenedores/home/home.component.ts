@@ -7,6 +7,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
+  // Se declara variable para la interpolacion
+  txtTargetas:String = "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Commodi id, facilis nisi deserunt veritatis officiis, quaerat ipsum, fugit repellendus laboriosam";
+
+  ///////////////////////////////////////////////
+
   constructor() { }
 
   ngOnInit(): void {

@@ -7,6 +7,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavComponent implements OnInit {
 
+  // Declaramos variable para hacer interpolación
+  titulo:String = "TuGuiaQuindio.com";
+
+
   constructor() { }
 
   ngOnInit(): void {
