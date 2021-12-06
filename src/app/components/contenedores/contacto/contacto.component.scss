@@ -1,0 +1,47 @@
+
+.section{
+    background: linear-gradient(0deg, rgba(187,241,154,1) 20%,rgba(255,255,255,1) 0%);
+
+    .contend-text{
+
+        .text{
+            margin-top: 2.5rem;
+            margin-bottom: 2.5rem;
+        }
+
+        div{
+            p{
+                margin-top: 1rem;
+                margin-bottom: 1rem;
+            }
+        }
+    }
+
+    .contend-form{
+
+        h1{
+            margin-bottom: 3rem;
+        }
+        input{
+            background-color: #EDEDED;
+            border-radius: 0.4rem;
+            margin-bottom: 2rem;
+            padding-left: 5px;
+            // height: 2rem;
+        }
+        
+        .input-mensaje{
+            height: 12rem;
+            text-align: start;
+            background-color: #EDEDED;
+        }
+        
+        .btn-enviar{
+            background-color: #EDEDED;
+            border-radius: 0.4rem;
+            height: 2rem;
+        }
+    }
+    
+    
+}
