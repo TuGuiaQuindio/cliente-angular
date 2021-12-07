@@ -13,6 +13,13 @@
             p{
                 margin-top: 1rem;
                 margin-bottom: 1rem;
+                margin-left: 0.5rem;
+            }
+            
+            i{
+                margin-top: 1rem;
+                margin-bottom: 1rem;
+                color: yellow;
             }
         }
     }
@@ -37,11 +44,43 @@
         }
         
         .btn-enviar{
-            background-color: #EDEDED;
+            background-color: #bebebe;
             border-radius: 0.4rem;
             height: 2rem;
         }
     }
     
     
+}
+
+/////////////////////////////////////////////////////////////////
+
+@media (max-width: 400px) { 
+    .section{
+        
+        .contend-text{
+            width: 100%;
+            padding-top: 5rem;
+            padding-right: 2rem;
+            padding-bottom: 2rem;
+            padding-left: 2rem;
+        }
+    }
+
+    .contend-form{
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-width: 25rem;
+        max-width: 100%;
+
+        section{
+            min-width: 20rem;
+            max-width: 50rem;
+            margin: 0%;
+            box-shadow: 0 2 1 2em black,
+                        0 0 0 4em #66CCFF;
+        }
+    }
 }
