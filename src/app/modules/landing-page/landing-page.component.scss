@@ -1,0 +1,5 @@
+@layer base {
+  .hero-section {
+    @apply s1 height-s1 w-full grid-cols-2 gap-8 flex flex-row flex-wrap;
+  }
+}
