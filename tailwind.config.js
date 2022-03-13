@@ -2,13 +2,14 @@ module.exports = {
   darkMode: "class",
   content: ["src/**/*.{html,ts}"],
   theme: {
-    colors: {
-      primary: "#FFF",
-      secondary: "#BBF19A",
-      accent: "#62E3C4",
-      dark: "#4C4451",
+    extend: {
+      colors: {
+        primary: "#FFF",
+        secondary: { 600: "#33BD67", 400: "#BBF19A" },
+        accent: "#5CE1C9",
+        dark: "#4C4451",
+      }
     },
-    extend: {},
   },
   plugins: [],
 }
