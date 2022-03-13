@@ -1,0 +1,17 @@
+button {
+  @apply border-2 border-black text-black rounded-full px-7 py-2;
+  @apply hover:text-gray-500 hover:border-gray-500;
+  @apply active:bg-gray-200 active:text-black active:border-black;
+
+  &.emphasis {
+    @apply border-secondary-600 text-secondary-600;
+    @apply hover:border-secondary-400;
+    @apply active:bg-green-200 active:text-green-600 active:border-green-600;
+  }
+  
+  &.special-pointy {
+    @apply border-none text-black bg-gradient-to-br from-secondary-400 to-accent rounded-br-none shadow;
+    @apply hover:shadow-md hover:text-green-700;
+    @apply active:shadow-none active:text-black;
+  }
+}
