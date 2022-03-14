@@ -10,8 +10,8 @@
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
 
-@import url('https://fonts.googleapis.com/css2?family=MuseoModerno&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=MuseoModerno&family=Varela+Round&family=Cabin&display=swap');
 
 * {
-	font-family: 'MuseoModerno', cursive;
+	@apply font-normal;
 }
