@@ -2,10 +2,11 @@
   @apply container mx-auto h-20 pl-14 pr-14 flex items-center justify-between;
 
   h1 {
-    @apply text-3xl;
+    @apply text-3xl font-logo;
   }
 
   nav {
-    @apply flex gap-2;
+    @apply gap-2 hidden;
+    @apply md:flex;
   }
 }

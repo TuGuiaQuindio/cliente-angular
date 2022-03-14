@@ -8,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 export class NavComponent implements OnInit {
 
   // Declaramos variable para hacer interpolación
-  titulo:String = "TuGuiaQuindio.com";
+  public titulo = "TuGuiaQuindio";
 
 
   constructor() { }
