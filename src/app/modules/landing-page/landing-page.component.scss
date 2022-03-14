@@ -1,0 +1,80 @@
+.landing-page-container {
+
+  section {
+    .title {
+      @apply text-6xl font-heading;
+    }
+
+    p {
+      @apply text-xl;
+    }
+  }
+
+  .hero-section {
+    @apply px-16 container mb-10 mx-auto h-[50rem] py-10 flex items-stretch;
+    @apply md:gap-16 md:justify-between;
+
+    .text-section {
+      @apply max-w-[29rem] flex flex-col justify-center gap-10;
+
+      h1 {
+        @apply text-5xl font-heading;
+      }
+
+      .button-group {
+        @apply flex flex-col gap-4 items-stretch w-full;
+        @apply md:flex-row;
+
+        span {
+          @apply hidden;
+          @apply md:block;
+        }
+      }
+    }
+
+    .image-section {
+      @apply hidden my-6;
+      @apply lg:flex lg:justify-end lg:w-full;
+
+      img {
+        object-fit: contain;
+        @apply w-full h-auto;
+      }
+    }
+  }
+
+  .our-platform-section {
+    @apply flex flex-col bg-secondary-400 max-w-[1920px] mx-auto;
+
+    img {
+      @apply w-full max-w-[1920px] mx-auto;
+    }
+
+    .content {
+      @apply my-32 mx-auto px-16 flex flex-col h-min max-w-[55rem] gap-14;
+
+      * {
+        @apply text-center;
+      }
+    }
+  }
+
+  .features-section {
+    @apply flex flex-col my-32 mx-auto items-center;
+
+
+    .title {
+      @apply max-w-[27.5rem] text-center mb-24;
+      @apply md:max-w-[45rem];
+    }
+
+    .content {
+      @apply grid grid-cols-1 w-full max-w-[60rem] gap-24 justify-items-center;
+      @apply md:grid-cols-2;
+      
+      p {
+        @apply text-left max-w-[25rem];
+      }
+    }
+  }
+}
