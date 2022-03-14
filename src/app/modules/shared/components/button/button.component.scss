@@ -1,5 +1,5 @@
 button {
-  @apply border-2 border-black text-black rounded-full px-7 py-2;
+  @apply border-2 border-black text-black rounded-full px-7 py-2 w-full;
   @apply hover:text-gray-500 hover:border-gray-500;
   @apply active:bg-gray-200 active:text-black active:border-black;
 
@@ -11,6 +11,12 @@ button {
   
   &.special-pointy {
     @apply border-none text-black bg-gradient-to-br from-secondary-400 to-accent rounded-br-none shadow;
+    @apply hover:shadow-md hover:text-green-700;
+    @apply active:shadow-none active:text-black;
+  }
+
+  &.special {
+    @apply border-none text-black bg-gradient-to-br from-secondary-400 to-accent shadow;
     @apply hover:shadow-md hover:text-green-700;
     @apply active:shadow-none active:text-black;
   }
