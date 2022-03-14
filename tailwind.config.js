@@ -3,6 +3,11 @@ module.exports = {
   content: ["src/**/*.{html,ts}"],
   theme: {
     extend: {
+      fontFamily: {
+        'logo': [ 'MuseoModerno', 'cursive' ],
+        'heading': ['Varela Round', 'sans-serif'],
+        'normal': ['Cabin', 'sans-serif']
+      },
       colors: {
         primary: "#FFF",
         secondary: { 600: "#33BD67", 400: "#BBF19A" },
