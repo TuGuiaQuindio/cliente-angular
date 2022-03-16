@@ -12,6 +12,19 @@
 
 @import url('https://fonts.googleapis.com/css2?family=MuseoModerno&family=Varela+Round&family=Cabin&display=swap');
 
+html, app-root  {
+  height: 100%;
+}
+
+app-root {
+  @apply flex flex-col flex-1;
+}
+
+body {
+  @apply flex flex-col;
+  min-height: 100%;
+}
+
 * {
 	@apply font-normal;
 }
