@@ -4,7 +4,7 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        'logo': [ 'MuseoModerno', 'cursive' ],
+        'logo': ['MuseoModerno', 'cursive'],
         'heading': ['Varela Round', 'sans-serif'],
         'normal': ['Cabin', 'sans-serif']
       },
@@ -12,7 +12,7 @@ module.exports = {
         primary: "#FFF",
         secondary: { 600: "#33BD67", 400: "#BBF19A" },
         accent: "#5CE1C9",
-        dark: "#4C4451",
+        dark: { 600: "#4C4451", 400: "#7A7A7A" },
       }
     },
   },
