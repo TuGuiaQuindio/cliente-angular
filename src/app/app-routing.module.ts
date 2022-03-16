@@ -10,7 +10,8 @@ const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'home' },
   { path: 'register', component: RegisterComponent },
   { path: 'contacto', component: ContactoComponent },
-  { path: 'home', loadChildren: () => import('./modules/landing-page/landing-page.module').then(m => m.LandingPageModule) }
+  { path: 'home', loadChildren: () => import('./modules/landing-page/landing-page.module').then(m => m.LandingPageModule) },
+  { path: 'login', loadChildren: () => import('./modules/login/login.module').then(m => m.LoginModule) }
 
 ];
 
