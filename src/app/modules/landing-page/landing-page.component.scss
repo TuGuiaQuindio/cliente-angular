@@ -44,10 +44,10 @@
   }
 
   .our-platform-section {
-    @apply flex flex-col bg-secondary-400 max-w-[1920px] mx-auto;
+    @apply flex flex-col bg-secondary-400 max-w-[1420px] mx-auto;
 
     img {
-      @apply w-full max-w-[1920px] mx-auto;
+      @apply w-full max-w-[1420px] mx-auto;
     }
 
     .content {
@@ -69,7 +69,7 @@
     }
 
     .content {
-      @apply grid grid-cols-1 w-full max-w-[60rem] gap-24 justify-items-center;
+      @apply grid grid-cols-1 w-full max-w-[60rem] gap-24 justify-items-center w-11/12;
       @apply md:grid-cols-2;
       
       p {
