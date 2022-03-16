@@ -12,7 +12,7 @@ module.exports = {
         primary: "#FFF",
         secondary: { 600: "#33BD67", 400: "#BBF19A" },
         accent: "#5CE1C9",
-        dark: { 600: "#4C4451", 400: "#7A7A7A" },
+        dark: { 600: "#4C4451", 400: "#9F9F9F" },
       }
     },
   },
