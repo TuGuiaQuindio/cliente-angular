@@ -1,0 +1,26 @@
+:host {
+  @apply relative mt-4;
+  * {
+    transition: border 300ms ease-in-out, color 300ms ease-in-out;
+  }
+}
+
+.warning {
+  @apply text-red-500;
+}
+
+p.warning {
+  @apply pl-6;
+}
+
+label {
+  @apply absolute text-secondary-600 bg-white   left-3 px-3 top-[-1.5em];
+}
+
+input {
+  @apply px-3 py-2 border-2 border-secondary-600 rounded-lg;
+
+  &.warning {
+    @apply border-red-500;
+  }
+}
