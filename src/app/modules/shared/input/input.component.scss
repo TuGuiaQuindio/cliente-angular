@@ -18,7 +18,7 @@ label {
 }
 
 input {
-  @apply px-3 py-2 border-2 border-secondary-600 rounded-lg;
+  @apply px-3 py-2 border-2 border-secondary-600 rounded-lg w-full;
 
   &.warning {
     @apply border-red-500;
