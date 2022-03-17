@@ -12,10 +12,10 @@
 .login-container {
   @apply container px-8 flex items-center mb-48 w-full;
   .form-section {
-    @apply w-full max-w-xl mx-auto xl:m-0;
+    @apply w-full max-w-lg mx-auto xl:m-0;
     header {
       .title {
-        @apply text-6xl text-secondary-600;
+        @apply text-6xl text-secondary-600 font-heading;
       }
 
       .subtitle {
