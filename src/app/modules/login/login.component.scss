@@ -10,7 +10,7 @@
 }
 
 .login-container {
-  @apply container px-8 flex items-center mb-48 w-full;
+  @apply container px-8 flex items-center mb-48 w-full mt-8;
   .form-section {
     @apply w-full max-w-lg mx-auto xl:m-0;
     header {

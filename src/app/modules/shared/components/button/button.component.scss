@@ -3,6 +3,10 @@ button {
   @apply hover:text-gray-500 hover:border-gray-500;
   @apply active:bg-gray-200 active:text-black active:border-black;
 
+  &:focus {
+    @apply outline outline-green-500 outline-2;
+  }
+
   &.emphasis {
     @apply border-secondary-600 text-secondary-600;
     @apply hover:border-secondary-400;

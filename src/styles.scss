@@ -27,4 +27,8 @@ body {
 
 * {
 	@apply font-normal;
+
+  &:focus {
+    @apply outline outline-accent outline-2;
+  }
 }
