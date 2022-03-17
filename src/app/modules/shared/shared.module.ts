@@ -5,6 +5,7 @@ import { NavComponent } from "./components/nav/nav.component";
 import { FooterComponent } from './components/footer/footer.component';
 import { ButtonComponent } from './components/button/button.component';
 import { InputComponent } from './input/input.component';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import { InputComponent } from './input/input.component';
     InputComponent,
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    RouterModule,
   ],
   exports: [
     FooterComponent,
