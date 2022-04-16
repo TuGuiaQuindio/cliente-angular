@@ -6,6 +6,7 @@ import { FooterComponent } from './components/footer/footer.component';
 import { ButtonComponent } from './components/button/button.component';
 import { InputComponent } from './input/input.component';
 import { RouterModule } from '@angular/router';
+import { TitleBarComponent } from './title-bar/title-bar.component';
 
 @NgModule({
   declarations: [
@@ -13,6 +14,7 @@ import { RouterModule } from '@angular/router';
     NavComponent,
     ButtonComponent,
     InputComponent,
+    TitleBarComponent,
   ],
   imports: [
     CommonModule,
@@ -23,6 +25,7 @@ import { RouterModule } from '@angular/router';
     NavComponent,
     ButtonComponent,
     InputComponent,
+    TitleBarComponent,
   ]
 })
 export class SharedModule { }

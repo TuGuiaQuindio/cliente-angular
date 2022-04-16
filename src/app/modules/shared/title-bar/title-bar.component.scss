@@ -1,0 +1,29 @@
+.title {
+  @apply text-6xl text-secondary-600 font-heading;
+
+  &.secondary {
+    @apply text-secondary-500;
+  }
+
+  &.small {
+    @apply text-5xl;
+  }
+}
+
+.subtitle {
+  @apply text-dark-400 text-lg mt-4;
+}
+
+.title, .subtitle {
+  &.left {
+    @apply text-left;
+  }
+
+  &.center {
+    @apply text-center;
+  }
+
+  &.right {
+    @apply text-right;
+  }
+}
