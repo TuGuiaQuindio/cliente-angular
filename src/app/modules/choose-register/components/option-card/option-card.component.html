@@ -1,0 +1,9 @@
+<header>
+  <app-title-bar size="small" [title]="title" colorClass="secondary"></app-title-bar>
+</header>
+<main>
+  <ng-content></ng-content>
+</main>
+<footer [class.visible]="selected">
+  <app-button type="special">Seleccionar</app-button>
+</footer>

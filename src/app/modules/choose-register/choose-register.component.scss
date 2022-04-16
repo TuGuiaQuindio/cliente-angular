@@ -1,0 +1,15 @@
+:host {
+  @apply h-full w-full flex-1 flex justify-center items-center;
+}
+
+.choose-container {
+  @apply max-w-5xl flex flex-col;
+
+  .card-group {
+    @apply flex gap-32 mx-auto mt-20;
+  }
+}
+
+.decoration {
+  @apply w-full absolute -bottom-32 -z-10;
+}
