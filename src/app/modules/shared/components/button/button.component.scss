@@ -11,6 +11,7 @@ button {
     @apply border-secondary-600 text-secondary-600;
     @apply hover:border-secondary-400;
     @apply active:bg-green-200 active:text-green-600 active:border-green-600;
+    @apply outline-1;
   }
   
   &.special-pointy {
