@@ -1,4 +1,4 @@
-<label for="input" [class.warning]="showWarning">{{ label }}</label>
-<input id="input" [type]="type" [class.warning]="showWarning">
-<p *ngIf="showWarning" class="warning">{{ warningMsg }}</p>
+<label for="input">{{ label }}</label>
+<input id="input" [type]="type">
+<p *ngIf="showWarning" class="warning-msg">{{ warningMsg }}</p>
 
