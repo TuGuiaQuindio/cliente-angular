@@ -9,6 +9,10 @@
     input {
       @apply border-red-500;
     }
+
+    *:focus {
+      @apply outline-red-300;
+    }
   }
 
   @apply relative mt-6;

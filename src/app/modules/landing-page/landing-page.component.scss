@@ -27,7 +27,7 @@
 
       .button-group {
         @apply flex flex-col gap-4 items-stretch w-full;
-        @apply md:flex-row;
+        @apply md:flex-row md:items-center;
 
         span {
           @apply hidden;
