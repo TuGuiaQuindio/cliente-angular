@@ -2,11 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { RegisterOption } from './interfaces/register-option';
 
 @Component({
-  selector: 'app-choose-register',
-  templateUrl: './choose-register.component.html',
-  styleUrls: ['./choose-register.component.scss']
+  selector: 'app-signup',
+  templateUrl: './signup.component.html',
+  styleUrls: ['./signup.component.scss']
 })
-export class ChooseRegisterComponent implements OnInit {
+export class SignupComponent implements OnInit {
 
   public options: RegisterOption[] = [
     { title: "Para Empresas", description: "Pequeñas, medianas y grandes empresas que requieren la contratación de personal calificado en el sector turístico." },

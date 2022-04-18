@@ -1,21 +1,21 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { ChooseRegisterRoutingModule } from './choose-register-routing.module';
-import { ChooseRegisterComponent } from './choose-register.component';
+import { SignupRoutingModule } from './signup-routing.module';
+import { SignupComponent } from './signup.component';
 import { SharedModule } from '../shared/shared.module';
 import { OptionCardComponent } from './components/option-card/option-card.component';
 
 
 @NgModule({
   declarations: [
-    ChooseRegisterComponent,
+    SignupComponent,
     OptionCardComponent
   ],
   imports: [
     CommonModule,
-    ChooseRegisterRoutingModule,
+    SignupRoutingModule,
     SharedModule,
   ]
 })
-export class ChooseRegisterModule { }
+export class SignupModule { }
