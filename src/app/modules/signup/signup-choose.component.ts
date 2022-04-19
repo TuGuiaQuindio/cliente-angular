@@ -2,9 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { RegisterOption } from './interfaces/register-option';
 
 @Component({
-  selector: 'app-signup',
-  templateUrl: './signup.component.html',
-  styleUrls: ['./signup.component.scss']
+  selector: 'app-signup-choose',
+  templateUrl: './signup-choose.component.html',
+  styleUrls: ['./signup-choose.component.scss']
 })
 export class SignupComponent implements OnInit {
 
