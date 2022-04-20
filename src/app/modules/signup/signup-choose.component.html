@@ -1,7 +1,7 @@
 <main class="choose-container">
   <app-title-bar title="Elige tu opción" subtitle="A continuación elige un tipo de registro" align="center"></app-title-bar>
   <section class="card-group">
-    <app-option-card *ngFor="let option of options; index as i" (click)="onCardClick(i)" [selected]="selectedIdx===i"  [title]="option.title"><p>{{ option.description }}</p></app-option-card>
+    <app-option-card *ngFor="let option of options; index as i" (click)="onCardClick(i)" [selected]="selectedIdx===i"  [title]="option.title" [urlTo]="option.url"><p>{{ option.description }}</p></app-option-card>
   </section>
 </main>
 <img class="decoration" src="/assets/images/signup/bottom-decoration.svg" alt="Decoration">

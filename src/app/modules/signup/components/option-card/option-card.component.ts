@@ -11,6 +11,7 @@ export class OptionCardComponent implements OnInit {
 
   @Input() public title = "";
   @Input() public selected = false;
+  @Input() public urlTo = "";
 
   @HostBinding("class.selected") get selectionState() {
     return this.selected;
