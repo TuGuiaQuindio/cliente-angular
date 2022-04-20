@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { SignupComponent } from './signup-choose.component';
+import { SignupChooseComponent } from './signup-choose.component';
 
-const routes: Routes = [{ path: '', component: SignupComponent }];
+const routes: Routes = [{ path: '', component: SignupChooseComponent }];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],

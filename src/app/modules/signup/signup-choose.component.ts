@@ -6,7 +6,7 @@ import { RegisterOption } from './interfaces/register-option';
   templateUrl: './signup-choose.component.html',
   styleUrls: ['./signup-choose.component.scss']
 })
-export class SignupComponent implements OnInit {
+export class SignupChooseComponent implements OnInit {
 
   public options: RegisterOption[] = [
     { title: "Para Empresas", description: "Pequeñas, medianas y grandes empresas que requieren la contratación de personal calificado en el sector turístico.", url: "company"},
