@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-nav',
@@ -9,7 +9,7 @@ export class NavComponent implements OnInit {
 
   // Declaramos variable para hacer interpolación
   public titulo = "TuGuiaQuindio";
-
+  @Input('hide-nav-btns') public hideNavigationButtons = false;
 
   constructor() { }
 

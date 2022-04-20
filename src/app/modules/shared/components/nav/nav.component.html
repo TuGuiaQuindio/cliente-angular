@@ -1,6 +1,6 @@
 <div class="nav-container">
   <h1 routerLink="/">{{ titulo }}</h1>
-  <nav>
+  <nav *ngIf="!hideNavigationButtons">
     <app-button routerLink="/login" type="emphasis">Inicia sesión</app-button>
     <app-button routerLink="/signup" type="special-pointy">Regístrate</app-button>
   </nav>
