@@ -1,4 +1,9 @@
 <label for="input">{{ label }}</label>
-<input id="input" [type]="type">
+<section class="input-group">
+  <input id="input" [type]="visible ? 'text' : type" [placeholder]="placeholder" [formControl]="control">
+  <span class="password-icon material-icons-outlined" *ngIf="type === 'password'" (click)="togglePasswordVisibility()">
+    {{ visible ? 'visibility_off' : 'visibility' }}
+  </span>
+</section>
 <p *ngIf="showWarning" class="warning-msg">{{ warningMsg }}</p>
 
