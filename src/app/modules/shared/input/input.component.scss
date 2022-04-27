@@ -1,7 +1,23 @@
+label {
+  @apply absolute text-secondary-600 bg-white left-3 px-3 top-[-0.75em] h-5 z-10;
+}
+
+.input-group {
+  @apply flex relative;
+
+  .password-icon {
+    @apply px-3 py-2 absolute h-full cursor-pointer right-0 flex justify-center items-center text-secondary-600 text-xl select-none;
+  }
+}
+
+input {
+  @apply px-3 py-2 border-2 border-secondary-600 rounded-lg w-full;
+}
+
 :host {
   @apply w-full;
   &.warning {
-    p, label {
+    p, label, .password-icon {
       @apply text-red-500;
     }
     p {
@@ -16,24 +32,9 @@
     }
   }
 
-  @apply relative mt-6;
+  @apply relative;
   * {
     transition: border 300ms ease-in-out, color 300ms ease-in-out;
   }
 }
 
-label {
-  @apply absolute text-secondary-600 bg-white left-3 px-3 top-[-0.75em] h-5;
-}
-
-.input-group {
-  @apply flex;
-
-  .password-icon {
-    @apply px-3 py-2 absolute h-full cursor-pointer right-0 flex justify-center items-center text-secondary-600 text-xl select-none;
-  }
-}
-
-input {
-  @apply px-3 py-2 border-2 border-secondary-600 rounded-lg w-full;
-}
