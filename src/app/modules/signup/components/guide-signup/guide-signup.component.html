@@ -1,0 +1,21 @@
+  <section class="image-section">
+    <img src="assets/images/login/login-splash.svg" alt="">
+  </section>
+<main class="login-container">
+  <section class="form-section">
+    <header>
+      <app-title-bar title="Guía" subtitle="Completa el siguiente formulario para continuar"></app-title-bar>
+    </header>
+    <form class="form-group" [formGroup]="form" (ngSubmit)="onFormSubmit()">
+      <app-input label="Documento" formControlName="document"></app-input>
+      <section class="input-group">
+        <app-input label="Nombres" formControlName="name"></app-input>
+        <app-input label="Apellidos" formControlName="lastName"></app-input>
+      </section>
+        <app-input label="Correo Electrónico" type="email" formControlName="email"></app-input>
+        <app-input label="Contraseña" type="password" formControlName="password"></app-input>
+        <app-input label="Confirmar contraseña" type="password" formControlName="password"></app-input>
+        <app-button type="special" buttonType="button">Iniciar sesión</app-button>
+    </form>
+  </section>
+</main>
