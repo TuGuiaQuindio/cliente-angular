@@ -9,7 +9,7 @@ export class FormMessageResolverService {
 
   private keys: {[key: string]: string} = {
     REQUIRED_ERROR: "Este campo es requerido.",
-    EMAIL_ERROR: "Este campo debe de ser un email válido"
+    EMAIL_ERROR: "Este campo debe de ser un email válido."
   }
 
   private validatorKeys: {[key: string]: string} = {
