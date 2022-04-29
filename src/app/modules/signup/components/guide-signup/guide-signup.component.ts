@@ -1,7 +1,9 @@
-import { Component, OnInit, QueryList, ViewChildren } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
-import { getFirstControlError } from 'src/app/helpers/form-helper';
+import { Component, OnInit, QueryList, ViewChild, ViewChildren } from '@angular/core';
+import { AbstractControlOptions, FormBuilder, Validators } from '@angular/forms';
+import { handleFormErrors } from 'src/app/helpers/form-helper';
+import { FormBoxMessageComponent } from 'src/app/modules/shared/components/form-box-message/form-box-message.component';
 import { InputComponent } from 'src/app/modules/shared/input/input.component';
+import { ValidatorMatchDirective } from '../../directives/validator-match.directive';
 
 @Component({
   selector: 'app-guide-signup',
@@ -20,6 +22,8 @@ export class GuideSignupComponent implements OnInit {
     });
   }
 
+  @ViewChild(FormBoxMessageComponent) public formBoxMsg?: FormBoxMessageComponent;
+
   public inputRefs: {[key: string]: InputComponent} = { }
 
   public form = this.fb.group({
@@ -27,9 +31,9 @@ export class GuideSignupComponent implements OnInit {
     name: ['', Validators.compose([Validators.required])],
     lastName: ['', Validators.compose([Validators.required])],
     email: ['', Validators.compose([Validators.required, Validators.email])],
-    password: ['', Validators.compose([Validators.required])],
+    password: ['', Validators.compose([Validators.required, Validators.minLength(7), Validators.maxLength(30)])],
     confirmPassword: ['', Validators.compose([Validators.required])],
-  });
+  }, { validator: ValidatorMatchDirective.matchWith('password', 'confirmPassword') } as AbstractControlOptions);
 
   ngOnInit(): void {
   }
@@ -40,13 +44,6 @@ export class GuideSignupComponent implements OnInit {
   }
 
   public updateFormErrors() {
-    const errorKeys = Object.keys(this.form.controls)
-    for(let key of errorKeys){
-      const control = this.form.controls[key];
-      const errorMsg = getFirstControlError(control);
-      const inputComponent = this.inputRefs[key];
-      if (!inputComponent) return;
-      inputComponent.warningMsg = errorMsg;
-    }
+    handleFormErrors(this.form, this.inputRefs)
   }
 }

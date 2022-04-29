@@ -6,6 +6,7 @@
     <header>
       <app-title-bar title="Empresa" subtitle="Completa el siguiente formulario para continuar"></app-title-bar>
     </header>
+    <app-form-box-message #formBoxMsg type="error" message="Adipisicing facere earum atque non mollitia corrupti Exercitationem illo quas corrupti porro eos perspiciatis. Tempora repudiandae culpa repudiandae suscipit nesciunt Esse fugit nostrum officia quae doloremque repudiandae consequuntur. Maxime temporibus"></app-form-box-message>
     <form #elForm class="form-group" (submit)="onFormSubmit()" [formGroup]="form">
       <app-input label="NIT" formControlName="nit"></app-input>
       <app-input label="Nombre de la empresa" formControlName="name"></app-input>

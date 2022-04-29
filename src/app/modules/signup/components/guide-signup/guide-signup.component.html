@@ -6,6 +6,7 @@
     <header>
       <app-title-bar title="Guía" subtitle="Completa el siguiente formulario para continuar"></app-title-bar>
     </header>
+    <app-form-box-message #formBoxMsg type="error" message="message"></app-form-box-message>
     <form #elForm class="form-group" (submit)="onFormSubmit()" [formGroup]="form">
       <app-input label="Documento" formControlName="document"></app-input>
       <section class="input-group">

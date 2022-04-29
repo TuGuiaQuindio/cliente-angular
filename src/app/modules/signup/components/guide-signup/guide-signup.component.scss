@@ -19,6 +19,7 @@
     }
 
     header {
+      @apply mb-2;
       .title {
         @apply text-6xl text-secondary-600 font-heading;
       }

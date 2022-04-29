@@ -1,7 +1,9 @@
-import { Component, OnInit, QueryList, ViewChildren } from '@angular/core';
+import { HttpErrorResponse } from '@angular/common/http';
+import { Component, OnInit, QueryList, ViewChild, ViewChildren } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from 'src/app/core/services/auth.service';
-import { getFirstControlError } from 'src/app/helpers/form-helper';
+import { handleFormErrors } from 'src/app/helpers/form-helper';
+import { FormBoxMessageComponent } from '../shared/components/form-box-message/form-box-message.component';
 import { InputComponent } from '../shared/input/input.component';
 
 @Component({
@@ -23,6 +25,8 @@ export class LoginComponent implements OnInit {
     });
   }
 
+  @ViewChild(FormBoxMessageComponent) public formBoxMsg?: FormBoxMessageComponent;
+
   public form: FormGroup = this.fb.group({
     email: ['', Validators.compose([Validators.email, Validators.required])],
     password: ['', Validators.compose([Validators.required])],
@@ -35,19 +39,18 @@ export class LoginComponent implements OnInit {
     this.updateFormErrors();
     if (!this.form.valid) return;
     const { email, password } = this.form.value;
-    this.auth.login(email, password).subscribe();
+    this.auth.login(email, password).subscribe({
+      next: _ => this.formBoxMsg?.hide(),
+      error: err => this.handleError(err),
+    })
     return false;
   }
 
   public updateFormErrors() {
-    const errorKeys = Object.keys(this.form.controls)
-    for(let key of errorKeys){
-      const control = this.form.controls[key];
-      const errorMsg = getFirstControlError(control);
-      const inputComponent = this.inputRefs[key];
-      if (!inputComponent) return;
-      inputComponent.warningMsg = errorMsg;
-    }
+    handleFormErrors(this.form, this.inputRefs);
   }
 
+  private handleError(err: HttpErrorResponse) {
+    this.formBoxMsg?.publishError(err);
+  }
 }
