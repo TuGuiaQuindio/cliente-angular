@@ -1,0 +1,14 @@
+.form-box-container {
+  @apply flex gap-3 border-solid border-2 border-black rounded-md p-4 transition-basic-colors duration-500;
+
+  &.show {
+    @apply animate-fadein;
+  }
+  
+  &.error {
+    @apply border-red-500;
+    * {
+      @apply text-red-500;
+    }
+  }
+}

@@ -8,6 +8,7 @@ import { ButtonComponent } from './components/button/button.component';
 import { InputComponent } from './input/input.component';
 import { TitleBarComponent } from './title-bar/title-bar.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { FormBoxMessageComponent } from './components/form-box-message/form-box-message.component';
 
 @NgModule({
   declarations: [
@@ -16,6 +17,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     ButtonComponent,
     InputComponent,
     TitleBarComponent,
+    FormBoxMessageComponent,
   ],
   imports: [
     CommonModule,
@@ -28,6 +30,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     ButtonComponent,
     InputComponent,
     TitleBarComponent,
+    FormBoxMessageComponent,
   ]
 })
 export class SharedModule { }
