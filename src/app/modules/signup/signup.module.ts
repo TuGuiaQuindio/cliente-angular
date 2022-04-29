@@ -8,6 +8,7 @@ import { OptionCardComponent } from './components/option-card/option-card.compon
 import { RouterModule } from '@angular/router';
 import { GuideSignupComponent } from './components/guide-signup/guide-signup.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { CompanySignupComponent } from './components/company-signup/company-signup.component';
 
 
 @NgModule({
@@ -15,6 +16,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     SignupChooseComponent,
     OptionCardComponent,
     GuideSignupComponent,
+    CompanySignupComponent,
   ],
   imports: [
     CommonModule,

@@ -1,19 +1,16 @@
 import { Component, OnInit, QueryList, ViewChildren } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { AuthService } from 'src/app/core/services/auth.service';
+import { FormBuilder, Validators } from '@angular/forms';
 import { getFirstControlError } from 'src/app/helpers/form-helper';
-import { InputComponent } from '../shared/input/input.component';
+import { InputComponent } from 'src/app/modules/shared/input/input.component';
 
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss']
+  selector: 'app-company-signup',
+  templateUrl: './company-signup.component.html',
+  styleUrls: ['./company-signup.component.scss']
 })
-export class LoginComponent implements OnInit {
+export class CompanySignupComponent implements OnInit {
 
-  constructor(private fb: FormBuilder, private auth: AuthService) { }
-
-  inputRefs: { [key: string]: InputComponent } = {}
+  constructor(private fb: FormBuilder) { }
 
   @ViewChildren(InputComponent) public set elForm(value: QueryList<InputComponent>) {
     value.forEach((el: InputComponent) => {
@@ -23,9 +20,15 @@ export class LoginComponent implements OnInit {
     });
   }
 
-  public form: FormGroup = this.fb.group({
-    email: ['', Validators.compose([Validators.email, Validators.required])],
+  public inputRefs: {[key: string]: InputComponent} = { }
+
+  public form = this.fb.group({
+    nit: ['', Validators.compose([Validators.required])],
+    name: ['', Validators.compose([Validators.required])],
+    address: ['', Validators.compose([Validators.required])],
+    email: ['', Validators.compose([Validators.required, Validators.email])],
     password: ['', Validators.compose([Validators.required])],
+    confirmPassword: ['', Validators.compose([Validators.required])],
   });
 
   ngOnInit(): void {
@@ -33,9 +36,6 @@ export class LoginComponent implements OnInit {
 
   public onFormSubmit() {
     this.updateFormErrors();
-    if (!this.form.valid) return;
-    const { email, password } = this.form.value;
-    this.auth.login(email, password).subscribe();
     return false;
   }
 
@@ -49,5 +49,4 @@ export class LoginComponent implements OnInit {
       inputComponent.warningMsg = errorMsg;
     }
   }
-
 }
