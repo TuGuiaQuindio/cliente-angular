@@ -20,9 +20,19 @@ module.exports = {
       transitionProperty: {
         'outline': 'outline',
         'card': 'outline, transform',
+        'basic-colors': 'color, border-color, background-color',
       },
       scale: {
         'xs': '1.025',
+      },
+      keyframes: {
+        fadein: {
+          '0%': { opacity: 0 },
+          '100%': { opacity: 100 }
+        }
+      },
+      animation: {
+        'fadein': 'fadein 500ms ease-in-out forwards',
       },
       colors: {
         primary: "#FFF",
