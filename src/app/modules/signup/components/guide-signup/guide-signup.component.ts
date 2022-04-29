@@ -36,6 +36,7 @@ export class GuideSignupComponent implements OnInit {
 
   public onFormSubmit() {
     this.updateFormErrors();
+    return false;
   }
 
   public updateFormErrors() {

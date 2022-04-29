@@ -6,7 +6,7 @@
     <header>
       <app-title-bar title="Guía" subtitle="Completa el siguiente formulario para continuar"></app-title-bar>
     </header>
-    <form #elForm class="form-group" [formGroup]="form">
+    <form #elForm class="form-group" (submit)="onFormSubmit()" [formGroup]="form">
       <app-input label="Documento" formControlName="document"></app-input>
       <section class="input-group">
         <app-input label="Nombres" formControlName="name"></app-input>
@@ -15,7 +15,7 @@
         <app-input label="Correo Electrónico" type="email" formControlName="email"></app-input>
         <app-input label="Contraseña" type="password" formControlName="password"></app-input>
         <app-input label="Confirmar contraseña" type="password" formControlName="confirmPassword"></app-input>
-        <app-button type="special" buttonType="button" (click)="onFormSubmit()">Iniciar sesión</app-button>
+        <app-button type="special" buttonType="submit">Iniciar sesión</app-button>
     </form>
   </section>
 </main>
