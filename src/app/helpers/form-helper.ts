@@ -1,20 +1,32 @@
-import { AbstractControl, ValidationErrors } from "@angular/forms";
+import { AbstractControl, FormGroup, ValidationErrors } from "@angular/forms";
 import { AppInjector } from "../app.module";
 import { FormMessageResolverService } from "../core/services/form-message-resolver.service";
+import { InputComponent } from "../modules/shared/input/input.component";
 
 const messageResolver = AppInjector.get(FormMessageResolverService);
 
+export const handleFormErrors = (form: FormGroup, inputRefs: {[key: string]: InputComponent}) => {
+    const errorKeys = Object.keys(form.controls)
+    for(let key of errorKeys){
+      const control = form.controls[key];
+      const errorMsg = getFirstControlError(control);
+      const inputComponent = inputRefs[key];
+      if (!inputComponent) return;
+      inputComponent.warningMsg = errorMsg;
+    }
+}
+
 export const getFirstControlError = (control: AbstractControl): string => {
-  if (hasErrors(control)) return "";
+  if (hasNoErrors(control)) return "";
   return getFirstError(control.errors!)
 }
 
 export const getAllControlErrors = (control: AbstractControl): string[] => {
-  if (hasErrors(control)) return [];
+  if (hasNoErrors(control)) return [];
   return getErrors(control.errors!);
 }
 
-const hasErrors = (control: AbstractControl) => !control.errors || Object.entries(control.errors!).length == 0;
+const hasNoErrors = (control: AbstractControl) => !control.errors || Object.entries(control.errors!).length == 0;
 
 const getFirstError = (errors: ValidationErrors): string => {
   const keys = Object.keys(errors);
