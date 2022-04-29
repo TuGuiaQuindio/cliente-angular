@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, QueryList, ViewChildren } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { FormControlDefinition } from 'src/app/interfaces/form-control-definition';
+import { AuthService } from 'src/app/core/services/auth.service';
 import { getFirstControlError } from 'src/app/helpers/form-helper';
+import { InputComponent } from '../shared/input/input.component';
 
 @Component({
   selector: 'app-login',
@@ -10,12 +11,17 @@ import { getFirstControlError } from 'src/app/helpers/form-helper';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private fb: FormBuilder) { }
+  constructor(private fb: FormBuilder, private auth: AuthService) { }
 
-  public controlDefinitions: FormControlDefinition[] = [
-    { label: "Correo Electrónico", type: "email", formControlName: "email", currentError: "" },
-    { label: "Contraseña", type: "password", formControlName: "password", currentError: "" },
-  ]
+  inputRefs: { [key: string]: InputComponent } = {}
+
+  @ViewChildren(InputComponent) public set elForm(value: QueryList<InputComponent>) {
+    value.forEach((el: InputComponent) => {
+      const name = el.ngControl.name;
+      if (!name || name in this.inputRefs) return;
+      this.inputRefs[name] = el;
+    });
+  }
 
   public form: FormGroup = this.fb.group({
     email: ['', Validators.compose([Validators.email, Validators.required])],
@@ -26,12 +32,21 @@ export class LoginComponent implements OnInit {
   }
 
   public onFormSubmit() {
-    this.controlDefinitions.map(definition => {
-      const control = this.form.get(definition.formControlName);
-      if (!control) return definition;
-      definition.currentError = getFirstControlError(control);
-      return definition
-    });
+    this.updateFormErrors();
+    const { email, password } = this.form.value;
+    this.auth.login(email, password).subscribe();
+    return false;
+  }
+
+  public updateFormErrors() {
+    const errorKeys = Object.keys(this.form.controls)
+    for(let key of errorKeys){
+      const control = this.form.controls[key];
+      const errorMsg = getFirstControlError(control);
+      const inputComponent = this.inputRefs[key];
+      if (!inputComponent) return;
+      inputComponent.warningMsg = errorMsg;
+    }
   }
 
 }

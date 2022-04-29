@@ -46,6 +46,10 @@ export class InputComponent implements OnInit, ControlValueAccessor {
     return this.warningMsg.length != 0;
   }
 
+  public get isPasswordInput(): boolean {
+    return this.type === 'password';
+  }
+
   togglePasswordVisibility() {
     this.visible = !this.visible;
   }

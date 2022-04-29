@@ -6,9 +6,10 @@
     <header>
       <app-title-bar title="¡Hola de nuevo!" subtitle="Nos alegra mucho volver a verte"></app-title-bar>
     </header>
-    <form class="form-group" [formGroup]="form">
-      <app-input *ngFor="let definition of controlDefinitions" [label]="definition.label" [type]="definition.type" [formControlName]="definition.formControlName" [warningMsg]="definition.currentError"></app-input>
-      <app-button type="special" buttonType="button" (click)="onFormSubmit()">Iniciar sesión</app-button>
+    <form #elForm class="form-group" (submit)="onFormSubmit()" [formGroup]="form">
+      <app-input label="Correo electrónico" type="email" formControlName="email"> </app-input>
+      <app-input label="Contraseña" type="password" formControlName="password"> </app-input>
+      <app-button type="special" buttonType="submit">Iniciar sesión</app-button>
     </form>
   </section>
 </main>
