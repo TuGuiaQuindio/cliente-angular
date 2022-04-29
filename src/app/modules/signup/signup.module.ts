@@ -9,6 +9,7 @@ import { RouterModule } from '@angular/router';
 import { GuideSignupComponent } from './components/guide-signup/guide-signup.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { CompanySignupComponent } from './components/company-signup/company-signup.component';
+import { ValidatorMatchDirective } from './directives/validator-match.directive';
 
 
 @NgModule({
@@ -17,6 +18,7 @@ import { CompanySignupComponent } from './components/company-signup/company-sign
     OptionCardComponent,
     GuideSignupComponent,
     CompanySignupComponent,
+    ValidatorMatchDirective,
   ],
   imports: [
     CommonModule,

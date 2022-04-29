@@ -1,4 +1,6 @@
+import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit, Input, ElementRef, ViewChild } from '@angular/core';
+import { FormMessageResolverService } from 'src/app/core/services/form-message-resolver.service';
 
 export interface FormProperties {
   type: string;
@@ -12,7 +14,7 @@ export interface FormProperties {
 })
 export class FormBoxMessageComponent implements OnInit {
 
-  constructor() { }
+  constructor(private formMsgSrv: FormMessageResolverService) { }
 
   @Input() public visible = false;
   @Input() public type = "";
@@ -21,6 +23,7 @@ export class FormBoxMessageComponent implements OnInit {
   container?: HTMLElement;
 
   @ViewChild('container') public set hostContainer(value: ElementRef) {
+    if (!value) return;
     this.container = value.nativeElement;
   }
 
@@ -32,11 +35,21 @@ export class FormBoxMessageComponent implements OnInit {
     this.visible = false;
   }
 
+  public publishError(err: HttpErrorResponse) {
+    this.hide();
+    const formBoxData: Partial<FormProperties> = { type: 'error'}
+    const { status } = err;
+    formBoxData.message = this.formMsgSrv.getFormStatusMessage(status).replace(/\${errorMessage}/, err.message);
+    this.formValues = formBoxData;
+    this.triggerFadeInAnimation();
+  }
+
   public triggerFadeInAnimation() {
     console.log('Remove class');
     this.container?.classList.remove('show');
     setTimeout(() => {
       this.container?.classList.add('show');
+      this.show();
     }, 100);
   }
 
