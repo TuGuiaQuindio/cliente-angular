@@ -1,12 +1,13 @@
 .nav-container {
-  @apply container mx-auto h-20 pl-14 pr-14 flex items-center justify-between;
+  @apply w-full shadow-md min-h-[5rem] py-4 flex flex-col gap-4 items-center justify-between sticky top-0 bg-white;;
+  @apply md:container md:flex-row md:mx-auto md:px-14 md:static md:shadow-none;
 
   h1 {
     @apply text-3xl font-logo cursor-pointer;
   }
 
   nav {
-    @apply gap-2 hidden;
-    @apply md:flex;
+    @apply gap-4 flex;
+    @apply md:gap-2;
   }
 }

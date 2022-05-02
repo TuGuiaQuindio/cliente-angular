@@ -1,9 +1,14 @@
 :host {
-  @apply bg-white grid min-w-[23.5rem] max-w-[23.5rem] rounded-[4rem] rounded-tl-md rounded-br-md p-8 px-10 gap-2 min-h-[27.5rem] grid-rows-card shadow-drop-around transition-card outline-accent cursor-pointer;
+  @apply bg-white grid w-full border-b-[3px] border-accent p-8 px-10 min-h-[18.5rem] grid-rows-card-ui transition-card cursor-pointer;
+  @apply md:min-w-[18.5rem] md:max-w-[23.5rem] md:rounded-[4rem] md:rounded-tl-md md:rounded-br-md md:gap-2 md:min-h-[27.5rem] md:grid-rows-card md:shadow-drop-around md:outline-accent;
 
   &.selected {
-    @apply outline outline-card scale-xs shadow-lg;
+    @apply scale-xxs shadow-lg border-t-2 border-x-2 border-b-4;
+    @apply md:scale-xs md:outline md:outline-card md:border-none;
   }
+}
+header {
+  @apply pb-4;
 }
 
 main {
@@ -14,6 +19,6 @@ footer {
   @apply hidden;
 
   &.visible {
-    @apply flex justify-end;
+    @apply flex justify-end mt-4;
   }
 }

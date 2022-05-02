@@ -1,15 +1,19 @@
 :host {
-  @apply h-full w-full flex-1 flex justify-center items-center;
+  @apply h-full w-full flex-1 flex flex-col justify-center items-stretch overflow-hidden;
+  @apply md:items-center;
 }
 
 .choose-container {
-  @apply max-w-5xl flex flex-col;
+  @apply max-w-5xl flex flex-col py-12;
 
   .card-group {
-    @apply flex gap-32 mx-auto mt-20;
+    @apply flex flex-col gap-4 mx-auto mt-20 px-8;
+    @apply md:flex-row md:gap-12 md:px-12;
+    @apply lg:gap-32;
   }
 }
 
 .decoration {
-  @apply w-full absolute -bottom-32 -z-10;
+  @apply hidden;
+  @apply md:w-full md:fixed md:-z-10 md:block md:bottom-0;
 }

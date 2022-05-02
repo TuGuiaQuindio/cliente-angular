@@ -1,12 +1,19 @@
 .title {
-  @apply text-6xl text-secondary-600 font-heading;
+  @apply text-5xl text-secondary-600 font-heading;
+  @apply md:text-6xl;
 
   &.secondary {
     @apply text-secondary-500;
   }
 
   &.small {
-    @apply text-5xl;
+    @apply text-4xl;
+    @apply md:text-5xl;
+  }
+
+  &.xsmall {
+    @apply text-3xl;
+    @apply md:text-4xl;
   }
 }
 

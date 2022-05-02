@@ -5,6 +5,7 @@ module.exports = {
     extend: {
       gridTemplateRows: {
         'card': '7rem 1fr auto',
+        'card-ui': 'auto 1fr auto',
       },
       boxShadow: {
         'drop-around': ['0 2px 12px 2px rgba(0 0 0 / 0.125)', '0 4px 8px -4px rgba(0 0 0 / 0.15)'],
@@ -19,11 +20,12 @@ module.exports = {
       },
       transitionProperty: {
         'outline': 'outline',
-        'card': 'outline, transform',
+        'card': 'outline, transform, box-shadow',
         'basic-colors': 'color, border-color, background-color',
       },
       scale: {
         'xs': '1.025',
+        'xxs': '1.0125',
       },
       keyframes: {
         fadein: {
