@@ -1,4 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { AuthService } from 'src/app/core/services/auth.service';
 
 @Component({
   selector: 'app-nav',
@@ -11,7 +13,16 @@ export class NavComponent implements OnInit {
   public titulo = "TuGuiaQuindio";
   @Input('hide-nav-btns') public hideNavigationButtons = false;
 
-  constructor() { }
+  constructor(private authSrv: AuthService, private router: Router) { }
+
+  public get isLoggedIn() {
+    return this.authSrv.isLoggedIn();
+  }
+
+  public logout() {
+    this.authSrv.logout();
+    this.router.navigateByUrl('/home');
+  }
 
   ngOnInit(): void {
   }

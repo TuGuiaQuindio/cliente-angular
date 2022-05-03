@@ -1,7 +1,16 @@
 <div class="nav-container">
   <h1 routerLink="/">{{ titulo }}</h1>
-  <nav *ngIf="!hideNavigationButtons">
-    <app-button routerLink="/login" type="emphasis">Inicia sesión</app-button>
-    <app-button routerLink="/signup" type="special-pointy">Regístrate</app-button>
-  </nav>
+  <section class="user-controls" *ngIf="!hideNavigationButtons">
+    <ng-container *ngIf="!isLoggedIn; else userBlock">
+      <app-button routerLink="/login" type="emphasis">Inicia sesión</app-button>
+      <app-button routerLink="/signup" type="special-pointy">Regístrate</app-button>
+    </ng-container>
+    <ng-template #userBlock>
+      <section class="app-controls">
+        <app-button type="round-icon"><i class="bx bxs-bell"></i></app-button>
+        <img src="/assets/images/user-profile-placeholder.svg">
+      </section>
+      <app-button type="round-icon" (click)="logout()"><i class="bx bx-log-out-circle"></i></app-button>
+    </ng-template>
+  </section>
 </div>

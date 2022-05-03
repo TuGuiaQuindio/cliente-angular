@@ -6,8 +6,17 @@
     @apply text-3xl font-logo cursor-pointer;
   }
 
-  nav {
-    @apply gap-4 flex;
+  .app-controls {
+    @apply flex h-full gap-4;
+    @apply md:gap-2 md:mr-12;
+  }
+
+  .user-controls {
+    @apply gap-4 flex items-center h-14;
     @apply md:gap-2;
+
+    img {
+      @apply h-full;
+    }
   }
 }
