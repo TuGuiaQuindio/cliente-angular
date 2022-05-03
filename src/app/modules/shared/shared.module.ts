@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
+import { IconsModule } from '../icons/icons.module';
 
 import { NavComponent } from "./components/nav/nav.component";
 import { FooterComponent } from './components/footer/footer.component';
@@ -22,7 +23,8 @@ import { FormBoxMessageComponent } from './components/form-box-message/form-box-
   imports: [
     CommonModule,
     RouterModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    IconsModule
   ],
   exports: [
     FooterComponent,
