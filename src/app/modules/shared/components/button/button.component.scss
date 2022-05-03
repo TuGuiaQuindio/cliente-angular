@@ -25,4 +25,9 @@ button {
     @apply hover:shadow-md hover:text-green-700;
     @apply active:shadow-none active:text-black;
   }
+
+  &.round-icon {
+    @apply border-none shadow-md p-0 h-[3.625rem] w-[3.625rem] text-3xl flex justify-center items-center;
+    @apply focus:outline-slate-200;
+  }
 }

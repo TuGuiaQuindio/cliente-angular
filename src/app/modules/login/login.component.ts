@@ -1,6 +1,7 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit, QueryList, ViewChild, ViewChildren } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { AuthService } from 'src/app/core/services/auth.service';
 import { handleFormErrors } from 'src/app/helpers/form-helper';
 import { FormBoxMessageComponent } from '../shared/components/form-box-message/form-box-message.component';
@@ -13,7 +14,7 @@ import { InputComponent } from '../shared/input/input.component';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private fb: FormBuilder, private auth: AuthService) { }
+  constructor(private fb: FormBuilder, private auth: AuthService, private router: Router) { }
 
   inputRefs: { [key: string]: InputComponent } = {}
 
@@ -40,10 +41,16 @@ export class LoginComponent implements OnInit {
     if (!this.form.valid) return;
     const { email, password } = this.form.value;
     this.auth.login(email, password).subscribe({
-      next: _ => this.formBoxMsg?.hide(),
+      next: res => this.handleSuccess(res),
       error: err => this.handleError(err),
     })
     return false;
+  }
+
+  public handleSuccess(res: any) {
+    console.log(res);
+    this.formBoxMsg?.hide();
+    this.router.navigateByUrl('/dashboard');
   }
 
   public updateFormErrors() {
