@@ -8,11 +8,13 @@ main {
     @apply flex flex-col items-center mb-44 mx-16;
 
     .title {
-      @apply text-[8rem] font-heading text-secondary-600;
+      @apply text-[6.5rem] font-heading text-secondary-600;
+      @apply md:text-[8rem];
     }
 
     .subtitle {
-      @apply text-2xl text-dark-400 text-center mb-12;
+      @apply text-xl text-dark-400 text-center mb-12;
+      @apply md:text-2xl;
     }
 
     app-button {
@@ -22,5 +24,6 @@ main {
 }
 
 .decoration {
-  @apply w-full absolute bottom-0 h-96 w-full object-cover object-top pointer-events-none;
+  @apply w-full fixed -bottom-28 h-96 w-full object-cover object-top pointer-events-none -z-10;
+  @apply md:-bottom-24;
 }
