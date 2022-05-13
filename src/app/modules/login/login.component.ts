@@ -1,10 +1,12 @@
 import { HttpErrorResponse } from '@angular/common/http';
-import { Component, OnInit, QueryList, ViewChild, ViewChildren } from '@angular/core';
+import { AfterViewInit, Component, OnDestroy, QueryList, ViewChild, ViewChildren } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { Subject, takeUntil } from 'rxjs';
 import { AuthService } from 'src/app/core/services/auth.service';
 import { handleFormErrors } from 'src/app/helpers/form-helper';
-import { FormBoxMessageComponent } from '../shared/components/form-box-message/form-box-message.component';
+import { FormBoxMessageQueueService } from '../form-services/services/form-box-message-queue.service';
+import { FormBoxMessageComponent, FormProperties } from '../shared/components/form-box-message/form-box-message.component';
 import { InputComponent } from '../shared/input/input.component';
 
 @Component({
@@ -12,11 +14,12 @@ import { InputComponent } from '../shared/input/input.component';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent implements OnDestroy, AfterViewInit {
 
-  constructor(private fb: FormBuilder, private auth: AuthService, private router: Router) { }
+  constructor(private fb: FormBuilder, private auth: AuthService, private router: Router, private formQueueSrv: FormBoxMessageQueueService) { }
 
   inputRefs: { [key: string]: InputComponent } = {}
+  private destructionSubject = new Subject();
 
   @ViewChildren(InputComponent) public set elForm(value: QueryList<InputComponent>) {
     value.forEach((el: InputComponent) => {
@@ -33,7 +36,23 @@ export class LoginComponent implements OnInit {
     password: ['', Validators.compose([Validators.required])],
   });
 
-  ngOnInit(): void {
+  ngAfterViewInit(): void {
+    const handler = (response: FormProperties) => { 
+      this.formBoxMsg?.publishMessage(response);
+    }
+    const distribution = this.formQueueSrv.distribute('LoginComponent');
+    distribution.pipe(
+        takeUntil(this.destructionSubject.asObservable())
+      ).subscribe({
+        next: (res) => {
+          handler(res);
+        },
+      complete: () => console.log("Completed")
+    });
+  }
+
+  ngOnDestroy(): void {
+    this.destructionSubject.complete();
   }
 
   public onFormSubmit() {
