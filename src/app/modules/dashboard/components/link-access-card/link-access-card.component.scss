@@ -1,0 +1,34 @@
+.access-card {
+  @apply flex flex-col shadow-md rounded-[1rem] min-h-[17.75rem] max-w-[40rem] overflow-hidden;
+
+  header, .information {
+    @apply py-6 px-9;
+  }
+
+  header {
+    @apply flex items-center text-secondary-600;
+    p {
+      @apply text-2xl font-heading;
+    }
+  }
+
+  main {
+    @apply grid grid-cols-link-access-card flex-1;
+  }
+
+  .information {
+    @apply grid grid-rows-button-bottom gap-8;
+
+    app-button {
+      @apply justify-self-end;
+    }
+  }
+
+  .decoration {
+    @apply bg-gradient-to-br from-[#8CEEA2] to-accent relative overflow-hidden;
+
+    .bx {
+      @apply text-[11rem] rotate-[20deg] absolute bottom-0 -left-8 text-white;
+    }
+  }
+}

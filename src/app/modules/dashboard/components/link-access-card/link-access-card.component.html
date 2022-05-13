@@ -1,0 +1,16 @@
+<article class="access-card">
+  <header>
+    <p>
+      {{title}}
+    </p>
+  </header>
+  <main>
+    <section class="decoration">
+      <i class="bx" [ngClass]="icon"></i>
+    </section>
+    <section class="information">
+      <p>{{description}}</p>
+      <app-button [routerLink]="link" type="special">{{buttonLabel}}</app-button>
+    </section>
+  </main>
+</article>
