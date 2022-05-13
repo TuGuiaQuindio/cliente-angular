@@ -10,6 +10,7 @@ import { GuideSignupComponent } from './components/guide-signup/guide-signup.com
 import { ReactiveFormsModule } from '@angular/forms';
 import { CompanySignupComponent } from './components/company-signup/company-signup.component';
 import { ValidatorMatchDirective } from './directives/validator-match.directive';
+import { FormServicesModule } from '../form-services/form-services.module';
 
 
 @NgModule({

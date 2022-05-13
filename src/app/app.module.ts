@@ -4,10 +4,9 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CoreModule } from './core/core.module';
+import { FormServicesModule } from './modules/form-services/form-services.module';
 
 import { SharedModule } from './modules/shared/shared.module';
-
-export let AppInjector: Injector;
 
 @NgModule({
   declarations: [
@@ -17,13 +16,12 @@ export let AppInjector: Injector;
     BrowserModule,
     AppRoutingModule,
     SharedModule,
-    CoreModule
+    CoreModule,
+    FormServicesModule
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule {
-  constructor(injector: Injector) {
-    AppInjector = injector;
-  }
+  constructor() { }
 }

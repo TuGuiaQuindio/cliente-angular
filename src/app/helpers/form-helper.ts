@@ -1,9 +1,9 @@
 import { AbstractControl, FormGroup, ValidationErrors } from "@angular/forms";
-import { AppInjector } from "../app.module";
-import { FormMessageResolverService } from "../core/services/form-message-resolver.service";
+import { FormServicesInjector } from "src/app/modules/form-services/form-services.module";
+import { FormMessageResolverService } from "src/app/modules/form-services/services/form-message-resolver.service";
 import { InputComponent } from "../modules/shared/input/input.component";
 
-const messageResolver = AppInjector.get(FormMessageResolverService);
+const messageResolver = FormServicesInjector.get(FormMessageResolverService);
 
 export const handleFormErrors = (form: FormGroup, inputRefs: {[key: string]: InputComponent}) => {
     const errorKeys = Object.keys(form.controls)

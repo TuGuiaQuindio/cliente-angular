@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
+import { FormServicesModule } from '../form-services.module';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: FormServicesModule
 })
 export class FormMessageResolverService {
 
@@ -12,6 +13,7 @@ export class FormMessageResolverService {
     EMAIL_ERROR: "Este campo debe de ser un email válido.",
     MATCH_ERROR: "La contraseña y confirmación de contraseña no coinciden.",
     PWD_LENGTH_ERROR: "La contraseña debe estar entre 7 y 30 caracteres de longitud.",
+    SIGNUP_OK: "Se ha registrado el usuario correctamente",
   }
 
   private formStatusMessages: { [key: number]: string } = {
@@ -41,5 +43,9 @@ export class FormMessageResolverService {
     const validationKey = this.validatorKeys[key];
     if (!validationKey) return undefined;
     return this.keys[validationKey];
+  }
+
+  getMessage(key: string): string | undefined {
+    return this.keys[key];
   }
 }

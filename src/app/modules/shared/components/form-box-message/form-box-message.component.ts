@@ -1,6 +1,6 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit, Input, ElementRef, ViewChild } from '@angular/core';
-import { FormMessageResolverService } from 'src/app/core/services/form-message-resolver.service';
+import { FormMessageResolverService } from 'src/app/modules/form-services/services/form-message-resolver.service';
 
 export interface FormProperties {
   type: string;
@@ -33,6 +33,12 @@ export class FormBoxMessageComponent implements OnInit {
 
   public hide() {
     this.visible = false;
+  }
+
+  public publishMessage(data: FormProperties) {
+    this.hide();
+    this.formValues = data;
+    this.triggerFadeInAnimation();
   }
 
   public publishError(err: HttpErrorResponse) {
