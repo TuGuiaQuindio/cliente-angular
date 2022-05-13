@@ -10,9 +10,9 @@
 }
 
 .login-container {
-  @apply container px-8 flex items-center mb-48 w-full mt-8;
+  @apply flex container px-8 items-center mb-48 w-full mt-8;
   .form-section {
-    @apply w-full max-w-lg mx-auto xl:m-0;
+    @apply grid grid-rows-form-box-spacing w-full max-w-lg mx-auto xl:m-0;
     header {
       @apply mb-2;
       .title {
@@ -25,7 +25,7 @@
     }
 
     .form-group {
-      @apply flex flex-col gap-8 items-stretch mt-32;
+      @apply flex flex-col gap-8 items-stretch;
 
       app-button {
         @apply mt-10;

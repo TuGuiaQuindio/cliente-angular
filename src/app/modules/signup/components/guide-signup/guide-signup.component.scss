@@ -10,9 +10,9 @@
 }
 
 .login-container {
-  @apply container px-8 flex items-center mb-48 w-full mt-8;
+  @apply container px-8 mt-20 mb-48 w-full;
   .form-section {
-    @apply w-full max-w-lg mx-auto xl:m-0;
+    @apply grid grid-rows-form-box-spacing w-full max-w-lg mx-auto mt-4 xl:m-0 ;
     
     .input-group {
       @apply flex gap-4 justify-between;
