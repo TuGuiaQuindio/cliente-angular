@@ -1,6 +1,11 @@
+import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit, QueryList, ViewChild, ViewChildren } from '@angular/core';
 import { AbstractControlOptions, FormBuilder, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { AuthService } from 'src/app/core/services/auth.service';
 import { handleFormErrors } from 'src/app/helpers/form-helper';
+import { FormBoxMessageQueueService } from 'src/app/modules/form-services/services/form-box-message-queue.service';
+import { FormMessageResolverService } from 'src/app/modules/form-services/services/form-message-resolver.service';
 import { FormBoxMessageComponent } from 'src/app/modules/shared/components/form-box-message/form-box-message.component';
 import { InputComponent } from 'src/app/modules/shared/input/input.component';
 import { ValidatorMatchDirective } from '../../directives/validator-match.directive';
@@ -12,7 +17,12 @@ import { ValidatorMatchDirective } from '../../directives/validator-match.direct
 })
 export class GuideSignupComponent implements OnInit {
 
-  constructor(private fb: FormBuilder) { }
+  constructor(private fb: FormBuilder,
+    private authSrv: AuthService,
+    private router: Router,
+    private formQueueSrv: FormBoxMessageQueueService,
+    private formMsgResolver: FormMessageResolverService
+  ) { }
 
   @ViewChildren(InputComponent) public set elForm(value: QueryList<InputComponent>) {
     value.forEach((el: InputComponent) => {
@@ -24,7 +34,7 @@ export class GuideSignupComponent implements OnInit {
 
   @ViewChild(FormBoxMessageComponent) public formBoxMsg?: FormBoxMessageComponent;
 
-  public inputRefs: {[key: string]: InputComponent} = { }
+  public inputRefs: { [key: string]: InputComponent } = {}
 
   public form = this.fb.group({
     document: ['', Validators.compose([Validators.required])],
@@ -35,11 +45,29 @@ export class GuideSignupComponent implements OnInit {
     confirmPassword: ['', Validators.compose([Validators.required])],
   }, { validator: ValidatorMatchDirective.matchWith('password', 'confirmPassword') } as AbstractControlOptions);
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void { }
 
   public onFormSubmit() {
     this.updateFormErrors();
+    if (!this.form.valid) return;
+    const { email, password, name, lastName, document } = this.form.value;
+    this.authSrv.guideSignup({
+      email, password, firstName: name, lastName, NoDocument: document
+    }).subscribe({
+      next: response => {
+        console.log(response);
+        this.formBoxMsg?.hide();
+        this.formQueueSrv.store('LoginComponent', { type: 'info', message: this.formMsgResolver.getMessage('SIGNUP_OK') ?? "" })
+        this.router.navigateByUrl('/login');
+      },
+      error: (err: HttpErrorResponse) => {
+        if (typeof err.error !== 'string' && 'msg' in err.error) {
+          this.formBoxMsg?.publishMessage({ type: 'error', message: err.error.msg });
+        } else {
+          this.formBoxMsg?.publishError(err);
+        }
+      }
+    });
     return false;
   }
 
