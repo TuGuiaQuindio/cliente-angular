@@ -28,7 +28,19 @@ export class AuthService {
   }
 
   public guideSignup(values: BasicGuideSignup): Observable<any> {
-    return this.http.post('', {});
+    const { NoDocument, firstName, lastName, email, password } = values;
+    console.log(values, "Values");
+    if (!NoDocument || !firstName || !lastName || !email || !password) throw new Error('DataError: one or more values are undefined');
+
+    const rolInfo = {
+      email: values.email,
+      rol: 1
+    }
+    
+    const signupData = {
+      NoDocument, firstName, lastName, password, rol: rolInfo
+    }
+    return this.http.post('/signup/guide', signupData);
   }
 
   public companySignup(): Observable<any> {
