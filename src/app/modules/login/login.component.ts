@@ -45,7 +45,7 @@ export class LoginComponent implements OnDestroy, AfterViewInit {
         takeUntil(this.destructionSubject.asObservable())
       ).subscribe({
         next: (res) => {
-          handler(res);
+          if (!!res) handler(res);
         },
       complete: () => console.log("Completed")
     });
