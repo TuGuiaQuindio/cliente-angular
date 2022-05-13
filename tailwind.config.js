@@ -6,6 +6,11 @@ module.exports = {
       gridTemplateRows: {
         'card': '7rem 1fr auto',
         'card-ui': 'auto 1fr auto',
+        'button-bottom': 'auto 2.5rem',
+        'form-box-spacing': 'auto minmax(6rem, auto) auto',
+      },
+      gridTemplateColumns: {
+        'link-access-card': '9.5rem auto'
       },
       boxShadow: {
         'drop-around': ['0 2px 12px 2px rgba(0 0 0 / 0.125)', '0 4px 8px -4px rgba(0 0 0 / 0.15)'],
