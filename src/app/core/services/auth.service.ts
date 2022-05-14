@@ -5,6 +5,7 @@ import { TokenResponse } from 'src/app/interfaces/token-response';
 import { BasicGuideSignup } from 'src/app/interfaces/basic-guide-signup';
 import { CoreModule } from '../core.module';
 import { UserLoginResponse } from 'src/app/interfaces/user-login-response';
+import { BasicCompanySignup } from 'src/app/interfaces/basic-company-signup';
 
 @Injectable({
   providedIn: CoreModule
@@ -43,8 +44,12 @@ export class AuthService {
     return this.http.post('/signup/guide', signupData);
   }
 
-  public companySignup(): Observable<any> {
-    return this.http.post('', {});
+  public companySignup(values: BasicCompanySignup): Observable<any> {
+    const rolInfo = {
+      email: values.email,
+      rol: 2,
+    }
+    return this.http.post('/signup/company', values);
   }
 
   public getAuthToken(): string | null {

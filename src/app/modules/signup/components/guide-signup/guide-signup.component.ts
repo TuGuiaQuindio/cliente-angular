@@ -54,21 +54,24 @@ export class GuideSignupComponent implements OnInit {
     this.authSrv.guideSignup({
       email, password, firstName: name, lastName, NoDocument: document
     }).subscribe({
-      next: response => {
+      next: (response: any) => { this.handleSuccess(response) },
+      error: (err: HttpErrorResponse) => { this.handleError(err) }
+    });
+    return false;
+  }
+
+  public handleSuccess(response: any) {
         console.log(response);
         this.formBoxMsg?.hide();
         this.formQueueSrv.store('LoginComponent', { type: 'info', message: this.formMsgResolver.getMessage('SIGNUP_OK') ?? "" })
-        this.router.navigateByUrl('/login');
-      },
-      error: (err: HttpErrorResponse) => {
-        if (typeof err.error !== 'string' && 'msg' in err.error) {
-          this.formBoxMsg?.publishMessage({ type: 'error', message: err.error.msg });
-        } else {
-          this.formBoxMsg?.publishError(err);
-        }
-      }
-    });
-    return false;
+  }
+
+  public handleError(err: HttpErrorResponse) {
+    if (typeof err.error !== 'string' && 'msg' in err.error) {
+      this.formBoxMsg?.publishMessage({ type: 'error', message: err.error.msg });
+    } else {
+      this.formBoxMsg?.publishError(err);
+    }
   }
 
   public updateFormErrors() {
