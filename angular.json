@@ -31,7 +31,8 @@
 							"src/assets"
 						],
 						"styles": [
-							"src/styles.scss"
+							"src/styles.scss",
+              "./node_modules/leaflet/dist/leaflet.css"
 						],
 						"scripts": []
 					},
@@ -71,7 +72,7 @@
 				"serve": {
 					"builder": "ngx-build-plus:dev-server",
           "options": {
-            "extraWebpackConfig": "webpack.config.js",
+            "extraWebpackConfig": "webpack.config.js"
           },
 					"configurations": {
 						"production": {

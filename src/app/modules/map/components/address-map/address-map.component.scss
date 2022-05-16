@@ -1,0 +1,31 @@
+:host {
+  @apply mb-6;
+}
+
+.map-container {
+  @apply h-full flex flex-col;
+}
+
+p {
+  @apply pl-6 pb-1 text-secondary-600;
+}
+
+:host {
+  &.warning {
+    .map-frame {
+      @apply outline-red-500 outline-2 outline;
+    }
+
+    p {
+      @apply text-red-500;
+    }
+  }
+}
+
+.map-frame {
+  @apply h-full rounded-md overflow-hidden;
+}
+
+#map {
+  @apply h-full;
+}
