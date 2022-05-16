@@ -10,7 +10,7 @@
     <form #elForm class="form-group" (submit)="onFormSubmit()" [formGroup]="form">
       <app-input label="NIT" formControlName="nit"></app-input>
       <app-input label="Nombre de la empresa" formControlName="name"></app-input>
-      <app-input label="Dirección" formControlName="address"></app-input>
+      <app-address-map #addressMap label="Dirección" (mapLocation)="onAddressMapSelectLocation($event)"></app-address-map>
       <app-input label="Correo Electrónico" type="email" formControlName="email"></app-input>
       <app-input label="Contraseña" type="password" formControlName="password"></app-input>
       <app-input label="Confirmar contraseña" type="password" formControlName="confirmPassword"></app-input>

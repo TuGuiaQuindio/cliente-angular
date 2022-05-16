@@ -1,11 +1,11 @@
 import { AbstractControl, FormGroup, ValidationErrors } from "@angular/forms";
 import { FormServicesInjector } from "src/app/modules/form-services/form-services.module";
 import { FormMessageResolverService } from "src/app/modules/form-services/services/form-message-resolver.service";
-import { InputComponent } from "../modules/shared/input/input.component";
+import { WarningMessenger } from "../interfaces/warning-messenger";
 
 const messageResolver = FormServicesInjector.get(FormMessageResolverService);
 
-export const handleFormErrors = (form: FormGroup, inputRefs: {[key: string]: InputComponent}) => {
+export const handleFormErrors = (form: FormGroup, inputRefs: {[key: string]: WarningMessenger}) => {
     const errorKeys = Object.keys(form.controls)
     for(let key of errorKeys){
       const control = form.controls[key];

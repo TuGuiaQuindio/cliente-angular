@@ -1,11 +1,14 @@
 import { HttpErrorResponse } from '@angular/common/http';
-import { Component, OnInit, QueryList, ViewChild, ViewChildren } from '@angular/core';
+import { Component, ElementRef, OnInit, QueryList, ViewChild, ViewChildren } from '@angular/core';
 import { AbstractControlOptions, FormBuilder, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { LatLngTuple } from 'leaflet';
 import { AuthService } from 'src/app/core/services/auth.service';
-import { getFirstControlError, handleFormErrors } from 'src/app/helpers/form-helper';
-import { BasicCompanySignup } from 'src/app/interfaces/basic-company-signup';
+import { handleFormErrors } from 'src/app/helpers/form-helper';
+import { WarningMessenger } from 'src/app/interfaces/warning-messenger';
 import { FormBoxMessageQueueService } from 'src/app/modules/form-services/services/form-box-message-queue.service';
 import { FormMessageResolverService } from 'src/app/modules/form-services/services/form-message-resolver.service';
+import { AddressMapComponent } from 'src/app/modules/map/components/address-map/address-map.component';
 import { FormBoxMessageComponent } from 'src/app/modules/shared/components/form-box-message/form-box-message.component';
 import { InputComponent } from 'src/app/modules/shared/input/input.component';
 import { ValidatorMatchDirective } from '../../directives/validator-match.directive';
@@ -17,7 +20,7 @@ import { ValidatorMatchDirective } from '../../directives/validator-match.direct
 })
 export class CompanySignupComponent implements OnInit {
 
-  constructor(private fb: FormBuilder, private authSrv: AuthService, private formQueueSrv: FormBoxMessageQueueService, private formMsgResolver: FormMessageResolverService) { }
+  constructor(private fb: FormBuilder, private authSrv: AuthService, private formQueueSrv: FormBoxMessageQueueService, private formMsgResolver: FormMessageResolverService, private router: Router) { }
 
   @ViewChildren(InputComponent) public set elForm(value: QueryList<InputComponent>) {
     value.forEach((el: InputComponent) => {
@@ -27,20 +30,29 @@ export class CompanySignupComponent implements OnInit {
     });
   }
 
+  @ViewChild('addressMap') public set addressMapReference(value: AddressMapComponent) {
+    this.inputRefs['address'] = value;
+  }
+
   @ViewChild(FormBoxMessageComponent) public formBoxMsg?: FormBoxMessageComponent;
 
-  public inputRefs: { [key: string]: InputComponent } = {}
+  public inputRefs: { [key: string]: WarningMessenger } = {}
 
   public form = this.fb.group({
-    nit: ['', Validators.compose([Validators.required])],
-    name: ['', Validators.compose([Validators.required])],
-    address: ['', Validators.compose([Validators.required])],
-    email: ['', Validators.compose([Validators.required, Validators.email])],
-    password: ['', Validators.compose([Validators.required, Validators.minLength(7), Validators.maxLength(30)])],
-    confirmPassword: ['', Validators.compose([Validators.required])],
+    nit: ['', [Validators.required]],
+    name: ['', [Validators.required]],
+    address: ['', [Validators.required]],
+    email: ['', [Validators.required, Validators.email]],
+    password: ['', [Validators.required, Validators.minLength(7), Validators.maxLength(30)]],
+    confirmPassword: ['', [Validators.required]],
   }, { validator: ValidatorMatchDirective.matchWith('password', 'confirmPassword') } as AbstractControlOptions);
 
   ngOnInit(): void {
+  }
+
+  public onAddressMapSelectLocation(e: LatLngTuple) {
+    const [ lat, lng ] = e;
+    this.form.patchValue({ address: `(${lat}, ${lng})` })
   }
 
   public onFormSubmit() {
@@ -58,6 +70,7 @@ export class CompanySignupComponent implements OnInit {
         console.log(response);
         this.formBoxMsg?.hide();
         this.formQueueSrv.store('LoginComponent', { type: 'info', message: this.formMsgResolver.getMessage('SIGNUP_OK') ?? "" })
+        this.router.navigateByUrl('/login');
   }
 
   public handleError(err: HttpErrorResponse) {

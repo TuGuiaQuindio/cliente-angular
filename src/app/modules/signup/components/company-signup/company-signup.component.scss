@@ -5,7 +5,7 @@
 .image-section {
   @apply hidden w-full lg:block;
   img {
-    @apply object-cover h-full;
+    @apply -left-28 xl:left-0 object-cover h-full fixed;
   }
 }
 
@@ -31,6 +31,10 @@
 
     .form-group {
       @apply flex flex-col gap-8 items-stretch mt-12;
+
+      app-address-map {
+        @apply h-[25em];
+      }
 
       app-button {
         @apply mt-10;

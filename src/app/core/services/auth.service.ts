@@ -30,7 +30,6 @@ export class AuthService {
 
   public guideSignup(values: BasicGuideSignup): Observable<any> {
     const { NoDocument, firstName, lastName, email, password } = values;
-    console.log(values, "Values");
     if (!NoDocument || !firstName || !lastName || !email || !password) throw new Error('DataError: one or more values are undefined');
 
     const rolInfo = {
@@ -45,11 +44,14 @@ export class AuthService {
   }
 
   public companySignup(values: BasicCompanySignup): Observable<any> {
-    const rolInfo = {
+    const { nit, companyName: nameCompany, address, password, email } = values;
+    if (!nit || !nameCompany || !address || !password || !email) throw new Error('DataError: one or more values are undefined');
+    const rol = {
       email: values.email,
       rol: 2,
     }
-    return this.http.post('/signup/company', values);
+    const signupData = { nit, nameCompany, address, password, rol };
+    return this.http.post('/signup/company', signupData);
   }
 
   public getAuthToken(): string | null {

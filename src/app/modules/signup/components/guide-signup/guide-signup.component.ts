@@ -64,6 +64,7 @@ export class GuideSignupComponent implements OnInit {
         console.log(response);
         this.formBoxMsg?.hide();
         this.formQueueSrv.store('LoginComponent', { type: 'info', message: this.formMsgResolver.getMessage('SIGNUP_OK') ?? "" })
+        this.router.navigateByUrl('/login');
   }
 
   public handleError(err: HttpErrorResponse) {

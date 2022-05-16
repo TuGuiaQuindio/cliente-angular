@@ -1,12 +1,13 @@
 import { Component, HostBinding, Input, OnInit, Optional, Self } from '@angular/core';
 import { ControlValueAccessor, FormControl, FormControlDirective, FormControlName, FormGroupDirective, NgControl, NgModel } from '@angular/forms';
+import { WarningMessenger } from 'src/app/interfaces/warning-messenger';
 
 @Component({
   selector: 'app-input',
   templateUrl: './input.component.html',
   styleUrls: ['./input.component.scss']
 })
-export class InputComponent implements OnInit, ControlValueAccessor {
+export class InputComponent implements OnInit, ControlValueAccessor, WarningMessenger {
 
   constructor(@Optional() @Self() public ngControl: NgControl) {
     if (this.ngControl != null) {
