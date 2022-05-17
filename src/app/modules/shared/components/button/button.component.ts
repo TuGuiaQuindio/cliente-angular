@@ -9,6 +9,7 @@ export class ButtonComponent implements OnInit {
 
   @Input('type') public type = "default";
   @Input() public buttonType = "";
+  @Input() public disabled = false;
 
   constructor() { }
 
