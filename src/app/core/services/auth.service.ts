@@ -13,14 +13,19 @@ import { BasicCompanySignup } from 'src/app/interfaces/basic-company-signup';
 export class AuthService {
 
   static TOKEN_KEY = 'auth-token';
+  static USER_NAME = 'username';
+  static USER_ROLE = 'role';
 
   constructor(private http: HttpClient) { }
 
   public login(email: string, password: string): Observable<UserLoginResponse> {
     const data = { email, password }
-    return this.http.post<UserLoginResponse>('/login', data).pipe(map((res) => {
-      localStorage.setItem(AuthService.TOKEN_KEY, res.token);
-      return res;
+    return this.http.post<UserLoginResponse>('/login', data).pipe(map((res: any) => {
+      const { token, name, role } = res.result;
+      localStorage.setItem(AuthService.TOKEN_KEY, token);
+      localStorage.setItem(AuthService.USER_NAME, name);
+      localStorage.setItem(AuthService.USER_ROLE, role.toString());
+      return res.result as UserLoginResponse;
     }));
   }
 

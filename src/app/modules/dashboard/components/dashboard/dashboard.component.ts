@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable, of } from 'rxjs';
+import { AuthService } from 'src/app/core/services/auth.service';
 import { LinkAccessInfo } from 'src/app/interfaces/link-access-info';
 
 @Component({
@@ -10,6 +11,11 @@ import { LinkAccessInfo } from 'src/app/interfaces/link-access-info';
 export class DashboardComponent implements OnInit {
 
   constructor() { }
+
+  public name: string = localStorage.getItem(AuthService.USER_NAME) || 'usuario';
+  public get title(): string {
+    return `¡Hola ${this.name}!`
+  }
 
   public get links(): Observable<LinkAccessInfo[]> {
     const data: LinkAccessInfo[] = [
