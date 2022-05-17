@@ -7,5 +7,8 @@
     <section class="right">
       <app-link-access-card *ngFor="let linkInfo of links | async" [title]="linkInfo.title" [description]="linkInfo.description" [buttonLabel]="linkInfo.buttonLabel" [icon]="linkInfo.icon" [link]="linkInfo.link"></app-link-access-card> 
     </section>
+    <section class="left">
+      <app-decision-button-container title="Completa tus datos"></app-decision-button-container>
+    </section>
   </section>
 </main>

@@ -1,0 +1,19 @@
+.active-form-container {
+  @apply p-8 shadow-md rounded-[1rem];
+}
+
+header {
+  p {
+    @apply text-2xl font-heading text-secondary-600 mb-8;
+  }
+}
+
+footer {
+  .button-group {
+    @apply flex justify-between gap-8;
+
+    app-button {
+      @apply max-w-[9rem] w-full min-w-fit;
+    }
+  }
+}

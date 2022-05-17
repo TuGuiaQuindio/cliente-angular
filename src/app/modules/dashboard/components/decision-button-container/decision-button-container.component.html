@@ -1,0 +1,14 @@
+<article class="active-form-container">
+  <header>
+    <p>{{title}}</p>
+  </header>
+  <main>
+    <ng-content></ng-content>
+  </main>
+  <footer>
+    <section class="button-group">
+      <app-button *ngIf="!buttonDefinition.cancel.hide" (click)="onCancelClick()" [disabled]="buttonDefinition.cancel.disabled" type="special">{{buttonDefinition.cancel.label}}</app-button>
+      <app-button *ngIf="!buttonDefinition.accept.hide" (click)="onAcceptClick()" [disabled]="buttonDefinition.accept.disabled" type="special">{{buttonDefinition.accept.label}}</app-button>
+    </section>
+  </footer>
+</article>
