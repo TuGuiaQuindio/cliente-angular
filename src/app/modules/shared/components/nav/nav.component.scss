@@ -1,5 +1,5 @@
 .nav-container {
-  @apply w-full shadow-md min-h-[5rem] py-4 flex flex-col gap-4 items-center justify-between sticky top-0 bg-white;;
+  @apply w-full shadow-md min-h-[5rem] py-4 flex flex-col gap-4 items-center justify-between sticky top-0 bg-white z-30;
   @apply md:container md:flex-row md:mx-auto md:px-14 md:static md:shadow-none;
 
   h1 {
