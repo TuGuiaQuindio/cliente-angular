@@ -8,11 +8,8 @@ import { SlideComponent } from '../slide/slide.component';
 })
 export class SlideshowComponent {
 
-  constructor(public element: ElementRef) {
-  }
+  constructor(public element: ElementRef) { }
 
-  viewportWidth = 0;
-  viewportHeight = 0;
   private viewIdx = 0;
   private set currentViewIdx(value: number) {
     if (value < 0) {
@@ -33,35 +30,34 @@ export class SlideshowComponent {
   }
 
   @ContentChildren(SlideComponent) public set content(values: QueryList<SlideComponent>) {
-    const htmlElement = this.element.nativeElement as HTMLElement;
-    this.viewportWidth = htmlElement.clientWidth;
-    this.viewportHeight = htmlElement.clientHeight;
-    values.forEach(el => {
-      el.setWidth(this.viewportWidth);
-      el.setHeight(this.viewportHeight);
-    });
     this.count = values.length;
   }
 
   @ViewChild('scrollview') private set hostScrollView(value: ElementRef) {
+    if (!value || !value.nativeElement) return;
     this.scrollview = value.nativeElement;
+    const scrollSize = this.count * 100;
+    this.scrollview!.style.width = `${scrollSize}%`;
   }
 
   public count = 0;
-  private scrollview: HTMLElement;
+  private scrollview?: HTMLElement;
 
   public getPosition(idx: number) {
-    return this.viewportWidth * idx * -1;
+    return (100 / this.count) * idx * -1;
   }
 
   private moveTo(idx: number) {
     const position = this.getPosition(idx);
-    this.scrollview.style.transform = `translate(${position}px, 0)`
+    if (!this.scrollview) return;
+    this.scrollview.style.transform = `translateX(${position}%)`
   }
 
   private setMovingState() {
+    if (!this.scrollview) return;
     this.scrollview.classList.add('moving');
     this.scrollview.addEventListener('animationend', () => {
+      if (!this.scrollview) return;
       this.scrollview.classList.remove('moving');
     }, { once: true })
   }

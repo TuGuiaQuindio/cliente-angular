@@ -4,9 +4,7 @@
 }
 
 .scrollview {
-  position: relative;
-  display: flex;
-  width: fit-content;
+  @apply w-full h-full p-8 gap-16 flex relative;
   --duration: 400ms;
   transition: transform var(--duration) ease-in-out;
 
