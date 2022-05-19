@@ -4,7 +4,7 @@
 }
 
 .scrollview {
-  @apply w-full h-full p-8 gap-16 flex relative;
+  @apply w-full h-full p-4 gap-8 flex relative;
   --duration: 400ms;
   transition: transform var(--duration) ease-in-out;
 
