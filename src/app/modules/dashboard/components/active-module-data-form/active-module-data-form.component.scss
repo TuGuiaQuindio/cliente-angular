@@ -1,0 +1,23 @@
+app-slideshow {
+  @apply h-[16rem] block;
+
+  app-slide {
+    @apply flex flex-col gap-4;
+  }
+}
+
+form {
+  @apply w-full;
+
+  .form-title {
+    @apply text-xl text-secondary-600 mb-8;
+  }
+}
+
+app-bubble-slide-indicator {
+  @apply mb-4;
+}
+
+.caption {
+  @apply text-stone-400 text-base mb-6;
+}

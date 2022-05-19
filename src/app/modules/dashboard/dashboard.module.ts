@@ -6,10 +6,11 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { LinkAccessCardComponent } from './components/link-access-card/link-access-card.component';
 import { DecisionButtonContainerComponent } from './components/decision-button-container/decision-button-container.component';
 import { SlideshowModule } from '../slideshow/slideshow.module';
+import { ActiveModuleDataFormComponent } from './components/active-module-data-form/active-module-data-form.component';
 
 @NgModule({
   declarations: [ 
-    DashboardComponent, LinkAccessCardComponent, DecisionButtonContainerComponent
+    DashboardComponent, LinkAccessCardComponent, DecisionButtonContainerComponent, ActiveModuleDataFormComponent
   ],
   imports: [
     CommonModule,

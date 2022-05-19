@@ -1,0 +1,20 @@
+<app-decision-button-container title="Completa tus datos" (acceptclick)="onNextClick()" (cancelclick)="onPreviousClick()">
+  <form>
+  <app-slideshow #slideshow>
+      <app-slide>
+        <p class="form-title">Información de contacto</p>
+          <app-input label="Teléfono"></app-input>
+      </app-slide>
+      <app-slide>
+        <p class="form-title">Información personal</p>
+          <app-input label="Ciudad de residencia"></app-input>
+      </app-slide>
+      <app-slide>
+        <p class="form-title">Datos adicionales</p>
+          <app-input label="¿Cuenta con transporte particular?"></app-input>
+      </app-slide>
+  </app-slideshow>
+  </form>
+  <app-bubble-slide-indicator [count]="(slideshowState$ | async)?.count ?? 0" [currentSlideIndex]="((slideshowState$ | async)?.currentSlide ?? 1)" ></app-bubble-slide-indicator>
+  <p class="caption">Completa tu perfil ahora mismo en pocos pasos.</p>
+</app-decision-button-container>
