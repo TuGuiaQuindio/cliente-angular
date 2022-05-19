@@ -1,0 +1,10 @@
+:host {
+  @apply flex gap-4 justify-center items-center h-3;
+}
+
+.bubble {
+  @apply h-2 w-2 bg-stone-200 rounded-full duration-150 transition-box-dimmensions;
+  &.selected {
+    @apply bg-secondary-500 w-3 h-3 shadow-md;
+  }
+}

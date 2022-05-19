@@ -25,6 +25,7 @@ module.exports = {
       },
       transitionProperty: {
         'outline': 'outline',
+        'box-dimmensions': 'width, height',
         'card': 'outline, transform, box-shadow',
         'basic-colors': 'color, border-color, background-color',
       },
