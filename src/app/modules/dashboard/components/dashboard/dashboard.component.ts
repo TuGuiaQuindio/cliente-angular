@@ -17,6 +17,10 @@ export class DashboardComponent implements OnInit {
     return `¡Hola ${this.name}!`
   }
 
+  public get rolType(): number {
+    return parseInt(localStorage.getItem(AuthService.USER_ROLE) ?? "0");
+  }
+
   public get links(): Observable<LinkAccessInfo[]> {
     const data: LinkAccessInfo[] = [
       { title: "Edita tu perfil", description: "Mantén tus datos tanto personales como profesionales actualizados y en un solo lugar.", buttonLabel: "Editar ahora", icon: "bx-book-bookmark", link:"/settings" },

@@ -7,16 +7,21 @@ import { LinkAccessCardComponent } from './components/link-access-card/link-acce
 import { DecisionButtonContainerComponent } from './components/decision-button-container/decision-button-container.component';
 import { SlideshowModule } from '../slideshow/slideshow.module';
 import { ActiveModuleDataFormComponent } from './components/active-module-data-form/active-module-data-form.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [ 
-    DashboardComponent, LinkAccessCardComponent, DecisionButtonContainerComponent, ActiveModuleDataFormComponent
+    DashboardComponent, 
+    LinkAccessCardComponent,
+    DecisionButtonContainerComponent,
+    ActiveModuleDataFormComponent
   ],
   imports: [
     CommonModule,
     DashboardRouting,
     SharedModule,
-    SlideshowModule
+    SlideshowModule,
+    ReactiveFormsModule,
   ],
   exports: [ DashboardRouting ]
 })
