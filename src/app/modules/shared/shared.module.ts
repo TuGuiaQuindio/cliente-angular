@@ -35,6 +35,7 @@ import { CheckboxComponent } from './components/checkbox/checkbox.component';
     InputComponent,
     TitleBarComponent,
     FormBoxMessageComponent,
+    CheckboxComponent
   ]
 })
 export class SharedModule { }

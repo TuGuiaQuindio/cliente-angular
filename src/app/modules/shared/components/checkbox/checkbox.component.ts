@@ -1,5 +1,6 @@
 import { Component, Input, OnInit, Optional, Self } from '@angular/core';
 import { ControlValueAccessor, FormControl, NgControl } from '@angular/forms';
+import { InputValueAccessor } from 'src/app/classes/input-value-accessor';
 import { WarningMessenger } from 'src/app/interfaces/warning-messenger';
 
 @Component({
@@ -7,23 +8,17 @@ import { WarningMessenger } from 'src/app/interfaces/warning-messenger';
   templateUrl: './checkbox.component.html',
   styleUrls: ['./checkbox.component.scss']
 })
-export class CheckboxComponent implements OnInit, ControlValueAccessor, WarningMessenger {
+export class CheckboxComponent extends InputValueAccessor implements OnInit, WarningMessenger {
 
   @Input() public warningMsg = "";
   @Input() public label = "";
 
-  public control!: FormControl;
-
-  constructor(@Optional() @Self() public ngControl: NgControl) {
-    if (this.ngControl != null) {
-      this.ngControl.valueAccessor = this;
-    }
+  constructor(@Optional() @Self() ngControl: NgControl) {
+    super(ngControl);
   }
-  writeValue(): void { }
-  registerOnChange(): void { }
-  registerOnTouched(): void { }
 
   ngOnInit(): void {
+    this.setup();
   }
 
 }
