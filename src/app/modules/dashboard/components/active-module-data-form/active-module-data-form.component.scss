@@ -6,6 +6,18 @@ app-slideshow {
   }
 }
 
+.examples {
+  @apply text-sm text-neutral-400;
+  .title {
+    @apply mb-2;
+  }
+  ul {
+    li {
+      @apply list-disc ml-6;
+    }
+  }
+}
+
 form {
   @apply w-full;
 
@@ -19,5 +31,5 @@ app-bubble-slide-indicator {
 }
 
 .caption {
-  @apply text-stone-400 text-base mb-6;
+  @apply text-neutral-400 text-base mb-6;
 }

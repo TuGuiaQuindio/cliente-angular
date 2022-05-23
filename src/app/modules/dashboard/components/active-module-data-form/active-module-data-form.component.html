@@ -1,20 +1,28 @@
-<app-decision-button-container title="Completa tus datos" (acceptclick)="onNextClick()" (cancelclick)="onPreviousClick()">
-  <form>
+<app-decision-button-container title="Completa tus datos" (acceptclick)="onNextClick()" (cancelclick)="onPreviousClick()" [buttonDefinition]="(decisionButtonDefinition$ | async)!">
+  <form [formGroup]="dataForm">
   <app-slideshow #slideshow>
-      <app-slide>
+      <app-slide [formGroup]="contactInformation">
         <p class="form-title">Información de contacto</p>
-          <app-input label="Teléfono"></app-input>
+          <app-input label="Teléfono" formControlName="phoneNumber" ></app-input>
+          <section class="examples">
+            <p class="title">Los formatos válidos son:</p>
+            <ul>
+              <li>(+57) 123 456 7789</li>
+              <li>+57 123 4567789</li>
+              <li>1234567789</li>
+            </ul>
+          </section>
       </app-slide>
-      <app-slide>
+      <app-slide [formGroup]="personalInformation">
         <p class="form-title">Información personal</p>
-          <app-input label="Ciudad de residencia"></app-input>
+          <app-input label="Ciudad de residencia" formControlName="city"></app-input>
       </app-slide>
-      <app-slide>
+      <app-slide [formGroup]="aditionalInformation">
         <p class="form-title">Datos adicionales</p>
-          <app-input label="¿Cuenta con transporte particular?"></app-input>
+          <app-input label="¿Cuenta con transporte particular?" formControlName="hasTransportVehicle"></app-input>
       </app-slide>
   </app-slideshow>
   </form>
-  <app-bubble-slide-indicator [count]="(slideshowState$ | async)?.count ?? 0" [currentSlideIndex]="((slideshowState$ | async)?.currentSlide ?? 1)" ></app-bubble-slide-indicator>
+  <app-bubble-slide-indicator [count]="(slideshowState$ | async)!.count" [currentSlideIndex]="(slideshowState$ | async)!.currentSlide" ></app-bubble-slide-indicator>
   <p class="caption">Completa tu perfil ahora mismo en pocos pasos.</p>
 </app-decision-button-container>
