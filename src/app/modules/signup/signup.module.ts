@@ -4,7 +4,6 @@ import { MapModule } from '../map/map.module';
 import { SignupRoutingModule } from './signup-routing.module';
 import { SharedModule } from '../shared/shared.module';
 import { ReactiveFormsModule } from '@angular/forms';
-
 import { ValidatorMatchDirective } from './directives/validator-match.directive';
 
 import { SignupChooseComponent } from './signup-choose.component';

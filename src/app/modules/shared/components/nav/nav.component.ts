@@ -10,7 +10,7 @@ import { AuthService } from 'src/app/core/services/auth.service';
 export class NavComponent implements OnInit {
 
   // Declaramos variable para hacer interpolación
-  public titulo = "TuGuiaQuindio";
+  public titulo = "TuGuíaQuindío";
   @Input('hide-nav-btns') public hideNavigationButtons = false;
 
   constructor(private authSrv: AuthService, private router: Router) { }

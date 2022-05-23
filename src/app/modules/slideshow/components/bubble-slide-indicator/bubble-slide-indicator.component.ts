@@ -1,5 +1,4 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { timer } from 'rxjs';
 
 @Component({
   selector: 'app-bubble-slide-indicator',
@@ -21,6 +20,7 @@ export class BubbleSlideIndicatorComponent implements OnInit {
   public isSelected(index: number): boolean {
     return index == this.currentSlideIndex;
   }
+
   ngOnInit(): void {
   }
 
