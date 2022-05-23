@@ -1,5 +1,6 @@
 import { Component, HostBinding, Input, OnInit, Optional, Self } from '@angular/core';
 import { ControlValueAccessor, FormControl, FormControlDirective, FormControlName, FormGroupDirective, NgControl, NgModel } from '@angular/forms';
+import { InputValueAccessor } from 'src/app/classes/input-value-accessor';
 import { WarningMessenger } from 'src/app/interfaces/warning-messenger';
 
 @Component({
@@ -7,16 +8,11 @@ import { WarningMessenger } from 'src/app/interfaces/warning-messenger';
   templateUrl: './input.component.html',
   styleUrls: ['./input.component.scss']
 })
-export class InputComponent implements OnInit, ControlValueAccessor, WarningMessenger {
+export class InputComponent extends InputValueAccessor implements OnInit, WarningMessenger {
 
-  constructor(@Optional() @Self() public ngControl: NgControl) {
-    if (this.ngControl != null) {
-      this.ngControl.valueAccessor = this;
-    }
+  constructor(@Optional() @Self() ngControl: NgControl) {
+    super(ngControl);
   }
-  writeValue(): void { }
-  registerOnChange(): void { }
-  registerOnTouched(): void { }
 
   @Input() public label = "Default";
   @Input() public placeholder = "";
@@ -24,23 +20,10 @@ export class InputComponent implements OnInit, ControlValueAccessor, WarningMess
   @Input() public warningMsg = "";
 
   public visible = false;
-  public control!: FormControl;
 
   ngOnInit(): void {
-    if (this.ngControl instanceof FormControlName) {
-      const formGroupDirective = this.ngControl.formDirective as FormGroupDirective;
-      if (formGroupDirective) {
-        const name = this.ngControl.name!;
-        this.control = formGroupDirective.form.controls[name] as FormControl;
-      }
-    } else if (this.ngControl instanceof FormControlDirective) {
-      this.control = this.ngControl.control;
-    } else if (this.ngControl instanceof NgModel) {
-      this.control = this.ngControl.control;
-      this.control.valueChanges.subscribe(x => this.ngControl.viewToModelUpdate(this.control.value));
-    } else if (!this.ngControl) {
-      this.control = new FormControl();
-    }  }
+    this.setup();
+  }
 
   @HostBinding('class.warning') 
   public get showWarning() {
@@ -54,5 +37,4 @@ export class InputComponent implements OnInit, ControlValueAccessor, WarningMess
   togglePasswordVisibility() {
     this.visible = !this.visible;
   }
-
 }
