@@ -6,6 +6,27 @@ app-slideshow {
   }
 }
 
+app-decision-button-container {
+  .success-screen {
+    @apply absolute flex flex-col gap-4 bg-white w-full h-full flex items-center justify-center z-20 animate-fadein;
+    .circle {
+      .bx {
+        @apply text-secondary-400;
+      }
+    }
+
+    .circle {
+      @apply relative flex items-center justify-center rounded-full w-36 h-36 border-4;
+      .bx {
+        @apply text-9xl absolute;
+      }
+    }
+    h2 {
+      @apply text-2xl font-bold text-neutral-400;
+    }
+  }
+}
+
 .examples {
   @apply text-sm text-neutral-400;
   .title {

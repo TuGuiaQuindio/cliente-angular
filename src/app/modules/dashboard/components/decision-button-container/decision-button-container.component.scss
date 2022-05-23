@@ -8,6 +8,10 @@ header {
   }
 }
 
+main {
+  @apply relative;
+}
+
 footer {
   .button-group {
     @apply flex justify-between gap-8;

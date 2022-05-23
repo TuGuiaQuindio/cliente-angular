@@ -1,4 +1,10 @@
 <app-decision-button-container title="Completa tus datos" (acceptclick)="onNextClick()" (cancelclick)="onPreviousClick()" [buttonDefinition]="(decisionButtonDefinition$ | async)!">
+  <div *ngIf="formCompleted" class="success-screen">
+    <article class="circle">
+      <i class="bx bx-check"></i>
+    </article>
+    <h2>¡Excelente!</h2>
+  </div>
   <form [formGroup]="dataForm">
   <app-slideshow #slideshow>
       <app-slide [formGroup]="contactInformation">

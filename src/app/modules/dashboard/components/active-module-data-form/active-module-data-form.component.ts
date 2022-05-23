@@ -72,13 +72,12 @@ export class ActiveModuleDataFormComponent implements OnInit, OnDestroy {
   }
 
   public onNextClick(): void {
-    if (this.isLastSlide()) {
-      this.onFormSignup();
-    }
+    const doSignup = this.isLastSlide();
     this.slideshow.next();
     this.updateButtonState();
     this.updateSlideshowState();
     this.validateNextButtonState();
+    if (doSignup) this.onFormSignup();
   }
 
   private isLastSlide(): boolean {
@@ -92,12 +91,16 @@ export class ActiveModuleDataFormComponent implements OnInit, OnDestroy {
     const group = this.sectionMap[currentSlide];
     const currentState = this.decisionButtonStateSubj.value;
     currentState.accept.disabled = !group.valid;
-    console.log(group);
     this.decisionButtonStateSubj.next(currentState);
   }
 
   public onFormSignup(): void {
-    console.log("Hola mundo");
+    this.formCompleted = true;
+    const state: DecisionButtonDefinition = {
+      accept: { label: 'Finalizar', disabled: true },
+      cancel: { label: 'Anterior', disabled: true },
+    }
+    this.decisionButtonStateSubj.next(state)
   }
 
   private updateSlideshowState(): void {
@@ -129,5 +132,7 @@ export class ActiveModuleDataFormComponent implements OnInit, OnDestroy {
   public get decisionButtonDefinition$(): Observable<DecisionButtonDefinition> {
     return this.decisionButtonStateSubj.asObservable();
   }
+
+  public formCompleted = false;
 
 }
