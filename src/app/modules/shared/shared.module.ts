@@ -10,6 +10,7 @@ import { InputComponent } from './input/input.component';
 import { TitleBarComponent } from './title-bar/title-bar.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FormBoxMessageComponent } from './components/form-box-message/form-box-message.component';
+import { CheckboxComponent } from './components/checkbox/checkbox.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { FormBoxMessageComponent } from './components/form-box-message/form-box-
     InputComponent,
     TitleBarComponent,
     FormBoxMessageComponent,
+    CheckboxComponent,
   ],
   imports: [
     CommonModule,
