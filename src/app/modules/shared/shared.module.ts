@@ -11,9 +11,11 @@ import { TitleBarComponent } from './title-bar/title-bar.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FormBoxMessageComponent } from './components/form-box-message/form-box-message.component';
 import { CheckboxComponent } from './components/checkbox/checkbox.component';
+import { AnchorDirective } from 'src/app/directive/anchor.directive';
 
 @NgModule({
   declarations: [
+    AnchorDirective,
     FooterComponent,
     NavComponent,
     ButtonComponent,
@@ -29,6 +31,7 @@ import { CheckboxComponent } from './components/checkbox/checkbox.component';
     IconsModule
   ],
   exports: [
+    AnchorDirective,
     FooterComponent,
     NavComponent,
     ButtonComponent,
