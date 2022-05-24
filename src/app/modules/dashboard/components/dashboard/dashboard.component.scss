@@ -13,6 +13,10 @@ main {
     .right {
       @apply flex flex-col gap-6;
     }
+
+    .left {
+      @apply flex flex-col gap-6;
+    }
   }
 
 }
