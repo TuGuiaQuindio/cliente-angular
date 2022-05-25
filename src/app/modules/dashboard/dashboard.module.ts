@@ -8,13 +8,15 @@ import { DecisionButtonContainerComponent } from './components/decision-button-c
 import { SlideshowModule } from '../slideshow/slideshow.module';
 import { ActiveModuleDataFormComponent } from './components/active-module-data-form/active-module-data-form.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { GuideExtraFormComponent } from './components/guide-extra-form/guide-extra-form.component';
 
 @NgModule({
   declarations: [ 
     DashboardComponent, 
     LinkAccessCardComponent,
     DecisionButtonContainerComponent,
-    ActiveModuleDataFormComponent
+    ActiveModuleDataFormComponent,
+    GuideExtraFormComponent
   ],
   imports: [
     CommonModule,

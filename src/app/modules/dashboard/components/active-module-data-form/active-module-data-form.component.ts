@@ -1,8 +1,10 @@
-import { Component, Input, OnDestroy, OnInit, ViewChild } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AfterViewInit, Component, OnDestroy, ViewChild } from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { BehaviorSubject, Observable, Subject, takeUntil } from 'rxjs';
+import { SlideComponent } from 'src/app/modules/slideshow/components/slide/slide.component';
 import { SlideshowComponent } from 'src/app/modules/slideshow/components/slideshow/slideshow.component';
 import { DecisionButtonDefinition } from '../decision-button-container/decision-button-container.component';
+import { GuideExtraFormComponent } from '../guide-extra-form/guide-extra-form.component';
 
 type SectionMap = { [key: number]: FormGroup };
 type SlideshowState = { count: number, currentSlide: number }
@@ -11,12 +13,13 @@ type SlideshowState = { count: number, currentSlide: number }
   templateUrl: './active-module-data-form.component.html',
   styleUrls: ['./active-module-data-form.component.scss']
 })
-export class ActiveModuleDataFormComponent implements OnInit, OnDestroy {
+export class ActiveModuleDataFormComponent implements AfterViewInit, OnDestroy {
 
   constructor(private fb: FormBuilder) { }
 
   private slideshow!: SlideshowComponent;
   private destroySubj = new Subject();
+  private slideSubj = new BehaviorSubject<SlideComponent[]>([]);
   private slideshowStateSubj = new BehaviorSubject<SlideshowState>({ count: 1, currentSlide: 1 });
   private decisionButtonStateSubj = new BehaviorSubject<DecisionButtonDefinition>(
     {
@@ -25,31 +28,16 @@ export class ActiveModuleDataFormComponent implements OnInit, OnDestroy {
     }
   );
 
-  public contactInformation: FormGroup = this.fb.group({
-    phoneNumber: ['', [Validators.required, Validators.pattern(/^(?:\(\+[0-9]{1,3}\)|\+[0-9]{1,3}|.?)\s?[0-9]{3}[\s-]?[0-9]{3}[\s-]?[0-9]{2,6}[\s-]?[0-9]{2,6}$/)]],
-  });
+  public dataForm: FormGroup = this.fb.group({});
+  private sectionMap!: SectionMap;
 
-  public personalInformation: FormGroup = this.fb.group({
-    city: ['', [Validators.required]],
-  });
-
-  public aditionalInformation: FormGroup = this.fb.group({
-    hasTransportVehicle: ['', [Validators.required]],
-  });
-
-  public dataForm: FormGroup = this.fb.group({
-    personalInformation: this.personalInformation,
-    contactInformation: this.contactInformation,
-    aditionalInformation: this.aditionalInformation,
-  });
-
-  private sectionMap: SectionMap = {
-    0: this.contactInformation,
-    1: this.personalInformation,
-    2: this.aditionalInformation,
+  @ViewChild('form', { read: GuideExtraFormComponent }) public set hostForm(value: GuideExtraFormComponent) {
+    const { dataForm, sectionMap, slides } = value;
+    this.dataForm = dataForm;
+    this.sectionMap = sectionMap;
+    setTimeout(() => this.slideSubj.next(slides));
   }
 
-  @Input() rolType = 1;
   @ViewChild('slideshow') public set hostSlideshow(value: SlideshowComponent) {
     this.slideshow = value;
     setTimeout(() => {
@@ -59,7 +47,7 @@ export class ActiveModuleDataFormComponent implements OnInit, OnDestroy {
     });
   }
 
-  ngOnInit(): void {
+  ngAfterViewInit(): void {
     this.dataForm.valueChanges
       .pipe(takeUntil(this.destroySubj.asObservable()))
       .subscribe(
@@ -131,6 +119,10 @@ export class ActiveModuleDataFormComponent implements OnInit, OnDestroy {
 
   public get decisionButtonDefinition$(): Observable<DecisionButtonDefinition> {
     return this.decisionButtonStateSubj.asObservable();
+  }
+
+  public get slides$(): Observable<SlideComponent[]> {
+    return this.slideSubj.asObservable();
   }
 
   public formCompleted = false;

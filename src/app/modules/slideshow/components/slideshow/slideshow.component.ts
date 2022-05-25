@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ContentChildren, ElementRef, QueryList, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ContentChildren, ElementRef, Input, QueryList, ViewChild } from '@angular/core';
 import { SlideComponent } from '../slide/slide.component';
 
 @Component({
@@ -29,19 +29,33 @@ export class SlideshowComponent {
     return this.viewIdx;
   }
 
+  @Input() public provideSlidecount = false;
+
+  @Input('count') public set countProperty(value: number) {
+    console.log("Count input", value);
+    this.count = value;
+    this.updateSize();
+  }
+
   @ContentChildren(SlideComponent) public set content(values: QueryList<SlideComponent>) {
-    this.count = values.length;
+    if (!this.provideSlidecount) this.count = values.length;
+    setTimeout(() => { console.log(this); }, 2000);
   }
 
   @ViewChild('scrollview') private set hostScrollView(value: ElementRef) {
     if (!value || !value.nativeElement) return;
     this.scrollview = value.nativeElement;
-    const scrollSize = this.count * 100;
-    this.scrollview!.style.width = `${scrollSize}%`;
+    this.updateSize();
   }
 
   public count = 0;
   private scrollview?: HTMLElement;
+
+  public updateSize() {
+    if (!this.scrollview) return;
+    const scrollSize = this.count * 100;
+    this.scrollview.style.width = `${scrollSize}%`;
+  }
 
   public getPosition(idx: number) {
     return (100 / this.count) * idx * -1;

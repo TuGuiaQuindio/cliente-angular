@@ -1,9 +1,5 @@
 app-slideshow {
   @apply h-[16rem] block;
-
-  app-slide {
-    @apply flex flex-col gap-4;
-  }
 }
 
 app-decision-button-container {
@@ -24,26 +20,6 @@ app-decision-button-container {
     h2 {
       @apply text-2xl font-bold text-neutral-400;
     }
-  }
-}
-
-.examples {
-  @apply text-sm text-neutral-400;
-  .title {
-    @apply mb-2;
-  }
-  ul {
-    li {
-      @apply list-disc ml-6;
-    }
-  }
-}
-
-form {
-  @apply w-full;
-
-  .form-title {
-    @apply text-xl text-secondary-600 mb-8;
   }
 }
 

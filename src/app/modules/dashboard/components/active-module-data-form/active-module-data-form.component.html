@@ -6,27 +6,8 @@
     <h2>¡Excelente!</h2>
   </div>
   <form [formGroup]="dataForm">
-  <app-slideshow #slideshow>
-      <app-slide [formGroup]="contactInformation">
-        <p class="form-title">Información de contacto</p>
-          <app-input label="Teléfono" formControlName="phoneNumber" ></app-input>
-          <section class="examples">
-            <p class="title">Los formatos válidos son:</p>
-            <ul>
-              <li>(+57) 123 456 7789</li>
-              <li>+57 123 4567789</li>
-              <li>1234567789</li>
-            </ul>
-          </section>
-      </app-slide>
-      <app-slide [formGroup]="personalInformation">
-        <p class="form-title">Información personal</p>
-          <app-input label="Ciudad de residencia" formControlName="city"></app-input>
-      </app-slide>
-      <app-slide [formGroup]="aditionalInformation">
-        <p class="form-title">Datos adicionales</p>
-          <app-checkbox label="¿Cuenta con transporte particular?" formControlName="hasTransportVehicle"></app-checkbox>
-      </app-slide>
+  <app-slideshow #slideshow [provideSlidecount]="true"  [count]="(slides$ | async)?.length ?? 1">
+    <app-guide-extra-form #form></app-guide-extra-form>
   </app-slideshow>
   </form>
   <app-bubble-slide-indicator [count]="(slideshowState$ | async)!.count" [currentSlideIndex]="(slideshowState$ | async)!.currentSlide" ></app-bubble-slide-indicator>
