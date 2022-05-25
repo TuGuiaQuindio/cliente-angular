@@ -7,7 +7,7 @@ main {
 
 
   .division-container {
-    @apply grid grid-cols-1 gap-4;
+    @apply grid grid-cols-1 gap-4 my-6;
     @apply lg:grid-cols-2 lg:gap-16;
 
     .right {

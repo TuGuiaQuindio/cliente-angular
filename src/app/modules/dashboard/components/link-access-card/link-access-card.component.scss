@@ -1,5 +1,5 @@
 .access-card {
-  @apply flex flex-col shadow-md rounded-[1rem] min-h-[17.75rem] max-w-[40rem] overflow-hidden;
+  @apply flex flex-col shadow-md rounded-[1rem] min-h-[17.75rem] max-w-[40rem] overflow-hidden border-2;
 
   header, .information {
     @apply py-6 px-9;

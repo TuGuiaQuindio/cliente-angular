@@ -3,6 +3,7 @@
   <header>
     <app-title-bar [title]="title" size="xsmall" subtitle="Bienvenido a Tu Guía Quindío. ¿Qué quieres hacer hoy?"></app-title-bar>
   </header>
+  <hr>
   <section class="division-container">
     <section class="right">
       <app-link-access-card *ngFor="let linkInfo of links | async" [title]="linkInfo.title" [description]="linkInfo.description" [buttonLabel]="linkInfo.buttonLabel" [icon]="linkInfo.icon" [link]="linkInfo.link"></app-link-access-card> 
