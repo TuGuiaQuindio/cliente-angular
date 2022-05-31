@@ -39,7 +39,6 @@ export class SlideshowComponent {
 
   @ContentChildren(SlideComponent) public set content(values: QueryList<SlideComponent>) {
     if (!this.provideSlidecount) this.count = values.length;
-    setTimeout(() => { console.log(this); }, 2000);
   }
 
   @ViewChild('scrollview') private set hostScrollView(value: ElementRef) {
