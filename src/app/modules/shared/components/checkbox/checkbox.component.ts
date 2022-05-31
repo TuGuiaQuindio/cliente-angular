@@ -12,6 +12,7 @@ export class CheckboxComponent extends InputValueAccessor implements OnInit, War
 
   @Input() public warningMsg = "";
   @Input() public label = "";
+  @Input() public tabindex = 0;
 
   constructor(@Optional() @Self() ngControl: NgControl) {
     super(ngControl);

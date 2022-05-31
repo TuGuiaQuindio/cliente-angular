@@ -18,6 +18,7 @@ export class InputComponent extends InputValueAccessor implements OnInit, Warnin
   @Input() public placeholder = "";
   @Input() public type = "text";
   @Input() public warningMsg = "";
+  @Input() public tabindex = 0;
 
   public visible = false;
 
