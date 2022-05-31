@@ -3,6 +3,7 @@ import { Observable, of, filter, mergeMap, tap, delay, map } from 'rxjs';
 import { AuthService } from 'src/app/core/services/auth.service';
 import { AnchorDirective } from 'src/app/directive/anchor.directive';
 import { LinkAccessInfo } from 'src/app/interfaces/link-access-info';
+import { ModuleSolverService } from '../../services/module-solver.service';
 import { ActiveModuleDataFormComponent } from '../active-module-data-form/active-module-data-form.component';
 import { CompanyExtraFormComponent } from '../company-extra-form/company-extra-form.component';
 import { GuideExtraFormComponent } from '../guide-extra-form/guide-extra-form.component';
@@ -14,7 +15,7 @@ import { GuideExtraFormComponent } from '../guide-extra-form/guide-extra-form.co
 })
 export class DashboardComponent implements AfterViewInit {
 
-  constructor() {
+  constructor(private moduleSolverSrv: ModuleSolverService) {
   }
 
   ngAfterViewInit() {
@@ -22,8 +23,7 @@ export class DashboardComponent implements AfterViewInit {
   }
 
   public activeModules: any[] = [
-    GuideExtraFormComponent,
-    CompanyExtraFormComponent,
+    this.moduleSolverSrv.getActiveModule()
   ];
   public name: string = localStorage.getItem(AuthService.USER_NAME) || 'usuario';
   public get title(): string {
