@@ -9,6 +9,7 @@ import { SlideshowModule } from '../slideshow/slideshow.module';
 import { ActiveModuleDataFormComponent } from './components/active-module-data-form/active-module-data-form.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { GuideExtraFormComponent } from './components/guide-extra-form/guide-extra-form.component';
+import { CompanyExtraFormComponent } from './components/company-extra-form/company-extra-form.component';
 
 @NgModule({
   declarations: [ 
@@ -17,6 +18,7 @@ import { GuideExtraFormComponent } from './components/guide-extra-form/guide-ext
     DecisionButtonContainerComponent,
     ActiveModuleDataFormComponent,
     GuideExtraFormComponent,
+    CompanyExtraFormComponent,
   ],
   imports: [
     CommonModule,

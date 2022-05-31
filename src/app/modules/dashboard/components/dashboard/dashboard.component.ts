@@ -4,6 +4,7 @@ import { AuthService } from 'src/app/core/services/auth.service';
 import { AnchorDirective } from 'src/app/directive/anchor.directive';
 import { LinkAccessInfo } from 'src/app/interfaces/link-access-info';
 import { ActiveModuleDataFormComponent } from '../active-module-data-form/active-module-data-form.component';
+import { CompanyExtraFormComponent } from '../company-extra-form/company-extra-form.component';
 import { GuideExtraFormComponent } from '../guide-extra-form/guide-extra-form.component';
 
 @Component({
@@ -21,7 +22,8 @@ export class DashboardComponent implements AfterViewInit {
   }
 
   public activeModules: any[] = [
-    ActiveModuleDataFormComponent,
+    GuideExtraFormComponent,
+    CompanyExtraFormComponent,
   ];
   public name: string = localStorage.getItem(AuthService.USER_NAME) || 'usuario';
   public get title(): string {
@@ -47,14 +49,14 @@ export class DashboardComponent implements AfterViewInit {
     viewContainerRef.clear();
     for (let i = 0; i < this.activeModules.length; i++) {
       const type = this.activeModules[i];
-      const componentRef = viewContainerRef.createComponent(type);
+      const componentRef = viewContainerRef.createComponent(ActiveModuleDataFormComponent);
       const instance = componentRef.instance as ActiveModuleDataFormComponent;
       instance.lifecycle$.pipe(
         filter(state => state === "afterViewInit"),
-        delay(1),
-        mergeMap(() => instance.loadActiveForm(GuideExtraFormComponent).pipe(
+        delay(0),
+        mergeMap(() => instance.loadActiveForm(type).pipe(
           mergeMap(component => component.slidesLoad.pipe(
-            delay(1),
+            delay(0),
             tap(() => instance.setupActiveForm(component)),
             map(() => component)
           )))),

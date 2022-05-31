@@ -5,11 +5,11 @@ import { SectionMap } from '../../interfaces/active-form';
 import { ActiveFormComponent } from '../active-form/active-form.component';
 
 @Component({
-  selector: 'app-guide-extra-form',
-  templateUrl: './guide-extra-form.component.html',
-  styleUrls: ['./guide-extra-form.component.scss']
+  selector: 'app-company-extra-form',
+  templateUrl: './company-extra-form.component.html',
+  styleUrls: ['./company-extra-form.component.scss']
 })
-export class GuideExtraFormComponent extends ActiveFormComponent implements OnInit {
+export class CompanyExtraFormComponent extends ActiveFormComponent implements OnInit {
 
   constructor(private fb: FormBuilder) {
     super();
@@ -22,32 +22,26 @@ export class GuideExtraFormComponent extends ActiveFormComponent implements OnIn
     this.slidesLoad.next(this.slides);
   }
 
+  public enterpriseDetails: FormGroup = this.fb.group({
+    mainActivity: ['', [Validators.required, Validators.minLength(16)]]
+  });
+
   public contactInformation: FormGroup = this.fb.group({
     phoneNumber: ['', [Validators.required, Validators.pattern(/^(?:\(\+[0-9]{1,3}\)|\+[0-9]{1,3}|.?)\s?[0-9]{3}[\s-]?[0-9]{3}[\s-]?[0-9]{2,6}[\s-]?[0-9]{2,6}$/)]],
   });
 
-  public personalInformation: FormGroup = this.fb.group({
-    city: ['', [Validators.required]],
-  });
-
-  public aditionalInformation: FormGroup = this.fb.group({
-    hasTransportVehicle: [false, [Validators.required]],
-  });
-
   public override dataForm: FormGroup = this.fb.group({
-    personalInformation: this.personalInformation,
     contactInformation: this.contactInformation,
-    aditionalInformation: this.aditionalInformation,
+    enterpriseDetails: this.enterpriseDetails,
   });
 
   public override sectionMap: SectionMap = {
     0: this.contactInformation,
-    1: this.personalInformation,
-    2: this.aditionalInformation,
+    1: this.enterpriseDetails,
   }
 
   public override doSignup() {
-    console.log("Signing up");
+    console.log("Enterprise signup");
   }
 
   ngOnInit(): void {

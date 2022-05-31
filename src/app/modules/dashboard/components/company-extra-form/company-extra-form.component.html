@@ -1,0 +1,16 @@
+<app-slide [formGroup]="contactInformation">
+  <p class="form-title">Información de contacto</p>
+  <app-input label="Teléfono" [tabindex]="-1" formControlName="phoneNumber" ></app-input>
+  <section class="examples">
+    <p class="title">Los formatos válidos son:</p>
+    <ul>
+      <li>(+57) 123 456 7789</li>
+      <li>+57 123 4567789</li>
+      <li>1234567789</li>
+    </ul>
+  </section>
+</app-slide>
+<app-slide [formGroup]="enterpriseDetails">
+  <p class="form-title">Información sobre la empresa</p>
+  <app-input label="Actividad principal" placeholder="A qué se dedica tu empresa" [tabindex]="-1" formControlName="mainActivity"></app-input>
+</app-slide>

@@ -1,0 +1,27 @@
+:host {
+  @apply w-full h-full p-4 gap-8 flex relative;
+}
+app-slide {
+  @apply flex flex-col gap-4;
+}
+
+.examples {
+  @apply text-sm text-neutral-400;
+  .title {
+    @apply mb-2;
+  }
+  ul {
+    li {
+      @apply list-disc ml-6;
+    }
+  }
+}
+
+form {
+  @apply w-full;
+
+  .form-title {
+    @apply text-xl text-secondary-600 mb-8;
+  }
+}
+
