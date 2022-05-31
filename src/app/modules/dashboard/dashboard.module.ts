@@ -10,6 +10,7 @@ import { ActiveModuleDataFormComponent } from './components/active-module-data-f
 import { ReactiveFormsModule } from '@angular/forms';
 import { GuideExtraFormComponent } from './components/guide-extra-form/guide-extra-form.component';
 import { CompanyExtraFormComponent } from './components/company-extra-form/company-extra-form.component';
+import { DashboardServicesModule } from './services/dashboard-services.module';
 
 @NgModule({
   declarations: [ 
@@ -26,6 +27,7 @@ import { CompanyExtraFormComponent } from './components/company-extra-form/compa
     SharedModule,
     SlideshowModule,
     ReactiveFormsModule,
+    DashboardServicesModule,
   ],
   exports: [ DashboardRouting ]
 })
