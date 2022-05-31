@@ -14,6 +14,10 @@
   <p class="form-title">Información personal</p>
   <app-input label="Ciudad de residencia" [tabindex]="-1" formControlName="city"></app-input>
 </app-slide>
+<app-slide [formGroup]="birthdateInformation">
+  <p class="form-title">Información personal</p>
+  <app-input label="Fecha de nacimiento" [tabindex]="-1" type="date" formControlName="birthdate"></app-input>
+</app-slide>
 <app-slide [formGroup]="aditionalInformation">
   <p class="form-title">Datos adicionales</p>
   <app-checkbox label="¿Cuenta con transporte particular?" [tabindex]="-1" formControlName="hasTransportVehicle"></app-checkbox>

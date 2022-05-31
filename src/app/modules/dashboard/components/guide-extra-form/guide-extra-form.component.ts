@@ -30,6 +30,10 @@ export class GuideExtraFormComponent extends ActiveFormComponent implements OnIn
     city: ['', [Validators.required]],
   });
 
+  public birthdateInformation: FormGroup = this.fb.group({
+    birthdate: ["", [Validators.required, Validators.pattern(/\d{4}-\d{2}-\d{2}/)]]
+  });
+
   public aditionalInformation: FormGroup = this.fb.group({
     hasTransportVehicle: [false, [Validators.required]],
   });
@@ -37,17 +41,19 @@ export class GuideExtraFormComponent extends ActiveFormComponent implements OnIn
   public override dataForm: FormGroup = this.fb.group({
     personalInformation: this.personalInformation,
     contactInformation: this.contactInformation,
+    birthdateInformation: this.birthdateInformation,
     aditionalInformation: this.aditionalInformation,
   });
 
   public override sectionMap: SectionMap = {
     0: this.contactInformation,
     1: this.personalInformation,
-    2: this.aditionalInformation,
+    2: this.birthdateInformation,
+    3: this.aditionalInformation,
   }
 
   public override doSignup() {
-    console.log("Signing up");
+    
   }
 
   ngOnInit(): void {
