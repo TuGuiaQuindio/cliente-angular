@@ -32,6 +32,7 @@ export class ActiveModuleDataFormComponent implements OnInit, AfterViewInit, OnD
 
   public dataForm: FormGroup = this.fb.group({});
   private sectionMap!: SectionMap;
+  private doSignup!: () => void;
 
   @ViewChild(AnchorDirective) public appAnchor!: AnchorDirective;
 
@@ -78,9 +79,10 @@ export class ActiveModuleDataFormComponent implements OnInit, AfterViewInit, OnD
   }
 
   public setupActiveForm(component: ActiveFormComponent) {
-    const { dataForm, sectionMap, slides } = component;
+    const { dataForm, sectionMap, slides, doSignup } = component;
     this.sectionMap = sectionMap;
     this.dataForm = dataForm;
+    this.doSignup = doSignup;
     this.slideshowStateSubj.next({
       currentSlide: 1,
       count: slides.length,
@@ -131,6 +133,7 @@ export class ActiveModuleDataFormComponent implements OnInit, AfterViewInit, OnD
       cancel: { label: 'Anterior', disabled: true },
     }
     this.decisionButtonStateSubj.next(state)
+    this.doSignup();
   }
 
   private updateSlideshowState(): void {
