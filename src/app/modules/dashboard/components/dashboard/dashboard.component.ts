@@ -60,7 +60,7 @@ export class DashboardComponent implements AfterViewInit {
             tap(() => instance.setupActiveForm(component)),
             map(() => component)
           )))),
-        delay(1),
+        delay(0),
       ).subscribe({
         next: () => {
           instance.updateControlsState();
