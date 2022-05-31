@@ -6,8 +6,8 @@
     <h2>¡Excelente!</h2>
   </div>
   <form [formGroup]="dataForm">
-  <app-slideshow #slideshow [provideSlidecount]="true"  [count]="(slides$ | async)?.length ?? 1">
-    <app-guide-extra-form #form></app-guide-extra-form>
+  <app-slideshow #slideshow [provideSlidecount]="true"  [count]="(slideshowState$ | async)!.count">
+    <ng-template appAnchor></ng-template>
   </app-slideshow>
   </form>
   <app-bubble-slide-indicator [count]="(slideshowState$ | async)!.count" [currentSlideIndex]="(slideshowState$ | async)!.currentSlide" ></app-bubble-slide-indicator>

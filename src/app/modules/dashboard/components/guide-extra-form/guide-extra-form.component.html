@@ -1,6 +1,6 @@
 <app-slide [formGroup]="contactInformation">
   <p class="form-title">Información de contacto</p>
-  <app-input label="Teléfono" formControlName="phoneNumber" ></app-input>
+  <app-input label="Teléfono" [tabindex]="-1" formControlName="phoneNumber" ></app-input>
   <section class="examples">
     <p class="title">Los formatos válidos son:</p>
     <ul>
@@ -12,9 +12,9 @@
 </app-slide>
 <app-slide [formGroup]="personalInformation">
   <p class="form-title">Información personal</p>
-  <app-input label="Ciudad de residencia" formControlName="city"></app-input>
+  <app-input label="Ciudad de residencia" [tabindex]="-1" formControlName="city"></app-input>
 </app-slide>
 <app-slide [formGroup]="aditionalInformation">
   <p class="form-title">Datos adicionales</p>
-  <app-checkbox label="¿Cuenta con transporte particular?" formControlName="hasTransportVehicle"></app-checkbox>
+  <app-checkbox label="¿Cuenta con transporte particular?" [tabindex]="-1" formControlName="hasTransportVehicle"></app-checkbox>
 </app-slide>

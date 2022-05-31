@@ -1,8 +1,10 @@
-import { AfterViewInit, Component, OnDestroy, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, Input, OnDestroy, OnInit, Type, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { BehaviorSubject, Observable, Subject, takeUntil } from 'rxjs';
+import { BehaviorSubject, delay, Observable, Subject, takeUntil, map, of, takeWhile, flatMap, forkJoin, filter, tap } from 'rxjs';
+import { AnchorDirective } from 'src/app/directive/anchor.directive';
 import { SlideComponent } from 'src/app/modules/slideshow/components/slide/slide.component';
 import { SlideshowComponent } from 'src/app/modules/slideshow/components/slideshow/slideshow.component';
+import { ActiveFormComponent } from '../active-form/active-form.component';
 import { DecisionButtonDefinition } from '../decision-button-container/decision-button-container.component';
 import { GuideExtraFormComponent } from '../guide-extra-form/guide-extra-form.component';
 
@@ -13,13 +15,12 @@ type SlideshowState = { count: number, currentSlide: number }
   templateUrl: './active-module-data-form.component.html',
   styleUrls: ['./active-module-data-form.component.scss']
 })
-export class ActiveModuleDataFormComponent implements AfterViewInit, OnDestroy {
+export class ActiveModuleDataFormComponent implements OnInit, AfterViewInit, OnDestroy {
 
   constructor(private fb: FormBuilder) { }
 
   private slideshow!: SlideshowComponent;
   private destroySubj = new Subject();
-  private slideSubj = new BehaviorSubject<SlideComponent[]>([]);
   private slideshowStateSubj = new BehaviorSubject<SlideshowState>({ count: 1, currentSlide: 1 });
   private decisionButtonStateSubj = new BehaviorSubject<DecisionButtonDefinition>(
     {
@@ -27,35 +28,75 @@ export class ActiveModuleDataFormComponent implements AfterViewInit, OnDestroy {
       cancel: { label: "Anterior", disabled: false }
     }
   );
+  private lifecycleSubj = new BehaviorSubject<string>("");
 
   public dataForm: FormGroup = this.fb.group({});
   private sectionMap!: SectionMap;
 
-  @ViewChild('form', { read: GuideExtraFormComponent }) public set hostForm(value: GuideExtraFormComponent) {
-    const { dataForm, sectionMap, slides } = value;
-    this.dataForm = dataForm;
-    this.sectionMap = sectionMap;
-    setTimeout(() => this.slideSubj.next(slides));
-  }
+  @ViewChild(AnchorDirective) public appAnchor!: AnchorDirective;
 
   @ViewChild('slideshow') public set hostSlideshow(value: SlideshowComponent) {
     this.slideshow = value;
-    setTimeout(() => {
-      this.updateSlideshowState();
-      this.updateButtonState();
-      this.validateNextButtonState();
-    });
+  }
+
+  public updateGlobalState() {
+    this.updateControlsState();
+    this.updateSlideshowSize();
+  }
+
+  public updateSlideshowSize() {
+    this.slideshow.updateSize();
+  }
+
+  public updateControlsState() {
+    this.updateSlideshowState();
+    this.updateButtonState();
+    this.validateNextButtonState();
+  }
+
+  ngOnInit(): void {
+    this.lifecycleSubj.next("init");
   }
 
   ngAfterViewInit(): void {
+    this.lifecycleSubj.next("afterViewInit");
+  }
+
+  public get lifecycle$(): Observable<string> {
+    return this.lifecycleSubj.asObservable();
+  }
+
+  public loadActiveForm(component: Type<ActiveFormComponent>): Observable<ActiveFormComponent> {
+    return of({})
+      .pipe(
+        map(() => {
+          const containerRef = this.appAnchor.viewContainerRef;
+          const instance = containerRef.createComponent(component).instance
+          return instance as ActiveFormComponent;
+        })
+      );
+  }
+
+  public setupActiveForm(component: ActiveFormComponent) {
+    const { dataForm, sectionMap, slides } = component;
+    this.sectionMap = sectionMap;
+    this.dataForm = dataForm;
+    this.slideshowStateSubj.next({
+      currentSlide: 1,
+      count: slides.length,
+    });
     this.dataForm.valueChanges
-      .pipe(takeUntil(this.destroySubj.asObservable()))
+      .pipe(
+        takeUntil(this.destroySubj.asObservable()),
+      )
       .subscribe(
         { next: () => this.validateNextButtonState() }
       );
   }
 
   ngOnDestroy(): void {
+    this.lifecycleSubj.next("destroy");
+    this.lifecycleSubj.complete();
     this.destroySubj.complete();
   }
 
@@ -76,6 +117,7 @@ export class ActiveModuleDataFormComponent implements AfterViewInit, OnDestroy {
 
   public validateNextButtonState() {
     const currentSlide = this.slideshow.getCurrentIndex();
+    if (!this.sectionMap) return;
     const group = this.sectionMap[currentSlide];
     const currentState = this.decisionButtonStateSubj.value;
     currentState.accept.disabled = !group.valid;
@@ -119,10 +161,6 @@ export class ActiveModuleDataFormComponent implements AfterViewInit, OnDestroy {
 
   public get decisionButtonDefinition$(): Observable<DecisionButtonDefinition> {
     return this.decisionButtonStateSubj.asObservable();
-  }
-
-  public get slides$(): Observable<SlideComponent[]> {
-    return this.slideSubj.asObservable();
   }
 
   public formCompleted = false;

@@ -1,11 +1,10 @@
-import { AfterViewInit, Component, OnInit, Type, ViewChild } from '@angular/core';
-import { Observable, of } from 'rxjs';
+import { AfterViewInit, Component, ViewChild } from '@angular/core';
+import { Observable, of, filter, mergeMap, tap, delay, map } from 'rxjs';
 import { AuthService } from 'src/app/core/services/auth.service';
 import { AnchorDirective } from 'src/app/directive/anchor.directive';
 import { LinkAccessInfo } from 'src/app/interfaces/link-access-info';
-import { PageNotFoundComponent } from 'src/app/modules/page-not-found/page-not-found.component';
-import { TitleBarComponent } from 'src/app/modules/shared/title-bar/title-bar.component';
 import { ActiveModuleDataFormComponent } from '../active-module-data-form/active-module-data-form.component';
+import { GuideExtraFormComponent } from '../guide-extra-form/guide-extra-form.component';
 
 @Component({
   selector: 'app-dashboard',
@@ -14,10 +13,14 @@ import { ActiveModuleDataFormComponent } from '../active-module-data-form/active
 })
 export class DashboardComponent implements AfterViewInit {
 
-  constructor() { }
+  constructor() {
+  }
+
+  ngAfterViewInit() {
+    setTimeout(() => this.loadComponents());
+  }
 
   public activeModules: any[] = [
-    ActiveModuleDataFormComponent,
     ActiveModuleDataFormComponent,
   ];
   public name: string = localStorage.getItem(AuthService.USER_NAME) || 'usuario';
@@ -39,18 +42,29 @@ export class DashboardComponent implements AfterViewInit {
     return of(data);
   }
 
-  async ngAfterViewInit(): Promise<void> {
-    await new Promise(() => setTimeout(() => this.loadComponents()));
-  }
-
-  loadComponents() {
+  public loadComponents() {
     const viewContainerRef = this.appAnchor.viewContainerRef;
     viewContainerRef.clear();
-    
     for (let i = 0; i < this.activeModules.length; i++) {
       const type = this.activeModules[i];
       const componentRef = viewContainerRef.createComponent(type);
+      const instance = componentRef.instance as ActiveModuleDataFormComponent;
+      instance.lifecycle$.pipe(
+        filter(state => state === "afterViewInit"),
+        delay(1),
+        mergeMap(() => instance.loadActiveForm(GuideExtraFormComponent).pipe(
+          mergeMap(component => component.slidesLoad.pipe(
+            delay(1),
+            tap(() => instance.setupActiveForm(component)),
+            map(() => component)
+          )))),
+        delay(1),
+      ).subscribe({
+        next: () => {
+          instance.updateControlsState();
+          instance.updateGlobalState();
+        }
+      });
     }
   }
-
 }

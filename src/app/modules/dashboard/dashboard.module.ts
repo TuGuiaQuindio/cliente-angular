@@ -16,7 +16,7 @@ import { GuideExtraFormComponent } from './components/guide-extra-form/guide-ext
     LinkAccessCardComponent,
     DecisionButtonContainerComponent,
     ActiveModuleDataFormComponent,
-    GuideExtraFormComponent
+    GuideExtraFormComponent,
   ],
   imports: [
     CommonModule,
