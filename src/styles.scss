@@ -12,6 +12,17 @@
 
 @import url('https://fonts.googleapis.com/css2?family=MuseoModerno&family=Varela+Round&family=Cabin&display=swap');
 
+:root [data-theme="default"] {
+  --color-primary: 255 255 255;
+  --color-secondary-400: 187 241 154;
+  --color-secondary-500: 111 206 103;
+  --color-secondary-600: 51 189 103;
+  --color-accent: 92 225 201;
+  --color-dark-400: 159 159 159;
+  --color-dark-500: 131 131 131;
+  --color-dark-600: 76 68 81;
+}
+
 html, app-root  {
   height: 100%;
 }

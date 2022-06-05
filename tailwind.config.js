@@ -1,3 +1,12 @@
+function withOpacity(variable) {
+    return ({ opacityValue }) => {
+      if (opacityValue === undefined) {
+        return `rgb( var(${variable}) )`
+      }
+      return `rgba( var(${variable}) / ${opacityValue})`
+    }
+}
+
 module.exports = {
   darkMode: "class",
   content: ["src/**/*.{html,ts}"],
@@ -43,10 +52,18 @@ module.exports = {
         'fadein': 'fadein 500ms ease-in-out forwards',
       },
       colors: {
-        primary: "#FFF",
-        secondary: { 600: "#33BD67", 500: "#6FCE67", 400: "#BBF19A", },
-        accent: "#5CE1C9",
-        dark: { 600: "#4C4451", 500: "#838383", 400: "#9F9F9F", },
+        primary: withOpacity("--color-primary"),
+        secondary: {
+          600: withOpacity("--color-secondary-600"),
+          500: withOpacity("--color-secondary-500"),
+          400: withOpacity("--color-secondary-400"),
+        },
+        accent: withOpacity("--color-accent"),
+        dark: {
+          600: withOpacity("--color-dark-600"),
+          500: withOpacity("--color-dark-500"),
+          400: withOpacity("--color-dark-500"),
+        },
       }
     },
   },
