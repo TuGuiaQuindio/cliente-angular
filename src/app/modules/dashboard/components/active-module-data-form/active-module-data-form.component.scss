@@ -4,7 +4,7 @@ app-slideshow {
 
 app-decision-button-container {
   .success-screen {
-    @apply absolute flex flex-col gap-4 bg-white w-full h-full flex items-center justify-center z-20 animate-fadein;
+    @apply absolute flex flex-col gap-4 bg-primary w-full h-full flex items-center justify-center z-20 animate-fadein;
     .circle {
       .bx {
         @apply text-secondary-400;
@@ -18,7 +18,7 @@ app-decision-button-container {
       }
     }
     h2 {
-      @apply text-2xl font-bold text-neutral-400;
+      @apply text-2xl font-bold text-appgray-400;
     }
   }
 }
@@ -28,5 +28,5 @@ app-bubble-slide-indicator {
 }
 
 .caption {
-  @apply text-neutral-400 text-base mb-6;
+  @apply text-appgray-400 text-base mb-6;
 }

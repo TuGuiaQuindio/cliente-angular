@@ -1,5 +1,5 @@
 :host {
-  @apply bg-white grid w-full border-2 border-b-[3px] p-8 px-10 min-h-[18.5rem] grid-rows-card-ui transition-card cursor-pointer;
+  @apply bg-primary grid w-full border-2 border-b-[3px] p-8 px-10 min-h-[18.5rem] grid-rows-card-ui transition-card cursor-pointer;
   @apply md:min-w-[18.5rem] md:max-w-[23.5rem] md:rounded-[4rem] md:rounded-tl-md md:rounded-br-md md:gap-2 md:min-h-[27.5rem] md:grid-rows-card md:shadow-md md:outline-accent;
 
   &.selected {

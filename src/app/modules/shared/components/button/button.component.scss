@@ -1,40 +1,40 @@
 button {
   @apply px-7 py-2 w-full rounded-full;
   &[disabled] {
-    @apply bg-slate-200 text-slate-400;
+    @apply bg-appgray-200 text-appgray-400;
   }
 
   &:not([disabled]) {
-    @apply border-2 border-black text-black transition-transform duration-[75ms];
-    @apply hover:text-gray-500 hover:border-gray-500;
-    @apply active:bg-gray-200 active:text-black active:border-black active:translate-y-[1px];
+    @apply border-2 border-appblack text-appblack transition-transform duration-[75ms];
+    @apply hover:text-appgray-500 hover:border-appgray-500;
+    @apply active:bg-appgray-200 active:text-appblack active:border-appblack active:translate-y-[1px];
 
     &:focus {
-      @apply outline outline-emerald-400 outline-2;
+      @apply outline outline-appgreen-400 outline-2;
     }
 
     &.emphasis {
       @apply border-secondary-600 text-secondary-600;
       @apply hover:border-secondary-400;
-      @apply active:bg-green-200 active:text-green-600 active:border-green-600;
+      @apply active:bg-appgreen-200 active:text-appgreen-600 active:border-appgreen-600;
       @apply outline-1;
     }
     
     &.special-pointy {
-      @apply border-none text-black bg-gradient-to-br from-secondary-400 to-accent rounded-br-none shadow;
-      @apply hover:shadow-md hover:text-green-700;
-      @apply active:shadow-none active:text-black;
+      @apply border-none text-appblack bg-gradient-to-br from-secondary-400 to-accent rounded-br-none shadow;
+      @apply hover:shadow-md hover:text-appgreen-700;
+      @apply active:shadow-none active:text-appblack;
     }
 
     &.special {
-      @apply border-none text-black bg-gradient-to-br from-secondary-400 to-accent shadow;
-      @apply hover:shadow-md hover:text-green-700;
-      @apply active:shadow-none active:text-black;
+      @apply border-none text-appblack bg-gradient-to-br from-secondary-400 to-accent shadow;
+      @apply hover:shadow-md hover:text-appgreen-700;
+      @apply active:shadow-none active:text-appblack;
     }
 
     &.round-icon {
       @apply border-none shadow-md p-0 h-[3.625rem] w-[3.625rem] text-3xl flex justify-center items-center;
-      @apply focus:outline-slate-200;
+      @apply focus:outline-appgray-200;
     }
   }
 }

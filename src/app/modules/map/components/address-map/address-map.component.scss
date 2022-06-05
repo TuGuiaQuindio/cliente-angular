@@ -13,11 +13,11 @@ p {
 :host {
   &.warning {
     .map-frame {
-      @apply outline-red-500 outline-2 outline;
+      @apply outline-appred-500 outline-2 outline;
     }
 
     p {
-      @apply text-red-500;
+      @apply text-appred-500;
     }
   }
 }

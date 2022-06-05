@@ -59,11 +59,27 @@ module.exports = {
           400: withOpacity("--color-secondary-400"),
         },
         accent: withOpacity("--color-accent"),
+        appgreen: {
+          200: withOpacity("--color-appgreen-200"),
+          400: withOpacity("--color-appgreen-400"),
+          600: withOpacity("--color-appgreen-600"),
+          700: withOpacity("--color-appgreen-700"),
+        },
+        appgray: {
+          200: withOpacity("--color-appgray-200"),
+          400: withOpacity("--color-appgray-400"),
+          500: withOpacity("--color-appgray-500"),
+        },
+        appred: {
+          500: withOpacity("--color-appred-500"),
+          300: withOpacity("--color-appred-300")
+        },
         dark: {
           600: withOpacity("--color-dark-600"),
           500: withOpacity("--color-dark-500"),
           400: withOpacity("--color-dark-500"),
         },
+        appblack: withOpacity("--color-appblack"),
       }
     },
   },

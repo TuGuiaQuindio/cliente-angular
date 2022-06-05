@@ -1,5 +1,5 @@
 .form-box-container {
-  @apply flex gap-3 border-solid border-2 border-black rounded-md p-4 transition-basic-colors duration-500;
+  @apply flex gap-3 border-solid border-2 border-appblack rounded-md p-4 transition-basic-colors duration-500;
 
   i {
     @apply text-2xl;
@@ -10,9 +10,9 @@
   }
   
   &.error {
-    @apply border-red-500;
+    @apply border-appred-500;
     * {
-      @apply text-red-500;
+      @apply text-appred-500;
     }
   }
 }

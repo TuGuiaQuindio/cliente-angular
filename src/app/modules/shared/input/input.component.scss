@@ -3,7 +3,7 @@
 }
 
 label {
-  @apply absolute text-secondary-600 bg-white left-3 px-3 top-[-0.75em] h-5 z-10 w-max;
+  @apply absolute text-secondary-600 bg-primary left-3 px-3 top-[-0.75em] h-5 z-10 w-max;
 }
 
 .input-group {
@@ -22,17 +22,17 @@ input {
   @apply w-full;
   &.warning {
     p, label, .password-icon {
-      @apply text-red-500;
+      @apply text-appred-500;
     }
     p {
       @apply pl-6;
     }
     input {
-      @apply border-red-500;
+      @apply border-appred-500;
     }
 
     *:focus {
-      @apply outline-red-300;
+      @apply outline-appred-300;
     }
   }
 

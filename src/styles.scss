@@ -12,16 +12,49 @@
 
 @import url('https://fonts.googleapis.com/css2?family=MuseoModerno&family=Varela+Round&family=Cabin&display=swap');
 
-:root [data-theme="default"] {
-  --color-primary: 255 255 255;
-  --color-secondary-400: 187 241 154;
-  --color-secondary-500: 111 206 103;
-  --color-secondary-600: 51 189 103;
-  --color-accent: 92 225 201;
-  --color-dark-400: 159 159 159;
-  --color-dark-500: 131 131 131;
-  --color-dark-600: 76 68 81;
-}
+:root{
+  [data-theme="default"] {
+    --color-primary: 0 0 0;
+    --color-appblack: 255 255 255;
+    --color-secondary-400: 187 241 154;
+    --color-secondary-500: 111 206 103;
+    --color-secondary-600: 51 189 103;
+    --color-accent: 92 225 201;
+    --color-dark-400: 159 159 159;
+    --color-dark-500: 131 131 131;
+    --color-dark-600: 76 68 81;
+    --color-appgray-200: 229 229 229;
+    --color-appgray-400: 163 163 163;
+    --color-appgray-500: 115 115 115;
+    --color-appred-300: 252 165 165;
+    --color-appred-500: 239 68 68;
+    --color-appgreen-200: 187 247 208;
+    --color-appgreen-400: 74 222 128;
+    --color-appgreen-600: 22 163 74;
+    --color-appgreen-700: 21 128 61;
+  }
+  
+  [data-theme="enterprise"] {
+    --color-primary: 255 255 255;
+    --color-secondary-400: 187 241 154;
+    --color-secondary-500: 111 206 103;
+    --color-secondary-600: 109 189 224;
+    --color-accent: 92 225 201;
+    --color-dark-400: 159 159 159;
+    --color-dark-500: 131 131 131;
+    --color-dark-600: 76 68 81;
+    --color-appgray-200: 229 229 229;
+    --color-appgray-400: 163 163 163;
+    --color-appgray-500: 115 115 115;
+    --color-appred-300: 252 165 165;
+    --color-appred-500: 239 68 68;
+    --color-appgreen-200: 187 247 208;
+    --color-appgreen-400: 74 222 128;
+    --color-appgreen-600: 22 163 74;
+    --color-appgreen-700: 21 128 61;
+  }
+
+} 
 
 html, app-root  {
   height: 100%;
