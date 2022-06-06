@@ -1,0 +1,7 @@
+main {
+  @apply grid grid-cols-4 gap-x-8 gap-y-4 container mx-auto;
+
+  article {
+    @apply w-36 h-36 rounded-2xl flex items-center justify-center;
+  }
+}
