@@ -20,7 +20,7 @@ import { ValidatorMatchDirective } from '../../directives/validator-match.direct
 })
 export class CompanySignupComponent implements OnInit {
 
-  constructor(private fb: FormBuilder, private authSrv: AuthService, private formQueueSrv: FormBoxMessageQueueService, private formMsgResolver: FormMessageResolverService, private router: Router) { }
+  constructor(private fb: FormBuilder, private authSrv: AuthService, private formQueueSrv: FormBoxMessageQueueService, private formMsgResolver: FormMessageResolverService, private router: Router, private el: ElementRef) { }
 
   @ViewChildren(InputComponent) public set elForm(value: QueryList<InputComponent>) {
     value.forEach((el: InputComponent) => {
@@ -48,6 +48,7 @@ export class CompanySignupComponent implements OnInit {
   }, { validator: ValidatorMatchDirective.matchWith('password', 'confirmPassword') } as AbstractControlOptions);
 
   ngOnInit(): void {
+    this.el.nativeElement.dataset["theme"] = "enterprise";
   }
 
   public onAddressMapSelectLocation(e: LatLngTuple) {
