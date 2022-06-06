@@ -69,15 +69,11 @@ module.exports = {
           200: withOpacity("--color-appgray-200"),
           400: withOpacity("--color-appgray-400"),
           500: withOpacity("--color-appgray-500"),
+          600: withOpacity("--color-appgray-600"),
         },
         appred: {
           500: withOpacity("--color-appred-500"),
           300: withOpacity("--color-appred-300")
-        },
-        dark: {
-          600: withOpacity("--color-dark-600"),
-          500: withOpacity("--color-dark-500"),
-          400: withOpacity("--color-dark-500"),
         },
         appblack: withOpacity("--color-appblack"),
       }

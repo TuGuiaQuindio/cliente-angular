@@ -14,6 +14,6 @@
 }
 
 .decoration {
-  @apply hidden;
-  @apply md:w-full md:fixed md:-z-10 md:block md:bottom-0 md:top-[20rem];
+  @apply hidden w-full;
+  @apply md:w-full md:fixed md:-z-10 md:block md:bottom-0;
 }

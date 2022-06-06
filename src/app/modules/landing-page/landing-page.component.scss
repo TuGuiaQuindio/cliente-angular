@@ -22,7 +22,7 @@
       }
 
       p {
-        @apply text-dark-400;
+        @apply text-appgray-400;
       }
 
       .button-group {
@@ -62,7 +62,7 @@
       }
 
       p {
-        @apply text-dark-600;
+        @apply text-appgray-600;
       }
     }
   }
@@ -81,7 +81,7 @@
       @apply md:grid-cols-2;
       
       p {
-        @apply text-left max-w-[25rem] text-dark-400;
+        @apply text-left max-w-[25rem] text-appgray-400;
       }
     }
   }

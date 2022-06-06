@@ -25,7 +25,7 @@
   }
 
   .decoration {
-    @apply bg-gradient-to-br from-[#8CEEA2] to-accent relative overflow-hidden;
+    @apply bg-gradient-to-br from-appgreen-400 to-accent relative overflow-hidden;
 
     .bx {
       @apply text-[11rem] rotate-[20deg] absolute bottom-0 -left-8 text-primary;
