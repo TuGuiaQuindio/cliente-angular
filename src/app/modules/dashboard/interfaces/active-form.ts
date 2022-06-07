@@ -6,5 +6,5 @@ export interface ActiveForm {
   slides: SlideComponent[];
   dataForm: FormGroup;
   sectionMap: SectionMap;
-  doSignup(): void;
+  doSignup(): any;
 }

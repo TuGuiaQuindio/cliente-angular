@@ -15,5 +15,5 @@ export class ActiveFormComponent implements ActiveForm {
   public slides!: SlideComponent[];
   public dataForm!: FormGroup;
   public sectionMap!: SectionMap;
-  public doSignup(): void { };
+  public doSignup(): any { };
 }

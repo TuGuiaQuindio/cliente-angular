@@ -52,8 +52,16 @@ export class GuideExtraFormComponent extends ActiveFormComponent implements OnIn
     3: this.aditionalInformation,
   }
 
-  public override doSignup() {
-    
+  public override doSignup(): any & { urlSuffix: string } {
+    const contactInformation = this.dataForm.get('contactInformation')!;
+    const personalInformation = this.dataForm.get('personalInformation')!;
+    const birthdateInformation = this.dataForm.get('birthdateInformation')!;
+    const aditionalInformation = this.dataForm.get('aditionalInformation')!;
+    const phoneNumber = contactInformation.get('phoneNumber')!.value;
+    const city = personalInformation.get('city')!.value;
+    const birthDate = birthdateInformation.get('birthdate')!.value;
+    const hasTransporter = aditionalInformation.get('hasTransportVehicle')!.value;
+    return { phoneNumber, city, birthDate, hasTransporter, urlSuffix: '/guide' };
   }
 
   ngOnInit(): void {

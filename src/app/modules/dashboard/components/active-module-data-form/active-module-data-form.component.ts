@@ -1,12 +1,11 @@
 import { AfterViewInit, Component, Input, OnDestroy, OnInit, Type, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { BehaviorSubject, delay, Observable, Subject, takeUntil, map, of, takeWhile, flatMap, forkJoin, filter, tap } from 'rxjs';
+import { BehaviorSubject, Observable, Subject, takeUntil, map, of } from 'rxjs';
 import { AnchorDirective } from 'src/app/directive/anchor.directive';
-import { SlideComponent } from 'src/app/modules/slideshow/components/slide/slide.component';
 import { SlideshowComponent } from 'src/app/modules/slideshow/components/slideshow/slideshow.component';
+import { DataFormService } from '../../services/data-form.service';
 import { ActiveFormComponent } from '../active-form/active-form.component';
 import { DecisionButtonDefinition } from '../decision-button-container/decision-button-container.component';
-import { GuideExtraFormComponent } from '../guide-extra-form/guide-extra-form.component';
 
 type SectionMap = { [key: number]: FormGroup };
 type SlideshowState = { count: number, currentSlide: number }
@@ -17,7 +16,7 @@ type SlideshowState = { count: number, currentSlide: number }
 })
 export class ActiveModuleDataFormComponent implements OnInit, AfterViewInit, OnDestroy {
 
-  constructor(private fb: FormBuilder) { }
+  constructor(private fb: FormBuilder, private dataSrv: DataFormService) { }
 
   private slideshow!: SlideshowComponent;
   private destroySubj = new Subject();
@@ -32,7 +31,7 @@ export class ActiveModuleDataFormComponent implements OnInit, AfterViewInit, OnD
 
   public dataForm: FormGroup = this.fb.group({});
   private sectionMap!: SectionMap;
-  private doSignup!: () => void;
+  private doSignup!: () => any;
 
   @ViewChild(AnchorDirective) public appAnchor!: AnchorDirective;
 
@@ -127,13 +126,15 @@ export class ActiveModuleDataFormComponent implements OnInit, AfterViewInit, OnD
   }
 
   public onFormSignup(): void {
-    this.formCompleted = true;
     const state: DecisionButtonDefinition = {
       accept: { label: 'Finalizar', disabled: true },
       cancel: { label: 'Anterior', disabled: true },
     }
     this.decisionButtonStateSubj.next(state)
-    this.doSignup();
+    const signupData = this.doSignup();
+    this.dataSrv.completeData(signupData).subscribe({
+      next: () => this.formCompleted = true
+    });
   }
 
   private updateSlideshowState(): void {

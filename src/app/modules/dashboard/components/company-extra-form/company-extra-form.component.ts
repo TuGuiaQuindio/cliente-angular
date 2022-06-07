@@ -40,8 +40,12 @@ export class CompanyExtraFormComponent extends ActiveFormComponent implements On
     1: this.enterpriseDetails,
   }
 
-  public override doSignup() {
-    console.log("Enterprise signup");
+  public override doSignup(): any & { urlSuffix: string }{
+    const contactInformation = this.dataForm.get('contactInformation')!;
+    const enterpriseDetails = this.dataForm.get('enterpriseDetails')!;
+    const phoneNumber = contactInformation.get('phoneNumber')!.value;
+    const mainActivity = enterpriseDetails.get('mainActivity')!.value;
+    return { phoneNumber, mainActivity, urlSuffix: '/company' };
   }
 
   ngOnInit(): void {
