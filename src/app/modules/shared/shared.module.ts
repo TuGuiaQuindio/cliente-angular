@@ -12,6 +12,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { FormBoxMessageComponent } from './components/form-box-message/form-box-message.component';
 import { CheckboxComponent } from './components/checkbox/checkbox.component';
 import { AnchorDirective } from 'src/app/directive/anchor.directive';
+import { PageViewComponent } from './components/page-view/page-view.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { AnchorDirective } from 'src/app/directive/anchor.directive';
     TitleBarComponent,
     FormBoxMessageComponent,
     CheckboxComponent,
+    PageViewComponent,
   ],
   imports: [
     CommonModule,
@@ -38,7 +40,8 @@ import { AnchorDirective } from 'src/app/directive/anchor.directive';
     InputComponent,
     TitleBarComponent,
     FormBoxMessageComponent,
-    CheckboxComponent
+    CheckboxComponent,
+    PageViewComponent
   ]
 })
 export class SharedModule { }

@@ -1,0 +1,11 @@
+main {
+  @apply container mx-auto px-14 mb-24;
+
+  header {
+    @apply mt-10 mb-5;
+  }
+
+  hr {
+    @apply mb-6;
+  }
+}
