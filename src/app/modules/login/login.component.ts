@@ -1,5 +1,5 @@
 import { HttpErrorResponse } from '@angular/common/http';
-import { AfterViewInit, Component, OnDestroy, QueryList, ViewChild, ViewChildren } from '@angular/core';
+import { AfterViewInit, Component, HostBinding, OnDestroy, QueryList, ViewChild, ViewChildren } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Subject, takeUntil } from 'rxjs';
@@ -18,6 +18,7 @@ export class LoginComponent implements OnDestroy, AfterViewInit {
 
   constructor(private fb: FormBuilder, private auth: AuthService, private router: Router, private formQueueSrv: FormBoxMessageQueueService) { }
 
+  @HostBinding('attr.data-theme') private theme = 'default';
   inputRefs: { [key: string]: InputComponent } = {}
   private destructionSubject = new Subject();
 

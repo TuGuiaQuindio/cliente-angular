@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostBinding, OnInit } from '@angular/core';
 import { RegisterOption } from './interfaces/register-option';
 
 type RegisterThemedOption = RegisterOption & { theme: string };
@@ -9,6 +9,7 @@ type RegisterThemedOption = RegisterOption & { theme: string };
 })
 export class SignupChooseComponent implements OnInit {
 
+  @HostBinding('attr.data-theme') private theme = 'default';
   public options: RegisterThemedOption[]  = [
     { title: "Para Empresas", description: "Pequeñas, medianas y grandes empresas que requieren la contratación de personal calificado en el sector turístico.", url: "company", theme: "default" },
     { title: "Para Guias", description: "Personas dedicadas a diferentes ramas del sector turístico que buscan brindar un servicio de calidad a partir de sus aptitudes personales y profesionales, vivencias y experiencia.", url: "guide", theme: "default" },

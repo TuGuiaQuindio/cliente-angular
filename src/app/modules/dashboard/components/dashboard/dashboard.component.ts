@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, HostBinding, ViewChild } from '@angular/core';
 import { Observable, of, filter, mergeMap, tap, delay, map } from 'rxjs';
 import { USER_NAME, USER_ROLE } from 'src/app/constants';
 import { AuthService } from 'src/app/core/services/auth.service';

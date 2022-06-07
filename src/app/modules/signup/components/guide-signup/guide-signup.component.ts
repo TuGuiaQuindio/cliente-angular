@@ -1,5 +1,5 @@
 import { HttpErrorResponse } from '@angular/common/http';
-import { Component, OnInit, QueryList, ViewChild, ViewChildren } from '@angular/core';
+import { Component, HostBinding, OnInit, QueryList, ViewChild, ViewChildren } from '@angular/core';
 import { AbstractControlOptions, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/core/services/auth.service';
@@ -17,6 +17,7 @@ import { ValidatorMatchDirective } from '../../directives/validator-match.direct
 })
 export class GuideSignupComponent implements OnInit {
 
+  @HostBinding('attr.data-theme') private theme = 'default';
   constructor(private fb: FormBuilder,
     private authSrv: AuthService,
     private router: Router,
