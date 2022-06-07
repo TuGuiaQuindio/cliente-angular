@@ -19,7 +19,8 @@ module.exports = {
         'form-box-spacing': 'auto minmax(6rem, auto) auto',
       },
       gridTemplateColumns: {
-        'link-access-card': '9.5rem auto'
+        'link-access-card': '9.5rem auto',
+        'side-panel': '1fr 4fr'
       },
       boxShadow: {
         'drop-around': ['0 2px 12px 2px rgba(0 0 0 / 0.125)', '0 4px 8px -4px rgba(0 0 0 / 0.15)'],
