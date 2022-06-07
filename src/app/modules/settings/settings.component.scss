@@ -1,0 +1,11 @@
+:host {
+  @apply flex-1;
+}
+
+.division-container {
+  @apply grid grid-cols-side-panel;
+
+  aside {
+    @apply w-full h-full;
+  }
+}
