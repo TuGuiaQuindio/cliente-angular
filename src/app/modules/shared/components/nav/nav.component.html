@@ -8,7 +8,16 @@
     <ng-template #userBlock>
       <section class="app-controls">
         <app-button type="round-icon"><i class="bx bxs-bell"></i></app-button>
-        <img src="/assets/images/user-profile-placeholder.svg">
+        <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <mask id="mask0_1033_243" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="30" height="30">
+            <circle cx="15" cy="15" r="15" fill="#C4C4C4" />
+          </mask>
+          <g mask="url(#mask0_1033_243)">
+            <circle cx="15" cy="15" r="15" class="fill-secondary-400" fill="#AAA" />
+            <circle cx="15" cy="12" r="6" class="fill-appgreen-600" fill="#555" />
+            <circle cx="15" cy="30" r="11" class="fill-appgreen-600" fill="#555" />
+          </g>
+        </svg>
       </section>
       <app-button type="round-icon" (click)="logout()"><i class="bx bx-log-out-circle"></i></app-button>
     </ng-template>

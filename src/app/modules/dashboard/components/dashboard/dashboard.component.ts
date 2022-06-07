@@ -1,5 +1,6 @@
 import { AfterViewInit, Component, ViewChild } from '@angular/core';
 import { Observable, of, filter, mergeMap, tap, delay, map } from 'rxjs';
+import { USER_NAME, USER_ROLE } from 'src/app/constants';
 import { AuthService } from 'src/app/core/services/auth.service';
 import { AnchorDirective } from 'src/app/directive/anchor.directive';
 import { LinkAccessInfo } from 'src/app/interfaces/link-access-info';
@@ -25,7 +26,7 @@ export class DashboardComponent implements AfterViewInit {
   public activeModules: any[] = [
     this.moduleSolverSrv.getActiveModule()
   ];
-  public name: string = localStorage.getItem(AuthService.USER_NAME) || 'usuario';
+  public name: string = localStorage.getItem(USER_NAME) || 'usuario';
   public get title(): string {
     return `¡Hola ${this.name}!`
   }
@@ -33,7 +34,7 @@ export class DashboardComponent implements AfterViewInit {
   @ViewChild(AnchorDirective, { static: true }) public appAnchor!: AnchorDirective;
 
   public get rolType(): number {
-    return parseInt(localStorage.getItem(AuthService.USER_ROLE) ?? "0");
+    return parseInt(localStorage.getItem(USER_ROLE) ?? "0");
   }
 
   public get links(): Observable<LinkAccessInfo[]> {

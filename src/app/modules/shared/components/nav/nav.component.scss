@@ -15,8 +15,8 @@
     @apply gap-4 flex items-center h-14;
     @apply md:gap-2;
 
-    img {
-      @apply h-full;
+    svg {
+      @apply h-full w-full;
     }
   }
 }
