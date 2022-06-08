@@ -7,6 +7,7 @@ import { SharedModule } from '../shared/shared.module';
 import { PanelSettingsComponent } from './components/panel-settings/panel-settings.component';
 import { PanelSectionComponent } from './components/panel-section/panel-section.component';
 import { PanelSettingsButtonComponent } from './components/panel-settings-button/panel-settings-button.component';
+import { SettingsPageViewComponent } from './components/settings-page-view/settings-page-view.component';
 import { SecurityComponent } from './routes/security/security.component';
 
 
@@ -16,6 +17,7 @@ import { SecurityComponent } from './routes/security/security.component';
     PanelSettingsComponent,
     PanelSectionComponent,
     PanelSettingsButtonComponent,
+    SettingsPageViewComponent,
     SecurityComponent
   ],
   imports: [

@@ -1,0 +1,14 @@
+:host {
+  @apply flex flex-col h-full;
+}
+
+main {
+  @apply flex-1 py-4 mt-2;
+}
+
+footer {
+  @apply flex;
+  app-button {
+    @apply ml-auto w-48;
+  }
+}
