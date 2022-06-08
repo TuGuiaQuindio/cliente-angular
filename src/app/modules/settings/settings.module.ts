@@ -7,6 +7,7 @@ import { SharedModule } from '../shared/shared.module';
 import { PanelSettingsComponent } from './components/panel-settings/panel-settings.component';
 import { PanelSectionComponent } from './components/panel-section/panel-section.component';
 import { PanelSettingsButtonComponent } from './components/panel-settings-button/panel-settings-button.component';
+import { SecurityComponent } from './routes/security/security.component';
 
 
 @NgModule({
@@ -14,7 +15,8 @@ import { PanelSettingsButtonComponent } from './components/panel-settings-button
     SettingsComponent,
     PanelSettingsComponent,
     PanelSectionComponent,
-    PanelSettingsButtonComponent
+    PanelSettingsButtonComponent,
+    SecurityComponent
   ],
   imports: [
     CommonModule,
