@@ -60,8 +60,8 @@ export class GuideExtraFormComponent extends ActiveFormComponent implements OnIn
     const phoneNumber = contactInformation.get('phoneNumber')!.value;
     const city = personalInformation.get('city')!.value;
     const birthDate = birthdateInformation.get('birthdate')!.value;
-    const hasTransporter = aditionalInformation.get('hasTransportVehicle')!.value;
-    return { phoneNumber, city, birthDate, hasTransporter, urlSuffix: '/guide' };
+    const hasTransport = aditionalInformation.get('hasTransportVehicle')!.value;
+    return { phoneNumber, city, birthDate, hasTransport, urlSuffix: '/guide' };
   }
 
   ngOnInit(): void {
