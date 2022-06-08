@@ -6,6 +6,6 @@
   @apply grid grid-cols-side-panel;
 
   aside {
-    @apply w-full h-full;
+    @apply w-full h-full border-r border-r-appgray-200;
   }
 }
