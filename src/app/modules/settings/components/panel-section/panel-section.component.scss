@@ -1,0 +1,11 @@
+h2 {
+  @apply text-2xl text-appgray-400 my-4;
+}
+
+main {
+  @apply flex flex-col gap-2;
+}
+
+hr {
+  @apply mt-4;
+}

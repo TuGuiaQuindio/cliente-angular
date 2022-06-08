@@ -5,12 +5,16 @@ import { SettingsRoutingModule } from './settings-routing.module';
 import { SettingsComponent } from './settings.component';
 import { SharedModule } from '../shared/shared.module';
 import { PanelSettingsComponent } from './components/panel-settings/panel-settings.component';
+import { PanelSectionComponent } from './components/panel-section/panel-section.component';
+import { PanelSettingsButtonComponent } from './components/panel-settings-button/panel-settings-button.component';
 
 
 @NgModule({
   declarations: [
     SettingsComponent,
-    PanelSettingsComponent
+    PanelSettingsComponent,
+    PanelSectionComponent,
+    PanelSettingsButtonComponent
   ],
   imports: [
     CommonModule,

@@ -1,0 +1,13 @@
+:host {
+  @apply w-full;
+
+  &.selected {
+    button {
+      @apply bg-appgray-200 pl-4 pr-4;
+    }
+  }
+}
+
+button {
+  @apply flex gap-2 items-center py-1 pr-8 text-lg text-appgray-500 rounded-lg;
+}
