@@ -1,10 +1,10 @@
 function withOpacity(variable) {
-    return ({ opacityValue }) => {
-      if (opacityValue === undefined) {
-        return `rgb( var(${variable}) )`
-      }
-      return `rgba( var(${variable}) / ${opacityValue})`
+  return ({ opacityValue }) => {
+    if (opacityValue === undefined) {
+      return `rgb( var(${variable}) )`
     }
+    return `rgba( var(${variable}) / ${opacityValue})`
+  }
 }
 
 module.exports = {
@@ -20,7 +20,7 @@ module.exports = {
       },
       gridTemplateColumns: {
         'link-access-card': '9.5rem auto',
-        'side-panel': '1fr 4fr'
+        'side-panel': 'auto 1fr',
       },
       boxShadow: {
         'drop-around': ['0 2px 12px 2px rgba(0 0 0 / 0.125)', '0 4px 8px -4px rgba(0 0 0 / 0.15)'],
