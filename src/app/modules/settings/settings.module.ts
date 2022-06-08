@@ -9,6 +9,7 @@ import { PanelSectionComponent } from './components/panel-section/panel-section.
 import { PanelSettingsButtonComponent } from './components/panel-settings-button/panel-settings-button.component';
 import { SettingsPageViewComponent } from './components/settings-page-view/settings-page-view.component';
 import { SecurityComponent } from './routes/security/security.component';
+import { FormSettingsSectionComponent } from './components/form-settings-section/form-settings-section.component';
 
 
 @NgModule({
@@ -18,7 +19,8 @@ import { SecurityComponent } from './routes/security/security.component';
     PanelSectionComponent,
     PanelSettingsButtonComponent,
     SettingsPageViewComponent,
-    SecurityComponent
+    SecurityComponent,
+    FormSettingsSectionComponent
   ],
   imports: [
     CommonModule,
