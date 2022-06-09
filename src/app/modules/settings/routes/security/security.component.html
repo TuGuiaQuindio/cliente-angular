@@ -1,3 +1,7 @@
 <app-settings-page-view title="Seguridad" subtitle="Proteje tu cuenta a través de las opciones que tenemos disponibles para ti">
-  <app-form-settings-section title="Cambio de contraseña"></app-form-settings-section>
+  <form class="form-group">
+    <app-form-settings-section *ngFor="let section of sections" [title]="section.title" [formGroup]="section.formGroup">
+      <app-settings-input *ngFor="let input of section.inputs" [name]="input.name" [description]="input.description" [inputType]="input.inputType" [formControlName]="input.formControlName"></app-settings-input>
+    </app-form-settings-section>
+  </form>
 </app-settings-page-view>
