@@ -27,6 +27,16 @@ export class PanelSettingsComponent implements OnInit {
       ]
     },
   ]
+  
+  private currentButton?: PanelButtonDefinition;
+
+  public isSelected(button: PanelButtonDefinition) {
+    return !!this.currentButton && button === this.currentButton;
+  }
+
+  public selectButton(button: PanelButtonDefinition) {
+    this.currentButton = button;
+  }
 
   ngOnInit(): void {
   }

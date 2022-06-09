@@ -1,5 +1,5 @@
 <section>
   <app-panel-section *ngFor="let section of buttonSection; index as si" [title]="section.title">
-    <app-panel-settings-button *ngFor="let button of section.buttons; index as i" [class.selected]="si == 0 && i == 1" [icon]="button.icon" [routerLink]="button.url">{{button.label}}</app-panel-settings-button>
+    <app-panel-settings-button *ngFor="let button of section.buttons; index as i" [class.selected]="isSelected(button)" [icon]="button.icon" [routerLink]="button.url" (click)="selectButton(button)">{{button.label}}</app-panel-settings-button>
   </app-panel-section>
 </section>

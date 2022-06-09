@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, HostBinding, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-panel-settings-button',
@@ -8,6 +8,7 @@ import { Component, Input, OnInit } from '@angular/core';
 export class PanelSettingsButtonComponent implements OnInit {
 
   constructor() { }
+  @HostBinding('attr.tabindex') tabindex = -1;
   @Input() public icon = "";
 
   ngOnInit(): void {
