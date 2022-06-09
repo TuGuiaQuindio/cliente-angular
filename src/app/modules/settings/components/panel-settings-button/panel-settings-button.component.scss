@@ -1,13 +1,13 @@
 :host {
-  @apply w-full;
+  @apply w-full rounded-lg;
 
   &.selected {
     button {
-      @apply bg-appgray-200 pl-4 pr-4;
+      @apply bg-appgray-200 pl-4 pr-4 outline-2;
     }
   }
 }
 
 button {
-  @apply flex gap-2 items-center py-1 pr-8 text-lg text-appgray-500 rounded-lg transition-all;
+  @apply flex pl-2 gap-2 items-center py-1 pr-8 text-lg text-appgray-500 rounded-lg transition-all outline-secondary-400;
 }
