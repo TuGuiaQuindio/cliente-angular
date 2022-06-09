@@ -1,0 +1,15 @@
+.input-container {
+  @apply grid grid-cols-2 my-4;
+}
+
+.description, .input-section {
+  @apply flex flex-col;
+}
+
+p {
+  @apply text-base text-appgray-400;
+
+  &.name {
+    @apply text-appgray-500;
+  }
+}

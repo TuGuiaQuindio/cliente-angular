@@ -10,6 +10,8 @@ import { PanelSettingsButtonComponent } from './components/panel-settings-button
 import { SettingsPageViewComponent } from './components/settings-page-view/settings-page-view.component';
 import { SecurityComponent } from './routes/security/security.component';
 import { FormSettingsSectionComponent } from './components/form-settings-section/form-settings-section.component';
+import { SettingsInputComponent } from './components/settings-input/settings-input.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -20,12 +22,14 @@ import { FormSettingsSectionComponent } from './components/form-settings-section
     PanelSettingsButtonComponent,
     SettingsPageViewComponent,
     SecurityComponent,
-    FormSettingsSectionComponent
+    FormSettingsSectionComponent,
+    SettingsInputComponent
   ],
   imports: [
     CommonModule,
     SettingsRoutingModule,
-    SharedModule
+    SharedModule,
+    ReactiveFormsModule
   ]
 })
 export class SettingsModule { }
