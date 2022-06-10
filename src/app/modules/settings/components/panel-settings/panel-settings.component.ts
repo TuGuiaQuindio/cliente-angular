@@ -14,7 +14,7 @@ export class PanelSettingsComponent implements OnInit {
   public buttonSection: PanelSectionDefinition[] = [
     { title: "Mi perfil", buttons: 
       [
-        { icon: "bx-user", label: "información personal", url: "/settings" },
+        { icon: "bx-user", label: "información personal", url: "/settings/information" },
         { icon: "bx-lock-alt", label: "seguridad", url: "/settings/security" },
         { icon: "bx-book-bookmark", label: "mis certificaciones", url: "/settings" },
       ]

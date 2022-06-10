@@ -13,6 +13,7 @@ import { FormSettingsSectionComponent } from './components/form-settings-section
 import { SettingsInputComponent } from './components/settings-input/settings-input.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { PanelBuilderComponent } from './components/panel-builder/panel-builder.component';
+import { PersonalInformationComponent } from './routes/personal-information/personal-information.component';
 
 
 @NgModule({
@@ -25,7 +26,8 @@ import { PanelBuilderComponent } from './components/panel-builder/panel-builder.
     SecurityComponent,
     FormSettingsSectionComponent,
     SettingsInputComponent,
-    PanelBuilderComponent
+    PanelBuilderComponent,
+    PersonalInformationComponent,
   ],
   imports: [
     CommonModule,
