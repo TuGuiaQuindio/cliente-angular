@@ -1,7 +1,1 @@
-<app-settings-page-view (confirmClick)="onSubmit()" title="Seguridad" subtitle="Proteje tu cuenta a través de las opciones que tenemos disponibles para ti">
-  <form #sectionContainer class="form-group">
-    <app-form-settings-section *ngFor="let section of sections" [title]="section.title" [formGroup]="section.formGroup">
-      <app-settings-input *ngFor="let input of section.inputs" [name]="input.name" [description]="input.description" [inputType]="input.inputType" [formControlName]="input.formControlName"></app-settings-input>
-    </app-form-settings-section>
-  </form>
-</app-settings-page-view>
+<app-panel-builder title="Seguridad" subtitle="Proteje tu cuenta a través de las opciones que tenemos disponibles para ti" (confirmClick)="onSubmit()" [sections]="sections" [dataForm]="dataForm"></app-panel-builder>
