@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-settings-page-view',
@@ -11,7 +11,14 @@ export class SettingsPageViewComponent implements OnInit {
   @Input() public title = "";
   @Input() public subtitle = "";
 
+  @Output() public confirmClick = new EventEmitter<void>();
+
   ngOnInit(): void {
+
+  }
+
+  public onConfirmClick() {
+    this.confirmClick.next();
   }
 
 }
