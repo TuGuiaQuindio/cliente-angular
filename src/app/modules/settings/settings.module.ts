@@ -14,7 +14,7 @@ import { SettingsInputComponent } from './components/settings-input/settings-inp
 import { ReactiveFormsModule } from '@angular/forms';
 import { PanelBuilderComponent } from './components/panel-builder/panel-builder.component';
 import { PersonalInformationComponent } from './routes/personal-information/personal-information.component';
-
+import { SettingsServicesModule } from './services/settings-services.module';
 
 @NgModule({
   declarations: [
@@ -33,7 +33,8 @@ import { PersonalInformationComponent } from './routes/personal-information/pers
     CommonModule,
     SettingsRoutingModule,
     SharedModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    SettingsServicesModule
   ]
 })
 export class SettingsModule { }
