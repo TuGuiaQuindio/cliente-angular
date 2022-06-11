@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { USER_ROLE } from 'src/app/constants';
 import { SettingSectionDefinition } from '../../components/panel-builder/panel-builder.component';
+import { ConfigurationSolverService } from '../../services/configuration-solver.service';
 
 @Component({
   selector: 'app-personal-information',
@@ -9,25 +11,18 @@ import { SettingSectionDefinition } from '../../components/panel-builder/panel-b
 })
 export class PersonalInformationComponent implements OnInit {
 
-  constructor(private fb: FormBuilder) { }
-  public information = this.fb.group({
-    birthdate: ['', [Validators.required]]
-  })
-  public dataForm = this.fb.group({
-    information: this.information,
-  })
-  public sections: SettingSectionDefinition[] = [
-    {
-      title: "Datos personales", formGroup: this.information, inputs: [
-        { name: "fecha de nacimiento", description: "¿cuál es tu fecha de nacimiento?", formControlName: "birthdate", inputType: "date" },
-      ]
-    },
-  ]
+  constructor(private configurationSolver: ConfigurationSolverService) { }
+  ngOnInit(): void {
+    const configuration = this.configurationSolver.getSectionConfiguration(localStorage.getItem(USER_ROLE) ?? "1", "information");
+    if (!configuration) return;
+    this.sections = configuration.sections;
+    this.dataForm = configuration.dataForm;
+  }
+  public dataForm!: FormGroup;
+  public sections!: SettingSectionDefinition[];
 
   public onSubmit() {
 
-  }
-  ngOnInit(): void {
   }
 
 }

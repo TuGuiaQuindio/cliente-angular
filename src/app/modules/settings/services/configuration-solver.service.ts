@@ -18,6 +18,16 @@ export class ConfigurationSolverService {
         newPassword: ['', Validators.required],
         confirmPassword: ['', Validators.required],
       }, { validators: [ValidatorMatchDirective.matchWith('newPassword', 'confirmPassword')] })
+    }),
+    "module-information-guide": this.fb.group({
+      personalData: this.fb.group({
+        email: this.fb.control({value: "", disabled: true}),
+        document: this.fb.control({value: "", disabled: true}),
+        city: ['', Validators.required]
+      }),
+      additionalInfo: this.fb.group({
+        hasTransport: [false, Validators.required],
+      })
     })
   }
 
@@ -29,16 +39,33 @@ export class ConfigurationSolverService {
         { name: "confirmar contraseña", description: "confirma tu nueva contraseña para estar seguros", formControlName: "confirmPassword", inputType: "password" },
       ]
     },
+    "module-information-guide.personalData": {
+      title: "Información personal del guía", formGroup: this.getSectionalForm("module-information-guide", "personalData"), inputs: [
+        { name: "correo electrónico", description: "dirección de correo electrónico registrada", formControlName: "email", inputType: "email" },
+        { name: "documento", description: "documento de identidad del guía", formControlName: "document", inputType: "text" },
+        { name: "ciudad", description: "lugar de residencia", formControlName: "city", inputType: "text" },
+      ]
+    },
+    "module-information-guide.additionalInfo": {
+      title: "Datos adicionales", formGroup: this.getSectionalForm("module-information-guide", "additionalInfo"), inputs: [
+        { name: "cuento con transporte particular", description: "¿dispone de un vehiculo para el transporte?", formControlName: "hasTransport", inputType: "checkbox" }
+      ]
+    }
   }
 
   private moduleSections: { [key: string]: string[] } = {
-    "module-security": ["passwordChange"]
+    "module-security": ["passwordChange"],
+    "module-information-guide": ["personalData", "additionalInfo"],
   }
 
   private rolePerSection: { [key: string]: { [key: string]: string } } = {
     "security": {
       "1": "module-security",
       "2": "module-security"
+    },
+    "information": {
+      "1": "module-information-guide",
+      "2": "module-information-company"
     }
   }
 
