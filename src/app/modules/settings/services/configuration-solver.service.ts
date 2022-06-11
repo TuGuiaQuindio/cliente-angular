@@ -21,8 +21,8 @@ export class ConfigurationSolverService {
     }),
     "module-information-guide": this.fb.group({
       personalData: this.fb.group({
-        email: this.fb.control({value: "", disabled: true}),
-        document: this.fb.control({value: "", disabled: true}),
+        email: this.fb.control({ value: "email@email.com", disabled: true }),
+        document: this.fb.control({ value: "", disabled: true }),
         city: ['', Validators.required]
       }),
       additionalInfo: this.fb.group({

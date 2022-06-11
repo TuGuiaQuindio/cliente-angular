@@ -15,6 +15,10 @@ label {
 }
 
 input {
+  &[disabled] {
+    @apply bg-appgray-100 border-appgray-400 text-appgray-400;
+  }
+
   @apply px-3 py-2 border-2 border-secondary-600 rounded-lg w-full;
 }
 
