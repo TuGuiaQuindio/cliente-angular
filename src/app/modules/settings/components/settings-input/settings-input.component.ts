@@ -1,7 +1,8 @@
-import { Component, Input, OnInit, Optional, Self } from '@angular/core';
+import { Component, ElementRef, Input, OnInit, Optional, Self, ViewChild } from '@angular/core';
 import { FormControl, NgControl } from '@angular/forms';
 import { InputValueAccessor } from 'src/app/classes/input-value-accessor';
 import { WarningMessenger } from 'src/app/interfaces/warning-messenger';
+import { InputComponent } from 'src/app/modules/shared/input/input.component';
 
 @Component({
   selector: 'app-settings-input',
@@ -20,10 +21,17 @@ export class SettingsInputComponent extends InputValueAccessor implements OnInit
   @Input() public description = "";
   @Input() public inputType = "";
   @Input() public formControlName = "";
+  @ViewChild('input', { read: InputComponent }) public set hostInput(value: InputComponent) {
+    this.input = value;
+  }
+  public input!: InputComponent;
   public warning = "";
 
   ngOnInit(): void {
     this.setup();
   }
 
+  setFocus() {
+    this.input.setFocus();
+  }
 }

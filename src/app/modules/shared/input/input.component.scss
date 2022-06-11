@@ -7,7 +7,7 @@ label {
 }
 
 .input-group {
-  @apply flex relative;
+  @apply flex relative justify-end;
 
   .password-icon {
     @apply px-3 py-2 absolute h-full cursor-pointer right-0 flex justify-center items-center text-secondary-600 text-xl select-none;
@@ -15,11 +15,13 @@ label {
 }
 
 input {
+  @apply px-3 py-2 border-2 border-secondary-600 rounded-lg w-full;
   &[disabled] {
     @apply bg-appgray-100 border-appgray-400 text-appgray-400;
   }
-
-  @apply px-3 py-2 border-2 border-secondary-600 rounded-lg w-full;
+  &[type=checkbox] {
+    @apply w-fit;
+  }
 }
 
 :host {

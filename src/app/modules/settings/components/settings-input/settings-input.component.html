@@ -1,10 +1,10 @@
 <hr>
 <article class="input-container">
-  <section class="description">
+  <section class="description" (click)="setFocus()">
     <p class="name">{{name}}</p>
     <p>{{description}}</p>
   </section>
   <section class="input-section">
-    <app-input [warningMsg]="warning" [formControl]="control" [type]="inputType" [hideLabel]="true"></app-input>
+    <app-input #input [warningMsg]="warning" [formControl]="control" [type]="inputType" [hideLabel]="true"></app-input>
   </section>
 </article>
