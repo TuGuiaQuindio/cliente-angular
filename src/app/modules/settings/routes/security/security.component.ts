@@ -26,10 +26,11 @@ export class SecurityComponent implements OnInit {
     const configuration = this.configurationSolverSrv.getSectionConfiguration(localStorage.getItem(USER_ROLE) ?? "1", "security");
     if (!configuration) return;
     const { sections, dataForm } = configuration;
-    console.warn("Section", sections)
     this.configurationSubj.next({
       sections, dataForm
     })
+    this.dataForm = dataForm;
+    this.sections = sections;
   }
 
   public dataForm!: FormGroup;
