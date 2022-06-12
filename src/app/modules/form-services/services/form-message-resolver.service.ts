@@ -14,6 +14,7 @@ export class FormMessageResolverService {
     MATCH_ERROR: "La contraseña y confirmación de contraseña no coinciden.",
     PWD_LENGTH_ERROR: "La contraseña debe estar entre 7 y 30 caracteres de longitud.",
     SIGNUP_OK: "Se ha registrado el usuario correctamente",
+    PATTERN_NOT_MATCH: "Este campo no cumple con el formato requerido",
   }
 
   private formStatusMessages: { [key: number]: string } = {
@@ -28,6 +29,7 @@ export class FormMessageResolverService {
     noMatch: "MATCH_ERROR",
     minlength: "PWD_LENGTH_ERROR",
     maxlength: "PWD_LENGTH_ERROR",
+    pattern: "PATTERN_NOT_MATCH",
   }
 
   getErrorMessage(key: string): string | undefined {
