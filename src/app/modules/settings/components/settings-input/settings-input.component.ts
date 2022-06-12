@@ -37,6 +37,10 @@ export class SettingsInputComponent extends InputValueAccessor implements OnInit
     this.input.setFocus();
   }
 
+  isMap() {
+    return this.inputType == "map";
+  }
+
   hasExamples() {
     return !!this.examples;
   }

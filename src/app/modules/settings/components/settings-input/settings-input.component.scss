@@ -24,3 +24,9 @@ p {
     @apply text-appgray-400 list-disc ml-6;
   }
 }
+
+.input-section {
+  app-address-map {
+    @apply h-96;
+  }
+}

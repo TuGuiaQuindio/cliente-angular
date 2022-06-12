@@ -5,7 +5,12 @@
     <p>{{description}}</p>
   </section>
   <section class="input-section">
-    <app-input #input [warningMsg]="warning" [formControl]="control" [type]="inputType" [hideLabel]="true"></app-input>
+    <ng-container *ngIf="!isMap(); else map">
+      <app-input #input [warningMsg]="warning" [formControl]="control" [type]="inputType" [hideLabel]="true"></app-input>
+    </ng-container>
+    <ng-template #map>
+      <app-address-map [formControl]="control" [warningMsg]="warning"></app-address-map>
+    </ng-template>
     <section *ngIf="hasExamples()" class="examples">
         <p class="title">{{examples!.title}}</p>
         <ul>

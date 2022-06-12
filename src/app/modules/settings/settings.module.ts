@@ -15,6 +15,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { PanelBuilderComponent } from './components/panel-builder/panel-builder.component';
 import { PersonalInformationComponent } from './routes/personal-information/personal-information.component';
 import { SettingsServicesModule } from './services/settings-services.module';
+import { MapModule } from '../map/map.module';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { SettingsServicesModule } from './services/settings-services.module';
     SettingsRoutingModule,
     SharedModule,
     ReactiveFormsModule,
-    SettingsServicesModule
+    SettingsServicesModule,
+    MapModule
   ]
 })
 export class SettingsModule { }
