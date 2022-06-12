@@ -21,15 +21,26 @@ export class ConfigurationSolverService {
     }),
     "module-information-guide": this.fb.group({
       personalData: this.fb.group({
-        email: this.fb.control({ value: "email@email.com", disabled: true }),
+        email: this.fb.control({ value: "", disabled: true }),
         document: this.fb.control({ value: "", disabled: true }),
         phoneNumber: ['', [Validators.pattern(/^(?:\(\+[0-9]{1,3}\)|\+[0-9]{1,3}|.?)\s?[0-9]{3}[\s-]?[0-9]{3}[\s-]?[0-9]{2,6}[\s-]?[0-9]{2,6}$/)]]
       }),
       additionalInfo: this.fb.group({
-        city: ['', Validators.required],
+        city: [''],
         hasTransport: [false, Validators.required],
       })
-    })
+    }),
+    "module-information-company": this.fb.group({
+      companyData: this.fb.group({
+        email: this.fb.control({ value: "", disabled: true }),
+        nit: this.fb.control({ value: "", disabled: true }),
+        phoneNumber: ['', [Validators.pattern(/^(?:\(\+[0-9]{1,3}\)|\+[0-9]{1,3}|.?)\s?[0-9]{3}[\s-]?[0-9]{3}[\s-]?[0-9]{2,6}[\s-]?[0-9]{2,6}$/)]]
+      }),
+      additionalInfo: this.fb.group({
+        address: ['', Validators.required],
+        mainActivity: ['', [Validators.minLength(8)]],
+      })
+    }),
   }
 
   private configurationSection: { [key: string]: SettingSectionDefinition } = {
@@ -44,7 +55,8 @@ export class ConfigurationSolverService {
       title: "Información personal del guía", formGroup: this.getSectionalForm("module-information-guide", "personalData"), inputs: [
         { name: "correo electrónico", description: "dirección de correo electrónico registrada", formControlName: "email", inputType: "email" },
         { name: "documento", description: "documento de identidad del guía", formControlName: "document", inputType: "text" },
-        { name: "número de teléfono", description: "un número de contacto para que las empresas puedan hablar contigo", formControlName: "phoneNumber", inputType: "tel", example: {
+        {
+          name: "número de teléfono", description: "un número de contacto para que las empresas puedan hablar contigo", formControlName: "phoneNumber", inputType: "tel", example: {
             title: "Los formatos válidos son:",
             examples: [
               "(+57) 123 456 7789",
@@ -60,12 +72,35 @@ export class ConfigurationSolverService {
         { name: "ciudad", description: "lugar de residencia", formControlName: "city", inputType: "text" },
         { name: "cuento con transporte particular", description: "¿dispone de un vehiculo para el transporte?", formControlName: "hasTransport", inputType: "checkbox" }
       ]
+    },
+    "module-information-company.companyData": {
+      title: "Datos de la empresa", formGroup: this.getSectionalForm("module-information-company", "companyData"), inputs: [
+        { name: "correo electrónico", description: "dirección de correo electrónico registrada", formControlName: "email", inputType: "email" },
+        { name: "nit", description: "numero de identificación tributaria de la empresa", formControlName: "nit", inputType: "text" },
+        {
+          name: "número de teléfono", description: "número de contacto para que los guías y contratados puedan comunicarse con tu empresa", formControlName: "phoneNumber", inputType: "tel", example: {
+            title: "Los formatos válidos son:",
+            examples: [
+              "(+57) 123 456 7789",
+              "+57 123 4567789",
+              "1234567789",
+            ]
+          }
+        }
+      ]
+    },
+    "module-information-company.additionalInfo": {
+      title: "Información adicional", formGroup: this.getSectionalForm("module-information-company", "additionalInfo"), inputs: [
+        { name: "ubicación de la empresa", description: "centro de operaciones principal de la empresa", inputType: "map", formControlName: "address" },
+        { name: "actividad principal", description: "¿a qué se dedica tu empresa?", inputType: "text", formControlName: "mainActivity" }
+      ]
     }
   }
 
   private moduleSections: { [key: string]: string[] } = {
     "module-security": ["passwordChange"],
     "module-information-guide": ["personalData", "additionalInfo"],
+    "module-information-company": ["companyData", "additionalInfo"],
   }
 
   private rolePerSection: { [key: string]: { [key: string]: string } } = {
