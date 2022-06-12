@@ -1,1 +1,1 @@
-<app-panel-builder title="Informacion personal" subtitle="Actualiza tu informacion personal e incrementa tus posibilidades de ser contratado" (confirmClick)="onSubmit()" [sections]="sections" [dataForm]="dataForm"></app-panel-builder>
+<app-panel-builder title="Informacion personal" subtitle="Actualiza tu informacion personal e incrementa tus posibilidades de ser contratado" (confirmClick)="onSubmit()" [sections]="(sections$ | async)!" [dataForm]="(dataForm$ | async)!"></app-panel-builder>

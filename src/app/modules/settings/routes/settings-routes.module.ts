@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
 import { SecurityComponent } from './security/security.component';
 import { PersonalInformationComponent } from './personal-information/personal-information.component';
+import { BaseRouteComponent } from './base-route/base-route.component';
 
 const routes: Routes = [
   { path: 'security', component: SecurityComponent },
@@ -11,6 +12,8 @@ const routes: Routes = [
 
 @NgModule({
   declarations: [
+  
+    BaseRouteComponent
   ],
   imports: [
     CommonModule,

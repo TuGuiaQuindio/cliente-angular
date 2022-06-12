@@ -1,1 +1,1 @@
-<app-panel-builder title="Seguridad" subtitle="Proteje tu cuenta a través de las opciones que tenemos disponibles para ti" (confirmClick)="onSubmit()" [sections]="(this.configurationState$ | async)!.sections" [dataForm]="(this.configurationState$ | async)!.dataForm"></app-panel-builder>
+<app-panel-builder title="Seguridad" subtitle="Proteje tu cuenta a través de las opciones que tenemos disponibles para ti" (confirmClick)="onSubmit()" [sections]="(sections$ | async)!" [dataForm]="(dataForm$ | async)!"></app-panel-builder>
