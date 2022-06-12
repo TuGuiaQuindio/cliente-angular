@@ -40,6 +40,10 @@ export class InputComponent extends InputValueAccessor implements OnInit, Warnin
     return this.type === 'password';
   }
 
+  public isChecked(): boolean {
+    return this.type === "checkbox" && this.ngControl.control!.value === true;
+  }
+
   public setFocus() {
     this.inputEl.focus();
   }
