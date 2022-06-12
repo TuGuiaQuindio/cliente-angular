@@ -1,7 +1,9 @@
-import { AfterViewInit, Component, EventEmitter, HostBinding, Input, Output } from '@angular/core';
+import { AfterViewInit, Component, EventEmitter, HostBinding, Input, Optional, Output, Self } from '@angular/core';
+import { NgControl } from '@angular/forms';
 import * as Leaflet from 'leaflet';
 
 import { icon, Marker } from 'leaflet';
+import { InputValueAccessor } from 'src/app/classes/input-value-accessor';
 import { WarningMessenger } from 'src/app/interfaces/warning-messenger';
 const iconRetinaUrl = 'assets/images/leaflet/marker-icon-tg-2x.png';
 const iconUrl = 'assets/images/leaflet/marker-icon-tg.png';
@@ -23,7 +25,7 @@ Marker.prototype.options.icon = iconDefault;
   templateUrl: './address-map.component.html',
   styleUrls: ['./address-map.component.scss']
 })
-export class AddressMapComponent implements AfterViewInit, WarningMessenger {
+export class AddressMapComponent extends InputValueAccessor implements AfterViewInit, WarningMessenger {
 
   private map? : Leaflet.Map = undefined;
   private marker = Leaflet.marker([0,0]);
@@ -36,7 +38,9 @@ export class AddressMapComponent implements AfterViewInit, WarningMessenger {
     return this.warningMsg.length != 0;
   }
 
-  constructor() { }
+  constructor(@Optional() @Self() ngControl: NgControl) {
+    super(ngControl);
+  }
 
   ngAfterViewInit(): void {
     this.initMap();
@@ -68,6 +72,7 @@ export class AddressMapComponent implements AfterViewInit, WarningMessenger {
     this.map.flyTo(e.latlng);
     const { lat, lng } = e.latlng; 
     this.mapLocation.emit([lat, lng]);
+    this.ngControl.control!.setValue(`(${lat}, ${lng})`)
   }
 
 }
