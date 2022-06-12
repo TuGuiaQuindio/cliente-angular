@@ -17,7 +17,7 @@ export class PersonalInformationComponent extends BaseRouteComponent implements 
   }
 
   ngOnInit(): void {
-    const configuration = this.configurationSolver.getSectionConfiguration(localStorage.getItem(USER_ROLE) ?? "1", "information");
+    const configuration = this.configurationSolver.getSectionConfiguration(localStorage.getItem(USER_ROLE)!, "information");
     if (!configuration) return;
     const { sections, dataForm } = configuration;
     this.dataForm = dataForm;
