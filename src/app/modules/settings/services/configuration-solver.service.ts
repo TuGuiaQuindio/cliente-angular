@@ -23,9 +23,10 @@ export class ConfigurationSolverService {
       personalData: this.fb.group({
         email: this.fb.control({ value: "email@email.com", disabled: true }),
         document: this.fb.control({ value: "", disabled: true }),
-        city: ['', Validators.required]
+        phoneNumber: ['', [Validators.pattern(/^(?:\(\+[0-9]{1,3}\)|\+[0-9]{1,3}|.?)\s?[0-9]{3}[\s-]?[0-9]{3}[\s-]?[0-9]{2,6}[\s-]?[0-9]{2,6}$/)]]
       }),
       additionalInfo: this.fb.group({
+        city: ['', Validators.required],
         hasTransport: [false, Validators.required],
       })
     })
@@ -43,11 +44,20 @@ export class ConfigurationSolverService {
       title: "Información personal del guía", formGroup: this.getSectionalForm("module-information-guide", "personalData"), inputs: [
         { name: "correo electrónico", description: "dirección de correo electrónico registrada", formControlName: "email", inputType: "email" },
         { name: "documento", description: "documento de identidad del guía", formControlName: "document", inputType: "text" },
-        { name: "ciudad", description: "lugar de residencia", formControlName: "city", inputType: "text" },
+        { name: "número de teléfono", description: "un número de contacto para que las empresas puedan hablar contigo", formControlName: "phoneNumber", inputType: "tel", example: {
+            title: "Los formatos válidos son:",
+            examples: [
+              "(+57) 123 456 7789",
+              "+57 123 4567789",
+              "1234567789",
+            ]
+          }
+        }
       ]
     },
     "module-information-guide.additionalInfo": {
       title: "Datos adicionales", formGroup: this.getSectionalForm("module-information-guide", "additionalInfo"), inputs: [
+        { name: "ciudad", description: "lugar de residencia", formControlName: "city", inputType: "text" },
         { name: "cuento con transporte particular", description: "¿dispone de un vehiculo para el transporte?", formControlName: "hasTransport", inputType: "checkbox" }
       ]
     }

@@ -13,3 +13,14 @@ p {
     @apply text-appgray-500;
   }
 }
+
+.examples {
+  @apply ml-4 mt-2;
+  .title {
+    @apply text-appgray-400;
+  }
+
+  ul > li {
+    @apply text-appgray-400 list-disc ml-6;
+  }
+}

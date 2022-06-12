@@ -1,7 +1,7 @@
 <app-settings-page-view (confirmClick)="onSubmit()" [title]="title" [subtitle]="subtitle">
   <form #sectionContainer class="form-group">
     <app-form-settings-section *ngFor="let section of sections" [title]="section.title" [formGroup]="section.formGroup">
-      <app-settings-input *ngFor="let input of section.inputs" [name]="input.name" [description]="input.description" [inputType]="input.inputType" [formControlName]="input.formControlName"></app-settings-input>
+      <app-settings-input *ngFor="let input of section.inputs" [name]="input.name" [description]="input.description" [inputType]="input.inputType" [formControlName]="input.formControlName" [examples]="input.example"></app-settings-input>
     </app-form-settings-section>
   </form>
 </app-settings-page-view>

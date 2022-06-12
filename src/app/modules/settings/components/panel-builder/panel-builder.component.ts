@@ -5,7 +5,8 @@ import { WarningMessenger } from 'src/app/interfaces/warning-messenger';
 import { SettingsInputComponent } from '../settings-input/settings-input.component';
 
 export type SettingSectionDefinition = { title: string, inputs: SettingInputDefinition[], formGroup: FormGroup }
-export type SettingInputDefinition = { name: string, description: string, formControlName: string, inputType: string }
+export type SettingInputDefinition = { name: string, description: string, formControlName: string, inputType: string, example?: SettingInputExample }
+export type SettingInputExample = { title: string, examples: string[] }
 @Component({
   selector: 'app-panel-builder',
   templateUrl: './panel-builder.component.html',

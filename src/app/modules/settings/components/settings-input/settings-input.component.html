@@ -6,5 +6,11 @@
   </section>
   <section class="input-section">
     <app-input #input [warningMsg]="warning" [formControl]="control" [type]="inputType" [hideLabel]="true"></app-input>
+    <section *ngIf="hasExamples()" class="examples">
+        <p class="title">{{examples!.title}}</p>
+        <ul>
+          <li *ngFor="let example of examples!.examples">{{example}}</li>
+        </ul>
+      </section>
   </section>
 </article>

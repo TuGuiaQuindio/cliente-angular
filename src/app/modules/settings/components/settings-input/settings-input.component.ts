@@ -3,6 +3,7 @@ import { FormControl, NgControl } from '@angular/forms';
 import { InputValueAccessor } from 'src/app/classes/input-value-accessor';
 import { WarningMessenger } from 'src/app/interfaces/warning-messenger';
 import { InputComponent } from 'src/app/modules/shared/input/input.component';
+import { SettingInputExample } from '../panel-builder/panel-builder.component';
 
 @Component({
   selector: 'app-settings-input',
@@ -21,6 +22,7 @@ export class SettingsInputComponent extends InputValueAccessor implements OnInit
   @Input() public description = "";
   @Input() public inputType = "";
   @Input() public formControlName = "";
+  @Input() public examples?: SettingInputExample;
   @ViewChild('input', { read: InputComponent }) public set hostInput(value: InputComponent) {
     this.input = value;
   }
@@ -33,5 +35,9 @@ export class SettingsInputComponent extends InputValueAccessor implements OnInit
 
   setFocus() {
     this.input.setFocus();
+  }
+
+  hasExamples() {
+    return !!this.examples;
   }
 }
