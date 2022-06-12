@@ -23,7 +23,8 @@ export class ConfigurationSolverService {
       personalData: this.fb.group({
         email: this.fb.control({ value: "", disabled: true }),
         document: this.fb.control({ value: "", disabled: true }),
-        phoneNumber: ['', [Validators.pattern(/^(?:\(\+[0-9]{1,3}\)|\+[0-9]{1,3}|.?)\s?[0-9]{3}[\s-]?[0-9]{3}[\s-]?[0-9]{2,6}[\s-]?[0-9]{2,6}$/)]]
+        phoneNumber: ['', [Validators.pattern(/^(?:\(\+[0-9]{1,3}\)|\+[0-9]{1,3}|.?)\s?[0-9]{3}[\s-]?[0-9]{3}[\s-]?[0-9]{2,6}[\s-]?[0-9]{2,6}$/)]],
+        birthdate: ['']
       }),
       additionalInfo: this.fb.group({
         city: [''],
@@ -52,7 +53,7 @@ export class ConfigurationSolverService {
       ]
     },
     "module-information-guide.personalData": {
-      title: "Información personal del guía", formGroup: this.getSectionalForm("module-information-guide", "personalData"), inputs: [
+      title: "Información personal", formGroup: this.getSectionalForm("module-information-guide", "personalData"), inputs: [
         { name: "correo electrónico", description: "dirección de correo electrónico registrada", formControlName: "email", inputType: "email" },
         { name: "documento", description: "documento de identidad del guía", formControlName: "document", inputType: "text" },
         {
@@ -64,7 +65,8 @@ export class ConfigurationSolverService {
               "1234567789",
             ]
           }
-        }
+        },
+        { name: "fecha de nacimiento", description: "dinos tu fecha de nacimiento", formControlName: "birthdate", inputType: "date" },
       ]
     },
     "module-information-guide.additionalInfo": {
