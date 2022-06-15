@@ -77,6 +77,9 @@ module.exports = {
           500: withOpacity("--color-appred-500"),
           300: withOpacity("--color-appred-300")
         },
+        gold: {
+          400: withOpacity("--color-gold-400"),
+        },
         appblack: withOpacity("--color-appblack"),
       }
     },
