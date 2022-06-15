@@ -1,6 +1,7 @@
-import { Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
 import { BehaviorSubject, map, Observable } from 'rxjs';
 
+export type FileWrapper = { filename: string, file: File }
 export type FileState = { filename: string, icon: string, color: string };
 @Component({
   selector: 'app-file',
@@ -11,17 +12,20 @@ export class FileComponent implements OnInit {
 
   constructor() { }
   @Input('file') public set inputFile(file: File) {
-    this.file = file;
-    this.filename = file.name;
+    this.wrapper = {
+      file: file,
+      filename: file.name,
+    }
     this.fileStateSubj.next({
+      filename: file.name,
       icon: this.solveIcon(file.type),
-      filename: this.filename,
       color: this.solveColor(file.type),
     });
   };
-  @Output() public fileClose = new EventEmitter<File>();
+  @Output() public fileClose = new EventEmitter<FileWrapper>();
+  @Output() public fileEdit = new EventEmitter<FileWrapper>();
   @ViewChild('inputFilename') public set hostInput(element: any) {
-    if(!element) return;
+    if (!element) return;
     this.editInput = element.nativeElement as HTMLInputElement;
   }
 
@@ -53,22 +57,21 @@ export class FileComponent implements OnInit {
     );
   }
 
-  public iconTypes: { [ key: string ]: string } = {
+  public iconTypes: { [key: string]: string } = {
     "application/msword": "bxs-file-doc",
     "application/pdf": "bxs-file-pdf",
     "image/png": "bxs-file-png",
     "image/jpeg": "bxs-file-jpg",
   }
 
-  public colorTypes: { [ key: string ]: string } = {
+  public colorTypes: { [key: string]: string } = {
     "application/msword": "text-blue-400",
     "application/pdf": "text-orange-400",
     "image/png": "text-purple-400",
     "image/jpeg": "text-sky-400",
   }
 
-  public file?: File;
-  public filename!: string;
+  public wrapper!: FileWrapper;
   public editInput!: HTMLInputElement;
 
   public isEditting = false;
@@ -87,22 +90,20 @@ export class FileComponent implements OnInit {
   }
 
   public editFilename() {
-    if(this.isEditting) {
-      console.warn(this.editInput.value)
-      this.filename = this.editInput.value;
+    if (this.isEditting) {
       const value = this.fileStateSubj.value;
-      this.fileStateSubj.next({
-        ...value,
-        filename: this.editInput.value
-      })
+      value.filename = this.editInput.value;
+      console.warn(this.editInput.value)
+      this.fileStateSubj.next(value)
+      this.wrapper.filename = this.editInput.value;
+      this.fileEdit.next(this.wrapper);
     }
     this.isEditting = !this.isEditting;
   }
 
   public onFileClose() {
-    if (!this.file) return;
-    this.fileClose.next(this.file);
+    if (!this.wrapper.file) return;
+    this.fileClose.next(this.wrapper);
     this.fileClose.complete();
   }
-
 }

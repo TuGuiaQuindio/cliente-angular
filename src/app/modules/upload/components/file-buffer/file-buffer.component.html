@@ -1,3 +1,3 @@
 <section class="file-container">
-  <app-file *ngFor="let file of buffer" [file]="file" (fileClose)="onFileClose($event)"></app-file>
+  <app-file *ngFor="let wrapper of buffer" [file]="wrapper.file" (fileEdit)="onFileEdit($event)" (fileClose)="onFileClose($event)"></app-file>
 </section>
