@@ -18,6 +18,7 @@ import { SettingsServicesModule } from './services/settings-services.module';
 import { MapModule } from '../map/map.module';
 import { CertificatesComponent } from './routes/certificates/certificates.component';
 import { UploadModule } from '../upload/upload.module';
+import { LanguageFormModule } from '../language-form/language-form.module';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,8 @@ import { UploadModule } from '../upload/upload.module';
     ReactiveFormsModule,
     SettingsServicesModule,
     MapModule,
-    UploadModule
+    UploadModule,
+    LanguageFormModule
   ]
 })
 export class SettingsModule { }

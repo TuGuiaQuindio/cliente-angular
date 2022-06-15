@@ -1,0 +1,7 @@
+.star-container {
+  @apply flex text-appgray-600 w-fit z-20;
+}
+
+.star {
+  @apply text-gold-400 pointer-events-none;
+}
