@@ -1,0 +1,7 @@
+<app-settings-page-view title="Certificados" subtitle="Accede a todos los certificados que has subido aquí" (confirmClick)="onSubmit()">
+  <section class="upload-container">
+    <app-upload-input (filesDropped)="onFileUpload($event)"></app-upload-input>
+    <app-file-buffer #fileBuffer></app-file-buffer>
+  </section>
+</app-settings-page-view>
+ 

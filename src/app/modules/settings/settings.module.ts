@@ -16,6 +16,7 @@ import { PanelBuilderComponent } from './components/panel-builder/panel-builder.
 import { PersonalInformationComponent } from './routes/personal-information/personal-information.component';
 import { SettingsServicesModule } from './services/settings-services.module';
 import { MapModule } from '../map/map.module';
+import { CertificatesComponent } from './routes/certificates/certificates.component';
 import { UploadModule } from '../upload/upload.module';
 
 @NgModule({
@@ -30,6 +31,7 @@ import { UploadModule } from '../upload/upload.module';
     SettingsInputComponent,
     PanelBuilderComponent,
     PersonalInformationComponent,
+    CertificatesComponent,
   ],
   imports: [
     CommonModule,
