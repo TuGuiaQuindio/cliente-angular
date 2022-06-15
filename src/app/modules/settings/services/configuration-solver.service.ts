@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ValidatorMatchDirective } from '../../signup/directives/validator-match.directive';
 import { SettingSectionDefinition } from '../components/panel-builder/panel-builder.component';
+import { PanelSectionDefinition } from '../components/panel-settings/panel-settings.component';
 import { SettingsServicesModule } from './settings-services.module';
 
 export type ConfigurationDefinition = { dataForm: FormGroup, sections: SettingSectionDefinition[] };
@@ -114,6 +115,34 @@ export class ConfigurationSolverService {
       "1": "module-information-guide",
       "2": "module-information-company"
     }
+  }
+
+  private panelSectionsPerRole: { [key: string]: PanelSectionDefinition[] } = {
+    "1": [
+      {
+        title: "Mi perfil", buttons:
+          [
+            { icon: "bx-user", label: "información personal", url: "/settings/information" },
+            { icon: "bx-lock-alt", label: "seguridad", url: "/settings/security" },
+            { icon: "bx-chat", label: "idiomas", url: "/settings/languages" },
+            { icon: "bx-book-bookmark", label: "mis certificaciones", url: "/settings/certificates" },
+          ]
+      },
+    ],
+    "2": [
+      {
+        title: "Mi perfil", buttons:
+          [
+            { icon: "bx-user", label: "información personal", url: "/settings/information" },
+            { icon: "bx-lock-alt", label: "seguridad", url: "/settings/security" },
+            { icon: "bx-book-bookmark", label: "mis vacantes", url: "/settings/certificates" },
+          ]
+      },
+    ],
+  }
+
+  public getPanelSections(role: string) {
+    return this.panelSectionsPerRole[role];
   }
 
   public getSectionConfiguration(roleNumber: string | undefined, moduleName: string): ConfigurationDefinition | undefined {

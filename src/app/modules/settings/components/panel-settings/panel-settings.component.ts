@@ -1,6 +1,8 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
 import { concatMap, filter, map, of, Subject, take, takeUntil } from 'rxjs';
+import { USER_ROLE } from 'src/app/constants';
+import { ConfigurationSolverService } from '../../services/configuration-solver.service';
 
 export type PanelSectionDefinition = { title: string, buttons: PanelButtonDefinition[] }
 export type PanelButtonDefinition = { icon: string, label: string, url: string }
@@ -10,10 +12,16 @@ export type PanelButtonDefinition = { icon: string, label: string, url: string }
   templateUrl: './panel-settings.component.html',
   styleUrls: ['./panel-settings.component.scss']
 })
-export class PanelSettingsComponent {
+export class PanelSettingsComponent implements OnInit {
 
-  constructor(router: Router) {
+  constructor(router: Router, private configurationSolverSrv: ConfigurationSolverService) {
     this.solveSelectedButton(router.url);
+  }
+
+  public ngOnInit() {
+    const role = localStorage.getItem(USER_ROLE);
+    if(!role) return;
+    this.buttonSection = this.configurationSolverSrv.getPanelSections(role);
   }
 
   public solveSelectedButton(url: string) {
@@ -50,16 +58,7 @@ export class PanelSettingsComponent {
       })
   }
 
-  public buttonSection: PanelSectionDefinition[] = [
-    {
-      title: "Mi perfil", buttons:
-        [
-          { icon: "bx-user", label: "información personal", url: "/settings/information" },
-          { icon: "bx-lock-alt", label: "seguridad", url: "/settings/security" },
-          { icon: "bx-book-bookmark", label: "mis certificaciones", url: "/settings/certificates" },
-        ]
-    },
-  ]
+  public buttonSection!: PanelSectionDefinition[];
 
   private currentButton?: PanelButtonDefinition;
 
