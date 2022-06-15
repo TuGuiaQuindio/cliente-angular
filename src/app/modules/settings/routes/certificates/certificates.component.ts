@@ -12,18 +12,8 @@ export class CertificatesComponent extends BaseRouteComponent implements OnInit 
   constructor() {
     super();
   }
-  @ViewChild(FileBufferComponent) public fileBuffer!: FileBufferComponent;
 
   ngOnInit(): void {
-  }
-
-  onFileUpload(files: File[]) {
-    for(const file of files) {
-      try {
-        this.fileBuffer.add(file);
-      } catch {
-      }
-    }
   }
 
   public onSubmit() {
