@@ -1,5 +1,5 @@
-import { Component, ElementRef, Input, OnInit, Optional, Self, ViewChild } from '@angular/core';
-import { FormControl, NgControl } from '@angular/forms';
+import { Component, Input, OnInit, Optional, Self, ViewChild } from '@angular/core';
+import { NgControl } from '@angular/forms';
 import { InputValueAccessor } from 'src/app/classes/input-value-accessor';
 import { WarningMessenger } from 'src/app/interfaces/warning-messenger';
 import { InputComponent } from 'src/app/modules/shared/input/input.component';
@@ -34,6 +34,7 @@ export class SettingsInputComponent extends InputValueAccessor implements OnInit
   }
 
   setFocus() {
+    if(!this.input) return;
     this.input.setFocus();
   }
 
