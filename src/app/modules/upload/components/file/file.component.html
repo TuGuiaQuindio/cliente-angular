@@ -1,11 +1,15 @@
 <article class="file-content">
-  <i class="bx" [ngClass]="[(icon$ | async)!, (color$ | async)!]"></i>
+  <i class="file-icon bx" [ngClass]="[(icon$ | async)!, (color$ | async)!]"></i>
   <ng-container *ngIf="!isEditting; else editBlock">
-    <p class="filename" (dblclick)="editFilename()">{{filename$ | async}}</p>
+    <section class="filename-container">
+      <p class="filename" (dblclick)="editFilename()">{{filename$ | async}}</p>
+    </section>
     <i class="edit-btn bx bxs-edit-alt" (click)="editFilename()"></i>
   </ng-container>
   <ng-template #editBlock>
-    <input #inputFilename type="text" [value]="filename$ | async">
+    <section class="filename-container">
+      <input #inputFilename type="text" [value]="filename$ | async">
+    </section>
     <i class="accept-btn bx bx-check" (click)="editFilename()"></i>
   </ng-template>
   <i class="close-btn bx bx-x" (click)="onFileClose()"></i>

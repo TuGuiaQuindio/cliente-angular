@@ -1,9 +1,9 @@
 :host {
-  @apply flex flex-col gap-2 rounded-md px-4 py-2 w-full;
+  @apply flex flex-col gap-2 rounded-md w-full;
 }
 
 .file-content {
-  @apply grid grid-cols-[2rem_auto_2rem_2rem] gap-x-8 items-center;
+  @apply flex gap-x-4 items-center overflow-clip;
 
   .close-btn, .edit-btn, .accept-btn {
     @apply flex items-center justify-center w-10 h-10 rounded-full border shadow-sm bg-primary transition-[color_transform] duration-100 text-secondary-500;
@@ -29,8 +29,15 @@
     @apply text-[2rem];
   }
 
-  p {
-    @apply text-appgray-500 p-2;
+  .filename-container {
+    @apply w-1/3 overflow-auto border rounded-md flex flex-1;
+    & > *{
+      @apply w-full p-2;
+    }
+
+    p {
+      @apply text-appgray-500 h-10 w-fit;
+    }
   }
 
   input {
