@@ -1,0 +1,10 @@
+<section class="choose-file-container" [class.dropping]="fileOnDropzone" (dragover)="onFileDrag($event)" (dragleave)="onFileDragLeave()" (drop)="onFileDrop($event)">
+  <article id="dropzone">
+    <i class="bx bx-cloud-download"></i>
+    <p class="caption">Suelta tus archivos aquí</p>
+  </article>
+  <input #input id="upload-input" type="file" accept=".pdf, .jpg, .jpeg, .png" multiple>
+  <i class="bx bx-cloud-upload"></i>
+  <p class="caption">Arrastra tu certificado aquí o</p>
+  <app-button type="special" (click)="selectFiles()">Elige uno desde tu computadora</app-button>
+</section>

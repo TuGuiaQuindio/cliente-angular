@@ -1,0 +1,36 @@
+:host {
+  @apply flex flex-col w-full h-full;
+}
+
+.choose-file-container {
+  @apply flex flex-col w-full h-full justify-center items-center outline-[3px] outline-dashed rounded-2xl outline-secondary-500 bg-primary overflow-hidden relative transition-all p-12 px-8;
+
+  #dropzone {
+    @apply flex flex-col justify-center items-center w-full h-full bg-primary absolute opacity-0 transition-[opacity] pointer-events-none;
+
+    i {
+      @apply text-secondary-500 text-[9rem];
+    }
+
+    p {
+      @apply text-2xl text-secondary-500 font-bold;
+    }
+  }
+
+  i {
+    @apply text-[8rem] text-secondary-500;
+  }
+
+  .caption {
+    @apply text-secondary-500 mb-2;
+  }
+
+  &.dropping {
+    #dropzone {
+      @apply flex flex-col w-full h-full opacity-100 duration-75;
+    }
+  }
+  input {
+    @apply w-0 h-0;
+  }
+}

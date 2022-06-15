@@ -16,6 +16,7 @@ import { PanelBuilderComponent } from './components/panel-builder/panel-builder.
 import { PersonalInformationComponent } from './routes/personal-information/personal-information.component';
 import { SettingsServicesModule } from './services/settings-services.module';
 import { MapModule } from '../map/map.module';
+import { UploadModule } from '../upload/upload.module';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { MapModule } from '../map/map.module';
     SharedModule,
     ReactiveFormsModule,
     SettingsServicesModule,
-    MapModule
+    MapModule,
+    UploadModule
   ]
 })
 export class SettingsModule { }

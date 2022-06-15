@@ -1,0 +1,40 @@
+:host {
+  @apply flex flex-col gap-2 rounded-md px-4 py-2 w-full;
+}
+
+.file-content {
+  @apply grid grid-cols-[2rem_auto_2rem_2rem] gap-x-8 items-center;
+
+  .close-btn, .edit-btn, .accept-btn {
+    @apply flex items-center justify-center w-10 h-10 rounded-full border shadow-sm bg-primary transition-[color_transform] duration-100 text-secondary-500;
+
+    &:active {
+      @apply translate-y-[2px] shadow-none bg-appgray-100;
+    }
+  }
+
+  i {
+    @apply text-[2.5rem];
+  }
+
+  .edit-btn {
+    @apply text-2xl;
+  }
+
+  .check-btn, .accept-btn {
+    @apply text-3xl;
+  }
+
+  .close-btn {
+    @apply text-[2rem];
+  }
+
+  p {
+    @apply text-appgray-500 p-2;
+  }
+
+  input {
+    @apply p-2 border border-accent rounded-md bg-appgray-100;
+  }
+}
+
