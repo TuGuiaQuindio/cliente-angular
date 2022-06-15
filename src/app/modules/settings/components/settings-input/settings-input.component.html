@@ -7,6 +7,7 @@
   <section class="input-section">
     <container-element [ngSwitch]="inputType">
       <app-address-map *ngSwitchCase="'map'" [formControl]="control" [warningMsg]="warning"></app-address-map>
+      <app-upload-compound-input *ngSwitchCase="'file'" [formControl]="control"></app-upload-compound-input>
       <app-input *ngSwitchDefault #input [warningMsg]="warning" [formControl]="control" [type]="inputType" [hideLabel]="true"></app-input>
     </container-element>
     <section *ngIf="hasExamples()" class="examples">
