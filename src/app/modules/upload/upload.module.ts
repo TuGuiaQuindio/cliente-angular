@@ -4,12 +4,14 @@ import { UploadInputComponent } from './components/upload-input/upload-input.com
 import { SharedModule } from '../shared/shared.module';
 import { FileBufferComponent } from './components/file-buffer/file-buffer.component';
 import { FileComponent } from './components/file/file.component';
+import { UploadCompoundInputComponent } from './components/compound-input/compound-input.component';
 
 @NgModule({
   declarations: [
     UploadInputComponent,
     FileBufferComponent,
-    FileComponent
+    FileComponent,
+    UploadCompoundInputComponent
   ],
   imports: [
     CommonModule,
@@ -17,7 +19,8 @@ import { FileComponent } from './components/file/file.component';
   ],
   exports: [
     UploadInputComponent,
-    FileBufferComponent
+    FileBufferComponent,
+    UploadCompoundInputComponent
   ]
 })
 export class UploadModule { }

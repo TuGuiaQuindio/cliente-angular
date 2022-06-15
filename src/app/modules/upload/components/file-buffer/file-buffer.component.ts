@@ -26,6 +26,10 @@ export class FileBufferComponent {
     this.buffer.splice(idx, 1);
   }
 
+  public getFiles(): File[] {
+    return this.buffer;
+  }
+
   private getFileIndex(file: File): number {
     return this.buffer.findIndex(el => el === file);
   }
