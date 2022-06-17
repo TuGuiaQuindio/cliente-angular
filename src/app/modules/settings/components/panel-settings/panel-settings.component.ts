@@ -14,14 +14,13 @@ export type PanelButtonDefinition = { icon: string, label: string, url: string }
 })
 export class PanelSettingsComponent implements OnInit {
 
-  constructor(router: Router, private configurationSolverSrv: ConfigurationSolverService) {
-    this.solveSelectedButton(router.url);
-  }
+  constructor(private router: Router, private configurationSolverSrv: ConfigurationSolverService) { }
 
   public ngOnInit() {
     const role = localStorage.getItem(USER_ROLE);
     if(!role) return;
     this.buttonSection = this.configurationSolverSrv.getPanelSections(role);
+    this.solveSelectedButton(this.router.url);
   }
 
   public solveSelectedButton(url: string) {

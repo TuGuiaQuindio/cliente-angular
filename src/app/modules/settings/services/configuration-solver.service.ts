@@ -135,7 +135,7 @@ export class ConfigurationSolverService {
           [
             { icon: "bx-user", label: "información personal", url: "/settings/information" },
             { icon: "bx-lock-alt", label: "seguridad", url: "/settings/security" },
-            { icon: "bx-book-bookmark", label: "mis vacantes", url: "/settings/certificates" },
+            { icon: "bx-book-bookmark", label: "mis vacantes", url: "/settings/vacancies" },
           ]
       },
     ],
