@@ -1,0 +1,3 @@
+<section class="input-container">
+  <app-select *ngFor="let select of inputSelects$ | async" [options]="select.options" (elementSelected)="select.elementSelection($event)" [disabled]="select.disabled"></app-select>
+</section>

@@ -19,6 +19,7 @@ import { MapModule } from '../map/map.module';
 import { CertificatesComponent } from './routes/certificates/certificates.component';
 import { UploadModule } from '../upload/upload.module';
 import { LanguageFormModule } from '../language-form/language-form.module';
+import { LanguagesComponent } from './routes/languages/languages.component';
 
 @NgModule({
   declarations: [
@@ -33,6 +34,7 @@ import { LanguageFormModule } from '../language-form/language-form.module';
     PanelBuilderComponent,
     PersonalInformationComponent,
     CertificatesComponent,
+    LanguagesComponent,
   ],
   imports: [
     CommonModule,
@@ -42,7 +44,7 @@ import { LanguageFormModule } from '../language-form/language-form.module';
     SettingsServicesModule,
     MapModule,
     UploadModule,
-    LanguageFormModule
+    LanguageFormModule,
   ]
 })
 export class SettingsModule { }

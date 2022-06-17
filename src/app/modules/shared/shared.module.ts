@@ -13,6 +13,7 @@ import { FormBoxMessageComponent } from './components/form-box-message/form-box-
 import { CheckboxComponent } from './components/checkbox/checkbox.component';
 import { AnchorDirective } from 'src/app/directive/anchor.directive';
 import { PageViewComponent } from './components/page-view/page-view.component';
+import { SelectComponent } from './components/select/select.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { PageViewComponent } from './components/page-view/page-view.component';
     FormBoxMessageComponent,
     CheckboxComponent,
     PageViewComponent,
+    SelectComponent,
   ],
   imports: [
     CommonModule,
@@ -41,7 +43,8 @@ import { PageViewComponent } from './components/page-view/page-view.component';
     TitleBarComponent,
     FormBoxMessageComponent,
     CheckboxComponent,
-    PageViewComponent
+    PageViewComponent,
+    SelectComponent
   ]
 })
 export class SharedModule { }

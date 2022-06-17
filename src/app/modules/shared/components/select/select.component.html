@@ -1,0 +1,3 @@
+<select [disabled]="disabled" (change)="onInputSelected($event)">
+  <option *ngFor="let option of options; index as i" [selected]="isSelected(i)" [value]="option.value">{{option.label}}</option>
+</select>
