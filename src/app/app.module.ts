@@ -5,7 +5,7 @@ import { filter, Observable, Subject, takeUntil } from 'rxjs';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { THEME_KEY } from './constants';
+import { THEME_KEY, USER_ROLE } from './constants';
 import { CoreModule } from './core/core.module';
 import { FormServicesModule } from './modules/form-services/form-services.module';
 
@@ -40,9 +40,17 @@ export class AppModule implements OnDestroy {
       )
       .subscribe({
         next: (event) => {
+          const role = localStorage.getItem(USER_ROLE);
+          document.body.dataset["theme"] = this.solveRole(role ?? "1");
           document.body.dataset["variant"] = localStorage.getItem(THEME_KEY) ?? "default";
         }
       });
+  }
+
+  public solveRole(role: string) {
+    return role === "1"
+      ? "default"
+      : "enterprise";
   }
 
   ngOnDestroy(): void {

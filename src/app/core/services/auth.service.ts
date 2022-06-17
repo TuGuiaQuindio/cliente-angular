@@ -21,7 +21,7 @@ export class AuthService {
       localStorage.setItem(TOKEN_KEY, token);
       localStorage.setItem(USER_NAME, name);
       localStorage.setItem(USER_ROLE, role.toString());
-      localStorage.setItem(THEME_KEY, role === 2 ? "enterprise" : "default");
+      localStorage.setItem(THEME_KEY, "light");
       return res.result as UserLoginResponse;
     }));
   }
