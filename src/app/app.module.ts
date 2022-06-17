@@ -40,7 +40,7 @@ export class AppModule implements OnDestroy {
       )
       .subscribe({
         next: (event) => {
-          document.body.dataset["theme"] = localStorage.getItem(THEME_KEY) ?? "default";
+          document.body.dataset["variant"] = localStorage.getItem(THEME_KEY) ?? "default";
         }
       });
   }
