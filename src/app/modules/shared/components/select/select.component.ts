@@ -19,6 +19,11 @@ export class SelectComponent extends InputValueAccessor implements OnInit {
   @Input() public disabled = false;
   @Input() public options: SelectOption[] = [];
   @Input() public selectedIndex = 0;
+  @Input() public label = "";
+
+  public showLabel() {
+    return this.label.length != 0;
+  }
 
   ngOnInit(): void {
     this.setup();

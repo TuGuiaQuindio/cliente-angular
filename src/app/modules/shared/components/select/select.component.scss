@@ -1,0 +1,31 @@
+:host {
+  @apply w-full relative;
+  &.warning {
+    p, label, .password-icon {
+      @apply text-appred-500;
+    }
+    p {
+      @apply pl-6;
+    }
+    input {
+      @apply border-appred-500;
+    }
+
+    *:focus {
+      @apply outline-appred-300;
+    }
+  }
+}
+
+
+label {
+  @apply absolute text-secondary-600 bg-primary left-3 px-3 top-[-0.75em] h-5 z-10 w-max;
+}
+
+select {
+  @apply w-full px-3 py-2 border-2 border-secondary-600 rounded-lg bg-primary;
+
+  &[disabled] {
+    @apply bg-appgray-100 border-appgray-400 text-appgray-400;
+  }
+}
