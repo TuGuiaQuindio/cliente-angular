@@ -29,24 +29,6 @@ export class LanguagesComponent extends BaseRouteComponent implements OnInit, On
     )
   }
 
-  addLanguage(state: LanguageInputState) {
-    if (this.languages.findIndex(el => el.name === state.language.name) !== -1) return;
-    this.languages.push({
-      name: state.language.name,
-      level: state.certification.level
-    })
-  }
-
-  onAddClick() {
-    const language: LanguageInputState = {
-      language: this.languageInput.currentLanguage!,
-      certification: this.languageInput.currentCertification!
-    }
-    this.addLanguage(language);
-    this.languageInput.reset();
-    this.canAddLanguage = false;
-  }
-
   ngOnInit(): void {
     this.languageInputControl.valueChanges.pipe(
       takeUntil(this.destroy$)
@@ -62,6 +44,28 @@ export class LanguagesComponent extends BaseRouteComponent implements OnInit, On
   ngOnDestroy(): void {
     this.lifecycle.next('destroy');
     this.lifecycle.complete();
+  }
+
+  private addLanguage(state: LanguageInputState) {
+    if (this.languages.findIndex(el => el.name === state.language.name) !== -1) return;
+    this.languages.push({
+      name: state.language.name,
+      level: state.certification.level
+    })
+  }
+
+  public onAddClick() {
+    const language: LanguageInputState = {
+      language: this.languageInput.currentLanguage!,
+      certification: this.languageInput.currentCertification!
+    }
+    this.addLanguage(language);
+    this.languageInput.reset();
+    this.canAddLanguage = false;
+  }
+
+  public deleteEntry(idx: number) {
+    this.languages.splice(idx, 1);
   }
 
 }

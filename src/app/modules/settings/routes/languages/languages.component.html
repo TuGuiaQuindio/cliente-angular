@@ -5,6 +5,9 @@
   </section>
   <hr>
   <section class="language-summary">
-    <app-language-display *ngFor="let language of languages" [name]="language.name" [level]="language.level" [maxLevel]="5"></app-language-display>
+    <article class="language-entry" *ngFor="let language of languages; index as i">
+      <app-language-display [name]="language.name" [level]="language.level" [maxLevel]="5"></app-language-display>
+      <app-icon-button icon="bx-x" (click)="deleteEntry(i)"></app-icon-button>
+    </article>
   </section>
 </app-settings-page-view>
