@@ -1,0 +1,37 @@
+:host {
+  @apply flex items-center w-full h-full relative;
+
+  &.high {
+    .circle {
+      @apply bg-lime-400;
+    }
+  }
+
+  &.med {
+    .circle {
+      @apply bg-orange-400;
+    }
+  }
+
+  &.low {
+    .circle {
+      @apply bg-red-600;
+    }
+  }
+
+  .circle {
+    @apply w-4 h-4 rounded-full bg-appgray-400 absolute transition-[transform,_color] duration-75;
+
+    &.marker {
+      @apply bg-appgray-200 static pointer-events-none;
+    }
+  }
+}
+
+.points {
+  @apply flex inset-0 items-center absolute w-full justify-between;
+}
+
+.bar {
+  @apply flex w-full h-1 bg-appgray-200;
+}

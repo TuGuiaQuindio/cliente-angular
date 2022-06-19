@@ -14,6 +14,7 @@ import { CheckboxComponent } from './components/checkbox/checkbox.component';
 import { AnchorDirective } from 'src/app/directive/anchor.directive';
 import { PageViewComponent } from './components/page-view/page-view.component';
 import { SelectComponent } from './components/select/select.component';
+import { StepsComponent } from './components/steps/steps.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { SelectComponent } from './components/select/select.component';
     CheckboxComponent,
     PageViewComponent,
     SelectComponent,
+    StepsComponent,
   ],
   imports: [
     CommonModule,
@@ -44,7 +46,8 @@ import { SelectComponent } from './components/select/select.component';
     FormBoxMessageComponent,
     CheckboxComponent,
     PageViewComponent,
-    SelectComponent
+    SelectComponent,
+    StepsComponent
   ]
 })
 export class SharedModule { }
