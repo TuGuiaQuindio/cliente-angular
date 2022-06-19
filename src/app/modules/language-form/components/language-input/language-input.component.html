@@ -1,3 +1,8 @@
 <section class="input-container">
-  <app-select *ngFor="let select of inputSelects$ | async" [options]="select.options" (elementSelected)="select.elementSelection($event)" [disabled]="select.disabled"></app-select>
+  <app-select [options]="(options$ | async)!" (elementSelected)="languageSelected($event)" [selectedIndex]="(selected$ | async)!"></app-select>
+  <app-steps [steps]="6" (indexSelected)="onCertificationLevelSelected($event)"></app-steps>
+</section>
+<section class="description-labels">
+  <p class="name">{{ (certificate$ | async)!.name }}</p>
+  <p class="description">{{ (certificate$ | async)!.description }}</p>
 </section>

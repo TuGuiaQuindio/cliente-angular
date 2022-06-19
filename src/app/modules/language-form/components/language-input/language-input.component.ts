@@ -1,122 +1,57 @@
-import { Component, OnInit } from '@angular/core';
-import { map, Observable, BehaviorSubject, Subject, takeUntil, filter, last, concatMap, scan } from 'rxjs';
-import { Certificate, Language } from 'src/app/mock/data';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { map, last, concatMap, scan, Subject, filter, BehaviorSubject } from 'rxjs';
+import { Language } from 'src/app/mock/data';
 import { SelectOption } from 'src/app/modules/shared/components/select/select.component';
 import { LanguageApiService } from '../../services/language-api.service';
 
-export type GlobalInputState = {
-  language: SelectState,
-  certificate: SelectState,
-  level: SelectState
+export type CertificationLevel = {
+  name: string,
+  description: string
 }
-
 export type SelectState = {
   options: SelectOption[],
   selected: number,
-  disabled: boolean,
-  elementSelection: (option: SelectOption) => void;
+  certificate: CertificationLevel
 }
 @Component({
   selector: 'app-language-input',
   templateUrl: './language-input.component.html',
   styleUrls: ['./language-input.component.scss']
 })
-export class LanguageInputComponent implements OnInit {
+export class LanguageInputComponent implements OnInit, OnDestroy {
 
   constructor(private languageSrv: LanguageApiService) { }
 
+  public certificationLevels: CertificationLevel[] = [
+    { name: "A1", description: "Principiante" },
+    { name: "A2", description: "Elemental" },
+    { name: "B1", description: "Intermedio" },
+    { name: "B2", description: "Intermedio Superior" },
+    { name: "C1", description: "Avanzado" },
+    { name: "C2", description: "Competente" },
+  ]
   public currentLanguage?: Language;
-  public currentCertificate?: Certificate;
-  public currentLevel?: number;
-
-  private inputSubj = new BehaviorSubject<GlobalInputState>({
-    language: { options: [], disabled: true, selected: 0, elementSelection: (option) => { this.languageSelected(option) } },
-    certificate: { options: [], disabled: true, selected: 0, elementSelection: (option) => { this.certificateSelected(option) } },
-    level: { options: [], disabled: true, selected: 0, elementSelection: (option) => { this.levelSelected(option) } },
+  public lifecycle = new Subject<string>();
+  public optionStateSubj = new BehaviorSubject<SelectState>({
+    options: [],
+    selected: 0,
+    certificate: this.certificationLevels[0]
   });
 
-  public lifecycleSubj = new Subject<string>();
-  public get destroy$(): Observable<string> {
-    return this.lifecycleSubj
+  public get optionState$() { return this.optionStateSubj.asObservable() }
+  public get options$() { return this.optionState$.pipe(map(state => state.options)) }
+  public get selected$() { return this.optionState$.pipe(map(state => state.selected)) }
+  public get certificate$() { return this.optionState$.pipe(map(state => state.certificate)) }
+
+  public get destroy$() {
+    return this.lifecycle
       .asObservable()
       .pipe(
-        filter((state: string) => state === 'destroy'),
+        filter(state => state == 'destroy')
       );
   }
 
-  public get inputSelects$() {
-    return this.inputSubj
-      .asObservable()
-      .pipe(
-        takeUntil(this.destroy$),
-        map(state => {
-          const { language, certificate, level } = state;
-          return [language, certificate, level];
-        })
-      );
-  }
-
-  public languageSelected(select: SelectOption) {
-    this.currentLanguage = select.value;
-    this.languageSrv.getLanguagesCertifications()
-      .pipe(
-        concatMap(languages => languages),
-        filter((lang: Language) => lang == this.currentLanguage),
-        concatMap((lang: Language) => lang.certificates),
-        map((certificate: Certificate) => {
-          return { value: certificate, label: certificate.name } as SelectOption
-        }),
-        scan((acc: SelectOption[], value: SelectOption) => [...acc, value], [{ value: undefined, label: "Seleccione" }] as SelectOption[]),
-        last()
-      ).subscribe({
-        next: (options: SelectOption[]) => {
-          const { value } = this.inputSubj;
-          this.inputSubj.next({
-            ...value,
-            certificate: {
-              ...value.certificate,
-              disabled: !this.currentLanguage,
-              options
-            }
-          })
-        }
-      })
-  }
-
-  public certificateSelected(select: SelectOption) {
-    this.currentCertificate = select.value;
-    this.languageSrv.getLanguagesCertifications()
-      .pipe(
-        concatMap(languages => languages),
-        filter((lang: Language) => lang == this.currentLanguage),
-        concatMap((lang: Language) => lang.certificates),
-        filter((certificate: Certificate) => certificate == this.currentCertificate),
-        concatMap((certificate: Certificate) => certificate.levels),
-        map((level: string) => {
-          return { value: level, label: level } as SelectOption
-        }),
-        scan((acc: SelectOption[], value: SelectOption) => [...acc, value], [{ value: undefined, label: "Seleccione" }] as SelectOption[]),
-        last()
-      ).subscribe({
-        next: (options: SelectOption[]) => {
-          const { value } = this.inputSubj;
-          this.inputSubj.next({
-            ...value,
-            level: {
-              ...value.level,
-              disabled: !this.currentCertificate,
-              options: options
-            }
-          })
-        }
-      })
-  }
-
-  public levelSelected(select: SelectOption) {
-    this.currentLevel = select.value;
-  }
-
-  ngOnInit(): void {
+  public ngOnInit(): void {
     this.languageSrv.getLanguagesCertifications()
       .pipe(
         concatMap((languages: Language[]) => languages),
@@ -126,16 +61,38 @@ export class LanguageInputComponent implements OnInit {
       )
       .subscribe({
         next: (options: SelectOption[]) => {
-          const { value } = this.inputSubj;
-          this.inputSubj.next({
+          const value = this.optionStateSubj.value;
+          this.optionStateSubj.next({
             ...value,
-            language: {
-              ...value.language,
-              disabled: false,
-              options: options,
-            }
+            options
           })
         }
       })
+  }
+  
+  public ngOnDestroy() {
+    this.lifecycle.next('destroy');
+    this.lifecycle.complete();
+  }
+
+  public languageSelected(select: SelectOption) {
+    this.currentLanguage = select.value;
+    const value = this.optionStateSubj.value;
+    const { options } = value;
+    const languageIdx = options.findIndex(el => select == el);
+    if (languageIdx == -1) return;
+    this.optionStateSubj.next({
+      ...value,
+      selected: languageIdx
+    })
+  }
+
+  public onCertificationLevelSelected(idx: number) {
+    const certification = this.certificationLevels[idx];
+    const value = this.optionStateSubj.value;
+    this.optionStateSubj.next({
+      ...value,
+      certificate: certification
+    });
   }
 }

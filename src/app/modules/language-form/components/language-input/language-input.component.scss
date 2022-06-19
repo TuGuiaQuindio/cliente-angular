@@ -1,0 +1,23 @@
+:host {
+  @apply flex flex-col w-full;
+}
+
+.input-container {
+  @apply grid grid-cols-2 gap-4 items-center w-full;
+}
+
+.description-labels {
+  @apply grid grid-cols-2 mt-4;
+
+  .name, .description {
+    @apply text-center col-start-2 col-end-3 select-none;
+  }
+
+  .name {
+    @apply font-bold text-2xl text-secondary-600;
+  }
+
+  .description {
+    @apply text-appgray-500;
+  }
+}
