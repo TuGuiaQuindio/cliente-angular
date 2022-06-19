@@ -15,6 +15,7 @@ import { AnchorDirective } from 'src/app/directive/anchor.directive';
 import { PageViewComponent } from './components/page-view/page-view.component';
 import { SelectComponent } from './components/select/select.component';
 import { StepsComponent } from './components/steps/steps.component';
+import { IconButtonComponent } from './icon-button/icon-button.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { StepsComponent } from './components/steps/steps.component';
     PageViewComponent,
     SelectComponent,
     StepsComponent,
+    IconButtonComponent,
   ],
   imports: [
     CommonModule,
@@ -47,7 +49,8 @@ import { StepsComponent } from './components/steps/steps.component';
     CheckboxComponent,
     PageViewComponent,
     SelectComponent,
-    StepsComponent
+    StepsComponent,
+    IconButtonComponent
   ]
 })
 export class SharedModule { }
