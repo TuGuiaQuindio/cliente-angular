@@ -4,11 +4,13 @@ import { StarLevelComponent } from './components/star-level/star-level.component
 import { LanguageInputComponent } from './components/language-input/language-input.component';
 import { SharedModule } from '../shared/shared.module';
 import { LanguageFormServicesModule } from './services/language-form-services/language-form-services.module';
+import { LanguageDisplayComponent } from './components/language-display/language-display.component';
 
 @NgModule({
   declarations: [
     StarLevelComponent,
-    LanguageInputComponent
+    LanguageInputComponent,
+    LanguageDisplayComponent
   ],
   imports: [
     CommonModule,
@@ -17,7 +19,8 @@ import { LanguageFormServicesModule } from './services/language-form-services/la
   ],
   exports: [
     StarLevelComponent,
-    LanguageInputComponent
+    LanguageInputComponent,
+    LanguageDisplayComponent
   ]
 })
 export class LanguageFormModule { }
