@@ -84,10 +84,8 @@ export class StepsComponent extends InputValueAccessor implements OnInit, OnDest
     const level = index / this.steps;
     const fractions = 1 / this.steps;
     const colorIndex = Math.round(Math.floor((level + fractions) * (this.colorLevels.length - 1) * 10) / 10);
-    if(colorIndex < 0 || colorIndex > this.colorLevels.length) return;
+    if (colorIndex < 0 || colorIndex > this.colorLevels.length) return;
     const color = this.colorLevels[colorIndex];
-    console.log(level + fractions, colorIndex);
-    console.log(color);
     this.classes = [color];
   }
 
@@ -114,29 +112,54 @@ export class StepsComponent extends InputValueAccessor implements OnInit, OnDest
     return pixels;
   }
 
-  private handleMove(e: MouseEvent) {
+  private calculateTrueWidth(): number {
     const target = this.ref.nativeElement as HTMLElement;
-    if (!target) return;
+    if (!target) return 0;
     const rect = target.getBoundingClientRect();
     let circleWidth = this.circle.getBoundingClientRect().width;
     circleWidth = circleWidth - (circleWidth * Math.abs(this.MOUSEDOWN_SCALE - 1));
     const trueWidth = rect.width - circleWidth;
+    return trueWidth
+  }
 
-    const x = this.clamp((e.clientX - rect.left) / rect.width, 0, 1);
+  private getXPosition(e: MouseEvent) {
+    const target = this.ref.nativeElement as HTMLElement;
+    if (!target) return 0;
+    const rect = target.getBoundingClientRect();
+    return (e.clientX - rect.left) / rect.width
+  }
 
-    const parts = this.steps;
-
-    const pixels = this.getPixels(x, trueWidth, parts);
-    const selectIndex = this.getIndex(pixels, trueWidth, parts);
-
+  private handleIndexSelect(selectIndex: number) {
     if (this.selectIndex === selectIndex) return;
     this.selectIndex = selectIndex;
     this.indexSelected.next(selectIndex);
     if (this.ngControl) this.ngControl.control!.setValue(this.selectIndex);
 
+  }
+
+  private handleVisuals(pixels: number, selectIndex: number) {
     this.circle.style.transform = `translateX(${pixels}px)`;
     this.setScale(this.MOUSEDOWN_SCALE);
     this.updateCircleColor(selectIndex);
+  }
+
+  private handleMove(e: MouseEvent) {
+    const trueWidth = this.calculateTrueWidth();
+    const x = this.clamp(this.getXPosition(e), 0, 1);
+
+    const pixels = this.getPixels(x, trueWidth, this.steps);
+    const selectIndex = this.getIndex(pixels, trueWidth, this.steps);
+
+    this.handleIndexSelect(selectIndex);
+    this.handleVisuals(pixels, selectIndex);
+  }
+
+  public setSelected(idx: number) {
+    if (idx < 0 || idx >= this.steps) return;
+    const x = idx / this.steps;
+    const pixels = this.getPixels(x, this.calculateTrueWidth(), this.steps);
+    this.handleIndexSelect(idx);
+    this.handleVisuals(pixels, idx);
   }
 
   private getIndex(pixels: number, width: number, parts: number) {
