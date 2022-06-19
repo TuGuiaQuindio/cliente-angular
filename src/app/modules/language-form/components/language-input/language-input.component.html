@@ -1,6 +1,6 @@
 <section class="input-container">
-  <app-select [options]="(options$ | async)!" (elementSelected)="languageSelected($event)" [selectedIndex]="(selected$ | async)!"></app-select>
-  <app-steps [steps]="6" (indexSelected)="onCertificationLevelSelected($event)"></app-steps>
+  <app-select [options]="(options$ | async)!" (elementSelected)="onLanguageSelected($event)" [selectedIndex]="(selected$ | async)!"></app-select>
+  <app-steps #steps [steps]="6" (indexSelected)="onCertificationLevelSelected($event)"></app-steps>
 </section>
 <section class="description-labels">
   <p class="name">{{ (certificate$ | async)!.name }}</p>
