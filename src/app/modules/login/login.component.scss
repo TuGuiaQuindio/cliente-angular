@@ -31,5 +31,14 @@
         @apply mt-10;
       }
     }
+
+    .register-container {
+      @apply mt-4 mx-auto;
+      p {
+        a {
+          @apply text-secondary-600 underline;
+        }
+      }
+    }
   }
 }
