@@ -60,6 +60,7 @@ module.exports = {
           400: withOpacity("--color-secondary-400"),
         },
         accent: withOpacity("--color-accent"),
+        darkaccent: withOpacity("--color-darkaccent"),
         appgreen: {
           200: withOpacity("--color-appgreen-200"),
           400: withOpacity("--color-appgreen-400"),

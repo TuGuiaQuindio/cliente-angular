@@ -57,12 +57,16 @@
     .content {
       @apply my-32 mx-auto px-16 flex flex-col h-min max-w-[55rem] gap-14;
 
+      .title {
+        @apply text-appgray-600;
+      }
+
       * {
         @apply text-center;
       }
 
       p {
-        @apply text-appgray-600;
+        @apply text-appgreen-700;
       }
     }
   }
