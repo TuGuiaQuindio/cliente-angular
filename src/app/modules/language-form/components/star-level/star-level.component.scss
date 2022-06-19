@@ -1,5 +1,9 @@
+:host {
+  @apply flex items-center w-fit;
+}
+
 .star-container {
-  @apply flex text-appgray-600 w-fit z-20;
+  @apply flex items-center justify-center text-appgray-600 w-fit z-20;
 }
 
 .star {

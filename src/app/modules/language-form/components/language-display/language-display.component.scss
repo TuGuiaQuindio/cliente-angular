@@ -1,3 +1,7 @@
 :host {
   @apply grid grid-cols-2 w-full;
 }
+
+.language-name {
+  @apply text-appgray-500;
+}
