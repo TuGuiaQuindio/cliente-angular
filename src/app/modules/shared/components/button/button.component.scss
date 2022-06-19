@@ -1,5 +1,5 @@
 button {
-  @apply px-7 py-2 w-full rounded-full;
+  @apply flex items-center justify-center px-7 py-2 w-full rounded-full;
   &[disabled] {
     @apply bg-appgray-200 text-appgray-400;
   }
