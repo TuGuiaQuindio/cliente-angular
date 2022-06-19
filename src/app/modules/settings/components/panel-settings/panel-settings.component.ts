@@ -1,6 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
-import { concatMap, filter, map, of, Subject, take, takeUntil } from 'rxjs';
+import { concatMap, filter, map, of, Subject, take, takeUntil, tap } from 'rxjs';
 import { USER_ROLE } from 'src/app/constants';
 import { ConfigurationSolverService } from '../../services/configuration-solver.service';
 
