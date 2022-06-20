@@ -1,14 +1,31 @@
 .nav-container {
   @apply w-full shadow-md min-h-[5rem] py-4 flex flex-col gap-4 items-center justify-between sticky top-0 bg-primary z-30;
-  @apply md:container md:flex-row md:mx-auto md:px-14 md:static md:shadow-none;
+  @apply md:container md:flex-row md:mx-auto md:px-14 md:relative md:shadow-none;
 
   h1 {
     @apply text-3xl font-logo cursor-pointer;
   }
 
   .app-controls {
-    @apply flex h-full gap-4;
+    @apply flex items-center h-full gap-4;
     @apply md:gap-2 md:mr-12;
+
+    .avatar-btn {
+      @apply h-full;
+    }
+    .click-area {
+      @apply flex items-center gap-1 h-full cursor-pointer translate-y-0 duration-75;
+
+      &:active {
+        i {
+          @apply text-appgray-500 translate-y-2 transition-transform;
+        }
+      }
+
+      i {
+        @apply text-2xl;
+      }
+    }
   }
 
   .user-controls {
@@ -18,5 +35,9 @@
     svg {
       @apply h-full w-full;
     }
+  }
+
+  app-dropdown {
+    @apply absolute;
   }
 }

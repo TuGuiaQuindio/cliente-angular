@@ -1,13 +1,10 @@
 import { AfterViewInit, Component, HostBinding, ViewChild } from '@angular/core';
 import { Observable, of, filter, mergeMap, tap, delay, map } from 'rxjs';
 import { USER_NAME, USER_ROLE } from 'src/app/constants';
-import { AuthService } from 'src/app/core/services/auth.service';
 import { AnchorDirective } from 'src/app/directive/anchor.directive';
 import { LinkAccessInfo } from 'src/app/interfaces/link-access-info';
 import { ModuleSolverService } from '../../services/module-solver.service';
 import { ActiveModuleDataFormComponent } from '../active-module-data-form/active-module-data-form.component';
-import { CompanyExtraFormComponent } from '../company-extra-form/company-extra-form.component';
-import { GuideExtraFormComponent } from '../guide-extra-form/guide-extra-form.component';
 
 @Component({
   selector: 'app-dashboard',
@@ -39,7 +36,6 @@ export class DashboardComponent implements AfterViewInit {
 
   public get links(): Observable<LinkAccessInfo[]> {
     const data: LinkAccessInfo[] = [
-      { title: "Edita tu perfil", description: "Mantén tus datos tanto personales como profesionales actualizados y en un solo lugar.", buttonLabel: "Editar ahora", icon: "bx-book-bookmark", link: "/settings" },
       { title: "Edita tu perfil", description: "Mantén tus datos tanto personales como profesionales actualizados y en un solo lugar.", buttonLabel: "Editar ahora", icon: "bx-book-bookmark", link: "/settings" },
     ];
     return of(data);

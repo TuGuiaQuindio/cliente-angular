@@ -1,17 +1,19 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { AfterViewInit, Component, Input, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/core/services/auth.service';
+import { DropdownComponent } from '../dropdown/dropdown.component';
 
 @Component({
   selector: 'app-nav',
   templateUrl: './nav.component.html',
   styleUrls: ['./nav.component.scss']
 })
-export class NavComponent implements OnInit {
+export class NavComponent implements AfterViewInit {
 
   // Declaramos variable para hacer interpolación
   public titulo = "TuGuíaQuindío";
   @Input('hide-nav-btns') public hideNavigationButtons = false;
+  @ViewChild(DropdownComponent) public dropdown!: DropdownComponent;
 
   constructor(private authSrv: AuthService, private router: Router) { }
 
@@ -23,8 +25,14 @@ export class NavComponent implements OnInit {
     this.authSrv.logout();
     this.router.navigateByUrl('/home');
   }
+  
+  public onAvatarClick() {
+    if(!this.dropdown.hidden) return;
+    if(this.dropdown) this.dropdown.show();
+  }
 
-  ngOnInit(): void {
+  ngAfterViewInit(): void {
+    if(this.dropdown) this.dropdown.hide();
   }
 
 }
