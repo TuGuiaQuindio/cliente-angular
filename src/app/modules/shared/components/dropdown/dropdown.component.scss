@@ -1,0 +1,23 @@
+:host {
+  @apply bg-primary rounded-lg shadow-md border-2 absolute top-full overflow-hidden;
+
+  &.hide {
+    @apply hidden;
+  }
+
+  .dropdown-container {
+    @apply flex flex-col ;
+  }
+
+  .dropdown-option {
+    @apply cursor-pointer w-full h-full px-4 py-2 outline-none;
+
+    &:hover {
+      @apply border-l-4 border-secondary-400 bg-appgray-100;
+    }
+
+    &:active {
+      @apply bg-secondary-400;
+    }
+  }
+}
