@@ -9,8 +9,6 @@ import { PanelSectionComponent } from './components/panel-section/panel-section.
 import { PanelSettingsButtonComponent } from './components/panel-settings-button/panel-settings-button.component';
 import { SettingsPageViewComponent } from './components/settings-page-view/settings-page-view.component';
 import { SecurityComponent } from './routes/security/security.component';
-import { FormSettingsSectionComponent } from './components/form-settings-section/form-settings-section.component';
-import { SettingsInputComponent } from './components/settings-input/settings-input.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { PanelBuilderComponent } from './components/panel-builder/panel-builder.component';
 import { PersonalInformationComponent } from './routes/personal-information/personal-information.component';
@@ -21,6 +19,7 @@ import { UploadModule } from '../upload/upload.module';
 import { LanguageFormModule } from '../language-form/language-form.module';
 import { LanguagesComponent } from './routes/languages/languages.component';
 import { SettingsMainPageComponent } from './routes/settings-main-page/settings-main-page.component';
+import { SettingsFormModule } from '../settings-form/settings-form.module';
 
 @NgModule({
   declarations: [
@@ -30,8 +29,6 @@ import { SettingsMainPageComponent } from './routes/settings-main-page/settings-
     PanelSettingsButtonComponent,
     SettingsPageViewComponent,
     SecurityComponent,
-    FormSettingsSectionComponent,
-    SettingsInputComponent,
     PanelBuilderComponent,
     PersonalInformationComponent,
     CertificatesComponent,
@@ -47,6 +44,7 @@ import { SettingsMainPageComponent } from './routes/settings-main-page/settings-
     MapModule,
     UploadModule,
     LanguageFormModule,
+    SettingsFormModule
   ]
 })
 export class SettingsModule { }
