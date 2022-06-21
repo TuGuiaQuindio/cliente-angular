@@ -20,6 +20,7 @@ import { CertificatesComponent } from './routes/certificates/certificates.compon
 import { UploadModule } from '../upload/upload.module';
 import { LanguageFormModule } from '../language-form/language-form.module';
 import { LanguagesComponent } from './routes/languages/languages.component';
+import { SettingsMainPageComponent } from './routes/settings-main-page/settings-main-page.component';
 
 @NgModule({
   declarations: [
@@ -35,6 +36,7 @@ import { LanguagesComponent } from './routes/languages/languages.component';
     PersonalInformationComponent,
     CertificatesComponent,
     LanguagesComponent,
+    SettingsMainPageComponent
   ],
   imports: [
     CommonModule,

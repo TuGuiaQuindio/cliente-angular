@@ -1,0 +1,16 @@
+:host {
+  @apply flex flex-col gap-6;
+  .content {
+    @apply flex flex-col gap-4 text-appgray-500;
+    p {
+      @apply w-full;
+    }
+
+    .icons {
+      @apply flex gap-4 text-appgray-200;
+      i {
+        @apply text-[4.5rem];
+      }
+    }
+  }
+}
