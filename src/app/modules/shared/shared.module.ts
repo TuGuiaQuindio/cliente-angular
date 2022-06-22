@@ -17,6 +17,7 @@ import { SelectComponent } from './components/select/select.component';
 import { StepsComponent } from './components/steps/steps.component';
 import { IconButtonComponent } from './icon-button/icon-button.component';
 import { DropdownComponent } from './components/dropdown/dropdown.component';
+import { BadgeComponent } from './components/badge/badge.component';
 
 @NgModule({
   declarations: [
@@ -33,6 +34,7 @@ import { DropdownComponent } from './components/dropdown/dropdown.component';
     StepsComponent,
     IconButtonComponent,
     DropdownComponent,
+    BadgeComponent,
   ],
   imports: [
     CommonModule,
@@ -53,7 +55,8 @@ import { DropdownComponent } from './components/dropdown/dropdown.component';
     SelectComponent,
     StepsComponent,
     IconButtonComponent,
-    DropdownComponent
+    DropdownComponent,
+    BadgeComponent,
   ]
 })
 export class SharedModule { }
