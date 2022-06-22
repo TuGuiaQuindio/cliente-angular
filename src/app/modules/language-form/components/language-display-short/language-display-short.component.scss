@@ -1,0 +1,20 @@
+:host{
+
+    @apply flex justify-between w-full gap-4;
+
+    .check{
+        @apply text-appgreen-600;
+    }
+
+    .star{
+        @apply text-gold-400;
+    }
+
+    p{
+        @apply text-appgray-400;
+    }
+
+    section{
+        @apply flex items-center gap-1;
+    }
+}
