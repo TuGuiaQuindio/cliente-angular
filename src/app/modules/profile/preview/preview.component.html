@@ -12,9 +12,9 @@
     </svg>
   </section>
   <section class="languages">
-    <app-language-display-short language="Ingles" level="4.5"></app-language-display-short>
-    <app-language-display-short language="frances" level="3.0"></app-language-display-short>
-    <app-language-display-short language="frances" level="3.0"></app-language-display-short>
+    <app-language-display-short *ngFor="let language of languages$ | async" [language]="language.name | lowercase"
+      [level]="language.level.toString()">
+    </app-language-display-short>
   </section>
 </section>
 
