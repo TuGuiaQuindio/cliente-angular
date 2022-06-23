@@ -23,7 +23,9 @@
 <section class="content">
   <header>
     <p>Arturo cayeh</p>
-    <app-badge label="verificado" icon="bx-badge-check" type="emphasis"></app-badge>
+    <div *ngIf="verified">
+      <app-badge #verificado label="verificado" icon="bx-badge-check" type="emphasis"></app-badge>
+    </div>
   </header>
   <main>
     <section class="about">

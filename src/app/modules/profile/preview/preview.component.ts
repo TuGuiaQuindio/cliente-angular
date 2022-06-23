@@ -13,15 +13,14 @@ export class PreviewComponent implements OnInit {
   @Input() public title = '';
   @Input() public languages: Language[] = [
     { name: "Ingles", level: 4.5 },
-    { name: "Ruso", level: 3.1 },
-    { name: "Ingles", level: 4.5 },
-    { name: "Ruso", level: 3.1 },
-    { name: "Ingles", level: 4.5 },
-    { name: "Ruso", level: 3.1 },
+    { name: "Ruso", level: 4.2 },
   ];
-  @Input() public badge = [];
+  @Input() public badge = [
+    { verified: true },
+  ];
   @Input() public additions = [];
   @Input() public aboutMe = '';
+
 
   public get languages$() {
     return of(this.languages)
@@ -29,6 +28,8 @@ export class PreviewComponent implements OnInit {
         map((languages) => languages.sort((a, b) => a.level < b.level ? 1 : -1).slice(0, 3)),
       )
   }
+
+  verified = this.badge[0].verified;
 
   ngOnInit(): void {
   }
