@@ -6,3 +6,4 @@
   <p class="name">{{ (certificate$ | async)!.name }}</p>
   <p class="description">{{ (certificate$ | async)!.description }}</p>
 </section>
+<p *ngIf="hasWarningMessage" class="warning-msg">{{ warningMsg }}</p>

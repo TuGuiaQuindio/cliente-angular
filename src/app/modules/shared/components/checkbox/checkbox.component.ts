@@ -8,9 +8,8 @@ import { WarningMessenger } from 'src/app/interfaces/warning-messenger';
   templateUrl: './checkbox.component.html',
   styleUrls: ['./checkbox.component.scss']
 })
-export class CheckboxComponent extends InputValueAccessor implements OnInit, WarningMessenger {
+export class CheckboxComponent extends InputValueAccessor implements OnInit {
 
-  @Input() public warningMsg = "";
   @Input() public label = "";
   @Input() public tabindex = 0;
 

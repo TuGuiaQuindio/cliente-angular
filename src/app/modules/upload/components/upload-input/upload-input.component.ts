@@ -1,14 +1,19 @@
-import { Component, ElementRef, EventEmitter, OnDestroy, OnInit, Output, ViewChild } from '@angular/core';
+import { Component, ElementRef, EventEmitter, OnDestroy, OnInit, Optional, Output, Self, ViewChild } from '@angular/core';
+import { NgControl } from '@angular/forms';
 import { filter, fromEvent, Subject, takeUntil } from 'rxjs';
+import { InputValueAccessor } from 'src/app/classes/input-value-accessor';
 
 @Component({
   selector: 'app-upload-input',
   templateUrl: './upload-input.component.html',
-  styleUrls: ['./upload-input.component.scss']
+  styleUrls: ['./upload-input.component.scss'],
+  providers: [{ provide: InputValueAccessor, useExisting: UploadInputComponent }]
 })
-export class UploadInputComponent implements OnInit, OnDestroy {
+export class UploadInputComponent extends InputValueAccessor implements OnInit, OnDestroy {
 
-  constructor() { }
+  constructor(@Self() @Optional() ngControl: NgControl) {
+    super(ngControl);
+  }
 
   @Output() filesDropped = new EventEmitter<File[]>();
   @ViewChild('input') public set hostInput(value: ElementRef) {
@@ -53,6 +58,7 @@ export class UploadInputComponent implements OnInit, OnDestroy {
   ];
 
   ngOnInit(): void {
+    this.setup();
     window.addEventListener('dragover', (e: DragEvent) => {
       e.preventDefault();
     }, false);

@@ -5,9 +5,10 @@
     <p>{{description}}</p>
   </section>
   <section class="input-section">
-    <container-element [ngSwitch]="inputType">
+    <container-element #container [ngSwitch]="inputType">
       <app-address-map *ngSwitchCase="'map'" [formControl]="control" [warningMsg]="warning"></app-address-map>
       <app-upload-compound-input *ngSwitchCase="'file'" [formControl]="control"></app-upload-compound-input>
+      <app-select *ngSwitchCase="'select'" [options]="options" [selectedIndex]="0" (elementSelected)="onOptionSelected($event)" [formControl]="control"></app-select>
       <app-input *ngSwitchDefault #input [warningMsg]="warning" [formControl]="control" [type]="inputType" [hideLabel]="true"></app-input>
     </container-element>
     <section *ngIf="hasExamples()" class="examples">

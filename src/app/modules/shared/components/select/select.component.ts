@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Optional, Output, Self } from '@angular/core';
+import { Component, ElementRef, EventEmitter, HostBinding, Input, OnInit, Optional, Output, Self, ViewChild } from '@angular/core';
 import { NgControl } from '@angular/forms';
 import { InputValueAccessor } from 'src/app/classes/input-value-accessor';
 
@@ -6,7 +6,8 @@ export type SelectOption = { value: any, label: string }
 @Component({
   selector: 'app-select',
   templateUrl: './select.component.html',
-  styleUrls: ['./select.component.scss']
+  styleUrls: ['./select.component.scss'],
+  providers: [{ provide: InputValueAccessor, useExisting: SelectComponent }]
 })
 export class SelectComponent extends InputValueAccessor implements OnInit {
 
@@ -15,11 +16,26 @@ export class SelectComponent extends InputValueAccessor implements OnInit {
   }
 
   @Output() public elementSelected = new EventEmitter<SelectOption>();
+  @Output() public indexSelected = new EventEmitter<number>();
 
   @Input() public disabled = false;
   @Input() public options: SelectOption[] = [];
   @Input() public selectedIndex = 0;
   @Input() public label = "";
+  @ViewChild('select') public set hostSelect(ref: ElementRef) {
+    this.select = ref.nativeElement;
+    this.select.selectedIndex = this.selectedIndex;
+    this.handleControlValue();
+  };
+
+  private select!: HTMLSelectElement;
+
+  private handleControlValue() {
+    if (!this.ngControl) return;
+    const value = this.control.value;
+    const optionIdx = this.options.findIndex(el => el.value === value);
+    this.select.selectedIndex = optionIdx == -1 ? 0 : optionIdx;
+  }
 
   public showLabel() {
     return this.label.length != 0;
@@ -31,16 +47,8 @@ export class SelectComponent extends InputValueAccessor implements OnInit {
 
   public onInputSelected(event: Event) {
     const target = event.target as HTMLSelectElement;
-    this.selectedIndex = target.selectedIndex;
+    console.warn(target.selectedIndex)
     this.elementSelected.next(this.options[target.selectedIndex]);
+    this.indexSelected.emit(target.selectedIndex);
   }
-
-  public onSelectedElement(idx: number) {
-    this.selectedIndex = idx;
-  }
-
-  public isSelected(idx: number) {
-    return this.selectedIndex === idx;
-  }
-
 }

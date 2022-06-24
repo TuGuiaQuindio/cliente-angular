@@ -23,14 +23,14 @@ Marker.prototype.options.icon = iconDefault;
 @Component({
   selector: 'app-address-map',
   templateUrl: './address-map.component.html',
-  styleUrls: ['./address-map.component.scss']
+  styleUrls: ['./address-map.component.scss'],
+  providers: [ { provide: InputValueAccessor, useExisting: AddressMapComponent } ]
 })
-export class AddressMapComponent extends InputValueAccessor implements AfterViewInit, WarningMessenger {
+export class AddressMapComponent extends InputValueAccessor implements AfterViewInit {
 
   private map? : Leaflet.Map = undefined;
   private marker = Leaflet.marker([0,0]);
   @Input() public label = "";
-  @Input() public warningMsg = "";
   @Output() public mapLocation = new EventEmitter<Leaflet.LatLngTuple>();
 
   @HostBinding('class.warning')
