@@ -3,17 +3,18 @@ import { FormServicesInjector } from "src/app/modules/form-services/form-service
 import { FormMessageResolverService } from "src/app/modules/form-services/services/form-message-resolver.service";
 import { WarningMessenger } from "../interfaces/warning-messenger";
 
+export type WarningMessengerDict = { [key: string]: WarningMessenger };
 const messageResolver = FormServicesInjector.get(FormMessageResolverService);
 
-export const handleFormErrors = (form: FormGroup, inputRefs: {[key: string]: WarningMessenger}) => {
-    const errorKeys = Object.keys(form.controls)
-    for(let key of errorKeys){
-      const control = form.controls[key];
-      const errorMsg = getFirstControlError(control);
-      const inputComponent = inputRefs[key];
-      if (!inputComponent) return;
-      inputComponent.warningMsg = errorMsg;
-    }
+export const handleFormErrors = (form: FormGroup, inputRefs: WarningMessengerDict) => {
+  const errorKeys = Object.keys(form.controls)
+  for (let key of errorKeys) {
+    const control = form.controls[key];
+    const errorMsg = getFirstControlError(control);
+    const inputComponent = inputRefs[key];
+    if (!inputComponent) return;
+    inputComponent.warningMsg = errorMsg;
+  }
 }
 
 export const getFirstControlError = (control: AbstractControl): string => {
