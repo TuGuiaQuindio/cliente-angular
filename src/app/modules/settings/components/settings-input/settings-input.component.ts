@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, Optional, QueryList, Self, ViewChild, ViewChildren } from '@angular/core';
+import { Component, Input, OnInit, Optional, Self, ViewChild } from '@angular/core';
 import { NgControl } from '@angular/forms';
 import { InputValueAccessor } from 'src/app/classes/input-value-accessor';
 import { SelectOption } from 'src/app/modules/shared/components/select/select.component';
@@ -25,15 +25,12 @@ export class SettingsInputComponent extends InputValueAccessor implements OnInit
   @ViewChild('input', { read: InputComponent }) public set hostInput(value: InputComponent) {
     this.input = value;
   }
-  @ViewChild(InputValueAccessor) public set container(value: InputValueAccessor) {
-    console.warn({ name: this.formControlName, value });
-  }
   public input!: InputComponent;
   public selectedOptionIndex = 0;
 
   onOptionSelected(selected: SelectOption) {
     this.selectedOptionIndex = this.options.findIndex(el => el === selected);
-    console.warn(selected.value, this.selectedOptionIndex);
+    if (this.ngControl) this.ngControl.control!.setValue(this.options[this.selectedOptionIndex] ?? null);
   }
 
   ngOnInit(): void {
