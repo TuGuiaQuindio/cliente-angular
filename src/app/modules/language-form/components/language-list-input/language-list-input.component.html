@@ -1,5 +1,5 @@
   <section class="input-container">
-    <app-language-input #languageInput [formControl]="languageInputControl"></app-language-input>
+    <app-language-input [warningMsg]="warningMsg" #languageInput [formControl]="languageInputControl"></app-language-input>
     <app-button type="special" (click)="onAddClick()" [disabled]="!canAddLanguage">Añadir idioma</app-button>
   </section>
   <hr>

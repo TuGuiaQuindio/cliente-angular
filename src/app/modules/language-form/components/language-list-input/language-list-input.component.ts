@@ -1,17 +1,20 @@
-import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
+import { Component, OnDestroy, OnInit, Optional, Self, ViewChild } from '@angular/core';
+import { FormBuilder, NgControl, Validators } from '@angular/forms';
 import { Subject, filter, takeUntil } from 'rxjs';
+import { InputValueAccessor } from 'src/app/classes/input-value-accessor';
 import { LanguageDisplayDefinition } from '../language-display/language-display.component';
 import { LanguageInputComponent, LanguageInputState } from '../language-input/language-input.component';
 
 @Component({
   selector: 'app-language-list-input',
   templateUrl: './language-list-input.component.html',
-  styleUrls: ['./language-list-input.component.scss']
+  styleUrls: ['./language-list-input.component.scss'],
+  providers: [{ provide: InputValueAccessor, useExisting: LanguageListInputComponent }]
 })
-export class LanguageListInputComponent implements OnInit, OnDestroy {
+export class LanguageListInputComponent extends InputValueAccessor implements OnInit, OnDestroy {
 
-  constructor(private fb: FormBuilder) {
+  constructor(@Self() @Optional() ngControl: NgControl,private fb: FormBuilder) {
+    super(ngControl);
   }
   @ViewChild(LanguageInputComponent) public languageInput!: LanguageInputComponent;
 
@@ -27,6 +30,7 @@ export class LanguageListInputComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
+    this.setup();
     this.languageInputControl.valueChanges.pipe(
       takeUntil(this.destroy$)
     ).subscribe(
@@ -36,6 +40,7 @@ export class LanguageListInputComponent implements OnInit, OnDestroy {
         }
       }
     )
+    this.setValueToNgControl();
   }
 
   ngOnDestroy(): void {
@@ -49,6 +54,7 @@ export class LanguageListInputComponent implements OnInit, OnDestroy {
       name: state.language.name,
       level: state.certification.level
     })
+    this.setValueToNgControl();
   }
 
   public onAddClick() {
@@ -63,6 +69,11 @@ export class LanguageListInputComponent implements OnInit, OnDestroy {
 
   public deleteEntry(idx: number) {
     this.languages.splice(idx, 1);
+    this.setValueToNgControl();
+  }
+
+  private setValueToNgControl() {
+    if(this.ngControl) this.ngControl.control!.setValue(this.languages);
   }
 
 }
