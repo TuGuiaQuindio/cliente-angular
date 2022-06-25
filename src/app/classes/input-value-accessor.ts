@@ -19,6 +19,7 @@ export class InputValueAccessor extends WarningMessengerImpl implements ControlV
     this.ngControl.valueAccessor = this;
   }
   @Input() public warningMsg = '';
+  @Input() public context = '';
 
   @HostBinding('class.warning')
   public get hasWarningMessage(): boolean {

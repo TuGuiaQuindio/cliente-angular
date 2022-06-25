@@ -29,6 +29,8 @@ export class FormMessageResolverService {
     required: "REQUIRED_ERROR",
     email: "EMAIL_ERROR",
     noMatch: "MATCH_ERROR",
+    "minlength.password": "PWD_LENGTH_ERROR",
+    "maxlength.password": "PWD_LENGTH_ERROR",
     minlength: "MIN_LENGTH_ERROR",
     maxlength: "MAX_LENGTH_ERROR",
     pattern: "PATTERN_NOT_MATCH",
@@ -45,7 +47,7 @@ export class FormMessageResolverService {
 
   getFromValidatorKey(key: string, injectTemplate: object = {}, context?: string): string | undefined {
     const validationKey = this.validatorKeys[!context ? key : `${key}.${context}`];
-    if (!validationKey) return undefined;
+    if (!validationKey) return `Error validating input: ${key ?? ''} ${injectTemplate ?? ''} ${context ?? ''}`;
     let message = this.keys[validationKey];
     Object.entries(injectTemplate).forEach(([template, value]) => {
       message = message.replace(new RegExp(`{${template}}`, 'g'), value);
