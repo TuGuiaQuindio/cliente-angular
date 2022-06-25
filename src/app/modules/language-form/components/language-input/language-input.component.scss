@@ -1,5 +1,25 @@
 :host {
   @apply flex flex-col w-full;
+  &.warning {
+    p, label, .password-icon {
+      @apply text-appred-500;
+    }
+    p {
+      @apply text-center;
+    }
+    input {
+      @apply border-appred-500;
+    }
+
+    *:focus {
+      @apply outline-appred-300;
+    }
+  }
+
+  @apply relative;
+  * {
+    transition: border 300ms ease-in-out, color 300ms ease-in-out;
+  }
 }
 
 .input-container {
@@ -19,5 +39,13 @@
 
   .description {
     @apply text-appgray-500;
+  }
+}
+
+:host.warning {
+  .description-labels {
+    .name {
+      @apply text-appred-500;
+    }
   }
 }

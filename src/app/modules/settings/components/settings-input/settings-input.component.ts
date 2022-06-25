@@ -27,7 +27,6 @@ export class SettingsInputComponent extends InputValueAccessor implements OnInit
   }
   @ViewChild(InputValueAccessor) public set container(value: InputValueAccessor) {
     console.warn({ name: this.formControlName, value });
-    value.warningMsg = `Valor incorrecto para lo propiedad "${this.formControlName}"`
   }
   public input!: InputComponent;
   public warning = "";

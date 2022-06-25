@@ -132,9 +132,8 @@ export class StepsComponent extends InputValueAccessor implements OnInit, OnDest
   private handleIndexSelect(selectIndex: number) {
     if (this.selectIndex === selectIndex) return;
     this.selectIndex = selectIndex;
-    this.indexSelected.next(selectIndex);
+    this.indexSelected.emit(selectIndex);
     if (this.ngControl) this.ngControl.control!.setValue(this.selectIndex);
-
   }
 
   private handleVisuals(pixels: number, selectIndex: number) {

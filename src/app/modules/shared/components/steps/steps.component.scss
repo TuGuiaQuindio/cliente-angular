@@ -19,6 +19,12 @@
     }
   }
 
+  &.warning {
+    .circle {
+      @apply bg-appred-500;
+    }
+  }
+
   .circle {
     @apply w-4 h-4 rounded-full bg-appgray-400 absolute transition-[transform,_color] duration-75;
 
