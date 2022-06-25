@@ -15,6 +15,8 @@ export class FormMessageResolverService {
     PWD_LENGTH_ERROR: "La contraseña debe estar entre 7 y 30 caracteres de longitud.",
     MIN_LENGTH_ERROR: "Este campo debe tener {requiredLength} caracteres o más",
     MAX_LENGTH_ERROR: "Este campo no debe sobrepasar los {requiredLength} caracteres",
+    MAX_VALUE_ERROR: "Este campo no puede sobrepasar {max}",
+    MIN_VALUE_ERROR: "Este campo no puede ser menor a {min}",
     SIGNUP_OK: "Se ha registrado el usuario correctamente",
     PATTERN_NOT_MATCH: "Este campo no cumple con el formato requerido",
   }
@@ -33,6 +35,8 @@ export class FormMessageResolverService {
     "maxlength.password": "PWD_LENGTH_ERROR",
     minlength: "MIN_LENGTH_ERROR",
     maxlength: "MAX_LENGTH_ERROR",
+    max: "MAX_VALUE_ERROR",
+    min: "MIN_VALUE_ERROR",
     pattern: "PATTERN_NOT_MATCH",
   }
 
@@ -47,7 +51,7 @@ export class FormMessageResolverService {
 
   getFromValidatorKey(key: string, injectTemplate: object = {}, context?: string): string | undefined {
     const validationKey = this.validatorKeys[!context ? key : `${key}.${context}`];
-    if (!validationKey) return `Error validating input: ${key ?? ''} ${injectTemplate ?? ''} ${context ?? ''}`;
+    if (!validationKey) return `Error validating input: ${key ?? ''} ${JSON.stringify(injectTemplate) ?? ''} ${context ?? ''}`;
     let message = this.keys[validationKey];
     Object.entries(injectTemplate).forEach(([template, value]) => {
       message = message.replace(new RegExp(`{${template}}`, 'g'), value);
