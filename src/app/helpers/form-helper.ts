@@ -10,36 +10,38 @@ export const handleFormErrors = (form: FormGroup, inputRefs: WarningMessengerDic
   const errorKeys = Object.keys(form.controls)
   for (let key of errorKeys) {
     const control = form.controls[key];
-    const errorMsg = getFirstControlError(control);
     const inputComponent = inputRefs[key];
+    const errorMsg = getFirstControlError(control, inputComponent.context);
     if (!inputComponent) return;
     inputComponent.warningMsg = errorMsg;
   }
 }
 
-export const getFirstControlError = (control: AbstractControl): string => {
+export const getFirstControlError = (control: AbstractControl, context?: string): string => {
   if (hasNoErrors(control)) return "";
-  return getFirstError(control.errors!)
+  return getFirstError(control.errors!, context)
 }
 
-export const getAllControlErrors = (control: AbstractControl): string[] => {
+export const getAllControlErrors = (control: AbstractControl, context?: string): string[] => {
   if (hasNoErrors(control)) return [];
-  return getErrors(control.errors!);
+  return getErrors(control.errors!, context);
 }
 
 const hasNoErrors = (control: AbstractControl) => !control.errors || Object.entries(control.errors!).length == 0;
 
-const getFirstError = (errors: ValidationErrors): string => {
+const getFirstError = (errors: ValidationErrors, context?: string): string => {
   const keys = Object.keys(errors);
   const key = keys[0]
-  return messageResolver.getFromValidatorKey(key) ?? "";
+  const error = errors[key];
+  return messageResolver.getFromValidatorKey(key, error, context) ?? "";
 }
 
-const getErrors = (errors: ValidationErrors): string[] => {
+const getErrors = (errors: ValidationErrors, context?: string): string[] => {
   const keys = Object.keys(errors);
   const errorMsgs: string[] = [];
   for (let key of keys) {
-    const msg = messageResolver.getFromValidatorKey(key);
+    const error = errors[key];
+    const msg = messageResolver.getFromValidatorKey(key, error, context);
     if (!msg) continue;
     errorMsgs.push(msg);
   }

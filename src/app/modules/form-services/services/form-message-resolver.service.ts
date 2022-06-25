@@ -8,11 +8,13 @@ export class FormMessageResolverService {
 
   constructor() { }
 
-  private keys: {[key: string]: string} = {
+  private keys: { [key: string]: string } = {
     REQUIRED_ERROR: "Este campo es requerido.",
     EMAIL_ERROR: "Este campo debe de ser un email válido.",
     MATCH_ERROR: "La contraseña y confirmación de contraseña no coinciden.",
     PWD_LENGTH_ERROR: "La contraseña debe estar entre 7 y 30 caracteres de longitud.",
+    MIN_LENGTH_ERROR: "Este campo debe tener {requiredLength} caracteres o más",
+    MAX_LENGTH_ERROR: "Este campo no debe sobrepasar los {requiredLength} caracteres",
     SIGNUP_OK: "Se ha registrado el usuario correctamente",
     PATTERN_NOT_MATCH: "Este campo no cumple con el formato requerido",
   }
@@ -23,12 +25,12 @@ export class FormMessageResolverService {
     401: 'Las credenciales que has ingresado, son incorrectas.',
   }
 
-  private validatorKeys: {[key: string]: string} = {
+  private validatorKeys: { [key: string]: string } = {
     required: "REQUIRED_ERROR",
     email: "EMAIL_ERROR",
     noMatch: "MATCH_ERROR",
-    minlength: "PWD_LENGTH_ERROR",
-    maxlength: "PWD_LENGTH_ERROR",
+    minlength: "MIN_LENGTH_ERROR",
+    maxlength: "MAX_LENGTH_ERROR",
     pattern: "PATTERN_NOT_MATCH",
   }
 
@@ -41,10 +43,14 @@ export class FormMessageResolverService {
     return statusMsg ? statusMsg : this.formStatusMessages[999];
   }
 
-  getFromValidatorKey(key: string): string | undefined {
-    const validationKey = this.validatorKeys[key];
+  getFromValidatorKey(key: string, injectTemplate: object = {}, context?: string): string | undefined {
+    const validationKey = this.validatorKeys[!context ? key : `${key}.${context}`];
     if (!validationKey) return undefined;
-    return this.keys[validationKey];
+    let message = this.keys[validationKey];
+    Object.entries(injectTemplate).forEach(([template, value]) => {
+      message = message.replace(new RegExp(`{${template}}`, 'g'), value);
+    });
+    return message;
   }
 
   getMessage(key: string): string | undefined {
