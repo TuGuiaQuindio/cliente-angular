@@ -29,7 +29,6 @@ export class SettingsInputComponent extends InputValueAccessor implements OnInit
     console.warn({ name: this.formControlName, value });
   }
   public input!: InputComponent;
-  public warning = "";
   public selectedOptionIndex = 0;
 
   onOptionSelected(selected: SelectOption) {
