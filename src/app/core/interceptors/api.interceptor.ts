@@ -20,7 +20,7 @@ export class ApiInterceptor implements HttpInterceptor {
       const headers = request.headers.delete(CUSTOM_URL_HEADER);
       return next.handle(request.clone({ headers }));
     }
-    const url = environment.url_api /*+ request.url*/;
+    const url = environment.url_api + request.url;
     const cloneReq = request.clone({ url });
     return next.handle(cloneReq);
   }
