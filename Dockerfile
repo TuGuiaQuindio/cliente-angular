@@ -1,19 +1,17 @@
 FROM node:16.13.2-alpine AS build
 
-WORKDIR /cli-tgq
+WORKDIR /tgq_cli
 
 COPY ./package.json . 
 
 COPY ./package-lock.json .
 
-RUN npm i
+RUN npm i 
 
 COPY . .
 
-RUN npm run build
+EXPOSE 8080
 
-FROM nginx:1.23.0-alpine 
+CMD ["npx","ng","serve","--host=0.0.0.0","--prod=true"]
 
-COPY --from=build /cli-tgq/dist/tgq_cli /usr/share/nginx/html
-
-EXPOSE 80
+# EXPOSE 80
