@@ -17,10 +17,11 @@ export class InputCurrencyComponent extends InputValueAccessor implements OnInit
   @Input() public label = "";
   @Input() public placeholder = "";
   @Input() public tabindex = 0;
+  @Input() public step = 10000;
   @Input() public hideLabel = false;
 
   @ViewChild('input') public set hostInput(value: ElementRef) {
-    if(!value) return;
+    if (!value) return;
     this.inputEl = value.nativeElement as HTMLInputElement;
   }
 
@@ -47,6 +48,10 @@ export class InputCurrencyComponent extends InputValueAccessor implements OnInit
     if (isNaN(Number.parseFloat(value))) return;
     this.currencyText = this.toCurrency(value);
     this.editting = false;
+  }
+
+  public forceUpdateCurrencyText() {
+    this.currencyText = this.toCurrency(this.inputEl.value);
   }
 
   public onDisplayFocus() {
