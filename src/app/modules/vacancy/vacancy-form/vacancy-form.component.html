@@ -3,7 +3,7 @@
   <app-settings-input name="descripción" description="describe lo que necesitas más a fondo" formControlName="description"></app-settings-input>
   <app-settings-input name="vacantes disponibles" description="¿cuántas personas necesitas para el puesto?" formControlName="personnel"></app-settings-input>
 </app-form-settings-section>
-<app-form-settings-section title="Remuneración" [formGroup]="payment">
+<app-form-settings-section #paymentInputs title="Remuneración" [formGroup]="payment">
   <app-settings-input name="salario mínimo" description="disponibilidad mínima salarial para la vacante" formControlName="minSalary" inputType="currency" [examples]="numberExample"></app-settings-input>
   <app-settings-input name="salario máximo" description="disponibilidad máxima salarial para la vacante" formControlName="maxSalary" inputType="currency" [examples]="numberExample"></app-settings-input>
 </app-form-settings-section>

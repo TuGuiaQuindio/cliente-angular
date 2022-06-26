@@ -2,6 +2,7 @@ import { Component, Input, OnInit, Optional, Self, ViewChild } from '@angular/co
 import { NgControl } from '@angular/forms';
 import { InputValueAccessor } from 'src/app/classes/input-value-accessor';
 import { SelectOption } from 'src/app/modules/shared/components/select/select.component';
+import { InputCurrencyComponent } from 'src/app/modules/shared/input-currency/input-currency.component';
 import { InputComponent } from 'src/app/modules/shared/input/input.component';
 import { SettingInputExample } from '../panel-builder/panel-builder.component';
 
@@ -25,6 +26,7 @@ export class SettingsInputComponent extends InputValueAccessor implements OnInit
   @ViewChild('input', { read: InputComponent }) public set hostInput(value: InputComponent) {
     this.input = value;
   }
+  @ViewChild(InputCurrencyComponent) public InputCurrencyComponent!: InputCurrencyComponent;
   public input!: InputComponent;
   public selectedOptionIndex = 0;
 
@@ -40,6 +42,10 @@ export class SettingsInputComponent extends InputValueAccessor implements OnInit
   setFocus() {
     if (!this.input) return;
     this.input.setFocus();
+  }
+
+  public updateCurrencyInput(value: number | string) {
+    this.InputCurrencyComponent.forceUpdateCurrencyText(value);
   }
 
   hasExamples() {

@@ -50,8 +50,8 @@ export class InputCurrencyComponent extends InputValueAccessor implements OnInit
     this.editting = false;
   }
 
-  public forceUpdateCurrencyText() {
-    this.currencyText = this.toCurrency(this.inputEl.value);
+  public forceUpdateCurrencyText(value: number | string) {
+    this.currencyText = this.toCurrency(value.toString());
   }
 
   public onDisplayFocus() {
