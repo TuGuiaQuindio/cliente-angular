@@ -1,0 +1,68 @@
+:host{
+    @apply grid grid-cols-[auto_2px_auto] max-h-[50rem] h-full w-fit px-6 py-6 gap-4 rounded-xl shadow-md border-2;
+}
+
+.avatar-content{
+    @apply flex flex-col gap-4 h-full;
+
+    .img{
+        @apply flex justify-center;
+    }
+}
+
+hr {
+    @apply flex h-full w-[2px] bg-appgray-200;
+}
+
+.languages {
+  @apply flex flex-col gap-2;
+}
+
+app-label-icon{
+    @apply text-sm;
+}
+
+app-language-display-short{
+    @apply text-sm;
+}
+
+app-badge{
+    @apply text-sm;
+}
+
+.content{
+    @apply flex-col max-w-[18rem];
+}
+
+header{
+    @apply flex justify-between items-center ;
+
+    p{
+        @apply text-[#33BD67] text-2xl h-fit;
+    }
+}
+
+.about{
+    @apply text-appgray-400 my-5;
+    
+    p{
+        @apply text-sm;
+    }
+}
+
+.plugin{
+    @apply grid grid-cols-2 mb-6;
+
+    .remarks{
+        @apply flex flex-col gap-2;
+    }
+}
+
+footer{
+    @apply grid grid-cols-2;
+
+    app-button {
+        @apply col-start-2 flex min-w-fit text-sm;
+    }
+
+}

@@ -1,0 +1,12 @@
+:host{
+
+    @apply flex items-center gap-2 w-fit;
+
+    .label{
+        @apply text-appgray-400; 
+    }
+
+    i{
+        // @apply text-red-600;
+    }
+}

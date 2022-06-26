@@ -5,6 +5,7 @@ import { LanguageInputComponent } from './components/language-input/language-inp
 import { SharedModule } from '../shared/shared.module';
 import { LanguageFormServicesModule } from './services/language-form-services/language-form-services.module';
 import { LanguageDisplayComponent } from './components/language-display/language-display.component';
+import { LanguageDisplayShortComponent } from './components/language-display-short/language-display-short.component';
 import { LanguageListInputComponent } from './components/language-list-input/language-list-input.component';
 import { ReactiveFormsModule } from '@angular/forms';
 
@@ -13,7 +14,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     StarLevelComponent,
     LanguageInputComponent,
     LanguageDisplayComponent,
-    LanguageListInputComponent
+    LanguageListInputComponent,
+    LanguageDisplayShortComponent
   ],
   imports: [
     CommonModule,
@@ -25,7 +27,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     StarLevelComponent,
     LanguageInputComponent,
     LanguageDisplayComponent,
-    LanguageListInputComponent
+    LanguageListInputComponent,
+    LanguageDisplayShortComponent
   ]
 })
 export class LanguageFormModule { }

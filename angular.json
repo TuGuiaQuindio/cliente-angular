@@ -20,7 +20,7 @@
 				"build": {
 					"builder": "@angular-devkit/build-angular:browser",
 					"options": {
-						"outputPath": "dist/vistasProyectoTaildwind",
+						"outputPath": "dist/tgq_cli",
 						"index": "src/index.html",
 						"main": "src/main.ts",
 						"polyfills": "src/polyfills.ts",
@@ -31,7 +31,7 @@
 						],
 						"styles": [
 							"src/styles.scss",
-              "./node_modules/leaflet/dist/leaflet.css"
+            "./node_modules/leaflet/dist/leaflet.css"
 						],
 						"scripts": []
 					},
@@ -40,13 +40,13 @@
 							"budgets": [
 								{
 									"type": "initial",
-									"maximumWarning": "500kb",
-									"maximumError": "1mb"
+									"maximumWarning": "4mb",
+									"maximumError": "5mb"
 								},
 								{
 									"type": "anyComponentStyle",
-									"maximumWarning": "2kb",
-									"maximumError": "4kb"
+									"maximumWarning": "4mb",
+									"maximumError": "5mb"
 								}
 							],
 							"fileReplacements": [

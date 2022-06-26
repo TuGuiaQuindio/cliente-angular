@@ -1,0 +1,19 @@
+:host{
+    @apply flex items-center gap-1 w-fit py-[2px] px-2 min-h-[1.35rem] rounded-[6rem] border border-appgray-400 text-appgray-500;
+    
+    &.emphasis {
+        @apply bg-purple-500 h-fit text-primary border-none;
+    }
+
+    &.gold{
+        @apply bg-[#E4B50E] h-fit text-primary border-none;
+    }
+
+    .label{
+        @apply mb-[0.15rem] select-none;
+    }
+
+    i{
+        @apply text-[150%];
+    }
+}
