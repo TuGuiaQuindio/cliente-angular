@@ -37,6 +37,11 @@ export class StepsComponent extends InputValueAccessor implements OnInit, OnDest
 
   @Input() public steps = 2;
   @Output() public indexSelected = new EventEmitter<number>();
+  @HostListener('mouseleave')
+  public onMouseUp() {
+    this.mouseIsDown = false;
+    this.unsetScale();
+  }
 
   public lifecycle = new Subject<string>();
   public get destroy$() {
