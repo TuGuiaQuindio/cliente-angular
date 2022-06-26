@@ -25,12 +25,12 @@ export class SelectComponent extends InputValueAccessor implements OnInit {
   @ViewChild('select') public set hostSelect(ref: ElementRef) {
     this.select = ref.nativeElement;
     this.select.selectedIndex = this.selectedIndex;
-    this.handleControlValue();
+    this.syncSelectUI();
   };
 
   private select!: HTMLSelectElement;
 
-  private handleControlValue() {
+  public syncSelectUI() {
     if (!this.ngControl) return;
     const value = this.control.value;
     const optionIdx = this.options.findIndex(el => el.value === value);
