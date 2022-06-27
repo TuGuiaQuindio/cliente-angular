@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { PreviewComponent } from './preview/preview.component';
 import { SharedModule } from '../shared/shared.module';
 import { LanguageFormModule } from '../language-form/language-form.module';
+import { ProfileGuideComponent } from './components/profile-guide/profile-guide.component';
 import { ProfileRoutingModule } from './profile-routing.module';
 import { GuideCardComponent } from './components/guide-card/guide-card.component';
 import { CardItemComponent } from './components/card-item/card-item.component';
@@ -12,6 +13,7 @@ import { PipesModule } from '../pipes/pipes.module';
 @NgModule({
   declarations: [
     PreviewComponent,
+    ProfileGuideComponent,
     GuideCardComponent,
     CardItemComponent,
     ExtraInfoCardComponent,
@@ -25,6 +27,7 @@ import { PipesModule } from '../pipes/pipes.module';
   ],
   exports: [
     PreviewComponent,
+    ProfileGuideComponent,
   ]
 })
 export class ProfileModule { }
