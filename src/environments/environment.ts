@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  url_api: 'https://backend-env.up.railway.app'
+  url_api: 'http://localhost:3000'
 };
 
 /*
