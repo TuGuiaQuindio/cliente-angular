@@ -4,7 +4,8 @@ import { Language } from "src/app/modules/profile/preview/preview.component";
 export interface Guide {
   firstName: string;
   lastName: string;
-  aboutMe: string;
+  aboutMe?: string;
   languages: Language[];
   additionalInformation: AdditionalInformation;
+  verified: boolean;
 }
