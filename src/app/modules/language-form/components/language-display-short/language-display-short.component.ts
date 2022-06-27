@@ -13,6 +13,6 @@ export class LanguageDisplayShortComponent implements OnInit {
   }
 
   @Input() public language = '';
-  @Input() public level = '';
+  @Input() public level = 0;
 
 }

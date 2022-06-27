@@ -1,6 +1,6 @@
 :host{
 
-    @apply flex justify-between w-full gap-4;
+    @apply grid grid-cols-[auto_2.75rem] w-full gap-4;
 
     .check{
         @apply text-appgreen-600;
