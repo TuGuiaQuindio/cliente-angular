@@ -3,12 +3,13 @@ import { CommonModule } from '@angular/common';
 import { HasCountPipe } from './pipes/has-count.pipe';
 import { ExistPipe } from './pipes/exist.pipe';
 import { HasEntriesPipe } from './pipes/has-entries.pipe';
+import { SplitPipe } from './pipes/split.pipe';
 
 @NgModule({
-  declarations: [HasCountPipe, ExistPipe, HasEntriesPipe],
+  declarations: [HasCountPipe, ExistPipe, HasEntriesPipe, SplitPipe],
   imports: [
     CommonModule
   ],
-  exports: [HasCountPipe, ExistPipe, HasEntriesPipe]
+  exports: [HasCountPipe, ExistPipe, HasEntriesPipe, SplitPipe]
 })
 export class PipesModule { }
