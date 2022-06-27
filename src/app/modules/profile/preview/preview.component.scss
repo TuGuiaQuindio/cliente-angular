@@ -1,12 +1,16 @@
 :host{
-    @apply grid grid-cols-[auto_2px_auto] max-h-[50rem] h-full w-fit px-6 py-6 gap-4 rounded-xl shadow-md border-2;
+    @apply grid grid-cols-[10rem_2px_auto] max-h-[50rem] h-full w-fit px-6 py-6 gap-4 rounded-xl shadow-md border-2 w-full max-w-[35rem];
 }
 
 .avatar-content{
     @apply flex flex-col gap-4 h-full;
 
     .img{
-        @apply flex justify-center;
+        @apply flex justify-center w-full;
+
+        svg {
+          @apply w-full h-full mx-4;
+        }
     }
 }
 
@@ -31,7 +35,11 @@ app-badge{
 }
 
 .content{
-    @apply flex-col max-w-[18rem];
+    @apply flex flex-col max-w-[18rem];
+
+    main {
+      @apply flex-1;
+    }
 }
 
 header{

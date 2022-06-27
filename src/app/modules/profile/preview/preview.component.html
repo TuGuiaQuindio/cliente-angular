@@ -13,7 +13,7 @@
   </section>
   <section class="languages">
     <app-language-display-short *ngFor="let language of languages$ | async" [language]="language.name | lowercase"
-      [level]="language.level.toString()">
+      [level]="language.level">
     </app-language-display-short>
   </section>
 </section>
@@ -29,7 +29,7 @@
   </header>
   <main>
     <section class="about">
-      <p>{{aboutMe}}</p>
+      <p>{{aboutMe | truncate:180:'...'}}</p>
     </section>
     <section class="plugin">
       <section class="badges">
