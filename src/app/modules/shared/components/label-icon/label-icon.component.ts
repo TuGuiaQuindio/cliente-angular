@@ -12,7 +12,7 @@ export class LabelIconComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  @Input() public lable = '';
+  @Input() public label = '';
   @Input() public icon = '';
   @Input() public type = '';
 
