@@ -1,0 +1,8 @@
+<article class="card-container">
+  <header>
+    <h2>{{name}}</h2>
+  </header>
+  <main>
+    <app-card-item *ngFor="let item of items" [title]="item.title" [icon]="item.icon" [content]="item.content"></app-card-item>
+  </main>
+</article>

@@ -1,0 +1,46 @@
+<article class="information-container">
+  <section class="languages">
+    <header class="icon-header">
+      <i class="bx bx-message-square-check"></i>
+    </header>
+    <main>
+      <h3>Idiomas</h3>
+      <section class="content">
+        <ng-container *ngIf="languages | hasCount; else noLanguages">
+          <app-language-display *ngFor="let language of languages" [name]="language.name" [level]="language.level"></app-language-display>
+        </ng-container>
+        <ng-template #noLanguages>
+          <p class="no-info">No hay idiomas registrados</p>
+        </ng-template>
+      </section>
+    </main>
+  </section>
+  <hr>
+  <section class="additional-info">
+    <header class="icon-header">
+      <i class="bx bx-book-alt"></i>
+    </header>
+    <main>
+      <h3>Información Adicional</h3>
+      <section class="content">
+        <ng-container *ngIf="additionalInfo | hasEntries; else noAdditionalInfo">
+          <article class="first-aid">
+            <i class="bx bx-first-aid"></i>
+            <p>{{ firstAid$ | async }}</p>
+          </article>
+          <article class="has-transport">
+            <i class="bx bx-car"></i>
+            <p>{{ hasTransport$ | async }}</p>
+          </article>
+          <article class="availability">
+            <i class="bx bx-calendar"></i>
+            <p>{{ availability$ | async }}</p>
+          </article>
+        </ng-container>
+        <ng-template #noAdditionalInfo>
+          <p class="no-info">Sin información adicional para mostrar</p>
+        </ng-template>
+      </section>
+    </main>
+  </section>
+</article>

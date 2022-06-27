@@ -1,0 +1,4 @@
+.previews {
+  @apply grid grid-cols-1 gap-8;
+  @apply xl:grid-cols-2;
+}

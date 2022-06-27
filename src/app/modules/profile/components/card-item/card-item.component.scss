@@ -1,0 +1,27 @@
+:host {
+  @apply w-full;
+
+  .grid-container {
+    @apply grid grid-cols-[6rem_auto] pt-4 pb-2;
+
+    .icon {
+      @apply place-self-center text-4xl text-secondary-600;
+    }
+
+    .information {
+      @apply flex flex-col gap-2;
+
+      hr {
+        @apply mb-2;
+      }
+
+      .heading {
+        @apply text-appgray-500;
+      }
+      
+      .content {
+        @apply text-appgray-400;
+      }
+    }
+  }
+}

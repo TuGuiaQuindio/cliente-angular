@@ -1,0 +1,12 @@
+.card-container {
+  @apply rounded-lg border p-8 shadow-md;
+  header {
+    @apply py-4 pb-6;
+    h2 {
+      @apply text-4xl font-heading text-secondary-600 text-center;
+    }
+  }
+  main {
+    @apply flex flex-col w-full;
+  }
+}

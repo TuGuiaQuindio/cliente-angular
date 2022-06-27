@@ -14,6 +14,7 @@ const routes: Routes = [
   { path: 'vacancy', loadChildren: () => import('./modules/vacancy/vacancy.module').then(m => m.VacancyModule), canActivate: [AuthGuard] },
   { path: 'not-found', loadChildren: () => import('./modules/page-not-found/page-not-found.module').then(m => m.PageNotFoundModule) },
   { path: 'settings', loadChildren: () => import('./modules/settings/settings.module').then(m => m.SettingsModule), canActivate: [AuthGuard] },
+  { path: 'profile', loadChildren: () => import('./modules/profile/profile.module').then(m => m.ProfileModule) },
   { path: '**', pathMatch: 'full', redirectTo: 'not-found' },
 ];
 

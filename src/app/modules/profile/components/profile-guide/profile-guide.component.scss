@@ -1,0 +1,17 @@
+.page-section {
+  @apply flex flex-col gap-12;
+  @apply lg:flex-row lg:gap-8;
+  @apply xl:gap-16 2xl:gap-24;
+
+  .info-section {
+    @apply flex flex-1 max-w-[30rem] flex-col gap-12;
+  }
+
+  .guide-section {
+    @apply flex-1;
+  }
+
+  app-button {
+    @apply col-start-2 place-self-center max-w-xs w-full;
+  }
+}

@@ -13,7 +13,7 @@
   </section>
   <section class="languages">
     <app-language-display-short *ngFor="let language of languages$ | async" [language]="language.name | lowercase"
-      [level]="language.level.toString()">
+      [level]="language.level">
     </app-language-display-short>
   </section>
 </section>
@@ -22,25 +22,23 @@
 
 <section class="content">
   <header>
-    <p>Arturo cayeh</p>
+    <p>{{name}}</p>
     <div *ngIf="verified">
       <app-badge #verificado label="verificado" icon="bx-badge-check" type="emphasis"></app-badge>
     </div>
   </header>
   <main>
     <section class="about">
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi quam
-        nostrum maiores repellat esse ipsam ad
-      </p>
+      <p>{{aboutMe | truncate:180:'...'}}</p>
     </section>
     <section class="plugin">
       <section class="badges">
         <app-badge label="Adjuntos" icon="bx-book" type="gold"></app-badge>
       </section>
       <section class="remarks">
-        <app-label-icon icon="bx-first-aid" type="text-red-500" lable="primeros auxilios"></app-label-icon>
-        <app-label-icon icon="bx-car" type="text-yellow-500" lable="transporte particular"></app-label-icon>
+        <app-label-icon *ngIf="firstAid$ | async" icon="bx-first-aid" type="text-red-500" label="primeros auxilios"></app-label-icon>
+        <app-label-icon *ngIf="hasTransport$ | async" icon="bx-car" type="text-yellow-500" label="transporte particular"></app-label-icon>
+        <app-label-icon *ngIf="availability$ | async" icon="bx-calendar" type="text-sky-500" [label]="(availability$ | async)!"></app-label-icon>
       </section>
     </section>
   </main>
