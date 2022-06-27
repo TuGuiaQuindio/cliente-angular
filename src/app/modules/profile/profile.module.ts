@@ -10,6 +10,7 @@ import { CardItemComponent } from './components/card-item/card-item.component';
 import { ExtraInfoCardComponent } from './components/extra-info-card/extra-info-card.component';
 import { PipesModule } from '../pipes/pipes.module';
 import { GuideListComponent } from './components/guide-list/guide-list.component';
+import { ProfileServicesModule } from './profile-services.module';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { GuideListComponent } from './components/guide-list/guide-list.component
     SharedModule,
     ProfileRoutingModule,
     LanguageFormModule,
-    PipesModule
+    PipesModule,
+    ProfileServicesModule
   ],
   exports: [
     PreviewComponent,
