@@ -43,10 +43,10 @@ header{
 }
 
 .about{
-    @apply text-appgray-400 my-5;
+    @apply text-appgray-400 my-5 flex flex-col;
     
     p{
-        @apply text-sm;
+        @apply text-sm min-h-[1em];
     }
 }
 
