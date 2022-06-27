@@ -11,18 +11,8 @@ export type AdditionalInformation = { firstAid: boolean, hasTransport: boolean, 
 export class ExtraInfoCardComponent implements OnInit {
 
   constructor() { }
-  @Input() public languages: Language[] = [
-    { name: 'Alemán', level: 5.0 },
-    { name: 'Alemán', level: 2.5 },
-    { name: 'Alemán', level: 4.2 },
-    { name: 'Alemán', level: 3.5 },
-  ];
-
-  @Input() public additionalInfo?: AdditionalInformation = {
-    firstAid: false,
-    availability: 'weekends',
-    hasTransport: false,
-  };
+  @Input() public languages: Language[] = [];
+  @Input() public additionalInfo?: AdditionalInformation;
 
   private availabilityMap: { [key: string]: string } = {
     "full": "Toda la semana",
