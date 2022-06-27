@@ -1,7 +1,11 @@
 :host {
   @apply grid grid-cols-2 w-full;
+
+  app-star-level {
+    @apply place-self-end;
+  }
 }
 
 .language-name {
-  @apply text-appgray-500;
+  @apply text-appgray-400;
 }
