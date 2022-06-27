@@ -6,18 +6,22 @@ import { LanguageFormModule } from '../language-form/language-form.module';
 import { ProfileRoutingModule } from './profile-routing.module';
 import { GuideCardComponent } from './components/guide-card/guide-card.component';
 import { CardItemComponent } from './components/card-item/card-item.component';
+import { ExtraInfoCardComponent } from './components/extra-info-card/extra-info-card.component';
+import { PipesModule } from '../pipes/pipes.module';
 
 @NgModule({
   declarations: [
     PreviewComponent,
     GuideCardComponent,
     CardItemComponent,
+    ExtraInfoCardComponent,
   ],
   imports: [
     CommonModule,
     SharedModule,
     ProfileRoutingModule,
     LanguageFormModule,
+    PipesModule
   ],
   exports: [
     PreviewComponent,

@@ -1,0 +1,65 @@
+:host {
+  @apply bg-primary h-fit p-10 border shadow-md rounded-lg;
+}
+
+.information-container {
+  @apply flex flex-col gap-6;
+  section {
+    @apply grid grid-cols-[2rem_auto] gap-x-4 mb-2;
+
+    .content {
+      @apply flex flex-col gap-y-1;
+      .no-info {
+        @apply text-lg text-appgray-400 text-center mt-4;
+      }
+
+      article {
+        @apply flex gap-4 items-start my-0.5;
+        i {
+          @apply flex items-center justify-center text-3xl text-white px-1 rounded-lg;
+        }
+
+        p {
+          @apply mt-2 text-appgray-500;
+        }
+
+        &.first-aid {
+          i {
+            @apply bg-red-400;
+          }
+        }
+
+        &.has-transport {
+          i {
+            @apply bg-yellow-400;
+          }
+        }
+
+        &.availability {
+          i {
+            @apply bg-sky-400;
+          }
+        }
+      }
+    }
+
+    .icon-header, h3 {
+      @apply text-secondary-600;
+    }
+
+    .icon-header {
+      @apply flex gap-4 text-4xl;
+    }
+    h3 {
+      @apply text-2xl font-heading mb-6;
+    }
+  }
+
+  .languages {
+    main {
+      app-language-display {
+        @apply w-full;
+      }
+    }
+  }
+}
