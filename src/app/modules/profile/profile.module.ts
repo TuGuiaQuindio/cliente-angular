@@ -9,6 +9,7 @@ import { GuideCardComponent } from './components/guide-card/guide-card.component
 import { CardItemComponent } from './components/card-item/card-item.component';
 import { ExtraInfoCardComponent } from './components/extra-info-card/extra-info-card.component';
 import { PipesModule } from '../pipes/pipes.module';
+import { GuideListComponent } from './components/guide-list/guide-list.component';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,7 @@ import { PipesModule } from '../pipes/pipes.module';
     GuideCardComponent,
     CardItemComponent,
     ExtraInfoCardComponent,
+    GuideListComponent,
   ],
   imports: [
     CommonModule,
