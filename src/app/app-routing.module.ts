@@ -11,6 +11,7 @@ const routes: Routes = [
   { path: 'login', loadChildren: () => import('./modules/login/login.module').then(m => m.LoginModule), canActivate: [GoToDashboardGuard] },
   { path: 'signup', loadChildren: () => import('./modules/signup/signup.module').then(m => m.SignupModule), canActivate: [GoToDashboardGuard] },
   { path: 'dashboard', loadChildren: () => import('./modules/dashboard/dashboard.module').then(m => m.DashboardModule), canActivate: [AuthGuard] },
+  { path: 'vacancy', loadChildren: () => import('./modules/vacancy/vacancy.module').then(m => m.VacancyModule), canActivate: [AuthGuard] },
   { path: 'not-found', loadChildren: () => import('./modules/page-not-found/page-not-found.module').then(m => m.PageNotFoundModule) },
   { path: 'settings', loadChildren: () => import('./modules/settings/settings.module').then(m => m.SettingsModule), canActivate: [AuthGuard] },
   { path: '**', pathMatch: 'full', redirectTo: 'not-found' },

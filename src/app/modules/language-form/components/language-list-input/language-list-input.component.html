@@ -1,0 +1,11 @@
+  <section class="input-container">
+    <app-language-input [warningMsg]="warningMsg" #languageInput [formControl]="languageInputControl"></app-language-input>
+    <app-button type="special" (click)="onAddClick()" [disabled]="!canAddLanguage">Añadir idioma</app-button>
+  </section>
+  <hr>
+  <section class="language-summary">
+    <article class="language-entry" *ngFor="let language of languages; index as i">
+      <app-language-display [name]="language.name" [level]="language.level" [maxLevel]="5"></app-language-display>
+      <app-icon-button icon="bx-x" (click)="deleteEntry(i)"></app-icon-button>
+    </article>
+  </section>

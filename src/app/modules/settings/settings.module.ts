@@ -9,8 +9,6 @@ import { PanelSectionComponent } from './components/panel-section/panel-section.
 import { PanelSettingsButtonComponent } from './components/panel-settings-button/panel-settings-button.component';
 import { SettingsPageViewComponent } from './components/settings-page-view/settings-page-view.component';
 import { SecurityComponent } from './routes/security/security.component';
-import { FormSettingsSectionComponent } from './components/form-settings-section/form-settings-section.component';
-import { SettingsInputComponent } from './components/settings-input/settings-input.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { PanelBuilderComponent } from './components/panel-builder/panel-builder.component';
 import { PersonalInformationComponent } from './routes/personal-information/personal-information.component';
@@ -20,6 +18,8 @@ import { CertificatesComponent } from './routes/certificates/certificates.compon
 import { UploadModule } from '../upload/upload.module';
 import { LanguageFormModule } from '../language-form/language-form.module';
 import { LanguagesComponent } from './routes/languages/languages.component';
+import { SettingsMainPageComponent } from './routes/settings-main-page/settings-main-page.component';
+import { SettingsFormModule } from '../settings-form/settings-form.module';
 
 @NgModule({
   declarations: [
@@ -29,12 +29,11 @@ import { LanguagesComponent } from './routes/languages/languages.component';
     PanelSettingsButtonComponent,
     SettingsPageViewComponent,
     SecurityComponent,
-    FormSettingsSectionComponent,
-    SettingsInputComponent,
     PanelBuilderComponent,
     PersonalInformationComponent,
     CertificatesComponent,
     LanguagesComponent,
+    SettingsMainPageComponent
   ],
   imports: [
     CommonModule,
@@ -45,6 +44,7 @@ import { LanguagesComponent } from './routes/languages/languages.component';
     MapModule,
     UploadModule,
     LanguageFormModule,
+    SettingsFormModule
   ]
 })
 export class SettingsModule { }

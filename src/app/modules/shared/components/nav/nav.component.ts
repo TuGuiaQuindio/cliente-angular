@@ -27,8 +27,12 @@ export class NavComponent implements AfterViewInit {
   }
   
   public onAvatarClick() {
-    if(!this.dropdown.hidden) return;
-    if(this.dropdown) this.dropdown.show();
+    if(!this.dropdown) return;
+    if (this.dropdown.hidden) {
+      this.dropdown.show();
+    } else {
+      this.dropdown.hide();
+    }
   }
 
   ngAfterViewInit(): void {

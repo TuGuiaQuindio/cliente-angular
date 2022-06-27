@@ -37,6 +37,11 @@ export class StepsComponent extends InputValueAccessor implements OnInit, OnDest
 
   @Input() public steps = 2;
   @Output() public indexSelected = new EventEmitter<number>();
+  @HostListener('mouseleave')
+  public onMouseUp() {
+    this.mouseIsDown = false;
+    this.unsetScale();
+  }
 
   public lifecycle = new Subject<string>();
   public get destroy$() {
@@ -132,9 +137,8 @@ export class StepsComponent extends InputValueAccessor implements OnInit, OnDest
   private handleIndexSelect(selectIndex: number) {
     if (this.selectIndex === selectIndex) return;
     this.selectIndex = selectIndex;
-    this.indexSelected.next(selectIndex);
+    this.indexSelected.emit(selectIndex);
     if (this.ngControl) this.ngControl.control!.setValue(this.selectIndex);
-
   }
 
   private handleVisuals(pixels: number, selectIndex: number) {

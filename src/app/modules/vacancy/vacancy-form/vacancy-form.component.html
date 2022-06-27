@@ -1,0 +1,17 @@
+<app-form-settings-section title="Información básica" [formGroup]="basicInformation">
+  <app-settings-input name="titulo" description="¿qué es lo que necesitas?" formControlName="title"></app-settings-input>
+  <app-settings-input name="descripción" description="describe lo que necesitas más a fondo" formControlName="description"></app-settings-input>
+  <app-settings-input name="vacantes disponibles" description="¿cuántas personas necesitas para el puesto?" formControlName="personnel"></app-settings-input>
+</app-form-settings-section>
+<app-form-settings-section #paymentInputs title="Remuneración" [formGroup]="payment">
+  <app-settings-input name="salario mínimo" description="disponibilidad mínima salarial para la vacante" formControlName="minSalary" inputType="currency" [examples]="numberExample"></app-settings-input>
+  <app-settings-input name="salario máximo" description="disponibilidad máxima salarial para la vacante" formControlName="maxSalary" inputType="currency" [examples]="numberExample"></app-settings-input>
+</app-form-settings-section>
+<app-form-settings-section title="Información adicional" [formGroup]="additionalInfo">
+  <app-settings-input name="disponibilidad requerida" inputType="select" [options]="availabilityOptions" description="horario que se necesita de la vacante" formControlName="availability"></app-settings-input>
+  <app-settings-input name="contar con transporte" inputType="checkbox" description="¿debe contar con transporte?" formControlName="hasTransport"></app-settings-input>
+  <app-settings-input name="conocimiento de primeros auxilios requerido" inputType="checkbox" description="¿la persona debe tener conocimiento sobre primeros auxilios?" formControlName="firstAid"></app-settings-input>
+</app-form-settings-section>
+<app-form-settings-section title="Idiomas requeridos" [formGroup]="requiredLanguages">
+  <app-language-list-input formControlName="languages"></app-language-list-input>
+</app-form-settings-section>

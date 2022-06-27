@@ -1,0 +1,7 @@
+:host {
+  @apply flex flex-col w-full items-center;
+
+  & > * {
+    @apply max-w-4xl;
+  }
+}

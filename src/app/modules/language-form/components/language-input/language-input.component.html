@@ -1,8 +1,9 @@
 <section class="input-container">
-  <app-select [options]="(options$ | async)!" (elementSelected)="onLanguageSelected($event)" [selectedIndex]="(selected$ | async)!"></app-select>
-  <app-steps #steps [steps]="6" (indexSelected)="onCertificationLevelSelected($event)"></app-steps>
+  <app-select [class.warning]="hasWarningMessage" [options]="(options$ | async)!" (elementSelected)="onLanguageSelected($event)" [selectedIndex]="(selected$ | async)!"></app-select>
+  <app-steps [class.warning]="hasWarningMessage" #steps [steps]="6" (indexSelected)="onCertificationLevelSelected($event)"></app-steps>
 </section>
 <section class="description-labels">
   <p class="name">{{ (certificate$ | async)!.name }}</p>
   <p class="description">{{ (certificate$ | async)!.description }}</p>
 </section>
+<p *ngIf="hasWarningMessage" class="warning-msg">{{ warningMsg }}</p>

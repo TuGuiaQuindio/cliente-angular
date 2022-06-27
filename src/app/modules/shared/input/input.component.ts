@@ -1,14 +1,14 @@
 import { Component, ElementRef, HostBinding, Input, OnInit, Optional, Self, ViewChild } from '@angular/core';
-import { ControlValueAccessor, FormControl, FormControlDirective, FormControlName, FormGroupDirective, NgControl, NgModel } from '@angular/forms';
+import { NgControl } from '@angular/forms';
 import { InputValueAccessor } from 'src/app/classes/input-value-accessor';
-import { WarningMessenger } from 'src/app/interfaces/warning-messenger';
 
 @Component({
   selector: 'app-input',
   templateUrl: './input.component.html',
-  styleUrls: ['./input.component.scss']
+  styleUrls: ['./input.component.scss'],
+  providers: [{ provide: InputValueAccessor, useExisting: InputComponent }]
 })
-export class InputComponent extends InputValueAccessor implements OnInit, WarningMessenger {
+export class InputComponent extends InputValueAccessor implements OnInit {
 
   constructor(@Optional() @Self() ngControl: NgControl) {
     super(ngControl);
@@ -17,7 +17,6 @@ export class InputComponent extends InputValueAccessor implements OnInit, Warnin
   @Input() public label = "Default";
   @Input() public placeholder = "";
   @Input() public type = "text";
-  @Input() public warningMsg = "";
   @Input() public tabindex = 0;
   @Input() public hideLabel = false;
   @ViewChild('input') public set hostInput(value: ElementRef) {
@@ -31,7 +30,7 @@ export class InputComponent extends InputValueAccessor implements OnInit, Warnin
     this.setup();
   }
 
-  @HostBinding('class.warning') 
+  @HostBinding('class.warning')
   public get showWarning() {
     return this.warningMsg.length != 0;
   }

@@ -1,6 +1,12 @@
+import { Component, HostBinding, Input } from "@angular/core";
 import { ControlValueAccessor, FormControl, FormControlDirective, FormControlName, FormGroupDirective, NgControl, NgModel } from "@angular/forms";
+import { WarningMessengerImpl } from "./warning-messenger-impl";
 
-export class InputValueAccessor implements ControlValueAccessor {
+@Component({
+  template: '',
+  providers: [{ provide: WarningMessengerImpl, useExisting: InputValueAccessor }]
+})
+export class InputValueAccessor extends WarningMessengerImpl implements ControlValueAccessor {
   writeValue(): void { }
   registerOnChange(): void { }
   registerOnTouched(): void { }
@@ -8,8 +14,16 @@ export class InputValueAccessor implements ControlValueAccessor {
   public control!: FormControl;
 
   constructor(public ngControl: NgControl) {
+    super();
     if (!this.ngControl) return;
     this.ngControl.valueAccessor = this;
+  }
+  @Input() public warningMsg = '';
+  @Input() public context = '';
+
+  @HostBinding('class.warning')
+  public get hasWarningMessage(): boolean {
+    return this.warningMsg.length > 0;
   }
 
   setup(): void {

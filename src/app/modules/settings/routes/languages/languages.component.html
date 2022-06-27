@@ -1,13 +1,3 @@
 <app-settings-page-view title="Idiomas" subtitle="Crea y actualiza la configuración de idiomas">
-  <section class="input-container">
-    <app-language-input #languageInput [formControl]="languageInputControl"></app-language-input>
-    <app-button type="special" (click)="onAddClick()" [disabled]="!canAddLanguage">Añadir idioma</app-button>
-  </section>
-  <hr>
-  <section class="language-summary">
-    <article class="language-entry" *ngFor="let language of languages; index as i">
-      <app-language-display [name]="language.name" [level]="language.level" [maxLevel]="5"></app-language-display>
-      <app-icon-button icon="bx-x" (click)="deleteEntry(i)"></app-icon-button>
-    </article>
-  </section>
+  <app-language-list-input></app-language-list-input>
 </app-settings-page-view>

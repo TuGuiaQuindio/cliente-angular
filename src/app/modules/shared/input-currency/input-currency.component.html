@@ -1,0 +1,11 @@
+<label *ngIf="showLabel()" (click)="setFocus()">{{ label }}</label>
+<section class="input-group">
+  <ng-container *ngIf="editting; else displayCurrency">
+    <input #input type="number" [step]="step" (blur)="onInputBlur($event)" [tabindex]="tabindex" [placeholder]="placeholder" [formControl]="control">
+  </ng-container>
+  <ng-template #displayCurrency>
+    <article (focus)="onDisplayFocus()" [tabindex]="tabindex" class="currency-display">{{currencyText}}</article>
+  </ng-template>
+</section>
+<p *ngIf="hasWarningMessage" class="warning-msg">{{ warningMsg }}</p>
+

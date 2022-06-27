@@ -1,0 +1,43 @@
+:host {
+  @apply block mt-2;
+}
+
+label {
+  @apply absolute text-secondary-600 bg-primary left-3 px-3 top-[-0.75em] h-5 z-10 w-max;
+}
+
+.input-group {
+  @apply flex relative justify-end;
+}
+
+input, .currency-display {
+  @apply px-3 py-2 border-2 border-secondary-600 rounded-lg w-full text-right cursor-text;
+  &[disabled] {
+    @apply bg-appgray-100 border-appgray-400 text-appgray-400;
+  }
+}
+
+:host {
+  @apply w-full;
+  &.warning {
+    p, label {
+      @apply text-appred-500;
+    }
+    p {
+      @apply pl-6;
+    }
+    input, .currency-display {
+      @apply border-appred-500;
+    }
+
+    *:focus {
+      @apply outline-appred-300;
+    }
+  }
+
+  @apply relative;
+  * {
+    transition: border 300ms ease-in-out, color 300ms ease-in-out;
+  }
+}
+

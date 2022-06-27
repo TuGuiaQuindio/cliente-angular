@@ -24,7 +24,8 @@ export type LanguageInputState = {
 @Component({
   selector: 'app-language-input',
   templateUrl: './language-input.component.html',
-  styleUrls: ['./language-input.component.scss']
+  styleUrls: ['./language-input.component.scss'],
+  providers: [{ provide: InputValueAccessor, useExisting: LanguageInputComponent }]
 })
 export class LanguageInputComponent extends InputValueAccessor implements OnInit, OnDestroy {
 
