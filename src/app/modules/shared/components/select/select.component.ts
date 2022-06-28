@@ -25,7 +25,10 @@ export class SelectComponent extends InputValueAccessor implements OnInit {
   @Input() public selectedIndex = 0;
   @Input() public label = "";
   @HostBinding('class') public get hostClasses() {
-    return [this.color, this.size];
+    const classList: string[] = [];
+    if (this.color) classList.push(this.color);
+    if (this.size) classList.push(this.size);
+    return classList;
   }
   @ViewChild('select') public set hostSelect(ref: ElementRef) {
     this.select = ref.nativeElement;

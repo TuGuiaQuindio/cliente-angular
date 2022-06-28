@@ -15,7 +15,10 @@ export class CheckboxComponent extends InputValueAccessor implements OnInit {
   @Input() public tabindex = 0;
 
   @HostBinding('class') public get hostClasses(): string[] {
-    return [this.size ?? '', this.color ?? ''];
+    const classList: string[] = [];
+    if (this.color) classList.push(this.color);
+    if (this.size) classList.push(this.size);
+    return classList;
   }
 
   constructor(@Optional() @Self() ngControl: NgControl) {
