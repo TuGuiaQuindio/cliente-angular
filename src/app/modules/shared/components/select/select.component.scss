@@ -1,5 +1,15 @@
 :host {
   @apply w-full relative;
+
+  &.small {
+    select {
+      @apply py-1 px-2 text-sm border-appgray-400;
+      &:focus {
+        @apply outline-appgray-200;
+      }
+    }
+  }
+
   &.warning {
     p, label, .password-icon {
       @apply text-appred-500;

@@ -1,7 +1,6 @@
-import { Component, Input, OnInit, Optional, Self } from '@angular/core';
-import { ControlValueAccessor, FormControl, NgControl } from '@angular/forms';
+import { Component, HostBinding, Input, OnInit, Optional, Self } from '@angular/core';
+import { NgControl } from '@angular/forms';
 import { InputValueAccessor } from 'src/app/classes/input-value-accessor';
-import { WarningMessenger } from 'src/app/interfaces/warning-messenger';
 
 @Component({
   selector: 'app-checkbox',
@@ -11,7 +10,13 @@ import { WarningMessenger } from 'src/app/interfaces/warning-messenger';
 export class CheckboxComponent extends InputValueAccessor implements OnInit {
 
   @Input() public label = "";
+  @Input() public size = "";
+  @Input() public color = "";
   @Input() public tabindex = 0;
+
+  @HostBinding('class') public get hostClasses(): string[] {
+    return [this.size ?? '', this.color ?? ''];
+  }
 
   constructor(@Optional() @Self() ngControl: NgControl) {
     super(ngControl);

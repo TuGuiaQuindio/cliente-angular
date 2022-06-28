@@ -1,11 +1,26 @@
-.input-group {
-  @apply flex gap-4 items-center;
-
-  label {
-    @apply text-secondary-600;
+:host {
+  @apply w-full;
+  &.small {
+    .input-group input {
+      @apply w-4 h-4;
+    }
   }
 
-  input {
-    @apply w-5 h-5;
+  &.neutral {
+    .input-group label {
+      @apply text-appgray-400;
+    }
+  }
+
+  .input-group {
+    @apply grid grid-cols-[auto_2rem] gap-4 items-center w-full;
+
+    label {
+      @apply text-secondary-600;
+    }
+
+    input {
+      @apply w-5 h-5 place-self-end;
+    }
   }
 }

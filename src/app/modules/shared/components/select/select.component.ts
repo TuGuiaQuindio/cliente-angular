@@ -18,10 +18,15 @@ export class SelectComponent extends InputValueAccessor implements OnInit {
   @Output() public elementSelected = new EventEmitter<SelectOption>();
   @Output() public indexSelected = new EventEmitter<number>();
 
+  @Input() public color = "";
+  @Input() public size = "";
   @Input() public disabled = false;
   @Input() public options: SelectOption[] = [];
   @Input() public selectedIndex = 0;
   @Input() public label = "";
+  @HostBinding('class') public get hostClasses() {
+    return [this.color, this.size];
+  }
   @ViewChild('select') public set hostSelect(ref: ElementRef) {
     this.select = ref.nativeElement;
     this.select.selectedIndex = this.selectedIndex;
