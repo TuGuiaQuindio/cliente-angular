@@ -10,6 +10,8 @@ import { Observable, of } from 'rxjs';
 })
 export class GuideDataService {
 
+  guides?: Guide[];
+
   constructor() { }
   public getAllGuides(): Observable<Guide[]> {
     const createGuide = (): Guide => {
@@ -31,6 +33,9 @@ export class GuideDataService {
         verified: Math.random() > 0.7,
       }
     }
-    return of(Array.from({ length: 50 }, createGuide));
+    if (!this.guides) {
+      this.guides = Array.from({length: 50}, createGuide);
+    }
+    return of(this.guides);
   }
 }
