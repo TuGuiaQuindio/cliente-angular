@@ -9,10 +9,10 @@
     <section *ngFor="let section of sections" class="filter-group">
       <h3>{{section.title | titlecase}}</h3>
       <container-element *ngFor="let filter of section.filters" [ngSwitch]="filter.type">
-        <app-checkbox *ngSwitchCase="'checkbox'" color="neutral" size="small" [label]="filter.name"></app-checkbox>
+        <app-checkbox *ngSwitchCase="'checkbox'" [formControl]="filter.formControl" color="neutral" size="small" [label]="filter.name"></app-checkbox>
         <section *ngSwitchCase="'select'" class="select-section">
           <label>{{filter.name}}</label>
-          <app-select color="neutral" size="small" [options]="filter.options ?? []"></app-select>
+          <app-select color="neutral" [formControl]="filter.formControl" size="small" [options]="filter.options ?? []"></app-select>
         </section>
       </container-element>
     </section>

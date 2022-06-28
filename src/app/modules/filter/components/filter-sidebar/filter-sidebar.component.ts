@@ -1,9 +1,10 @@
-import { Component, ElementRef, Input, OnDestroy, OnInit, ViewChild } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
-import { filter, Observable, Subject, Subscriber, takeUntil } from 'rxjs';
+import { Component, ElementRef, EventEmitter, Input, OnDestroy, OnInit, Output, ViewChild } from '@angular/core';
+import { FormBuilder, FormControl } from '@angular/forms';
+import { filter, Observable, Subject, takeUntil } from 'rxjs';
 import { SelectOption } from 'src/app/modules/shared/components/select/select.component';
 
-export type FilterDefinition = { name: string, type: "checkbox" | "select", options?: SelectOption[] };
+export type FilterState = { availability: undefined | 'full' | 'weekends' | 'weekdays', verified: boolean, hasTransport: boolean, firstAid: boolean };
+export type FilterDefinition = { name: string, formControl: FormControl, type: "checkbox" | "select", options?: SelectOption[] };
 export type FilterSectionDefinition = { title: string, filters: FilterDefinition[] };
 @Component({
   selector: 'app-filter-sidebar',
@@ -13,24 +14,31 @@ export type FilterSectionDefinition = { title: string, filters: FilterDefinition
 export class FilterSidebarComponent implements OnInit, OnDestroy {
 
   constructor(private fb: FormBuilder, private ref: ElementRef) { }
+  public filterForm = this.fb.group({
+    availability: [undefined],
+    verified: [false],
+    hasTransport: [false],
+    firstAid: [false],
+  })
+
   @Input() public sections: FilterSectionDefinition[] = [
     {
       title: 'informacion', filters: [
         {
-          name: 'disponibilidad', type: 'select', options: [
+          name: 'disponibilidad', formControl: this.getFormControl('availability'), type: 'select', options: [
             { label: 'Seleccione', value: undefined },
             { label: 'Completa', value: 'full' },
             { label: 'Fines de semana', value: 'weekends' },
             { label: 'Entre semana', value: 'weekdays' },
           ]
         },
-        { name: 'verificado', type: 'checkbox' },
-        { name: 'cuenta con transporte particular', type: 'checkbox' },
-        { name: 'sabe primeros auxilios', type: 'checkbox' },
+        { name: 'verificado', formControl: this.getFormControl('verified'), type: 'checkbox' },
+        { name: 'cuenta con transporte particular', formControl: this.getFormControl('hasTransport'), type: 'checkbox' },
+        { name: 'sabe primeros auxilios', formControl: this.getFormControl('firstAid'), type: 'checkbox' },
       ]
     }
   ]
-
+  @Output() public stateChange = new EventEmitter<FilterState>();
   @ViewChild('aside') public set hostAside(value: ElementRef) {
     const target = value.nativeElement as HTMLElement;
     const intersectionObservable = new Observable<IntersectionObserverEntry>((subscriber) => {
@@ -52,7 +60,6 @@ export class FilterSidebarComponent implements OnInit, OnDestroy {
   }
   public showLogo = false;
   public lifecycle = new Subject<string>();
-
   public get destroy$() {
     return this.lifecycle
       .pipe(
@@ -61,11 +68,28 @@ export class FilterSidebarComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
+    this.stateChange.emit({
+      firstAid: false,
+      verified: false,
+      availability: undefined,
+      hasTransport: false,
+    });
+    this.filterForm.valueChanges
+    .pipe(takeUntil(this.destroy$))
+    .subscribe({
+        next: value => {
+          this.stateChange.emit(value);
+        }
+      })
   }
 
   ngOnDestroy(): void {
     this.lifecycle.next('destroy');
     this.lifecycle.complete();
+  }
+
+  private getFormControl(name: string): FormControl{
+      return this.filterForm.get(name) as FormControl;
   }
 
 }
