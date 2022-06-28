@@ -2,3 +2,7 @@
   @apply grid grid-cols-1 gap-8;
   @apply xl:grid-cols-2;
 }
+
+main {
+  @apply grid grid-cols-[auto_auto] gap-4;
+}

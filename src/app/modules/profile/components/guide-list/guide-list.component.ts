@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Guide } from 'src/app/core/interfaces/guide';
 import { GuideDataService } from '../../services/guide-data.service';

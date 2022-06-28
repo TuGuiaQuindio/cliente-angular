@@ -11,6 +11,7 @@ import { ExtraInfoCardComponent } from './components/extra-info-card/extra-info-
 import { PipesModule } from '../pipes/pipes.module';
 import { GuideListComponent } from './components/guide-list/guide-list.component';
 import { ProfileServicesModule } from './profile-services.module';
+import { FilterModule } from '../filter/filter.module';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { ProfileServicesModule } from './profile-services.module';
     ProfileRoutingModule,
     LanguageFormModule,
     PipesModule,
-    ProfileServicesModule
+    ProfileServicesModule,
+    FilterModule
   ],
   exports: [
     PreviewComponent,
