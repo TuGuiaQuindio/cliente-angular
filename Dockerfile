@@ -6,7 +6,7 @@ COPY ./package-lock.json .
 RUN npm i
 COPY . .
 ### STAGE 2: Run ###
-EXPOSE 80
+EXPOSE 8080
 CMD ["npx","ng","serve","--host=0.0.0.0","--prod=true"]
 
 ##############################################################
