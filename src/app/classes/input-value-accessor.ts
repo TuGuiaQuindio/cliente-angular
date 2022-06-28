@@ -27,7 +27,6 @@ export class InputValueAccessor extends WarningMessengerImpl implements ControlV
   }
 
   setup(): void {
-    if (!this.ngControl) return;
     if (this.ngControl instanceof FormControlName) {
       const formGroupDirective = this.ngControl.formDirective as FormGroupDirective;
       if (formGroupDirective) {
