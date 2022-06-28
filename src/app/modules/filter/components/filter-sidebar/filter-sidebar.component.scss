@@ -1,0 +1,40 @@
+:host {
+  @apply grid grid-cols-[auto_2px] w-full h-full relative;
+
+  aside {
+    @apply flex flex-col gap-4 h-fit sticky top-40 p-4;
+    @apply md:top-5;
+
+    .logo {
+      @apply flex flex-col gap-2 items-center opacity-0 transition-[opacity_height] h-0 delay-75 duration-300;
+
+      &.visible {
+        @apply opacity-100 h-20;
+      }
+
+      h1 {
+        @apply font-logo text-2xl;
+      }
+    }
+
+    h3 {
+      @apply text-appgray-500 text-xl;
+    }
+
+    .filters {
+      .filter-group {
+        @apply flex flex-col gap-2;
+        .select-section {
+          @apply grid grid-cols-2;
+          label {
+            @apply text-appgray-400;
+          }
+        }
+      }
+    }
+  }
+
+  hr {
+    @apply bg-appgray-200 h-full;
+  }
+}

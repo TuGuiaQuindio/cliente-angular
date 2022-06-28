@@ -1,0 +1,21 @@
+<aside #aside>
+  <section class="logo" [class.visible]="showLogo">
+    <img src="/assets/images/icon.svg">
+    <h1>Tu Guia Quindío</h1>
+  </section>
+  <app-searchbar></app-searchbar>
+  <hr>
+  <section class="filters">
+    <section *ngFor="let section of sections" class="filter-group">
+      <h3>{{section.title | titlecase}}</h3>
+      <container-element *ngFor="let filter of section.filters" [ngSwitch]="filter.type">
+        <app-checkbox *ngSwitchCase="'checkbox'" color="neutral" size="small" [label]="filter.name"></app-checkbox>
+        <section *ngSwitchCase="'select'" class="select-section">
+          <label>{{filter.name}}</label>
+          <app-select color="neutral" size="small" [options]="filter.options ?? []"></app-select>
+        </section>
+      </container-element>
+    </section>
+  </section>
+</aside>
+<hr>

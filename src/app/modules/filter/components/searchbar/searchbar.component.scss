@@ -1,0 +1,15 @@
+article {
+  @apply flex items-center w-full h-fit relative;
+
+  input {
+    @apply w-full rounded-full border border-appgray-400 px-10 p-1;
+  }
+
+  i {
+    @apply absolute text-xl left-3 right-auto text-appgray-400;
+
+    &.left {
+      @apply left-auto right-3;
+    }
+  }
+}
