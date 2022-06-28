@@ -20,7 +20,9 @@ export class SelectComponent extends InputValueAccessor implements OnInit {
 
   @Input() public color = "";
   @Input() public size = "";
-  @Input() public disabled = false;
+  @Input() public set disabled(value: boolean) {
+    this.updateControlEnableState(value);
+  };
   @Input() public options: SelectOption[] = [];
   @Input() public selectedIndex = 0;
   @Input() public label = "";
@@ -37,6 +39,7 @@ export class SelectComponent extends InputValueAccessor implements OnInit {
   };
 
   private select!: HTMLSelectElement;
+  private _disabled = false;
 
   public syncSelectUI() {
     if (!this.ngControl) return;
@@ -51,6 +54,15 @@ export class SelectComponent extends InputValueAccessor implements OnInit {
 
   ngOnInit(): void {
     this.setup();
+    this.updateControlEnableState(this._disabled);
+  }
+
+  private updateControlEnableState(disabled: boolean) {
+    if (this.control) {
+      if (disabled) this.control.disable();
+      else this.control.enable();
+    }
+    this._disabled = disabled;
   }
 
   public onInputSelected(event: Event) {

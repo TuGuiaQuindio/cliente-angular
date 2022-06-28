@@ -1,5 +1,5 @@
 <label *ngIf="showLabel()">{{label}}</label>
-<select #select [disabled]="disabled" (change)="onInputSelected($event)">
+<select #select [formControl]="control" (change)="onInputSelected($event)">
   <option *ngFor="let option of options; index as i" [value]="option.value">{{option.label}}</option>
 </select>
 <p>{{warningMsg}}</p>
