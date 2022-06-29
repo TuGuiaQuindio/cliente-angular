@@ -3,7 +3,7 @@
     <app-filter-sidebar></app-filter-sidebar>
       <ng-container *ngIf="(guides$ | async)! | hasCount; else noGuides" >
         <section class="previews">
-          <app-preview *ngFor="let guide of guides$ | async" [name]="getFullName(guide)" [aboutMe]="guide.aboutMe ?? 'Sin descripción'" [languages]="guide.languages" [additionalInfo]="guide.additionalInformation" [verified]="guide.verified"></app-preview>
+          <app-preview *ngFor="let guide of guides$ | async" [name]="getFullName(guide)" [aboutMe]="guide.aboutMe ?? 'Sin descripción'" [languages]="guide.languages" [additionalInfo]="guide.additionalInformation" [verified]="guide.verified" [profileLink]="getLink(guide)"></app-preview>
         </section>
       </ng-container>
       <ng-template #noGuides>

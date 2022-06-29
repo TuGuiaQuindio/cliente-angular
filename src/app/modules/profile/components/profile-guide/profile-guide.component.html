@@ -1,10 +1,10 @@
 <app-page-view title="Perfíl de usuario" subtitle="Aquí tienes todos los detalles de este perfíl">
   <main class="page-section">
     <section class="guide-section">
-      <app-guide-card name="Arturo Cayeh" [items]="guideItems"></app-guide-card>
+      <app-guide-card [name]="(name$ | async)!" [items]="(items$ | async)!"></app-guide-card>
     </section>
     <section class="info-section">
-      <app-extra-info-card></app-extra-info-card>
+      <app-extra-info-card [additionalInfo]="(additionalInfo$ | async)!" [languages]="(languages$ | async)!"></app-extra-info-card>
       <app-button type="special">Contrátame</app-button>
     </section>
   </main>

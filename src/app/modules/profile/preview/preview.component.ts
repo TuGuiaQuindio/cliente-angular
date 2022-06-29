@@ -16,11 +16,16 @@ export class PreviewComponent implements OnInit {
   @Input() public languages: Language[] = [];
   @Input() public verified = false;
   @Input() public badge = [{ verified: true }];
+  @Input() public profileLink = "";
   @Input() public additionalInfo?: AdditionalInformation = {
     hasTransport: false,
     firstAid: false,
     availability: ''
   };
+
+  public get fullComplete$() {
+    return `/profile/guide/${this.profileLink}`;
+  }
 
   private availabilityMap: { [key: string]: string } = {
     'full': 'Toda la semana',
