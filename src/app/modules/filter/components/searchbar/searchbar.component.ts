@@ -22,6 +22,7 @@ export class SearchbarComponent extends InputValueAccessor implements OnInit, On
       .subscribe({
         next: () => {
           const value = this.searchbar.value;
+          this.searchValue = value;
           this.valueChange.emit(value);
         },
       })
@@ -36,6 +37,8 @@ export class SearchbarComponent extends InputValueAccessor implements OnInit, On
         filter(state => state == 'destroy')
       );
   }
+
+  public searchValue = "";
 
   clearInput() {
     this.searchbar.value = '';

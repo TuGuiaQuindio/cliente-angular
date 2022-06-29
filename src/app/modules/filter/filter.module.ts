@@ -4,6 +4,7 @@ import { FilterSidebarComponent } from './components/filter-sidebar/filter-sideb
 import { SharedModule } from '../shared/shared.module';
 import { SearchbarComponent } from './components/searchbar/searchbar.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { PipesModule } from '../pipes/pipes.module';
 
 @NgModule({
   declarations: [
@@ -13,7 +14,8 @@ import { ReactiveFormsModule } from '@angular/forms';
   imports: [
     CommonModule,
     SharedModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    PipesModule
   ],
   exports: [
     FilterSidebarComponent

@@ -1,5 +1,5 @@
 <article>
   <input type="text" #searchbar [formControl]="control">
   <i class="bx bx-search-alt-2"></i>
-  <i (click)="clearInput()" class="bx bx-x left"></i>
+  <i *ngIf="searchValue | strLength | notZero" (click)="clearInput()" class="bx bx-x left"></i>
 </article>

@@ -2,14 +2,14 @@ import { Injectable } from '@angular/core';
 import { ProfileServicesModule } from '../profile-services.module';
 import { faker } from '@faker-js/faker/locale/es';
 import { Guide } from 'src/app/core/interfaces/guide';
-import { Observable, of } from 'rxjs';
+import { concatMap, find, Observable, of } from 'rxjs';
 
 @Injectable({
   providedIn: ProfileServicesModule
 })
 export class GuideDataService {
 
-  guides?: Guide[];
+  guides?: Observable<Guide[]>;
 
   constructor() { }
   public getAllGuides(): Observable<Guide[]> {
@@ -38,14 +38,15 @@ export class GuideDataService {
       }
     }
     if (!this.guides) {
-      this.guides = Array.from({ length: 50 }, createGuide);
+      this.guides = of(Array.from({ length: 50 }, createGuide));
     }
-    return of(this.guides);
+    return this.guides;
   }
 
   getGuideById(id: string): Observable<Guide | undefined> {
-    const guideFound = this.guides?.find(({ publicId }) => publicId == id);
-    if (!guideFound) return of(undefined);
-    return of(guideFound);
+    return this.guides?.pipe(
+      concatMap((guides) => guides),
+      find(({ publicId }) => publicId == id)
+    ) ?? of(undefined);
   }
 }

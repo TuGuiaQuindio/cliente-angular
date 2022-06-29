@@ -17,7 +17,6 @@ export class GuideListComponent implements OnInit {
       mergeMap((state) => this.dataSrv.getAllGuides().pipe(
         map((guides) => {
           return guides.filter(guide => {
-            console.warn()
             const { search, firstAid, hasTransport, verified, availability } = state;
             const searchRegex = new RegExp(search, 'i');
             return state &&
