@@ -3,6 +3,29 @@
   @apply lg:flex-row lg:gap-8;
   @apply xl:gap-16 2xl:gap-24;
 
+  .no-guide {
+    @apply flex flex-col items-center mx-auto mt-28;
+
+    .superheading {
+      @apply text-4xl text-secondary-500 mb-8 font-heading text-center;
+      @apply lg:text-5xl;
+    }
+
+    .heading{ 
+      @apply text-appgray-400 text-xl mb-2;
+      @apply md:text-2xl;
+      
+      .guide-id {
+        @apply text-secondary-600;
+      }
+    }
+
+    .subtitle {
+      @apply text-appgray-400 mb-10;
+      @apply md:text-lg;
+    }
+  }
+
   .info-section {
     @apply flex flex-1 max-w-[30rem] flex-col gap-12;
   }

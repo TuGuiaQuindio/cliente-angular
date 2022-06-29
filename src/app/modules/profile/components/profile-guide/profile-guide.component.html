@@ -1,5 +1,6 @@
 <app-page-view title="Perfíl de usuario" subtitle="Aquí tienes todos los detalles de este perfíl">
   <main class="page-section">
+  <ng-container *ngIf="!noGuideFound; else noGuide">
     <section class="guide-section">
       <app-guide-card [name]="(name$ | async)!" [items]="(items$ | async)!"></app-guide-card>
     </section>
@@ -7,6 +8,15 @@
       <app-extra-info-card [additionalInfo]="(additionalInfo$ | async)!" [languages]="(languages$ | async)!"></app-extra-info-card>
       <app-button type="special">Contrátame</app-button>
     </section>
+  </ng-container>
+  <ng-template #noGuide>
+    <section class="no-guide">
+      <p class="superheading">No encontramos lo que buscabas</p>
+      <p class="heading">El perfil de usuario <span class="guide-id">{{profileId}}</span> no existe</p>
+      <p class="subtitle">Prueba a buscar otra vez</p>
+      <app-button type="special" routerLink="/profile/guides">Ir tus guías</app-button>
+    </section>
+  </ng-template>
   </main>
   <footer>
   </footer>

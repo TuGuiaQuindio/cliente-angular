@@ -18,8 +18,10 @@ export class ProfileGuideComponent implements OnInit, OnDestroy {
   constructor(private route: ActivatedRoute, private guideData: GuideDataService) {
     const params = route.snapshot.params;
     const { id } = params;
+    this.profileId = id;
     guideData.getGuideById(id).subscribe({
       next: (guide) => {
+        this.noGuideFound = !guide;
         if (!guide) return;
         const items = this.generateItems(guide);
         this.profileStateSubj.next({
@@ -39,6 +41,8 @@ export class ProfileGuideComponent implements OnInit, OnDestroy {
     additionalInfo: undefined,
     languages: []
   });
+  public noGuideFound = true;
+  public profileId = "";
 
   ngOnInit(): void {
   }
