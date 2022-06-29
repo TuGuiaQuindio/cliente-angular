@@ -30,7 +30,7 @@ export class GuideDataService {
           })
         ),
         additionalInformation: {
-          availability: faker.helpers.arrayElement(['full', 'weekday', 'weekend']),
+          availability: faker.helpers.arrayElement(['full', 'weekdays', 'weekends']),
           firstAid: Math.random() > 0.5,
           hasTransport: Math.random() > 0.5,
         },
