@@ -14,13 +14,16 @@ export class GuideDataService {
   constructor() { }
   public getAllGuides(): Observable<Guide[]> {
     const createGuide = (): Guide => {
+      const firstName = faker.name.firstName();
+      const lastName = faker.name.lastName();
       return {
-        firstName: faker.name.firstName(),
-        lastName: faker.name.lastName(),
+        firstName,
+        lastName,
         aboutMe: faker.helpers.maybe(() => faker.lorem.paragraphs(Math.floor(Math.random() * 3 + 1)), { probability: 0.65 }),
         birthdate: faker.date.birthdate().toString(),
         city: faker.address.cityName(),
-        languages: Array.from({length: Math.floor(Math.random() * 10)},
+        publicId: `${firstName.split(' ')[0]}.${lastName.split(' ')[0]}.${faker.random.numeric(5)}`.toLowerCase(),
+        languages: Array.from({ length: Math.floor(Math.random() * 10) },
           () => ({
             name: faker.word.noun(),
             level: Math.floor(Math.random() * 5000) / 1000
@@ -35,17 +38,13 @@ export class GuideDataService {
       }
     }
     if (!this.guides) {
-      this.guides = Array.from({length: 50}, createGuide);
+      this.guides = Array.from({ length: 50 }, createGuide);
     }
     return of(this.guides);
   }
 
   getGuideById(id: string): Observable<Guide | undefined> {
-    const fullname = id.replace(/\./g, ' ');
-    const guideFound = this.guides?.find(({firstName: f, lastName:l}) => {
-      const guidename = `${f} ${l}`.toLowerCase();
-        return guidename.match(fullname);
-    });
+    const guideFound = this.guides?.find(({ publicId }) => publicId == id);
     if (!guideFound) return of(undefined);
     return of(guideFound);
   }

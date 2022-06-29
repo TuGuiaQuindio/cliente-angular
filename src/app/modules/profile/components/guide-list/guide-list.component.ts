@@ -51,8 +51,4 @@ export class GuideListComponent implements OnInit {
     })
   }
 
-  public getLink(guide: Guide): string {
-    return `${guide.firstName}.${guide.lastName}`.replace(/ /g,'.').toLowerCase();
-  }
-
 }
