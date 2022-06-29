@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { ProfileServicesModule } from '../profile-services.module';
 import { faker } from '@faker-js/faker/locale/es';
 import { Guide } from 'src/app/core/interfaces/guide';
-import { Language } from '../preview/preview.component';
 import { Observable, of } from 'rxjs';
 
 @Injectable({

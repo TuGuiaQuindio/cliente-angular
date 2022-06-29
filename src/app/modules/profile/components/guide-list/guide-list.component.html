@@ -1,8 +1,16 @@
 <app-page-view title="Lista de guías" subtitle="Encuentra todo tipo de perfiles dentro de nuestra plataforma">
   <main>
     <app-filter-sidebar></app-filter-sidebar>
-    <section class="previews">
-      <app-preview *ngFor="let guide of guides$ | async" [name]="getFullName(guide)" [aboutMe]="guide.aboutMe ?? 'Sin descripción'" [languages]="guide.languages" [additionalInfo]="guide.additionalInformation" [verified]="guide.verified"></app-preview>
-    </section>
+      <ng-container *ngIf="(guides$ | async)! | hasCount; else noGuides" >
+        <section class="previews">
+          <app-preview *ngFor="let guide of guides$ | async" [name]="getFullName(guide)" [aboutMe]="guide.aboutMe ?? 'Sin descripción'" [languages]="guide.languages" [additionalInfo]="guide.additionalInformation" [verified]="guide.verified"></app-preview>
+        </section>
+      </ng-container>
+      <ng-template #noGuides>
+        <section class="no-guides">
+          <p class="heading">No hay guías que mostrar</p>
+          <p>prueba utilizando nuevos filtros</p>
+        </section>
+      </ng-template>
   </main>
 </app-page-view>
