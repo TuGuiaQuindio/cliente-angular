@@ -3,7 +3,7 @@ import { FormBuilder, FormControl } from '@angular/forms';
 import { filter, Observable, Subject, takeUntil } from 'rxjs';
 import { SelectOption } from 'src/app/modules/shared/components/select/select.component';
 
-export type FilterState = { availability: undefined | 'full' | 'weekends' | 'weekdays', verified: boolean, hasTransport: boolean, firstAid: boolean };
+export type FilterState = { availability: undefined | 'full' | 'weekends' | 'weekdays', verified: boolean, hasTransport: boolean, firstAid: boolean, search: string };
 export type FilterDefinition = { name: string, formControl: FormControl, type: "checkbox" | "select", options?: SelectOption[] };
 export type FilterSectionDefinition = { title: string, filters: FilterDefinition[] };
 @Component({
@@ -15,6 +15,7 @@ export class FilterSidebarComponent implements OnInit, OnDestroy {
 
   constructor(private fb: FormBuilder, private ref: ElementRef) { }
   public filterForm = this.fb.group({
+    search: [''],
     availability: [undefined],
     verified: [false],
     hasTransport: [false],
@@ -69,6 +70,7 @@ export class FilterSidebarComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.stateChange.emit({
+      search: '',
       firstAid: false,
       verified: false,
       availability: undefined,
@@ -88,7 +90,7 @@ export class FilterSidebarComponent implements OnInit, OnDestroy {
     this.lifecycle.complete();
   }
 
-  private getFormControl(name: string): FormControl{
+  public getFormControl(name: string): FormControl{
       return this.filterForm.get(name) as FormControl;
   }
 

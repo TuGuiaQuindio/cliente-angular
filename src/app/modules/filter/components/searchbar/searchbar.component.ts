@@ -1,14 +1,18 @@
-import { Component, ElementRef, EventEmitter, Input, OnDestroy, OnInit, Output, ViewChild } from '@angular/core';
+import { Component, ElementRef, EventEmitter, Input, OnDestroy, OnInit, Optional, Output, Self, ViewChild } from '@angular/core';
+import { NgControl } from '@angular/forms';
 import { filter, fromEvent, Subject, takeUntil } from 'rxjs';
+import { InputValueAccessor } from 'src/app/classes/input-value-accessor';
 
 @Component({
   selector: 'app-searchbar',
   templateUrl: './searchbar.component.html',
   styleUrls: ['./searchbar.component.scss']
 })
-export class SearchbarComponent implements OnInit, OnDestroy {
+export class SearchbarComponent extends InputValueAccessor implements OnInit, OnDestroy {
 
-  constructor() { }
+  constructor(@Self() @Optional() ngControl: NgControl) {
+    super(ngControl);
+  }
   @ViewChild('searchbar') public set hostSearchbar(value: ElementRef) {
     this.searchbar = value.nativeElement as HTMLInputElement;
     fromEvent(this.searchbar, 'input')
@@ -38,6 +42,7 @@ export class SearchbarComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
+    this.setup();
   }
 
   ngOnDestroy(): void {

@@ -3,7 +3,7 @@
     <img src="/assets/images/icon.svg">
     <h1>TuGuiaQuindío</h1>
   </section>
-  <app-searchbar></app-searchbar>
+  <app-searchbar [formControl]="getFormControl('search')"></app-searchbar>
   <hr>
   <section class="filters">
     <section *ngFor="let section of sections" class="filter-group">

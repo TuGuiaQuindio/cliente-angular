@@ -18,11 +18,14 @@ export class GuideListComponent implements OnInit {
         map((guides) => {
           return guides.filter(guide => {
             console.warn()
+            const { search, firstAid, hasTransport, verified, availability } = state;
+            const searchRegex = new RegExp(search, 'i');
             return state &&
-              (!state.firstAid || guide.additionalInformation.firstAid) &&
-              (!state.hasTransport || guide.additionalInformation.hasTransport) &&
-              (!state.verified || guide.verified) &&
-              (!state.availability || state.availability == guide.additionalInformation.availability);
+              (!search || guide.firstName.match(searchRegex) || guide.lastName.match(searchRegex) || guide.aboutMe?.match(searchRegex)) &&
+              (!firstAid || guide.additionalInformation.firstAid) &&
+              (!hasTransport || guide.additionalInformation.hasTransport) &&
+              (!verified || guide.verified) &&
+              (!availability || availability == guide.additionalInformation.availability);
           }
           )
         }),
