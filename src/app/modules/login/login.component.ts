@@ -48,7 +48,6 @@ export class LoginComponent implements OnDestroy, AfterViewInit {
         next: (res) => {
           if (!!res) handler(res);
         },
-      complete: () => console.log("Completed")
     });
   }
 
@@ -68,7 +67,6 @@ export class LoginComponent implements OnDestroy, AfterViewInit {
   }
 
   public handleSuccess(res: any) {
-    console.log(res);
     this.formBoxMsg?.hide();
     this.router.navigateByUrl('/dashboard');
   }

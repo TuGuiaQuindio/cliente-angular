@@ -93,7 +93,6 @@ export class FileComponent implements OnInit {
     if (this.isEditting) {
       const value = this.fileStateSubj.value;
       value.filename = this.editInput.value;
-      console.warn(this.editInput.value)
       this.fileStateSubj.next(value)
       this.wrapper.filename = this.editInput.value;
       this.fileEdit.next(this.wrapper);

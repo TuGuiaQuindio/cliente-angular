@@ -75,7 +75,6 @@ export class LanguageInputComponent extends InputValueAccessor implements OnInit
       .subscribe({
         next: (options: SelectOption[]) => {
           const labels = options.map(el => el.label);
-          console.warn(labels);
           const value = this.optionStateSubj.value;
           this.optionStateSubj.next({
             ...value,

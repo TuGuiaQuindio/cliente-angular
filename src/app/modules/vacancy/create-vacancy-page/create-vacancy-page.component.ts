@@ -16,7 +16,6 @@ export class CreateVacancyPageComponent implements OnInit {
 
   public onSubmit() {
     const state = this.vacancyForm.getFormState();
-    console.warn(state);
   }
 
 }

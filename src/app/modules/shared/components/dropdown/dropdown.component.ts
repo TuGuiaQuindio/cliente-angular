@@ -20,7 +20,6 @@ export class DropdownComponent implements OnInit {
   ]
 
   public hide() {
-    console.warn("Hidding")
     this.hidden = true;
   }
 

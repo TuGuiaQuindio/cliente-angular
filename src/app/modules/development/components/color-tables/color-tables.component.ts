@@ -19,7 +19,6 @@ export class ColorTablesComponent implements OnInit {
     for(const className of this.colorClasses) {
       content += `<article class="${className}">${className}</article>\n`
     }
-    console.warn(content)
   }
 
   private buildColors(): string[] {

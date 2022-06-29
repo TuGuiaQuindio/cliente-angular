@@ -67,7 +67,6 @@ export class SelectComponent extends InputValueAccessor implements OnInit {
 
   public onInputSelected(event: Event) {
     const target = event.target as HTMLSelectElement;
-    console.warn(target.selectedIndex)
     this.elementSelected.next(this.options[target.selectedIndex]);
     this.indexSelected.emit(target.selectedIndex);
   }

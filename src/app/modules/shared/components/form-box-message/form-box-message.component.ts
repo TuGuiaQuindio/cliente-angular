@@ -51,7 +51,6 @@ export class FormBoxMessageComponent implements OnInit {
   }
 
   public triggerFadeInAnimation() {
-    console.log('Remove class');
     this.container?.classList.remove('show');
     setTimeout(() => {
       this.container?.classList.add('show');

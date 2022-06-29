@@ -39,7 +39,6 @@ export class StarLevelComponent implements OnInit {
     const target = e.target as HTMLElement;
     let rect = target.getBoundingClientRect();
     let x = e.clientX - rect.left; //x position within the element.
-    console.warn(x / rect.width);
     const { offset } = options;
     return (x / rect.width) * this.starCount + offset;
   }

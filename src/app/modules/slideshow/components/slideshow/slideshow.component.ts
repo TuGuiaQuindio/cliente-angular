@@ -32,7 +32,6 @@ export class SlideshowComponent {
   @Input() public provideSlidecount = false;
 
   @Input('count') public set countProperty(value: number) {
-    console.log("Count input", value);
     this.count = value;
     this.updateSize();
   }
