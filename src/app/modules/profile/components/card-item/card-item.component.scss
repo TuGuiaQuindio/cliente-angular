@@ -2,10 +2,10 @@
   @apply w-full;
 
   .grid-container {
-    @apply grid grid-cols-[6rem_auto] pt-4 pb-2;
+    @apply grid grid-cols-[5rem_auto] pt-4 pb-2;
 
     .icon {
-      @apply place-self-center text-4xl text-secondary-600;
+      @apply flex justify-center mt-[0.5em] text-4xl text-secondary-600;
     }
 
     .information {
