@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { of, tap, Observable } from 'rxjs';
-import { Language, LANGUAGES_API } from 'src/app/mock/data';
+import { LANGUAGES_API } from 'src/app/mock/data';
 import { LanguageFormServicesModule } from './language-form-services/language-form-services.module';
 
 @Injectable({
@@ -11,7 +11,7 @@ export class LanguageApiService {
   constructor() { }
 
   private lastTimeFetched = 0;
-  private languages?: Language[];
+  private languages?: string[];
 
   public maxTimeout = 1000 * 10;
 
@@ -20,14 +20,13 @@ export class LanguageApiService {
     return ((diff - Number.EPSILON) > this.maxTimeout);
   }
 
-  public getLanguagesCertifications(): Observable<Language[]> {
+  public getLanguagesCertifications(): Observable<string[]> {
     return (!this.languages || this.timeToFetch(this.lastTimeFetched))
       ? of(LANGUAGES_API)
         .pipe(
           tap((values) => {
             this.languages = values;
             this.lastTimeFetched = Date.now();
-            console.warn("Fetching")
           }),
         )
       : of(this.languages);

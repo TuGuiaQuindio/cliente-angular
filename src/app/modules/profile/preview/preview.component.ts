@@ -1,8 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { of, map, Observable, filter } from 'rxjs';
-import { AdditionalInformation } from '../components/extra-info-card/extra-info-card.component';
+import { AdditionalInformation, Language } from 'src/app/core/interfaces/guide';
 
-export type Language = { name: string, level: number }
 @Component({
   selector: 'app-preview',
   templateUrl: './preview.component.html',

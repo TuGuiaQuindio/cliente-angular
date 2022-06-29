@@ -1,6 +1,5 @@
-import { AdditionalInformation } from "src/app/modules/profile/components/extra-info-card/extra-info-card.component";
-import { Language } from "src/app/modules/profile/preview/preview.component";
-
+export type AdditionalInformation = { firstAid: boolean, hasTransport: boolean, availability: string };
+export type Language = { name: string, level: number }
 export interface Guide {
   firstName: string;
   lastName: string;

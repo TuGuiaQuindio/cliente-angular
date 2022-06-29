@@ -1,10 +1,8 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { BehaviorSubject, filter, Subject, takeUntil, map } from 'rxjs';
-import { Guide } from 'src/app/core/interfaces/guide';
-import { Language } from '../../preview/preview.component';
+import { AdditionalInformation, Guide, Language } from 'src/app/core/interfaces/guide';
 import { GuideDataService } from '../../services/guide-data.service';
-import { AdditionalInformation } from '../extra-info-card/extra-info-card.component';
 import { CardItem } from '../guide-card/guide-card.component';
 
 export type ProfileState = { name: string, items: CardItem[], additionalInfo?: AdditionalInformation, languages: Language[] }

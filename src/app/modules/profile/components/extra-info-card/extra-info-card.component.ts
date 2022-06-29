@@ -1,8 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { map, Observable, of } from 'rxjs';
-import { Language } from '../../preview/preview.component';
+import { AdditionalInformation, Language } from 'src/app/core/interfaces/guide';
 
-export type AdditionalInformation = { firstAid: boolean, hasTransport: boolean, availability: string };
 @Component({
   selector: 'app-extra-info-card',
   templateUrl: './extra-info-card.component.html',

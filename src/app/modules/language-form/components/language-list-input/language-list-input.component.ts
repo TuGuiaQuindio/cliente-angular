@@ -49,9 +49,9 @@ export class LanguageListInputComponent extends InputValueAccessor implements On
   }
 
   private addLanguage(state: LanguageInputState) {
-    if (this.languages.findIndex(el => el.name === state.language.name) !== -1) return;
+    if (this.languages.findIndex(el => el.name === state.language) !== -1) return;
     this.languages.push({
-      name: state.language.name,
+      name: state.language,
       level: state.certification.level
     })
     this.setValueToNgControl();

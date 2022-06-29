@@ -2,7 +2,6 @@ import { Component, EventEmitter, OnDestroy, OnInit, Optional, Output, Self, Vie
 import { NgControl } from '@angular/forms';
 import { map, last, concatMap, scan, Subject, filter, BehaviorSubject } from 'rxjs';
 import { InputValueAccessor } from 'src/app/classes/input-value-accessor';
-import { Language } from 'src/app/mock/data';
 import { SelectOption } from 'src/app/modules/shared/components/select/select.component';
 import { StepsComponent } from 'src/app/modules/shared/components/steps/steps.component';
 import { LanguageApiService } from '../../services/language-api.service';
@@ -18,7 +17,7 @@ export type SelectState = {
   certificate: CertificationLevel
 }
 export type LanguageInputState = {
-  language: Language,
+  language: string,
   certification: CertificationLevel & { level: number }
 }
 @Component({
@@ -43,7 +42,7 @@ export class LanguageInputComponent extends InputValueAccessor implements OnInit
     { name: "C1", level: 4, description: "Avanzado" },
     { name: "C2", level: 5, description: "Competente" },
   ]
-  public currentLanguage?: Language;
+  public currentLanguage?: string;
   public currentCertification: CertificationLevel = this.certificationLevels[0];
   public lifecycle = new Subject<string>();
   public optionStateSubj = new BehaviorSubject<SelectState>({
@@ -68,13 +67,15 @@ export class LanguageInputComponent extends InputValueAccessor implements OnInit
   public ngOnInit(): void {
     this.languageSrv.getLanguagesCertifications()
       .pipe(
-        concatMap((languages: Language[]) => languages),
-        map((language: Language) => ({ value: language, label: language.name } as SelectOption)),
+        concatMap((languages: string[]) => languages),
+        map((language: string) => ({ value: language.toLowerCase(), label: language } as SelectOption)),
         scan((acc: SelectOption[], value: SelectOption) => [...acc, value], [{ value: undefined, label: "Seleccione" }] as SelectOption[]),
         last()
       )
       .subscribe({
         next: (options: SelectOption[]) => {
+          const labels = options.map(el => el.label);
+          console.warn(labels);
           const value = this.optionStateSubj.value;
           this.optionStateSubj.next({
             ...value,
@@ -124,7 +125,7 @@ export class LanguageInputComponent extends InputValueAccessor implements OnInit
         level: certificationLevel,
       }
     });
-    this.setNgControlValue(this.currentLanguage?.name, certificationLevel ?? 0);
+    this.setNgControlValue(this.currentLanguage, certificationLevel ?? 0);
   }
 
   public onCertificationLevelSelected(idx: number) {
@@ -144,6 +145,6 @@ export class LanguageInputComponent extends InputValueAccessor implements OnInit
         level: idx,
       }
     })
-    this.setNgControlValue(this.currentLanguage.name, idx)
+    this.setNgControlValue(this.currentLanguage, idx)
   }
 }
