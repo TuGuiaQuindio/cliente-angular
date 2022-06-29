@@ -34,6 +34,10 @@ export class GuideDataService {
           firstAid: Math.random() > 0.5,
           hasTransport: Math.random() > 0.5,
         },
+        contactInformation: {
+          tel: faker.phone.number('###-?###-?####'),
+          email: faker.internet.exampleEmail(firstName, lastName)
+        },
         verified: Math.random() > 0.7,
       }
     }
