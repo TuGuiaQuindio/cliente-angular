@@ -71,9 +71,10 @@ export class ProfileGuideComponent implements OnInit, OnDestroy {
       content: guide.aboutMe ?? 'Sin descripción',
       icon: 'bx-user-circle'
     });
+    const date = new Date(Date.parse(guide.birthdate));
     output.push({
       title: 'Fecha de nacimiento',
-      content: guide.birthdate ?? 'No especifica',
+      content: date.toLocaleString(['es'], { dateStyle: 'long' }) ?? 'No especifica',
       icon: 'bx-cake'
     })
     output.push({
