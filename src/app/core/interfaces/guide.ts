@@ -5,6 +5,8 @@ export interface Guide {
   firstName: string;
   lastName: string;
   aboutMe?: string;
+  birthdate: string;
+  city: string;
   languages: Language[];
   additionalInformation: AdditionalInformation;
   verified: boolean;
