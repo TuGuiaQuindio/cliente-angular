@@ -39,10 +39,6 @@
   .user-controls {
     @apply gap-4 flex items-center h-14;
     @apply md:gap-2;
-
-    svg {
-      @apply h-full w-full;
-    }
   }
 
   app-dropdown {
