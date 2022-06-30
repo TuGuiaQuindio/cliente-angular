@@ -53,6 +53,7 @@ module.exports = {
         'fadein': 'fadein 500ms ease-in-out forwards',
       },
       colors: {
+        backdrop: 'rgba(0 0 0 / 0.65)',
         primary: withOpacity("--color-primary"),
         secondary: {
           600: withOpacity("--color-secondary-600"),
