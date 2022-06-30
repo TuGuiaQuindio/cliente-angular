@@ -20,6 +20,7 @@ import { DropdownComponent } from './components/dropdown/dropdown.component';
 import { InputCurrencyComponent } from './input-currency/input-currency.component';
 import { BadgeComponent } from './components/badge/badge.component';
 import { LabelIconComponent } from './components/label-icon/label-icon.component';
+import { AvatarComponent } from './components/avatar/avatar.component';
 
 @NgModule({
   declarations: [
@@ -39,6 +40,7 @@ import { LabelIconComponent } from './components/label-icon/label-icon.component
     InputCurrencyComponent,
     BadgeComponent,
     LabelIconComponent,
+    AvatarComponent,
   ],
   imports: [
     CommonModule,
@@ -62,7 +64,8 @@ import { LabelIconComponent } from './components/label-icon/label-icon.component
     DropdownComponent,
     InputCurrencyComponent,
     BadgeComponent,
-    LabelIconComponent
+    LabelIconComponent,
+    AvatarComponent
   ]
 })
 export class SharedModule { }
