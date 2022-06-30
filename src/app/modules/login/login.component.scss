@@ -33,7 +33,7 @@
     }
 
     .register-container {
-      @apply mt-4 mx-auto;
+      @apply mt-4 mx-auto flex flex-col items-center;
       p {
         a {
           @apply text-secondary-600 underline;
