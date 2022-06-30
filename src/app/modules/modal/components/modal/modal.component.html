@@ -1,0 +1,18 @@
+<section class="modal-container">
+  <header>
+    <p class="heading">{{title}}</p>
+    <i class="bx bx-x" (click)="close()"></i>
+  </header>
+  <hr>
+  <main>
+    <p class="text">{{mainText}}</p>
+    <ng-template appAnchor></ng-template>
+  </main>
+  <footer>
+    <p class="text">{{footerText}}</p>
+    <section class="button-group">
+      <app-button *ngIf="!state.cancel.disabled" type="emphasis" (click)="onCancelClick()">{{this.state.cancel.label}}</app-button>
+      <app-button *ngIf="!state.accept.disabled" type="special" (click)="onAcceptClick()">{{state.accept.label}}</app-button>
+    </section>
+  </footer>
+</section>
