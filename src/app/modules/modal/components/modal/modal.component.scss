@@ -1,5 +1,5 @@
 :host {
-  @apply absolute inset-0 bg-backdrop z-50 flex items-center justify-center pointer-events-auto opacity-100 transition-opacity;
+  @apply fixed inset-0 bg-backdrop z-50 flex items-center justify-center pointer-events-auto opacity-100 transition-opacity;
 
   &.hidding {
     @apply opacity-0 pointer-events-none;
