@@ -1,0 +1,10 @@
+<app-page-view title="Ingresar token de recuperación" subtitle="Estamos a pocos pasos de recuperar tu contraseña">
+  <main>
+    <p>Espera como máximo 5 minutos, enviamos un token de recuperación a tu dirección de correo electrónico registrada dentro de TuGuiaQuindio</p>
+    <form [formGroup]="form" (submit)="onFormSubmit($event)">
+      <app-input label="Token de recuperación de contraseña" type="text" formControlName="token"></app-input>
+      <p class="notice">El token debe contener máximo 6 caracteres, compuestos por números y letras</p>
+      <app-button type="special">Verificar token</app-button>
+    </form>
+  </main>
+</app-page-view>

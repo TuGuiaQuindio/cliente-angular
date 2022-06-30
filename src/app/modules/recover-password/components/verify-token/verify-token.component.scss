@@ -1,0 +1,14 @@
+main {
+  @apply mt-28 max-w-lg mx-auto;
+
+  p {
+    @apply mb-4 text-appgray-400;
+    &.notice {
+      @apply text-sm ml-6;
+    }
+  }
+
+  form {
+    @apply mt-12 flex flex-col gap-2;
+  }
+}

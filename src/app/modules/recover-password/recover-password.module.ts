@@ -5,10 +5,12 @@ import { CheckEmailComponent } from './components/check-email/check-email.compon
 import { SharedModule } from '../shared/shared.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RecoverPasswordServicesModule } from './recover-password-services.module';
+import { VerifyTokenComponent } from './components/verify-token/verify-token.component';
 
 @NgModule({
   declarations: [
-    CheckEmailComponent
+    CheckEmailComponent,
+    VerifyTokenComponent
   ],
   imports: [
     CommonModule,
