@@ -11,11 +11,31 @@ export class RecoverApiService {
   constructor(private http: HttpClient) { }
 
   public storedToken?: string;
-  public get hasToken() {
-    return this.storedToken && this.storedToken.length > 0;
+  public storedEmail?: string;
+
+  public get hasToken(): boolean {
+    return !!this.storedToken && this.storedToken.length > 0;
   }
+
   public setToken(token: string) {
     this.storedToken = token;
+  }
+  
+  public get hasEmail() {
+    return this.storedEmail && this.storedEmail.length > 0;
+  }
+
+  public setEmail(email: string) {
+    this.storedEmail = email;
+  }
+
+  public changePassword(password: string, token: string) {
+    return of(true);
+  }
+ 
+  public flush() {
+    this.storedToken = undefined;
+    this.storedEmail = undefined;
   }
 
   public checkEmail(email: string): Observable<any> {

@@ -6,11 +6,13 @@ import { SharedModule } from '../shared/shared.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RecoverPasswordServicesModule } from './recover-password-services.module';
 import { VerifyTokenComponent } from './components/verify-token/verify-token.component';
+import { PasswordChangeComponent } from './components/password-change/password-change.component';
 
 @NgModule({
   declarations: [
     CheckEmailComponent,
-    VerifyTokenComponent
+    VerifyTokenComponent,
+    PasswordChangeComponent
   ],
   imports: [
     CommonModule,

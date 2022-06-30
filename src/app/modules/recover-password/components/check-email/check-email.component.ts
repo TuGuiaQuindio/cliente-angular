@@ -12,7 +12,9 @@ import { RecoverApiService } from '../../services/recover-api.service';
 })
 export class CheckEmailComponent implements OnInit {
 
-  constructor(private fb: FormBuilder, private recoverSrv: RecoverApiService, private router: Router) { }
+  constructor(private fb: FormBuilder, private recoverSrv: RecoverApiService, private router: Router) {
+    this.recoverSrv.flush();
+  }
   @ViewChildren(InputValueAccessor) public set hostInputValueAccesor(values: QueryList<InputValueAccessor>) {
     values.forEach(el => {
       if (!el.ngControl || !el.ngControl.name) return;
@@ -34,6 +36,7 @@ export class CheckEmailComponent implements OnInit {
       this.recoverSrv.checkEmail(email)
         .subscribe({
           next: () => {
+            this.recoverSrv.setEmail(email);
             this.router.navigateByUrl('/recover/token');
           }
         });
