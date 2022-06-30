@@ -1,5 +1,5 @@
 :host{
-    @apply grid grid-cols-[10rem_2px_auto] max-h-[50rem] h-full w-fit px-6 py-6 gap-4 rounded-xl shadow-md border-2 w-full max-w-[35rem];
+    @apply grid grid-cols-[10rem_2px_auto] max-h-[50rem] h-full w-fit px-6 py-6 gap-4 rounded-xl shadow-md border-2 w-full;
 }
 
 .avatar-content{
@@ -35,7 +35,7 @@ app-badge{
 }
 
 .content{
-    @apply flex flex-col max-w-[18rem];
+    @apply flex flex-col w-full;
 
     main {
       @apply flex-1;
@@ -58,8 +58,12 @@ header{
     }
 }
 
+.plugin, footer {
+  @apply grid grid-cols-[auto_10rem];
+}
+
 .plugin{
-    @apply grid grid-cols-2 mb-6;
+    @apply mb-6;
 
     .remarks{
         @apply flex flex-col gap-2;
@@ -67,8 +71,6 @@ header{
 }
 
 footer{
-    @apply grid grid-cols-2;
-
     app-button {
         @apply col-start-2 flex min-w-fit text-sm;
     }
