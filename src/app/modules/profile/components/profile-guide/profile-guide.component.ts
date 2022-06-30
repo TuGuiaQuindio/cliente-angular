@@ -1,12 +1,12 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { BehaviorSubject, filter, Subject, takeUntil, map } from 'rxjs';
-import { AdditionalInformation, Guide, Language } from 'src/app/core/interfaces/guide';
+import { AdditionalInformation, ContactInformation, Guide, Language } from 'src/app/core/interfaces/guide';
 import { ModalService } from 'src/app/modules/modal/services/modal.service';
 import { GuideDataService } from '../../services/guide-data.service';
 import { CardItem } from '../guide-card/guide-card.component';
 
-export type ProfileState = { name: string, items: CardItem[], additionalInfo?: AdditionalInformation, languages: Language[] }
+export type ProfileState = { name: string, items: CardItem[], additionalInfo?: AdditionalInformation, languages: Language[], contactInfo?: ContactInformation }
 @Component({
   selector: 'app-profile-guide',
   templateUrl: './profile-guide.component.html',
@@ -28,6 +28,7 @@ export class ProfileGuideComponent implements OnInit, OnDestroy {
           items: items,
           languages: guide.languages,
           additionalInfo: guide.additionalInformation,
+          contactInfo: guide.contactInformation,
         })
       }
     });
@@ -38,10 +39,12 @@ export class ProfileGuideComponent implements OnInit, OnDestroy {
     name: "",
     items: [],
     additionalInfo: undefined,
-    languages: []
+    languages: [],
+    contactInfo: undefined
   });
   public noGuideFound = true;
   public profileId = "";
+  public contactInfoLocked = true;
 
   ngOnInit(): void {
   }
@@ -65,6 +68,7 @@ export class ProfileGuideComponent implements OnInit, OnDestroy {
   public get items$() { return this.profileState$.pipe(map(state => state.items)); }
   public get additionalInfo$() { return this.profileState$.pipe(map(state => state.additionalInfo)); }
   public get languages$() { return this.profileState$.pipe(map(state => state.languages)); }
+  public get contactInfo$() { return this.profileState$.pipe(map(state => state.contactInfo)); }
 
   private generateItems(guide?: Guide): CardItem[] {
     if (!guide) return [];
@@ -94,7 +98,7 @@ export class ProfileGuideComponent implements OnInit, OnDestroy {
       .withMainText("¿Deseas conocer la información de contacto de este guía?")
       .withFooterText("Una vez la información sea pública se registrará en tu perfil")
       .onAcceptDo(() => {
-        console.warn("Accept");
+        this.contactInfoLocked = false;
       })
       .send();
   }
