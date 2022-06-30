@@ -1,0 +1,12 @@
+<section class="additional-info">
+    <header class="icon-header">
+      <i class="bx bx-lock-open"></i>
+      <h3>Información de contacto</h3>
+    </header>
+    <main>
+      <section class="content">
+        <app-card-item *ngIf="tel | exist" title="Número de teléfono" icon="bx-phone" [content]="tel!"></app-card-item>
+        <app-card-item *ngIf="email | exist" title="Correo electrónico" icon="bx-envelope" [content]="email!"></app-card-item>
+      </section>
+    </main>
+  </section>

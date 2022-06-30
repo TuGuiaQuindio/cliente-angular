@@ -1,0 +1,22 @@
+:host {
+  @apply p-10 h-fit bg-primary shadow-md rounded-lg border;
+}
+
+  section {
+    @apply flex flex-col gap-x-4 mb-2;
+
+    .content {
+      @apply flex flex-col gap-y-1;
+    }
+
+    .icon-header, h3 {
+      @apply text-secondary-600;
+    }
+
+    .icon-header {
+      @apply flex gap-4 text-4xl;
+    }
+    h3 {
+      @apply text-2xl font-heading mb-6;
+    }
+  }

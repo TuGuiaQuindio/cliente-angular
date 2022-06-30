@@ -12,6 +12,7 @@ import { PipesModule } from '../pipes/pipes.module';
 import { GuideListComponent } from './components/guide-list/guide-list.component';
 import { ProfileServicesModule } from './profile-services.module';
 import { FilterModule } from '../filter/filter.module';
+import { ContactInfoComponent } from './components/contact-info/contact-info.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { FilterModule } from '../filter/filter.module';
     CardItemComponent,
     ExtraInfoCardComponent,
     GuideListComponent,
+    ContactInfoComponent,
   ],
   imports: [
     CommonModule,
