@@ -7,11 +7,13 @@ import { SharedModule } from '../shared/shared.module';
 import { SettingsFormModule } from '../settings-form/settings-form.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { LanguageFormModule } from '../language-form/language-form.module';
+import { VacanciesComponent } from './components/vacancies/vacancies.component';
 
 @NgModule({
   declarations: [
     VacancyFormComponent,
-    CreateVacancyPageComponent
+    CreateVacancyPageComponent,
+    VacanciesComponent
   ],
   imports: [
     CommonModule,
