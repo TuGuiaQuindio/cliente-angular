@@ -1,0 +1,10 @@
+<app-page-view title="Recuperar contraseña" subtitle="Comprueba tu dirección de correo electrónico y recupera tu contraseña">
+  <main>
+    <p class="notice">Para recuperar la contraseña, es necesario que proveas un correo electrónico válido y que se encuentre registrado en el aplicativo de TuGuiaQuindio.</p>
+    <p class="notice">Una vez hecho esto se enviara un código de confirmación a dicho correo</p>
+    <form [formGroup]="form" (submit)="onFormSubmit($event)">
+      <app-input label="Correo electrónico" type="email" formControlName="email"></app-input>
+      <app-button type="special">Recuperar contraseña</app-button>
+    </form>
+  </main>
+</app-page-view>

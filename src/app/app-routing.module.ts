@@ -15,6 +15,7 @@ const routes: Routes = [
   { path: 'not-found', loadChildren: () => import('./modules/page-not-found/page-not-found.module').then(m => m.PageNotFoundModule) },
   { path: 'settings', loadChildren: () => import('./modules/settings/settings.module').then(m => m.SettingsModule), canActivate: [AuthGuard] },
   { path: 'profile', loadChildren: () => import('./modules/profile/profile.module').then(m => m.ProfileModule) },
+  { path: 'recover', loadChildren: () => import('./modules/recover-password/recover-password.module').then(m => m.RecoverPasswordModule) },
   { path: '**', pathMatch: 'full', redirectTo: 'not-found' },
 ];
 
