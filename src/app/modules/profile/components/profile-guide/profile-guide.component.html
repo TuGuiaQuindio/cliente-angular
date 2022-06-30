@@ -6,7 +6,7 @@
     </section>
     <section class="info-section">
       <app-extra-info-card [additionalInfo]="(additionalInfo$ | async)!" [languages]="(languages$ | async)!"></app-extra-info-card>
-      <app-button type="special">Contrátame</app-button>
+      <app-button type="special" (click)="onHireClick()">Contrátame</app-button>
     </section>
   </ng-container>
   <ng-template #noGuide>

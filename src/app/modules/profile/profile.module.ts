@@ -29,7 +29,7 @@ import { FilterModule } from '../filter/filter.module';
     LanguageFormModule,
     PipesModule,
     ProfileServicesModule,
-    FilterModule
+    FilterModule,
   ],
   exports: [
     PreviewComponent,

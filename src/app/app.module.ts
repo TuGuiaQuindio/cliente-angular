@@ -8,6 +8,7 @@ import { AppComponent } from './app.component';
 import { THEME_KEY, USER_ROLE } from './constants';
 import { CoreModule } from './core/core.module';
 import { FormServicesModule } from './modules/form-services/form-services.module';
+import { ModalModule } from './modules/modal/modal.module';
 
 import { SharedModule } from './modules/shared/shared.module';
 
@@ -20,7 +21,8 @@ import { SharedModule } from './modules/shared/shared.module';
     AppRoutingModule,
     SharedModule,
     CoreModule,
-    FormServicesModule
+    FormServicesModule,
+    ModalModule
   ],
   providers: [],
   bootstrap: [AppComponent]

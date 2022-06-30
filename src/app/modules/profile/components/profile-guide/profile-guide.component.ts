@@ -2,6 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { BehaviorSubject, filter, Subject, takeUntil, map } from 'rxjs';
 import { AdditionalInformation, Guide, Language } from 'src/app/core/interfaces/guide';
+import { ModalService } from 'src/app/modules/modal/services/modal.service';
 import { GuideDataService } from '../../services/guide-data.service';
 import { CardItem } from '../guide-card/guide-card.component';
 
@@ -13,7 +14,7 @@ export type ProfileState = { name: string, items: CardItem[], additionalInfo?: A
 })
 export class ProfileGuideComponent implements OnInit, OnDestroy {
 
-  constructor(private route: ActivatedRoute, private guideData: GuideDataService) {
+  constructor(private route: ActivatedRoute, private guideData: GuideDataService, private modalSrv: ModalService) {
     const params = route.snapshot.params;
     const { id } = params;
     this.profileId = id;
@@ -85,6 +86,17 @@ export class ProfileGuideComponent implements OnInit, OnDestroy {
       icon: 'bx-buildings'
     })
     return output;
+  }
+
+  public onHireClick() {
+    this.modalSrv.prepareModal()
+      .withTitle("¿Estás seguro?")
+      .withMainText("¿Deseas conocer la información de contacto de este guía?")
+      .withFooterText("Una vez la información sea pública se registrará en tu perfil")
+      .onAcceptDo(() => {
+        console.warn("Accept");
+      })
+      .send();
   }
 
 }
