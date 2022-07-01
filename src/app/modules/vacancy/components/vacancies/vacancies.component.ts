@@ -29,8 +29,18 @@ export class VacanciesComponent implements OnInit {
   }
 
   public onVacancyButtonClick(vacancyId: string, clickId: string) {
-    if (clickId === 'view') {
-      this.router.navigate(['/vacancy/', vacancyId]);
+    switch (clickId) {
+      case 'view':
+        this.router.navigate(['/vacancy/', vacancyId]);
+        break;
+      case 'delete':
+        const idx = this.vacancies.findIndex(el => el.id === vacancyId);
+        if (idx == -1) return;
+        this.vacancies.splice(idx, 1);
+        break;
+      case 'edit':
+        this.router.navigate(['vacancy/edit/', vacancyId]);
+        break;
     }
   }
 
