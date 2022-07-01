@@ -8,8 +8,8 @@ import { Component, Input, OnInit } from '@angular/core';
 export class VacancyCardComponent implements OnInit {
 
   constructor() { }
-  @Input() public title = "Guías para tour que hablen frances Guías para tour que hablen frances";
-  @Input() public description = "Ipsum eaque modi laudantium delectus hic corporis Nostrum eum tempore eos in consequuntur aut Suscipit in quae fugit expedita quaerat rem. Alias saepe soluta blanditiis reiciendis amet Alias quaerat quisquam.";
+  @Input() public title = "";
+  @Input() public description = "";
   @Input() public vacancyCount = 0;
   @Input() public salaryMin = 0;
   @Input() public salaryMax = 0;
