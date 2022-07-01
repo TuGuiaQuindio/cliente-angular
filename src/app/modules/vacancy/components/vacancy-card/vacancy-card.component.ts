@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'app-vacancy-card',
@@ -15,7 +15,17 @@ export class VacancyCardComponent implements OnInit {
   @Input() public salaryMax = 0;
   @Input() public availability = "";
 
+  @Output() public buttonClick = new EventEmitter<string>();
+
   ngOnInit(): void {
+  }
+
+  public onViewDetailsClick() {
+    this.buttonClick.emit("details");
+  }
+
+  public sendButtonClick(buttonId: string) {
+    this.buttonClick.emit(buttonId);
   }
 
 }

@@ -28,4 +28,10 @@ export class VacanciesComponent implements OnInit {
     this.router.navigateByUrl('/vacancy/create');
   }
 
+  public onVacancyButtonClick(vacancyId: string, clickId: string) {
+    if (clickId === 'view') {
+      this.router.navigate(['/vacancy/', vacancyId]);
+    }
+  }
+
 }

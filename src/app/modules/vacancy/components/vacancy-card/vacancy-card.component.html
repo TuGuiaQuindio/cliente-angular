@@ -25,9 +25,9 @@
       </section>
     </section>
     <section class="buttons">
-      <app-icon-button class="edit" icon="bx-edit-alt" label="Editar"></app-icon-button>
-      <app-icon-button class="delete" icon="bx-trash" label="Borrar"></app-icon-button>
-      <app-icon-button class="view" icon="bx-message-add" label="Ver detalles"></app-icon-button>
+      <app-icon-button class="edit" (click)="sendButtonClick('edit')" icon="bx-edit-alt" label="Editar"></app-icon-button>
+      <app-icon-button class="delete" (click)="sendButtonClick('delete')" icon="bx-trash" label="Borrar"></app-icon-button>
+      <app-icon-button class="view" (click)="sendButtonClick('view')" icon="bx-message-add" label="Ver detalles"></app-icon-button>
     </section>
   </main>
 </main>
