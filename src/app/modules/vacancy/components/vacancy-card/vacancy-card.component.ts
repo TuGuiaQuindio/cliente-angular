@@ -14,6 +14,7 @@ export class VacancyCardComponent implements OnInit {
   @Input() public salaryMin = 0;
   @Input() public salaryMax = 0;
   @Input() public availability = "";
+  @Input() public showMode = false;
 
   @Output() public buttonClick = new EventEmitter<string>();
 
