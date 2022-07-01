@@ -17,6 +17,7 @@ export class VacancyDataService {
   public getVacancies() {
     const createVacancy = (): Vacancy => {
       return {
+        id: faker.random.alphaNumeric(5),
         title: faker.name.jobTitle(),
         description: faker.lorem.sentence(Math.floor(Math.random() * 60)),
         salaryMin: parseFloat(faker.commerce.price(10000, 30000)),
