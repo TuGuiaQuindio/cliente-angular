@@ -1,3 +1,53 @@
-<app-page-view title="Vacante" subtitle="Mira esta oferta que tenemos para tí">
-  <main></main>
+<app-page-view title="Vacante" subtitle="Más detalles sobre la vacante que te interesa">
+  <main>
+    <section class="information">
+      <header>
+        <h3>{{title}}</h3>
+      </header>
+      <section class="content">
+        <p class="description">
+          {{description}}
+        </p>
+      </section>
+      <section class="details">
+        <header>
+          <h3>Detalles</h3>
+        </header>
+        <article class="icon">
+          <i class="bx bxs-user"></i>
+          <p>Vacantes: <span class="count">{{vacancyCount}}</span></p>
+        </article>
+        <article class="icon">
+          <i class="bx bx-money"></i>
+          <p>Salario: <span class="salary">{{minSalary | currency:'USD':'$':'1.0'}} - {{maxSalary | currency:'USD':'$':'1.0'}}</span></p>
+        </article>
+        <article class="icon">
+          <i class="bx bx-time-five"></i>
+          <p>Disponibilidad: <span class="availability">{{availability | availabilityMapping}}</span></p>
+        </article>
+      </section>
+      <section class="languages-section">
+        <header>
+          <h3>Idiomas requeridos</h3>
+        </header>
+        <section class="languages-container">
+          <ng-container *ngIf="languages | hasCount; else noLanguages">
+            <section class="languages">
+              <app-language-display *ngFor="let language of languages" [name]="language.name" [level]="language.level"></app-language-display>
+            </section>
+          </ng-container>
+          <ng-template #noLanguages>
+            <section class="no-languages">
+              <p>No requiere lenguajes en específico</p>
+            </section>
+          </ng-template>
+        </section>
+      </section>
+    </section>
+    <hr>
+    <section class="enterprise"></section>
+  </main>
+  <footer>
+    <app-button type="special">Aplicar</app-button>
+  </footer>
 </app-page-view>

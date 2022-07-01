@@ -1,3 +1,5 @@
+import { Language } from "../core/interfaces/guide";
+
 export interface Vacancy {
   id: string;
   title: string;
@@ -6,4 +8,5 @@ export interface Vacancy {
   salaryMin: number;
   salaryMax: number;
   availability: string;
+  languages: Language[];
 }

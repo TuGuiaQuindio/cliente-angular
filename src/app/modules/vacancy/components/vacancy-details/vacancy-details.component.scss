@@ -1,0 +1,57 @@
+:host {
+  main {
+    @apply grid grid-cols-[auto_2px_auto];
+
+    .information {
+      @apply flex flex-col gap-4;
+    }
+
+    p {
+      @apply text-appgray-500;
+    }
+
+    .description {
+      @apply text-appgray-400;
+    }
+
+    section {
+      header {
+        h3 {
+          @apply text-3xl text-secondary-600;
+        }
+      }
+    }
+
+    .languages-section {
+      header {
+        h3 {
+          @apply mt-8;
+        }
+      }
+    }
+
+    .languages-container {
+      .languages {
+        @apply flex flex-col gap-4 my-8 mb-16;
+      }
+
+      .no-languages {
+        @apply flex flex-col items-center justify-center py-12;
+      }
+    }
+
+    .details {
+      @apply flex flex-col gap-2;
+        .icon {
+            @apply flex gap-2 items-center ;
+          i {
+            @apply bg-secondary-600 text-white text-xl px-2 py-1 rounded-lg;
+          }
+        }
+      }
+
+    hr {
+      @apply h-full w-full bg-appgray-200;
+    }
+  }
+}
