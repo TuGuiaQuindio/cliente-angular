@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit, Optional, Self, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, OnDestroy, OnInit, Optional, Self, ViewChild } from '@angular/core';
 import { FormBuilder, NgControl, Validators } from '@angular/forms';
 import { Subject, filter, takeUntil } from 'rxjs';
 import { InputValueAccessor } from 'src/app/classes/input-value-accessor';
@@ -11,9 +11,9 @@ import { LanguageInputComponent, LanguageInputState } from '../language-input/la
   styleUrls: ['./language-list-input.component.scss'],
   providers: [{ provide: InputValueAccessor, useExisting: LanguageListInputComponent }]
 })
-export class LanguageListInputComponent extends InputValueAccessor implements OnInit, OnDestroy {
+export class LanguageListInputComponent extends InputValueAccessor implements AfterViewInit, OnDestroy {
 
-  constructor(@Self() @Optional() ngControl: NgControl,private fb: FormBuilder) {
+  constructor(@Self() @Optional() ngControl: NgControl, private fb: FormBuilder) {
     super(ngControl);
   }
   @ViewChild(LanguageInputComponent) public languageInput!: LanguageInputComponent;
@@ -29,7 +29,7 @@ export class LanguageListInputComponent extends InputValueAccessor implements On
     )
   }
 
-  ngOnInit(): void {
+  ngAfterViewInit(): void {
     this.setup();
     this.languageInputControl.valueChanges.pipe(
       takeUntil(this.destroy$)
@@ -40,7 +40,7 @@ export class LanguageListInputComponent extends InputValueAccessor implements On
         }
       }
     )
-    this.setValueToNgControl();
+    this.displayNgControlValues()
   }
 
   ngOnDestroy(): void {
@@ -73,7 +73,16 @@ export class LanguageListInputComponent extends InputValueAccessor implements On
   }
 
   private setValueToNgControl() {
-    if(this.ngControl) this.ngControl.control!.setValue(this.languages);
+    if (this.ngControl) this.ngControl.control!.setValue(this.languages);
+  }
+
+  private displayNgControlValues() {
+    if (!this.ngControl) return;
+
+    setTimeout(() => {
+      const value = this.ngControl.value;
+      this.languages = value;
+    }, 10)
   }
 
 }
