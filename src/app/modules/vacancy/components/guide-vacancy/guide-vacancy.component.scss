@@ -1,0 +1,23 @@
+main{
+  @apply grid grid-cols-1 gap-4;
+  @apply lg:grid-cols-[23.5rem_auto];
+  app-filter-sidebar {
+    @apply hidden lg:grid;
+  }
+}
+
+.previews {
+  @apply grid grid-cols-1 gap-8;
+  @apply 2xl:grid-cols-2;
+}
+
+.no-guides {
+  @apply flex flex-col gap-0.5 items-center justify-center;
+  .heading {
+    @apply text-2xl text-appgray-400 font-bold;
+  }
+
+  p {
+    @apply text-appgray-400;
+  }
+}

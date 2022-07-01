@@ -15,6 +15,8 @@ import { AddVacancyComponent } from './components/add-vacancy/add-vacancy.compon
 import { VacancyDetailsComponent } from './components/vacancy-details/vacancy-details.component';
 import { ProfileModule } from '../profile/profile.module';
 import { EditVacancyPageComponent } from './components/edit-vacancy-page/edit-vacancy-page.component';
+import { GuideVacancyComponent } from './components/guide-vacancy/guide-vacancy.component';
+import { FilterModule } from '../filter/filter.module';
 
 @NgModule({
   declarations: [
@@ -24,7 +26,8 @@ import { EditVacancyPageComponent } from './components/edit-vacancy-page/edit-va
     VacancyCardComponent,
     AddVacancyComponent,
     VacancyDetailsComponent,
-    EditVacancyPageComponent
+    EditVacancyPageComponent,
+    GuideVacancyComponent
   ],
   imports: [
     CommonModule,
@@ -35,7 +38,8 @@ import { EditVacancyPageComponent } from './components/edit-vacancy-page/edit-va
     ReactiveFormsModule,
     LanguageFormModule,
     PipesModule,
-    ProfileModule
+    ProfileModule,
+    FilterModule
   ]
 })
 export class VacancyModule { }
