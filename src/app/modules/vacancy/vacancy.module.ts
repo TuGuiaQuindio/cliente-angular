@@ -14,6 +14,7 @@ import { VacancyServicesModule } from './vacancy-services.module';
 import { AddVacancyComponent } from './components/add-vacancy/add-vacancy.component';
 import { VacancyDetailsComponent } from './components/vacancy-details/vacancy-details.component';
 import { ProfileModule } from '../profile/profile.module';
+import { EditVacancyPageComponent } from './components/edit-vacancy-page/edit-vacancy-page.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { ProfileModule } from '../profile/profile.module';
     VacanciesComponent,
     VacancyCardComponent,
     AddVacancyComponent,
-    VacancyDetailsComponent
+    VacancyDetailsComponent,
+    EditVacancyPageComponent
   ],
   imports: [
     CommonModule,
