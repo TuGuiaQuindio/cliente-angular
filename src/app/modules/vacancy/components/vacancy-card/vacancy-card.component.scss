@@ -12,9 +12,9 @@
   }
 
   main {
-    @apply mt-2;
+    @apply flex flex-col mt-2 h-full;
     .information {
-      @apply grid grid-cols-1 gap-8;
+      @apply grid grid-cols-1 gap-8 flex-1;
       .content {
         @apply flex flex-col gap-4 text-appgray-400;
       }
