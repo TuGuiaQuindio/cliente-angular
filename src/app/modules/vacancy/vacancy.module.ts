@@ -13,6 +13,7 @@ import { PipesModule } from '../pipes/pipes.module';
 import { VacancyServicesModule } from './vacancy-services.module';
 import { AddVacancyComponent } from './components/add-vacancy/add-vacancy.component';
 import { VacancyDetailsComponent } from './components/vacancy-details/vacancy-details.component';
+import { ProfileModule } from '../profile/profile.module';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { VacancyDetailsComponent } from './components/vacancy-details/vacancy-de
     SettingsFormModule,
     ReactiveFormsModule,
     LanguageFormModule,
-    PipesModule
+    PipesModule,
+    ProfileModule
   ]
 })
 export class VacancyModule { }

@@ -13,6 +13,8 @@ import { GuideListComponent } from './components/guide-list/guide-list.component
 import { ProfileServicesModule } from './profile-services.module';
 import { FilterModule } from '../filter/filter.module';
 import { ContactInfoComponent } from './components/contact-info/contact-info.component';
+import { EnterpriseCardComponent } from './components/enterprise-card/enterprise-card.component';
+import { MapModule } from '../map/map.module';
 
 @NgModule({
   declarations: [
@@ -23,6 +25,7 @@ import { ContactInfoComponent } from './components/contact-info/contact-info.com
     ExtraInfoCardComponent,
     GuideListComponent,
     ContactInfoComponent,
+    EnterpriseCardComponent,
   ],
   imports: [
     CommonModule,
@@ -32,10 +35,12 @@ import { ContactInfoComponent } from './components/contact-info/contact-info.com
     PipesModule,
     ProfileServicesModule,
     FilterModule,
+    MapModule
   ],
   exports: [
     PreviewComponent,
     ProfileGuideComponent,
+    EnterpriseCardComponent,
   ]
 })
 export class ProfileModule { }

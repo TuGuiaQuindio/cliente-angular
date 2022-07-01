@@ -1,0 +1,36 @@
+:host {
+  @apply flex flex-col bg-primary h-full w-full rounded-xl shadow-md border p-6; 
+
+  header {
+    h3 {
+      @apply text-3xl text-secondary-600;
+    }
+  }
+
+  main {
+    @apply h-full flex flex-col;
+  }
+  
+  p {
+    @apply text-appgray-400;
+  }
+
+  .details {
+    @apply grid grid-cols-[1fr_2px_1fr] mt-12 mb-16 h-60 gap-8 box-border;
+    .icon {
+      @apply flex gap-4 items-center text-lg;
+    }
+
+    hr {
+      @apply bg-appgray-200 w-full h-full gap-4;
+    }
+
+    i {
+      @apply text-secondary-600 text-4xl;
+    }
+  }
+
+  .map-container {
+    @apply w-full h-full;
+  }
+}

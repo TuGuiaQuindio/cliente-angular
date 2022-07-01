@@ -1,0 +1,30 @@
+<header>
+  <h3>{{title}}</h3>
+</header>
+<main>
+  <section class="information">
+    <p class="content">
+    {{description}}
+    </p>
+  </section>
+  <section class="details">
+    <section class="icon-group">
+      <article class="icon">
+        <i class="bx bx-id-card"></i>
+        <p>NIT: <span class="nit">{{nit}}</span></p>
+      </article>
+      <article class="icon">
+        <i class="bx bx-phone"></i>
+        <p>Teléfono: <span class="tel">{{tel}}</span></p>
+      </article>
+      <article class="icon">
+        <i class="bx bx-envelope"></i>
+        <p>Correo electrónico: <span class="email">{{email}}</span></p>
+      </article>
+    </section>
+    <hr>
+    <section class="map-container">
+      <app-address-map></app-address-map>
+    </section>
+  </section>
+</main>
