@@ -1,0 +1,15 @@
+:host {
+  @apply flex flex-col items-center justify-center h-[30rem] rounded-lg border-2 border-dashed border-appgray-400 text-appgray-400 cursor-pointer transition-transform;
+
+  &:active {
+    @apply translate-y-[2px] bg-appgray-100;
+  }
+}
+
+i {
+  @apply text-5xl p-4 border-2 rounded-xl mb-4;
+}
+
+p {
+  @apply text-lg;
+}

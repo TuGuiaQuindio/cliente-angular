@@ -11,13 +11,15 @@ import { VacanciesComponent } from './components/vacancies/vacancies.component';
 import { VacancyCardComponent } from './components/vacancy-card/vacancy-card.component';
 import { PipesModule } from '../pipes/pipes.module';
 import { VacancyServicesModule } from './vacancy-services.module';
+import { AddVacancyComponent } from './components/add-vacancy/add-vacancy.component';
 
 @NgModule({
   declarations: [
     VacancyFormComponent,
     CreateVacancyPageComponent,
     VacanciesComponent,
-    VacancyCardComponent
+    VacancyCardComponent,
+    AddVacancyComponent
   ],
   imports: [
     CommonModule,
