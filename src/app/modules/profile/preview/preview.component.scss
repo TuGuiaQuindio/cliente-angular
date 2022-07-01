@@ -1,5 +1,5 @@
 :host{
-    @apply grid grid-cols-[10rem_2px_auto] max-h-[50rem] h-full w-fit px-6 py-6 gap-4 rounded-xl shadow-md border-2 w-full;
+    @apply grid grid-cols-[10rem_2px_auto] max-h-[50rem] h-full w-fit px-6 py-6 gap-4 rounded-xl shadow-md border w-full;
 }
 
 .avatar-content{
@@ -43,10 +43,10 @@ app-badge{
 }
 
 header{
-    @apply flex justify-between items-center ;
+    @apply flex justify-between items-center;
 
     p{
-        @apply text-[#33BD67] text-2xl h-fit;
+        @apply text-secondary-500 text-2xl h-fit;
     }
 }
 
