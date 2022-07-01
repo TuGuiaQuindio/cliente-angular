@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { map, Observable, of } from 'rxjs';
+import { AVAILABILITY_MAP } from 'src/app/constants';
 import { AdditionalInformation, Language } from 'src/app/core/interfaces/guide';
 
 @Component({
@@ -13,19 +14,13 @@ export class ExtraInfoCardComponent implements OnInit {
   @Input() public languages: Language[] = [];
   @Input() public additionalInfo?: AdditionalInformation;
 
-  private availabilityMap: { [key: string]: string } = {
-    "full": "Toda la semana",
-    "weekends": "Fines de semana",
-    "weekdays": "Entre semana",
-  }
-
   public showInfo(): Observable<{ [Property in keyof AdditionalInformation]: string }> | undefined {
     if (!this.additionalInfo) return undefined;
     const { firstAid, hasTransport, availability } = this.additionalInfo;
     return of({
       firstAid: firstAid ? "Cuenta con primeros auxilios" : "No cuenta con primeros auxilios",
       hasTransport: hasTransport ? "Cuenta con transporte particular" : "No cuenta con transporte particular",
-      availability: `Disponibilidad: ${(availability in this.availabilityMap ? this.availabilityMap[availability] : "Información no disponible")}`
+      availability: `Disponibilidad: ${(availability in AVAILABILITY_MAP ? AVAILABILITY_MAP[availability] : "Información no disponible")}`
     });
   }
 

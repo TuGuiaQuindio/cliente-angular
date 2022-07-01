@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { of, map, Observable, filter } from 'rxjs';
+import { AVAILABILITY_MAP } from 'src/app/constants';
 import { AdditionalInformation, Language } from 'src/app/core/interfaces/guide';
 
 @Component({
@@ -24,12 +25,6 @@ export class PreviewComponent implements OnInit {
 
   public get fullComplete$() {
     return `/profile/guide/${this.profileLink}`;
-  }
-
-  private availabilityMap: { [key: string]: string } = {
-    'full': 'Toda la semana',
-    'weekends': 'Fines de semana',
-    'weekdays': 'Entre semana'
   }
 
   public get languages$() {
@@ -64,7 +59,7 @@ export class PreviewComponent implements OnInit {
     return this.additionalInfoObs$
       .pipe(
         map(value => value.availability),
-        map(availability => availability in this.availabilityMap ? this.availabilityMap[availability] : ''),
+        map(availability => availability in AVAILABILITY_MAP ? AVAILABILITY_MAP[availability] : ''),
       )
   }
 
