@@ -12,6 +12,7 @@ import { VacancyCardComponent } from './components/vacancy-card/vacancy-card.com
 import { PipesModule } from '../pipes/pipes.module';
 import { VacancyServicesModule } from './vacancy-services.module';
 import { AddVacancyComponent } from './components/add-vacancy/add-vacancy.component';
+import { VacancyDetailsComponent } from './components/vacancy-details/vacancy-details.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { AddVacancyComponent } from './components/add-vacancy/add-vacancy.compon
     CreateVacancyPageComponent,
     VacanciesComponent,
     VacancyCardComponent,
-    AddVacancyComponent
+    AddVacancyComponent,
+    VacancyDetailsComponent
   ],
   imports: [
     CommonModule,
