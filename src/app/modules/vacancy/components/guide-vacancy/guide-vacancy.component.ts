@@ -23,7 +23,7 @@ export class GuideVacancyComponent implements OnInit {
             const regexSearch = new RegExp(search, 'i');
             return !!state &&
               (!search || vacancy.title.match(regexSearch) || vacancy.description?.match(regexSearch) || vacancy.salaryMax.toString().match(regexSearch) || vacancy.salaryMin.toString().match(regexSearch)) &&
-              ((availability as any) == 'undefined' || vacancy.availability == availability);
+              ((!availability || (availability as any) == 'undefined') || vacancy.availability == availability);
           }
           )
         }),
