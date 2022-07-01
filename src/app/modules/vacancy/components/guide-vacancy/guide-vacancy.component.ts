@@ -19,11 +19,14 @@ export class GuideVacancyComponent implements OnInit {
       mergeMap((state) => this.dataSrv.getVacancies().pipe(
         map((vacancies) => {
           return vacancies.filter(vacancy => {
-            const { search, availability } = state;
+            const { search, availability, hasTransport, firstAid } = state;
             const regexSearch = new RegExp(search, 'i');
             return !!state &&
               (!search || vacancy.title.match(regexSearch) || vacancy.description?.match(regexSearch) || vacancy.salaryMax.toString().match(regexSearch) || vacancy.salaryMin.toString().match(regexSearch)) &&
-              ((!availability || (availability as any) == 'undefined') || vacancy.availability == availability);
+              ((!availability || (availability as any) == 'undefined') || vacancy.availability == availability) &&
+              (!hasTransport || vacancy.hasTransport) &&
+              (!firstAid || vacancy.firstAid);
+
           }
           )
         }),
@@ -47,6 +50,8 @@ export class GuideVacancyComponent implements OnInit {
             { label: 'Entre semana', value: 'weekdays' },
           ]
         },
+        { name: 'cuenta con transporte particular', toResolveFormControlName: 'hasTransport', type: 'checkbox' },
+        { name: 'sabe primeros auxilios', toResolveFormControlName: 'firstAid', type: 'checkbox' },
       ]
     }
   ]

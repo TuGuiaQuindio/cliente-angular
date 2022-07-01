@@ -25,7 +25,7 @@ export class GuideListComponent implements OnInit, OnDestroy {
               (!firstAid || guide.additionalInformation.firstAid) &&
               (!hasTransport || guide.additionalInformation.hasTransport) &&
               (!verified || guide.verified) &&
-              ((availability as any) == 'undefined' || availability == guide.additionalInformation.availability);
+              ((!availability || (availability as any) == 'undefined') || availability == guide.additionalInformation.availability);
           }
           )
         }),
