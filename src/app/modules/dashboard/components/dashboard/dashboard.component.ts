@@ -3,6 +3,7 @@ import { Observable, of, filter, mergeMap, tap, delay, map } from 'rxjs';
 import { USER_NAME, USER_ROLE } from 'src/app/constants';
 import { AnchorDirective } from 'src/app/directive/anchor.directive';
 import { LinkAccessInfo } from 'src/app/interfaces/link-access-info';
+import { LinkSolverService } from '../../services/link-solver.service';
 import { ModuleSolverService } from '../../services/module-solver.service';
 import { ActiveModuleDataFormComponent } from '../active-module-data-form/active-module-data-form.component';
 
@@ -13,7 +14,7 @@ import { ActiveModuleDataFormComponent } from '../active-module-data-form/active
 })
 export class DashboardComponent implements AfterViewInit {
 
-  constructor(private moduleSolverSrv: ModuleSolverService) {
+  constructor(private moduleSolverSrv: ModuleSolverService, private linkSolverSrv: LinkSolverService) {
   }
 
   ngAfterViewInit() {
@@ -35,10 +36,7 @@ export class DashboardComponent implements AfterViewInit {
   }
 
   public get links(): Observable<LinkAccessInfo[]> {
-    const data: LinkAccessInfo[] = [
-      { title: "Edita tu perfil", description: "Mantén tus datos tanto personales como profesionales actualizados y en un solo lugar.", buttonLabel: "Editar ahora", icon: "bx-book-bookmark", link: "/settings" },
-    ];
-    return of(data);
+    return this.linkSolverSrv.getLinksByRole(localStorage.getItem(USER_ROLE) ?? undefined);
   }
 
   public loadComponents() {
