@@ -10,6 +10,7 @@ import { LanguageFormModule } from '../language-form/language-form.module';
 import { VacanciesComponent } from './components/vacancies/vacancies.component';
 import { VacancyCardComponent } from './components/vacancy-card/vacancy-card.component';
 import { PipesModule } from '../pipes/pipes.module';
+import { VacancyServicesModule } from './vacancy-services.module';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { PipesModule } from '../pipes/pipes.module';
   imports: [
     CommonModule,
     VacancyRoutingModule,
+    VacancyServicesModule,
     SharedModule,
     SettingsFormModule,
     ReactiveFormsModule,
