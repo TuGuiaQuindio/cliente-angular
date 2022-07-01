@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { concatMap, find, of } from 'rxjs';
 import { VacancyServicesModule } from '../vacancy-services.module';
 import { Vacancy } from '../../../interfaces/vacancy';
-import { faker } from '@faker-js/faker';
+import { faker } from '@faker-js/faker/locale/es';
 import { AVAILABILITY_MAP } from 'src/app/constants';
 import { Language } from 'src/app/core/interfaces/guide';
 
