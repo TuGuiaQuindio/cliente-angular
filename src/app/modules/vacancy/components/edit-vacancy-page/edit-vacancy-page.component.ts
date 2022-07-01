@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { FormInjectorService } from 'src/app/core/services/form-injector.service';
 import { VacancyDataService } from '../../services/vacancy-data.service';
 import { VacancyFormComponent } from '../../vacancy-form/vacancy-form.component';
+import Toastify from 'toastify-js';
 
 @Component({
   selector: 'app-edit-vacancy-page',
@@ -26,7 +27,13 @@ export class EditVacancyPageComponent implements AfterViewInit {
   ngAfterViewInit(): void {
     this.vacancySrv.getVacancyById(this.vacancyId).subscribe({
       next: (vacancy) => {
-        if (!vacancy) return;
+        if (!vacancy) {
+          Toastify({
+            text: `No se encontro la vacante ${this.vacancyId}`,
+          }).showToast();
+          this.router.navigateByUrl('/vacancy');
+          return;
+        }
         const { title, id, languages, salaryMax, salaryMin, availability, vacancyCount, description } = vacancy;
         setTimeout(() => {
           this.formInject.start(this.vacancyForm.form).inject({
