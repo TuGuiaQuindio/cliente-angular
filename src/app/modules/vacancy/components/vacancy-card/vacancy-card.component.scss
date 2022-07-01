@@ -1,0 +1,50 @@
+:host {
+  @apply grid grid-cols-1 p-6 rounded-xl shadow-md border w-full;
+
+  header {
+    @apply flex gap-4;
+    i {
+      @apply text-secondary-600 text-4xl;
+    }
+    h3 {
+      @apply text-secondary-600 text-3xl h-fit;
+    }
+  }
+
+  main {
+    @apply mt-2;
+    .information {
+      @apply grid grid-cols-1 gap-8;
+      .content {
+        @apply flex flex-col gap-4 text-appgray-400;
+      }
+    }
+
+    .vacancy-details {
+      @apply grid grid-cols-1 gap-2;
+
+      .detail-item {
+        @apply flex gap-2 items-center;
+        i {
+          @apply text-secondary-600;
+        }
+
+        p {
+          @apply text-appgray-500;
+        }
+      }
+    }
+
+    .buttons {
+      @apply flex justify-end gap-4 mt-4;
+
+      .edit {
+        @apply text-sky-600;
+      }
+
+      .delete {
+        @apply text-red-600;
+      }
+    }
+  }
+}

@@ -1,0 +1,32 @@
+<main>
+  <header>
+    <i class="bx bx-briefcase"></i>
+    <h3>{{title | truncate:60:'...'}}</h3>
+  </header>
+  <main>
+    <section class="information">
+      <section class="content">
+        <p>{{description | truncate:160:'...'}}</p>
+        <p class="promotional">¿Qué esperas para ser parte de su equipo?</p>
+      </section>
+      <section class="vacancy-details">
+        <article class="detail-item">
+          <i class="bx bxs-user"></i>
+          <p>vacantes: {{vacancyCount}}</p>
+        </article>
+        <article class="detail-item">
+          <i class="bx bx-money"></i>
+          <p>salario: {{salaryMin | currency:'USD':'$':'1.0'}} - {{salaryMax | currency:'USD':'$':'1.0'}}</p>
+        </article>
+        <article class="detail-item">
+          <i class="bx bx-time-five"></i>
+          <p>horario: {{availability | availabilityMapping:'no definido'}}</p>
+        </article>
+      </section>
+    </section>
+    <section class="buttons">
+      <app-icon-button class="edit" icon="bx-edit-alt" label="Editar"></app-icon-button>
+      <app-icon-button class="delete" icon="bx-trash" label="Borrar"></app-icon-button>
+    </section>
+  </main>
+</main>

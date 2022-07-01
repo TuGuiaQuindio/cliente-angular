@@ -8,12 +8,15 @@ import { SettingsFormModule } from '../settings-form/settings-form.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { LanguageFormModule } from '../language-form/language-form.module';
 import { VacanciesComponent } from './components/vacancies/vacancies.component';
+import { VacancyCardComponent } from './components/vacancy-card/vacancy-card.component';
+import { PipesModule } from '../pipes/pipes.module';
 
 @NgModule({
   declarations: [
     VacancyFormComponent,
     CreateVacancyPageComponent,
-    VacanciesComponent
+    VacanciesComponent,
+    VacancyCardComponent
   ],
   imports: [
     CommonModule,
@@ -21,7 +24,8 @@ import { VacanciesComponent } from './components/vacancies/vacancies.component';
     SharedModule,
     SettingsFormModule,
     ReactiveFormsModule,
-    LanguageFormModule
+    LanguageFormModule,
+    PipesModule
   ]
 })
 export class VacancyModule { }
