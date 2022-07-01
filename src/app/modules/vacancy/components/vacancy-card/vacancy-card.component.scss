@@ -36,7 +36,7 @@
     }
 
     .buttons {
-      @apply flex justify-end gap-4 mt-4;
+      @apply flex flex-wrap justify-end gap-4 mt-4;
 
       .edit {
         @apply text-sky-600;
