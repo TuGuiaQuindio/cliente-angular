@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Vacancy } from 'src/app/interfaces/vacancy';
+import { VacancyDataService } from '../../services/vacancy-data.service';
 
 @Component({
   selector: 'app-vacancies',
@@ -7,7 +9,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class VacanciesComponent implements OnInit {
 
-  constructor() { }
+  constructor(private vacancySrv: VacancyDataService) {
+    this.vacancySrv.getVacancies()
+      .subscribe({
+        next: (vacancies) => {
+          this.vacancies = vacancies;
+        }
+      })
+  }
+
+  public vacancies: Vacancy[] = [];
 
   ngOnInit(): void {
   }

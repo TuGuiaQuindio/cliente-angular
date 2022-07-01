@@ -1,5 +1,5 @@
 <app-page-view title="Vacantes" subtitle="Crea, edita o elimina las vacantes que tienes abiertas para tu empresa">
   <main>
-    <app-vacancy-card></app-vacancy-card>
+    <app-vacancy-card *ngFor="let vacancy of vacancies" [title]="vacancy.title" [description]="vacancy.description ?? 'Sin descripción'" [availability]="vacancy.availability" [vacancyCount]="vacancy.vacancyCount" [salaryMin]="vacancy.salaryMin" [salaryMax]="vacancy.salaryMax"></app-vacancy-card>
   </main>
 </app-page-view>
