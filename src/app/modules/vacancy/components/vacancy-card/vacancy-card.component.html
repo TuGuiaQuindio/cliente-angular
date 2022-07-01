@@ -10,18 +10,24 @@
         <p class="promotional">¿Qué esperas para ser parte de su equipo?</p>
       </section>
       <section class="vacancy-details">
-        <article class="detail-item">
-          <i class="bx bxs-user"></i>
-          <p>vacantes: {{vacancyCount}}</p>
-        </article>
-        <article class="detail-item">
-          <i class="bx bx-money"></i>
-          <p>salario: {{salaryMin | currency:'USD':'$':'1.0'}} - {{salaryMax | currency:'USD':'$':'1.0'}}</p>
-        </article>
-        <article class="detail-item">
-          <i class="bx bx-time-five"></i>
-          <p>horario: {{availability | availabilityMapping:'no definido'}}</p>
-        </article>
+        <section class="important">
+          <article class="detail-item">
+            <i class="bx bxs-user"></i>
+            <p>vacantes: {{vacancyCount}}</p>
+          </article>
+          <article class="detail-item">
+            <i class="bx bx-money"></i>
+            <p>salario: {{salaryMin | currency:'USD':'$':'1.0'}} - {{salaryMax | currency:'USD':'$':'1.0'}}</p>
+          </article>
+          <article class="detail-item">
+            <i class="bx bx-time-five"></i>
+            <p>horario: {{availability | availabilityMapping:'no definido'}}</p>
+          </article>
+        </section>
+        <section class="additional">
+          <app-label-icon *ngIf="firstAid" icon="bx-first-aid" type="text-red-500" label="primeros auxilios"></app-label-icon>
+          <app-label-icon *ngIf="hasTransport" icon="bx-car" type="text-yellow-500" label="transporte particular"></app-label-icon>
+        </section>
       </section>
     </section>
     <section class="buttons">

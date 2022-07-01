@@ -21,7 +21,7 @@
     }
 
     .vacancy-details {
-      @apply grid grid-cols-1 gap-2;
+      @apply grid grid-cols-2 gap-2;
 
       .detail-item {
         @apply flex gap-2 items-center;

@@ -3,7 +3,7 @@
     <app-filter-sidebar [sections]="sections"></app-filter-sidebar>   
       <ng-container *ngIf="(vacancies$ | async)! | hasCount; else noGuides" >
         <section class="previews">
-          <app-vacancy-card *ngFor="let vacancy of vacancies$ | async" [title]="vacancy.title" [description]="vacancy.description ?? 'Sin descripción'" [vacancyCount]="vacancy.vacancyCount" [salaryMin]="vacancy.salaryMin" [salaryMax]="vacancy.salaryMax" [vacancyCount]="vacancy.vacancyCount" [availability]="vacancy.availability" [showMode]="true" (buttonClick)="onButtonClick(vacancy.id, $event)"></app-vacancy-card>
+          <app-vacancy-card *ngFor="let vacancy of vacancies$ | async" [title]="vacancy.title" [description]="vacancy.description ?? 'Sin descripción'" [vacancyCount]="vacancy.vacancyCount" [salaryMin]="vacancy.salaryMin" [salaryMax]="vacancy.salaryMax" [vacancyCount]="vacancy.vacancyCount" [availability]="vacancy.availability" [firstAid]="vacancy.firstAid" [hasTransport]="vacancy.hasTransport" [showMode]="true" (buttonClick)="onButtonClick(vacancy.id, $event)"></app-vacancy-card>
         </section>
       </ng-container>
       <ng-template #noGuides>

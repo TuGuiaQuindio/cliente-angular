@@ -7,6 +7,8 @@ export interface Vacancy {
   vacancyCount: number;
   salaryMin: number;
   salaryMax: number;
+  hasTransport: boolean;
+  firstAid: boolean;
   availability: string;
   languages: Language[];
 }
