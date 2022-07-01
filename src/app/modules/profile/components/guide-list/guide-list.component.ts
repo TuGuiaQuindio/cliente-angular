@@ -15,7 +15,7 @@ export class GuideListComponent implements OnInit, OnDestroy {
   @ViewChild(FilterSidebarComponent) public set hostFilterSidebar(filterSidebar: FilterSidebarComponent) {
     filterSidebar.stateChange.pipe(
       takeUntil(this.destroy$),
-      mergeMap((state) => this.dataSrv.getAllGuides().pipe(
+      mergeMap((state) => this.dataSrv.getAllGuides(100).pipe(
         map((guides) => {
           return guides.filter(guide => {
             const { search, firstAid, hasTransport, verified, availability } = state;
@@ -55,7 +55,7 @@ export class GuideListComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    this.dataSrv.getAllGuides().subscribe({
+    this.dataSrv.getAllGuides(100).subscribe({
       next: guides => {
         this.guidesSubj.next(guides);
       }

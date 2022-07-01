@@ -11,7 +11,7 @@ import { VacancyDataService } from '../../services/vacancy-data.service';
 export class VacanciesComponent implements OnInit {
 
   constructor(private vacancySrv: VacancyDataService, private router: Router) {
-    this.vacancySrv.getVacancies()
+    this.vacancySrv.getVacancies(4)
       .subscribe({
         next: (vacancies) => {
           this.vacancies = vacancies;

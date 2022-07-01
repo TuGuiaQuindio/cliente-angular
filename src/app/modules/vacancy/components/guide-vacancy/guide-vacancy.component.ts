@@ -16,7 +16,7 @@ export class GuideVacancyComponent implements OnInit {
   @ViewChild(FilterSidebarComponent) public set hostFilterSidebar(filterSidebar: FilterSidebarComponent) {
     filterSidebar.stateChange.pipe(
       takeUntil(this.destroy$),
-      mergeMap((state) => this.dataSrv.getVacancies().pipe(
+      mergeMap((state) => this.dataSrv.getVacancies(100).pipe(
         map((vacancies) => {
           return vacancies.filter(vacancy => {
             const { search, availability, hasTransport, firstAid } = state;
@@ -67,7 +67,7 @@ export class GuideVacancyComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.dataSrv.getVacancies().subscribe({
+    this.dataSrv.getVacancies(100).subscribe({
       next: guides => {
         this.guidesSubj.next(guides);
       }

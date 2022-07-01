@@ -15,7 +15,7 @@ export class VacancyDataService {
 
   public vacancies?: Vacancy[];
 
-  public getVacancies() {
+  public getVacancies(count: number) {
     const createVacancy = (): Vacancy => {
       return {
         id: faker.random.alphaNumeric(5),
@@ -32,7 +32,7 @@ export class VacancyDataService {
         }),
       }
     };
-    if (!this.vacancies) this.vacancies = Array.from({ length: 10 }, createVacancy);
+    if (!this.vacancies) this.vacancies = Array.from({ length: count ?? 10 }, createVacancy);
     return of(this.vacancies);
   }
 

@@ -12,7 +12,7 @@ export class GuideDataService {
   guides?: Observable<Guide[]>;
 
   constructor() { }
-  public getAllGuides(): Observable<Guide[]> {
+  public getAllGuides(count: number): Observable<Guide[]> {
     const createGuide = (): Guide => {
       const firstName = faker.name.firstName();
       const lastName = faker.name.lastName();
@@ -42,7 +42,7 @@ export class GuideDataService {
       }
     }
     if (!this.guides) {
-      this.guides = of(Array.from({ length: 50 }, createGuide));
+      this.guides = of(Array.from({ length: count ?? 50 }, createGuide));
     }
     return this.guides;
   }
