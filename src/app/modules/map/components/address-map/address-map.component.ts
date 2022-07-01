@@ -24,13 +24,15 @@ Marker.prototype.options.icon = iconDefault;
   selector: 'app-address-map',
   templateUrl: './address-map.component.html',
   styleUrls: ['./address-map.component.scss'],
-  providers: [ { provide: InputValueAccessor, useExisting: AddressMapComponent } ]
+  providers: [{ provide: InputValueAccessor, useExisting: AddressMapComponent }]
 })
 export class AddressMapComponent extends InputValueAccessor implements AfterViewInit {
 
-  private map? : Leaflet.Map = undefined;
-  private marker = Leaflet.marker([0,0]);
+  private map?: Leaflet.Map = undefined;
+  private marker = Leaflet.marker([0, 0]);
   @Input() public label = "";
+  @Input() public centerLocation?: Leaflet.LatLngTuple;
+  @Input() public selectedLocation?: Leaflet.LatLngTuple;
   @Output() public mapLocation = new EventEmitter<Leaflet.LatLngTuple>();
 
   @HostBinding('class.warning')
@@ -48,9 +50,16 @@ export class AddressMapComponent extends InputValueAccessor implements AfterView
 
   private initMap(): void {
     this.map = Leaflet.map('map', {
-      center: [ 4.4265, -75.7109 ],
+      center: this.centerLocation ?? [4.4265, -75.7109],
       zoom: 10,
     });
+
+    if (this.selectedLocation) {
+      const [lat, lng] = this.selectedLocation;
+      this.marker.setLatLng(this.selectedLocation).addTo(this.map);
+      if (this.ngControl)
+        this.ngControl.control!.setValue(`(${lat}, ${lng})`)
+    }
 
     const tiles = Leaflet.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
       maxZoom: 18,
@@ -70,9 +79,9 @@ export class AddressMapComponent extends InputValueAccessor implements AfterView
     this.marker.bindPopup(`Has seleccionado ${e.latlng} como ubicación`).openPopup();
     this.marker.setLatLng(e.latlng).addTo(this.map);
     this.map.flyTo(e.latlng);
-    const { lat, lng } = e.latlng; 
+    const { lat, lng } = e.latlng;
     this.mapLocation.emit([lat, lng]);
-    this.ngControl.control!.setValue(`(${lat}, ${lng})`)
+    if (this.ngControl) this.ngControl.control!.setValue(`(${lat}, ${lng})`)
   }
 
 }
