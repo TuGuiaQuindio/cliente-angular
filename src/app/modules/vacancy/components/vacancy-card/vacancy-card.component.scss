@@ -45,6 +45,10 @@
       .delete {
         @apply text-red-600;
       }
+
+      .view {
+        @apply text-lime-500;
+      }
     }
   }
 }
