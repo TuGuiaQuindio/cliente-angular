@@ -9,6 +9,7 @@ export class IconButtonComponent implements OnInit {
 
   constructor() { }
   @Input() public icon = "";
+  @Input() public label = "";
 
   ngOnInit(): void {
   }

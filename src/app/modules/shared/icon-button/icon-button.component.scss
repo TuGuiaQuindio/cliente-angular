@@ -1,7 +1,15 @@
-.icon-btn {
-  @apply flex items-center justify-center w-10 h-10 rounded-full border shadow-sm bg-primary transition-[color_transform] duration-100 text-secondary-500 text-2xl cursor-pointer;
+:host {
+  @apply flex items-center py-1 px-2 w-fit rounded-full border-2 shadow-sm bg-primary transition-[color_transform] duration-100 text-secondary-500 cursor-pointer;
 
   &:active {
     @apply translate-y-[2px] shadow-none bg-appgray-100;
   }
+}
+
+.icon-btn {
+  @apply flex items-center justify-center text-2xl;
+}
+
+.content {
+  @apply ml-4 text-appgray-400 mr-2;
 }

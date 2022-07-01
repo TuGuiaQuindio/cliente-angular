@@ -21,6 +21,7 @@ import { InputCurrencyComponent } from './input-currency/input-currency.componen
 import { BadgeComponent } from './components/badge/badge.component';
 import { LabelIconComponent } from './components/label-icon/label-icon.component';
 import { AvatarComponent } from './components/avatar/avatar.component';
+import { PipesModule } from '../pipes/pipes.module';
 
 @NgModule({
   declarations: [
@@ -46,7 +47,8 @@ import { AvatarComponent } from './components/avatar/avatar.component';
     CommonModule,
     RouterModule,
     ReactiveFormsModule,
-    IconsModule
+    IconsModule,
+    PipesModule
   ],
   exports: [
     AnchorDirective,

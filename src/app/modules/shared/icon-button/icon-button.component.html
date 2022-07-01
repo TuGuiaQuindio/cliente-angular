@@ -1,1 +1,4 @@
 <i class="icon-btn bx" [ngClass]="icon"></i>
+<p *ngIf="label | exist" class="content">
+  {{label}}
+</p>
