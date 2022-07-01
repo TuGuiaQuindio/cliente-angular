@@ -10,7 +10,7 @@ const routes: Routes = [
   { path: '', component: VacanciesComponent },
   { path: 'create', component: CreateVacancyPageComponent },
   { path: 'edit/:id', component: EditVacancyPageComponent },
-  { path: ':id', component: VacancyDetailsComponent }
+  { path: 'view/:id', component: VacancyDetailsComponent }
 ]
 
 @NgModule({

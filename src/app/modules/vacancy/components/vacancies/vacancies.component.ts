@@ -31,7 +31,7 @@ export class VacanciesComponent implements OnInit {
   public onVacancyButtonClick(vacancyId: string, clickId: string) {
     switch (clickId) {
       case 'view':
-        this.router.navigate(['/vacancy/', vacancyId]);
+        this.router.navigate(['/vacancy/view/', vacancyId]);
         break;
       case 'delete':
         const idx = this.vacancies.findIndex(el => el.id === vacancyId);
@@ -39,7 +39,7 @@ export class VacanciesComponent implements OnInit {
         this.vacancies.splice(idx, 1);
         break;
       case 'edit':
-        this.router.navigate(['vacancy/edit/', vacancyId]);
+        this.router.navigate(['/vacancy/edit/', vacancyId]);
         break;
     }
   }
