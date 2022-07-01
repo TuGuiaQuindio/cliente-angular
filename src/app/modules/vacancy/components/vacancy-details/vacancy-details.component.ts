@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { faker } from '@faker-js/faker';
 import { Language } from 'src/app/core/interfaces/guide';
+import { Company } from 'src/app/interfaces/company';
 import { Vacancy } from 'src/app/interfaces/vacancy';
 import { VacancyDataService } from '../../services/vacancy-data.service';
 
@@ -38,6 +40,15 @@ export class VacancyDetailsComponent implements OnInit {
   public maxSalary = 0;
   public availability = "";
   public languages: Language[] = [];
+
+  public company?: Company = {
+    name: faker.company.companyName(),
+    description: faker.lorem.paragraphs(2),
+    tel: faker.phone.number(),
+    nit: faker.random.alphaNumeric(10),
+    email: faker.internet.email(),
+    address: [Math.random() * 100, Math.random() * 100],
+  };
 
 
 }

@@ -45,9 +45,9 @@
       </section>
     </section>
     <hr>
-    <section class="enterprise"></section>
+    <section class="enterprise">
+      <app-enterprise-card *ngIf="company | exist" [title]="company!.name" [description]="company!.description" [nit]="company!.nit" [tel]="company!.tel" [nit]="company!.nit"></app-enterprise-card>
+      <app-button type="special">Aplicar</app-button>
+    </section>
   </main>
-  <footer>
-    <app-button type="special">Aplicar</app-button>
-  </footer>
 </app-page-view>

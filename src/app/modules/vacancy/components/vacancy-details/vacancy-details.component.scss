@@ -1,6 +1,6 @@
 :host {
   main {
-    @apply grid grid-cols-[auto_2px_auto];
+    @apply grid grid-cols-[auto_2px_auto] gap-8;
 
     .information {
       @apply flex flex-col gap-4;
@@ -52,6 +52,10 @@
 
     hr {
       @apply h-full w-full bg-appgray-200;
+    }
+    
+    .enterprise{ 
+      @apply flex flex-col gap-6;
     }
   }
 }
