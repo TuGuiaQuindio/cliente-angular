@@ -4,7 +4,7 @@ import { filter, Observable, Subject, takeUntil } from 'rxjs';
 import { SelectOption } from 'src/app/modules/shared/components/select/select.component';
 
 export type FilterState = { availability: undefined | 'full' | 'weekends' | 'weekdays', verified: boolean, hasTransport: boolean, firstAid: boolean, search: string };
-export type FilterDefinition = { name: string, formControl: FormControl, type: "checkbox" | "select", options?: SelectOption[] };
+export type FilterDefinition = { name: string, formControl?: FormControl, toResolveFormControlName?: string, type: "checkbox" | "select", options?: SelectOption[] };
 export type FilterSectionDefinition = { title: string, filters: FilterDefinition[] };
 @Component({
   selector: 'app-filter-sidebar',
